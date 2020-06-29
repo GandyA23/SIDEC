@@ -10,17 +10,19 @@
 <html lang="es">
 
     <head>
+        <title>SIDEC | Menú</title>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>SIDEC | Menú</title>
-        <!-- Bootstrap core CSS -->
-        <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
 
-        <link href="assets/css/estilos.css" rel="stylesheet">
-        <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="${pageContext.request.contextPath}/assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="${pageContext.request.contextPath}/assets/css/estilos.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/simple-sidebar.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/2efaf80395.js" crossorigin="anonymous"></script>
     </head>
 
-<body>
+    <body>

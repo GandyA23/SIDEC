@@ -6,11 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-        </div><!-- no quitar este contenedor -->
 
-        <!--Hasta acá termina su formulario-->
-        </div>
-<!---------------------------------------------------------------------------------------->
+    </div><!-- no quitar este contenedor -->
+
+    <!--Hasta acá termina su formulario-->
+
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------- -->
         <!-- FOOTER -->
         <footer class="bg-gris">
             <div class="row">
@@ -30,8 +33,8 @@
     </body>
 
     <script src="https://kit.fontawesome.com/2efaf80395.js" crossorigin="anonymous"></script>
-    <script src="assets/css/jquery/jquery.min.js"></script>
-    <script src="assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/css/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
