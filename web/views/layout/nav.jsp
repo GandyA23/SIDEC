@@ -71,8 +71,8 @@
                     <div class="card bg-rojobajo">
                         <a href="${pageContext.request.contextPath}/views/Clinica/add.jsp" class="bg-rojobajo text-white">Añadir Registro</a>
                         <a href="${pageContext.request.contextPath}/views/Clinica/delete.jsp" class="bg-rojobajo text-white">Eliminar Registro</a>
-                        <a href="#" class="bg-rojobajo text-white">Actualizar Datos</a>
-                        <a href="#" class="bg-rojobajo text-white">Buscar Registro</a>
+                        <a href="${pageContext.request.contextPath}/views/Clinica/update.jsp" class="bg-rojobajo text-white">Actualizar Datos</a>
+                        <a href="${pageContext.request.contextPath}/views/Clinica/search.jsp" class="bg-rojobajo text-white">Buscar Registro</a>
                     </div>
                 </div>
                 <!-- ---------------------------------------------------------------------------------- -->
