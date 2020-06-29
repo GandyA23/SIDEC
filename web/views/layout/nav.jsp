@@ -121,10 +121,10 @@
 
                 <div class="collapse text-center mr-0" id="collapseExample4">
                     <div class="card bg-rojobajo">
-                        <a href="uAlta.html" class="bg-rojobajo text-white">Añadir Registro</a>
-                        <a href="uBaja.html" class="bg-rojobajo text-white">Eliminar Registro</a>
-                        <a href="uActualizar.html" class="bg-rojobajo text-white">Actualizar Datos</a>
-                        <a href="uBuscar.html" class="bg-rojobajo text-white">Buscar Registro</a>
+                        <a href="${pageContext.request.contextPath}/views/Usuarios/add.jsp" class="bg-rojobajo text-white">Añadir Registro</a>
+                        <a href="${pageContext.request.contextPath}/views/Usuarios/delete.jsp" class="bg-rojobajo text-white">Eliminar Registro</a>
+                        <a href="${pageContext.request.contextPath}/views/Usuarios/update.jsp" class="bg-rojobajo text-white">Actualizar Datos</a>
+                        <a href="${pageContext.request.contextPath}/views/Usuarios/search.jsp" class="bg-rojobajo text-white">Buscar Registro</a>
                     </div>
                 </div>
 
