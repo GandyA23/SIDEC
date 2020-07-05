@@ -2,14 +2,14 @@ package mx.edu.utez.model.bean;
 
 import java.util.Date;
 
-public class Log_Est {
+public class Log_EstBean {
     private int folio;
     private int idLogro;
     private String matEstudiante;
     private String descripcion;
     private Date fecha;
 
-    public Log_Est(int folio, int idLogro, String matEstudiante, String descripcion) {
+    public Log_EstBean(int folio, int idLogro, String matEstudiante, String descripcion) {
         this.folio = folio;
         this.idLogro = idLogro;
         this.matEstudiante = matEstudiante;

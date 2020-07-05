@@ -1,21 +1,21 @@
 package mx.edu.utez.model.bean;
 
-public class Tutor {
+public class TutorBean {
 
     private int id;
     private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
+    private String apePaterno;
+    private String apeMaterno;
     private String telefonoPersonal;
     private String telefonoTrabajo;
     private String correo;
     private String genero;
 
-    public Tutor(int id, String nombre, String apellidoPaterno, String apellidoMaterno, String telefonoPersonal, String telefonoTrabajo, String correo, String genero) {
+    public TutorBean(int id, String nombre, String apePaterno, String apeMaterno, String telefonoPersonal, String telefonoTrabajo, String correo, String genero) {
         this.id = id;
         this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
         this.telefonoPersonal = telefonoPersonal;
         this.telefonoTrabajo = telefonoTrabajo;
         this.correo = correo;
@@ -38,20 +38,20 @@ public class Tutor {
         this.nombre = nombre;
     }
 
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
+    public String getApePaterno() {
+        return apePaterno;
     }
 
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+    public void setApePaterno(String apePaterno) {
+        this.apePaterno = apePaterno;
     }
 
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
+    public String getApeMaterno() {
+        return apeMaterno;
     }
 
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    public void setApeMaterno(String apeMaterno) {
+        this.apeMaterno = apeMaterno;
     }
 
     public String getTelefonoPersonal() {
@@ -85,5 +85,4 @@ public class Tutor {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    
 }

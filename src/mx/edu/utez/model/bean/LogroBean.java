@@ -1,10 +1,10 @@
 package mx.edu.utez.model.bean;
 
-public class Logro {
+public class LogroBean {
     private int id;
     private String nombre;
 
-    public Logro(int id, String nombre) {
+    public LogroBean(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
