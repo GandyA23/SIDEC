@@ -26,9 +26,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a81fa228-ed59-4548-9b30-582f3c14b64c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Log_Est.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Log_EstBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Logro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/LogroBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Tutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/TutorBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/ConductaBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/ConductaBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/DomicilioBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/DomicilioBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/EstudianteBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/EstudianteBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Informacion_ClinicaBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Informacion_ClinicaBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Log_EstBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Log_EstBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/LogroBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/LogroBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/ReporteBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/ReporteBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/TutorBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/TutorBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/UsuarioBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/UsuarioBean.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +186,8 @@
       <workItem from="1593564084549" duration="575000" />
       <workItem from="1593579819716" duration="190000" />
       <workItem from="1593894554704" duration="604000" />
-      <workItem from="1593907214798" duration="5125000" />
+      <workItem from="1593907214798" duration="5490000" />
+      <workItem from="1594043779683" duration="4751000" />
     </task>
     <servers />
   </component>
@@ -204,10 +211,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1593417134684" />
-    <state x="488" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1593912435044">
+    <state x="488" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1594048078496">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="488" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1593912435044" />
+    <state x="488" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1594048078496" />
     <state x="413" y="114" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593908224496">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

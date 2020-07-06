@@ -3,22 +3,30 @@ package mx.edu.utez.model.bean;
 import java.util.Date;
 
 public class ReporteBean {
+
+    private EstudianteBean estudiante = new EstudianteBean();
+    private TutorBean tutor = new TutorBean();
+
     private int folio;
     private Date fecha;
     private String motivo;
     private String descripcion;
     private String canalizacion;
-    private String cct;
-    private String matEstudiante;
 
-    public ReporteBean(int folio, Date fecha, String motivo, String descripcion, String canalizacion, String cct, String matEstudiante) {
-        this.folio = folio;
-        this.fecha = fecha;
-        this.motivo = motivo;
-        this.descripcion = descripcion;
-        this.canalizacion = canalizacion;
-        this.cct = cct;
-        this.matEstudiante = matEstudiante;
+    public EstudianteBean getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(EstudianteBean estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public TutorBean getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(TutorBean tutor) {
+        this.tutor = tutor;
     }
 
     public int getFolio() {
@@ -59,21 +67,5 @@ public class ReporteBean {
 
     public void setCanalizacion(String canalizacion) {
         this.canalizacion = canalizacion;
-    }
-
-    public String getCct() {
-        return cct;
-    }
-
-    public void setCct(String cct) {
-        this.cct = cct;
-    }
-
-    public String getMatEstudiante() {
-        return matEstudiante;
-    }
-
-    public void setMatEstudiante(String matEstudiante) {
-        this.matEstudiante = matEstudiante;
     }
 }

@@ -3,22 +3,18 @@ package mx.edu.utez.model.bean;
 import java.util.Date;
 
 public class ConductaBean {
-    private String matEstudiante;
+
+    private EstudianteBean estudiante = new EstudianteBean();
+
     private Date fecha;
     private String observaciones;
 
-    public ConductaBean(String matEstudiante, Date fecha, String observaciones) {
-        this.matEstudiante = matEstudiante;
-        this.fecha = fecha;
-        this.observaciones = observaciones;
+    public EstudianteBean getEstudiante() {
+        return estudiante;
     }
 
-    public String getMatEstudiante() {
-        return matEstudiante;
-    }
-
-    public void setMatEstudiante(String matEstudiante) {
-        this.matEstudiante = matEstudiante;
+    public void setEstudiante(EstudianteBean estudiante) {
+        this.estudiante = estudiante;
     }
 
     public Date getFecha() {

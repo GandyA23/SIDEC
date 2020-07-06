@@ -5,19 +5,9 @@ public class UsuarioBean {
     private String password;
     private String correo;
     private String nombre;
-    private String apePaterno;
-    private String apeMaterno;
+    private String apellido1;
+    private String apellido2;
     private String rol;
-
-    public UsuarioBean(String cct, String password, String correo, String nombre, String apePaterno, String apeMaterno, String rol) {
-        this.cct = cct;
-        this.password = password;
-        this.correo = correo;
-        this.nombre = nombre;
-        this.apePaterno = apePaterno;
-        this.apeMaterno = apeMaterno;
-        this.rol = rol;
-    }
 
     public String getCct() {
         return cct;
@@ -51,20 +41,20 @@ public class UsuarioBean {
         this.nombre = nombre;
     }
 
-    public String getApePaterno() {
-        return apePaterno;
+    public String getApellido1() {
+        return apellido1;
     }
 
-    public void setApePaterno(String apePaterno) {
-        this.apePaterno = apePaterno;
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
     }
 
-    public String getApeMaterno() {
-        return apeMaterno;
+    public String getApellido2() {
+        return apellido2;
     }
 
-    public void setApeMaterno(String apeMaterno) {
-        this.apeMaterno = apeMaterno;
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
     }
 
     public String getRol() {

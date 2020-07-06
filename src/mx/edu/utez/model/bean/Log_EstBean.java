@@ -3,41 +3,36 @@ package mx.edu.utez.model.bean;
 import java.util.Date;
 
 public class Log_EstBean {
+
+    private EstudianteBean estudiante = new EstudianteBean();
+    private LogroBean logro = new LogroBean();
+
     private int folio;
-    private int idLogro;
-    private String matEstudiante;
     private String descripcion;
     private Date fecha;
 
-    public Log_EstBean(int folio, int idLogro, String matEstudiante, String descripcion) {
-        this.folio = folio;
-        this.idLogro = idLogro;
-        this.matEstudiante = matEstudiante;
-        this.descripcion = descripcion;
+    public EstudianteBean getEstudiante() {
+        return estudiante;
     }
-    
+
+    public void setEstudiante(EstudianteBean estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public LogroBean getLogro() {
+        return logro;
+    }
+
+    public void setLogro(LogroBean logro) {
+        this.logro = logro;
+    }
+
     public int getFolio() {
         return folio;
     }
 
     public void setFolio(int folio) {
         this.folio = folio;
-    }
-
-    public int getIdLogro() {
-        return idLogro;
-    }
-
-    public void setIdLogro(int idLogro) {
-        this.idLogro = idLogro;
-    }
-
-    public String getMatEstudiante() {
-        return matEstudiante;
-    }
-
-    public void setMatEstudiante(String matEstudiante) {
-        this.matEstudiante = matEstudiante;
     }
 
     public String getDescripcion() {
@@ -55,4 +50,5 @@ public class Log_EstBean {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
 }

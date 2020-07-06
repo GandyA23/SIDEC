@@ -1,7 +1,9 @@
 package mx.edu.utez.model.bean;
 
 public class Informacion_ClinicaBean {
-    private String matEstudienate;
+
+    private EstudianteBean estudiante = new EstudianteBean();
+
     private double peso;
     private double estatura;
     private double imc;
@@ -14,28 +16,12 @@ public class Informacion_ClinicaBean {
     private String discapacidades;
     private String diagPsico;
 
-    public Informacion_ClinicaBean(String matEstudienate, double peso, double estatura, double imc, String tipoSangre, String numeroSeguro, String unidadMedica, String alergias, String enferCronicas, String enferHereditarias, String discapacidades, String diagPsico) {
-        this.matEstudienate = matEstudienate;
-        this.peso = peso;
-        this.estatura = estatura;
-        this.imc = imc;
-        this.tipoSangre = tipoSangre;
-        this.numeroSeguro = numeroSeguro;
-        this.unidadMedica = unidadMedica;
-        this.alergias = alergias;
-        this.enferCronicas = enferCronicas;
-        this.enferHereditarias = enferHereditarias;
-        this.discapacidades = discapacidades;
-        this.diagPsico = diagPsico;
-
+    public EstudianteBean getEstudiante() {
+        return estudiante;
     }
 
-    public String getMatEstudienate() {
-        return matEstudienate;
-    }
-
-    public void setMatEstudienate(String matEstudienate) {
-        this.matEstudienate = matEstudienate;
+    public void setEstudiante(EstudianteBean estudiante) {
+        this.estudiante = estudiante;
     }
 
     public double getPeso() {

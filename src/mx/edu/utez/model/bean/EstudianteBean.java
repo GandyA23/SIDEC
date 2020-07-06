@@ -6,8 +6,8 @@ public class EstudianteBean {
     private String matricula;
     private String curp;
     private String nombre;
-    private String apePaterno;
-    private String apeMaterno;
+    private String apellido1;
+    private String apellido2;
     private Date fechaNacimiento;
     private String telefono;
     private String correo;
@@ -15,22 +15,6 @@ public class EstudianteBean {
     private String cicloEscolar;
     private String nivelActual;
     private boolean status;
-
-    public EstudianteBean(String matricula, String curp, String nombre, String apePaterno, String apeMaterno, Date fechaNacimiento, String telefono, String correo, String genero, String cicloEscolar, String nivelActual, boolean status) {
-        this.matricula = matricula;
-        this.curp = curp;
-        this.curp = curp;
-        this.nombre = nombre;
-        this.apePaterno = apePaterno;
-        this.apeMaterno = apeMaterno;
-        this.fechaNacimiento = fechaNacimiento;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.genero = genero;
-        this.cicloEscolar = cicloEscolar;
-        this.nivelActual = nivelActual;
-        this.status = status;
-    }
 
     public String getMatricula() {
         return matricula;
@@ -56,20 +40,20 @@ public class EstudianteBean {
         this.nombre = nombre;
     }
 
-    public String getApePaterno() {
-        return apePaterno;
+    public String getApellido1() {
+        return apellido1;
     }
 
-    public void setApePaterno(String apePaterno) {
-        this.apePaterno = apePaterno;
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
     }
 
-    public String getApeMaterno() {
-        return apeMaterno;
+    public String getApellido2() {
+        return apellido2;
     }
 
-    public void setApeMaterno(String apeMaterno) {
-        this.apeMaterno = apeMaterno;
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
     }
 
     public Date getFechaNacimiento() {
