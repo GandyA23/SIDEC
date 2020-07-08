@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1592859176 source:d:\program files\codeblocks\projects\insert_sidec\main.cpp
+	<bits/stdc++.h>
+	"declarar.h"
+	"funciones.h"
+	"generar.h"
+	"imprimir.h"
+
+1594149862 d:\program files\codeblocks\projects\insert_sidec\declarar.h
+
+1594149948 d:\program files\codeblocks\projects\insert_sidec\funciones.h
+
+1594150168 d:\program files\codeblocks\projects\insert_sidec\generar.h
+
+1594150196 d:\program files\codeblocks\projects\insert_sidec\imprimir.h
+
+1594174176 source:d:\program files\intellij idea\proyectsidea\sidec\db\insert_sidec\main.cpp
+	<bits/stdc++.h>
+	<wchar.h>
+	<locale.h>
+	"declarar.h"
+	"funciones.h"
+	"generar.h"
+	"imprimir.h"
+	"Valores_Para_Azar.h"
+
+1594173754 d:\program files\intellij idea\proyectsidea\sidec\db\insert_sidec\declarar.h
+
+1594173782 d:\program files\intellij idea\proyectsidea\sidec\db\insert_sidec\funciones.h
+
+1594173754 d:\program files\intellij idea\proyectsidea\sidec\db\insert_sidec\generar.h
+
+1594174952 d:\program files\intellij idea\proyectsidea\sidec\db\insert_sidec\imprimir.h
+
+1594173752 d:\program files\intellij idea\proyectsidea\sidec\db\insert_sidec\valores_para_azar.h
+
