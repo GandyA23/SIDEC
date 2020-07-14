@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link bg-gris text-white mr-1 border border-white" href="#"> Rol <span
+                    <a class="nav-link bg-gris text-white mr-1 border border-white" href="#"> <%=request.getAttribute("userName") %> <span
                     class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">

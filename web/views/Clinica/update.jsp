@@ -44,16 +44,16 @@
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" name="seguro_medico" class="form-control  text-center"
+                    <input type="text" name="numeroSeguro" class="form-control  text-center"
                            placeholder="Número Seguro Medico">
                 </div>
                 <div class="col">
-                    <input type="text" name="unidad_medica" class="form-control  text-center" placeholder="Unidad médica">
+                    <input type="text" name="unidadMedica" class="form-control  text-center" placeholder="Unidad médica">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <select name="opciones_sangre" id="inputState" class="form-control">
+                    <select name="tipoSangre" id="inputState" class="form-control">
                         <option selected>Tipo de sangre</option>
                         <option>A+</option>
                         <option>A-</option>
@@ -70,7 +70,7 @@
             </div>
             <div class="row form-group">
                 <div class="col">
-              <textarea class="form-control" name="diagnostico" id="exampleFormControlTextarea1" rows="2"
+              <textarea class="form-control" name="diagPsico" id="exampleFormControlTextarea1" rows="2"
                         placeholder="Diagnóstico psicopedagogico"></textarea>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <br>
                 <div class="row form-group">
                     <div class="col">
-                        <label for="">Crónicas:</label>
+                        <label>Crónicas:</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="cronica_si">
                             <label class="form-check-label" for="inlineCheckbox1">Si</label>
@@ -87,15 +87,16 @@
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="cronica_no">
                             <label class="form-check-label" for="inlineCheckbox2">No</label>
                         </div>
-
+<%--
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-outline-secondary">+</button>
                         </div>
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-outline-secondary">-</button>
                         </div>
+                        --%>
                         <div class="col">
-                            <select name="opciones_cronicas" id="inputState" class="form-control">
+                            <select name="enferCronicas1" id="inputState" class="form-control">
                                 <option selected>Seleccione</option>
                                 <option>Cardiovasculares </option>
                                 <option>Diabetes</option>
@@ -110,12 +111,12 @@
                             </select>
                         </div>
                         <div class="col">
-                  <textarea class="form-control" name="cronica_descripcion" id="exampleFormControlTextarea1" rows="2"
+                  <textarea class="form-control" name="enferCronicas2" id="exampleFormControlTextarea1" rows="2"
                             placeholder="Descripción:"></textarea>
                         </div>
                     </div>
                     <div class="col">
-                        <label for="">Hereditarias:</label>
+                        <label>Hereditarias:</label>
 
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="hereditaria_si">
@@ -125,14 +126,16 @@
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="hereditaria_no">
                             <label class="form-check-label" for="inlineCheckbox2">No</label>
                         </div>
+                        <%--
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-outline-secondary">+</button>
                         </div>
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-outline-secondary">-</button>
-                        </div>
+                        </div> --%>
+
                         <div class="col">
-                            <select name="opciones_hereditarias" id="inputState" class="form-control">
+                            <select name="enferHereditarias1" id="inputState" class="form-control">
                                 <option selected>Seleccione</option>
                                 <option>Anemia</option>
                                 <option>Daltonismo</option>
@@ -144,7 +147,7 @@
                             </select>
                         </div>
                         <div class="col">
-                  <textarea class="form-control" name="hereditaria_descripcion" id="exampleFormControlTextarea1"
+                  <textarea class="form-control" name="enferHereditarias2" id="exampleFormControlTextarea1"
                             rows="2" placeholder="Descripción:"></textarea>
                         </div>
                     </div>
@@ -152,7 +155,7 @@
                 <br>
                 <div class="row form-group">
                     <div class="col">
-                        <label for="">Alergias:</label>
+                        <label>Alergias:</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="alergia_si">
                             <label class="form-check-label" for="inlineCheckbox1">Si</label>
@@ -161,14 +164,16 @@
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="alergia_si">
                             <label class="form-check-label" for="inlineCheckbox2">No</label>
                         </div>
+                        <%--
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-outline-secondary">+</button>
                         </div>
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-outline-secondary">-</button>
                         </div>
+                        --%>
                         <div class="col">
-                            <select name="opciones_alergias" id="inputState" class="form-control">
+                            <select name="alergias1" id="inputState" class="form-control">
                                 <option selected>Seleccione</option>
                                 <option>Ácaros</option>
                                 <option>Polen</option>
@@ -182,12 +187,12 @@
                             </select>
                         </div>
                         <div class="col">
-                  <textarea class="form-control" name="alergias_descripcion" id="exampleFormControlTextarea1" rows="2"
+                  <textarea class="form-control" name="alergias2" id="exampleFormControlTextarea1" rows="2"
                             placeholder="Descripción:"></textarea>
                         </div>
                     </div>
                     <div class="col">
-                        <label for="">Discapacidad:</label>
+                        <label>Discapacidad:</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="discapacidad_si">
                             <label class="form-check-label" for="inlineCheckbox1">Si</label>
@@ -196,14 +201,16 @@
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="discapacidad_si">
                             <label class="form-check-label" for="inlineCheckbox2">No</label>
                         </div>
+                        <%--
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-outline-secondary">+</button>
                         </div>
                         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-outline-secondary">-</button>
-                        </div>
+                        </div> --%>
+
                         <div class="col">
-                            <select name="opciones_discapacidad" id="inputState" class="form-control">
+                            <select name="discapacidades1" id="inputState" class="form-control">
                                 <option selected>Seleccione</option>
                                 <option>Física</option>
                                 <option>Psíquica</option>
@@ -213,7 +220,7 @@
                             </select>
                         </div>
                         <div class="col">
-                  <textarea class="form-control" name="discapacidad_descripcion" id="exampleFormControlTextarea1"
+                  <textarea class="form-control" name="discapacidades2" id="exampleFormControlTextarea1"
                             rows="2" placeholder="Descripción:"></textarea>
                         </div>
                     </div>

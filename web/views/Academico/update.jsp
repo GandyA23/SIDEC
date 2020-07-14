@@ -24,7 +24,7 @@
                 <div class="col"></div>
 
                 <div class="col mt-1">
-                    <input class="form-control-sm text-center rounded-pill border border-secondary w-100" type="text" name="matricula" placeholder="Matrícula">
+                    <input class="form-control-sm text-center  border border-secondary w-100" type="text" name="matricula" placeholder="Matrícula">
                 </div>
 
                 <div class="col">
@@ -45,11 +45,12 @@
                 </div>
             </div>
 
+            <%--
             <div class="row">
                 <div class="col mt-1">
                     <input class="form-control-sm mt-2 text-center rounded-pill border border-secondary" type="text" name="matricula" placeholder="Matrícula">
                 </div>
-            </div>
+            </div>--%>
 
             <div class="row mt-2">
                 <div class="col">
@@ -99,11 +100,12 @@
         <div class="bg-gris text-center text-white rounded-pill border border-white w-auto ">Conducta</div>
 
         <div class="form-group">
+            <%--
             <div class="row">
                 <div class="col">
                     <textarea class="form-control rounded mt-3" name="comportamiento" placeholder="Comportamiento en clase"></textarea>
                 </div>
-            </div>
+            </div>--%>
 
             <div class="row">
                 <div class="col">

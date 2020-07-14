@@ -9,6 +9,7 @@ public class UsuarioBean {
     private String apellido2;
     private String rol;
 
+
     public String getCct() {
         return cct;
     }

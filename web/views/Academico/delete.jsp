@@ -23,7 +23,7 @@
                 <div class="col"></div>
 
                 <div class="col mt-1">
-                    <input class="form-control-sm text-center rounded-pill border border-secondary w-100" type="text" name="matricula" placeholder="Matrícula">
+                    <input class="form-control-sm text-center  border border-secondary w-100" type="text" name="matricula" placeholder="Matrícula">
                 </div>
 
                 <div class="col">
@@ -77,11 +77,11 @@
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Comportamiento en clase</td>
         </tr>
-
+<%--
         <tr>
             <td id="comportamiento"></td>
         </tr>
-
+--%>
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Observaciones</td>
         </tr>
@@ -95,7 +95,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-danger text-center border border-secondary text-white rounded w-25">Eliminar</button>
+                    <button type="submit" class="btn btn-danger text-center border border-secondary text-white rounded w-25">Eliminar</button>
                 </div>
             </div>
         </div>

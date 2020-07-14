@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col">
                     <div class="bg-gris text-center text-white rounded-pill border border-white w-auto">Formación Destacada</div>
-                    <input class="form-control-sm text-center w-25 rounded-pill my-4 border border-secondary" type="text" name="matricula" placeholder="Matrícula">
+                    <input class="form-control-sm text-center w-25  my-4 border border-secondary" type="text" name="matricula" placeholder="Matrícula">
                 </div>
             </div>
 
@@ -27,18 +27,18 @@
                 </div>
 
                 <div class="col">
-                    <input class="form-check-input" type="checkbox" value="" id="reconocimientos">
+                    <input class="form-check-input" type="checkbox" value="" id="reconocimientos" >
                     <label class="form-check-label" for="reconocimientos"> Reconocimientos </label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <textarea class="form-control rounded" name="diplomas"></textarea>
+                    <textarea class="form-control rounded" name="diploma"></textarea>
                 </div>
 
                 <div class="col">
-                    <textarea class="form-control rounded" name="reconocimientos"></textarea>
+                    <textarea class="form-control rounded" name="reconocimiento"></textarea>
                 </div>
             </div>
 
@@ -56,11 +56,11 @@
 
             <div class="row">
                 <div class="col">
-                    <textarea class="form-control rounded" name="menciones"></textarea>
+                    <textarea class="form-control rounded" name="mencion"></textarea>
                 </div>
 
                 <div class="col">
-                    <textarea class="form-control rounded" name="certificaciones"></textarea>
+                    <textarea class="form-control rounded" name="certificacion"></textarea>
                 </div>
             </div>
         </div>
@@ -68,11 +68,11 @@
         <div class="bg-gris text-center text-white rounded-pill border border-white w-auto ">Conducta</div>
 
         <div class="form-group">
-            <div class="row">
+            <%--<div class="row">
                 <div class="col">
                     <textarea class="form-control rounded mt-3" name="comportamiento" placeholder="Comportamiento en clase"></textarea>
                 </div>
-            </div>
+            </div> --%>
 
             <div class="row">
                 <div class="col">
@@ -84,7 +84,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-danger text-center text-white rounded w-25">Registrar</button>
+                    <button type="submit" class="btn btn-danger text-center text-white rounded w-25">Registrar</button>
                 </div>
             </div>
         </div>

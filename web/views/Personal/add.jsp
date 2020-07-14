@@ -27,9 +27,6 @@
         </div>
 
 
-
-
-
         <div class="form-row justify-content-around">
             <div class="col-md-4">
                 <div style="padding: 1%"></div>
