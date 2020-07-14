@@ -91,7 +91,7 @@
                         <a href="${pageContext.request.contextPath}/views/Academico/delete.jsp" class="bg-rojobajo text-white">Eliminar Registro</a>
                         <a href="${pageContext.request.contextPath}/views/Academico/update.jsp" class="bg-rojobajo text-white">Actualizar Datos</a>
                         <a href="${pageContext.request.contextPath}/views/Academico/search.jsp" class="bg-rojobajo text-white">Buscar Registro</a>
-                        <a href="#" class="bg-rojobajo text-white">Reportes</a>
+                        <a href="${pageContext.request.contextPath}/views/Academico/reportes.jsp" class="bg-rojobajo text-white">Reportes</a>
                     </div>
                 </div>
             </div>

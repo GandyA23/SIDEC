@@ -1,29 +1,281 @@
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+CREATE DATABASE  IF NOT EXISTS `sidec` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci */;
+USE `sidec`;
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 11-07-2020 a las 03:40:58
--- Versión del servidor: 5.6.17
--- Versión de PHP: 5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: sidec
+-- ------------------------------------------------------
+-- Server version	5.6.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Base de datos: `sidec`
+-- Table structure for table `conducta`
 --
 
-DELIMITER $$
+DROP TABLE IF EXISTS `conducta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `conducta` (
+  `MatEstudiante` varchar(15) NOT NULL,
+  `Fecha` datetime NOT NULL,
+  `Observaciones` text NOT NULL,
+  PRIMARY KEY (`MatEstudiante`,`Fecha`),
+  CONSTRAINT `FK_EST_CON` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
--- Procedimientos
+-- Dumping data for table `conducta`
 --
+
+LOCK TABLES `conducta` WRITE;
+/*!40000 ALTER TABLE `conducta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `conducta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `domicilio`
+--
+
+DROP TABLE IF EXISTS `domicilio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `domicilio` (
+  `MatEstudiante` varchar(15) NOT NULL,
+  `IdTutor` int(11) NOT NULL,
+  `Calle` varchar(30) NOT NULL,
+  `NoExterior` varchar(5) NOT NULL,
+  `NoInterior` varchar(5) DEFAULT 'S/N',
+  `Colonia` varchar(30) NOT NULL,
+  `Municipio` varchar(30) NOT NULL,
+  `CodigoPostal` varchar(5) NOT NULL,
+  PRIMARY KEY (`IdTutor`,`MatEstudiante`),
+  KEY `FK_EST_idx` (`MatEstudiante`),
+  CONSTRAINT `FK_EST_DOM` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_TUT_DOM` FOREIGN KEY (`IdTutor`) REFERENCES `tutor` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `domicilio`
+--
+
+LOCK TABLES `domicilio` WRITE;
+/*!40000 ALTER TABLE `domicilio` DISABLE KEYS */;
+/*!40000 ALTER TABLE `domicilio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `estudiante`
+--
+
+DROP TABLE IF EXISTS `estudiante`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `estudiante` (
+  `Matricula` varchar(15) NOT NULL,
+  `Curp` varchar(18) NOT NULL,
+  `Nombre` varchar(30) NOT NULL,
+  `Apellido1` varchar(15) NOT NULL,
+  `Apellido2` varchar(15) DEFAULT NULL,
+  `FechaNacimiento` date NOT NULL,
+  `Telefono` varchar(20) DEFAULT NULL,
+  `Correo` varchar(30) DEFAULT NULL,
+  `Genero` varchar(10) NOT NULL DEFAULT 'Masculino',
+  `CicloEscolar` varchar(10) NOT NULL,
+  `NivelActual` varchar(15) NOT NULL DEFAULT 'Primaria',
+  `Status` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`Matricula`),
+  UNIQUE KEY `UNIQUE_Curp` (`Curp`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `estudiante`
+--
+
+LOCK TABLES `estudiante` WRITE;
+/*!40000 ALTER TABLE `estudiante` DISABLE KEYS */;
+/*!40000 ALTER TABLE `estudiante` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `informacion_clinica`
+--
+
+DROP TABLE IF EXISTS `informacion_clinica`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `informacion_clinica` (
+  `MatEstudiante` varchar(15) NOT NULL,
+  `Peso` decimal(5,2) NOT NULL,
+  `Estatura` decimal(5,2) NOT NULL,
+  `Imc` decimal(5,2) NOT NULL,
+  `TipoSangre` varchar(5) NOT NULL DEFAULT 'O+',
+  `NumeroSeguro` varchar(20) NOT NULL,
+  `UnidadMedica` varchar(10) NOT NULL,
+  `Alergias` text,
+  `EnferCronicas` text,
+  `EnferHereditarias` text,
+  `Discapacidades` text,
+  `DiagPsico` text,
+  PRIMARY KEY (`MatEstudiante`),
+  CONSTRAINT `FK_ESTUDIANTES_INFORMACION_CLINICA` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `informacion_clinica`
+--
+
+LOCK TABLES `informacion_clinica` WRITE;
+/*!40000 ALTER TABLE `informacion_clinica` DISABLE KEYS */;
+/*!40000 ALTER TABLE `informacion_clinica` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `logro`
+--
+
+DROP TABLE IF EXISTS `logro`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `logro` (
+  `Folio` int(11) NOT NULL AUTO_INCREMENT,
+  `MatEstudiante` varchar(15) NOT NULL,
+  `Tipo` varchar(20) NOT NULL,
+  `Descripcion` text NOT NULL,
+  `Fecha` date NOT NULL,
+  PRIMARY KEY (`Folio`),
+  KEY `fk_LOG_EST_idx` (`MatEstudiante`),
+  CONSTRAINT `fk_LOG_EST` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `logro`
+--
+
+LOCK TABLES `logro` WRITE;
+/*!40000 ALTER TABLE `logro` DISABLE KEYS */;
+/*!40000 ALTER TABLE `logro` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reporte`
+--
+
+DROP TABLE IF EXISTS `reporte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reporte` (
+  `Folio` int(11) NOT NULL AUTO_INCREMENT,
+  `Fecha` datetime NOT NULL,
+  `Motivo` varchar(30) NOT NULL,
+  `Descripcion` text NOT NULL,
+  `Canalizacion` text NOT NULL,
+  `CCT` varchar(15) NOT NULL,
+  `MatEstudiante` varchar(15) NOT NULL,
+  PRIMARY KEY (`Folio`,`MatEstudiante`,`CCT`),
+  KEY `FK_USU_REP_idx` (`CCT`),
+  KEY `FK_EST_REP_idx` (`MatEstudiante`),
+  CONSTRAINT `FK_EST_REP` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_USU_REP` FOREIGN KEY (`CCT`) REFERENCES `usuario` (`CCT`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reporte`
+--
+
+LOCK TABLES `reporte` WRITE;
+/*!40000 ALTER TABLE `reporte` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reporte` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tutor`
+--
+
+DROP TABLE IF EXISTS `tutor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tutor` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(30) NOT NULL,
+  `Apellido1` varchar(15) NOT NULL,
+  `Apellido2` varchar(15) DEFAULT NULL,
+  `TelefonoPersonal` varchar(20) NOT NULL,
+  `TelefonoTrabajo` varchar(20) DEFAULT NULL,
+  `Correo` varchar(30) DEFAULT NULL,
+  `Genero` varchar(10) NOT NULL DEFAULT 'Masculino',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tutor`
+--
+
+LOCK TABLES `tutor` WRITE;
+/*!40000 ALTER TABLE `tutor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tutor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `CCT` varchar(15) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Correo` varchar(30) DEFAULT NULL,
+  `Nombre` varchar(30) NOT NULL,
+  `Apellido1` varchar(15) NOT NULL,
+  `Apellido2` varchar(15) DEFAULT NULL,
+  `Rol` varchar(15) NOT NULL DEFAULT 'Docente',
+  PRIMARY KEY (`CCT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping events for database 'sidec'
+--
+
+--
+-- Dumping routines for database 'sidec'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Conducta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Conducta`(
 	IN mat VARCHAR(15),
     IN fecha DATETIME,
@@ -36,8 +288,22 @@ BEGIN
 	INSERT INTO Conducta VALUES (mat, fecha, obs);
         
     COMMIT;
-END$$
-
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Domicilio` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Domicilio`(
 	IN mat VARCHAR(15),
     IN idTut INT,
@@ -55,8 +321,22 @@ BEGIN
 	INSERT INTO Domicilio VALUES (mat, idTut, calle, noExt, noInt, col, mun, codPos);
         
     COMMIT;
-END$$
-
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Estudiante` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Estudiante`(
 	IN mat VARCHAR(15),
     IN curp VARCHAR(18),
@@ -78,8 +358,22 @@ BEGIN
 	INSERT INTO Estudiante VALUES (mat, curp, nom, ap1, ap2, fechaNac, tel, cor, gen, cic, nivA, 1);
     
     COMMIT;
-END$$
-
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Informacion_Clinica` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Informacion_Clinica`(
 	IN mat VARCHAR(15),
     IN peso DECIMAL(5,2),
@@ -114,8 +408,22 @@ BEGIN
     );
         
     COMMIT;
-END$$
-
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Logro` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Logro`(
 	IN folio INT,
     IN mat VARCHAR(15),
@@ -130,8 +438,22 @@ BEGIN
 	INSERT INTO Logro VALUES (folio, mat, tipo, descrip, fecha);
         
     COMMIT;
-END$$
-
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Reporte` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Reporte`(
 	IN folio INT,
     IN fecha DATETIME,
@@ -148,8 +470,22 @@ BEGIN
 	INSERT INTO Reporte VALUES (folio, fecha, mot, descrip, canal, cct, mat);
         
     COMMIT;
-END$$
-
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Tutor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Tutor`(
 	IN id INT,
     IN nom VARCHAR(30),
@@ -167,8 +503,22 @@ BEGIN
 	INSERT INTO Tutor VALUES (id, nom, ap1, ap2, telPer, telTrab, cor, gen);
         
     COMMIT;
-END$$
-
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Usuario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Usuario`(
 	IN cct VARCHAR(15),
     IN pass VARCHAR(255),
@@ -186,193 +536,52 @@ BEGIN
 	INSERT INTO Usuario VALUES (cct, aes_encrypt(pass, pass_encrypt), cor, nom, ap1, ap2, rol);
         
     COMMIT;
-END$$
-
+END ;;
 DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Delete_Estudiante` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Delete_Estudiante`(IN mat VARCHAR(15))
+BEGIN
+	/*
+    Cuando nos referimos a eliminar estudiantes, 
+    no eliminamos sus datos para que ya no existan, 
+    solo ya no lo mostrara cuando consultan a todos 
+    los estudiantes, es a lo que llamamos “borrado lógico”
+    */
+    
+    -- Iniciamos una nueva transacción 
+    START TRANSACTION;
+    
+	UPDATE Estudiante SET Status=0 WHERE Matricula=mat ;
+    
+    COMMIT;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `conducta`
---
-
-CREATE TABLE IF NOT EXISTS `conducta` (
-  `MatEstudiante` varchar(15) NOT NULL,
-  `Fecha` datetime NOT NULL,
-  `Observaciones` text NOT NULL,
-  PRIMARY KEY (`MatEstudiante`,`Fecha`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `domicilio`
---
-
-CREATE TABLE IF NOT EXISTS `domicilio` (
-  `MatEstudiante` varchar(15) NOT NULL,
-  `IdTutor` int(11) NOT NULL,
-  `Calle` varchar(30) NOT NULL,
-  `NoExterior` varchar(5) NOT NULL,
-  `NoInterior` varchar(5) DEFAULT 'S/N',
-  `Colonia` varchar(30) NOT NULL,
-  `Municipio` varchar(30) NOT NULL,
-  `CodigoPostal` varchar(5) NOT NULL,
-  PRIMARY KEY (`IdTutor`,`MatEstudiante`),
-  KEY `FK_EST_idx` (`MatEstudiante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `estudiante`
---
-
-CREATE TABLE IF NOT EXISTS `estudiante` (
-  `Matricula` varchar(15) NOT NULL,
-  `Curp` varchar(18) NOT NULL,
-  `Nombre` varchar(30) NOT NULL,
-  `Apellido1` varchar(15) NOT NULL,
-  `Apellido2` varchar(15) DEFAULT NULL,
-  `FechaNacimiento` date NOT NULL,
-  `Telefono` varchar(20) DEFAULT NULL,
-  `Correo` varchar(30) DEFAULT NULL,
-  `Genero` varchar(10) NOT NULL DEFAULT 'Masculino',
-  `CicloEscolar` varchar(10) NOT NULL,
-  `NivelActual` varchar(15) NOT NULL DEFAULT 'Primaria',
-  `Status` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`Matricula`),
-  UNIQUE KEY `UNIQUE_Curp` (`Curp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `informacion_clinica`
---
-
-CREATE TABLE IF NOT EXISTS `informacion_clinica` (
-  `MatEstudiante` varchar(15) NOT NULL,
-  `Peso` decimal(5,2) NOT NULL,
-  `Estatura` decimal(5,2) NOT NULL,
-  `Imc` decimal(5,2) NOT NULL,
-  `TipoSangre` varchar(5) NOT NULL DEFAULT 'O+',
-  `NumeroSeguro` varchar(20) NOT NULL,
-  `UnidadMedica` varchar(10) NOT NULL,
-  `Alergias` text,
-  `EnferCronicas` text,
-  `EnferHereditarias` text,
-  `Discapacidades` text,
-  `DiagPsico` text,
-  PRIMARY KEY (`MatEstudiante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `logro`
---
-
-CREATE TABLE IF NOT EXISTS `logro` (
-  `Folio` int(11) NOT NULL AUTO_INCREMENT,
-  `MatEstudiante` varchar(15) NOT NULL,
-  `Tipo` varchar(20) NOT NULL,
-  `Descripcion` text NOT NULL,
-  `Fecha` date NOT NULL,
-  PRIMARY KEY (`Folio`),
-  KEY `fk_LOG_EST_idx` (`MatEstudiante`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=201 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `reporte`
---
-
-CREATE TABLE IF NOT EXISTS `reporte` (
-  `Folio` int(11) NOT NULL AUTO_INCREMENT,
-  `Fecha` datetime NOT NULL,
-  `Motivo` varchar(30) NOT NULL,
-  `Descripcion` text NOT NULL,
-  `Canalizacion` text NOT NULL,
-  `CCT` varchar(15) NOT NULL,
-  `MatEstudiante` varchar(15) NOT NULL,
-  PRIMARY KEY (`Folio`,`MatEstudiante`,`CCT`),
-  KEY `FK_USU_REP_idx` (`CCT`),
-  KEY `FK_EST_REP_idx` (`MatEstudiante`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tutor`
---
-
-CREATE TABLE IF NOT EXISTS `tutor` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(30) NOT NULL,
-  `Apellido1` varchar(15) NOT NULL,
-  `Apellido2` varchar(15) DEFAULT NULL,
-  `TelefonoPersonal` varchar(20) NOT NULL,
-  `TelefonoTrabajo` varchar(20) DEFAULT NULL,
-  `Correo` varchar(30) DEFAULT NULL,
-  `Genero` varchar(10) NOT NULL DEFAULT 'Masculino',
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=301 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `CCT` varchar(15) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `Correo` varchar(30) DEFAULT NULL,
-  `Nombre` varchar(30) NOT NULL,
-  `Apellido1` varchar(15) NOT NULL,
-  `Apellido2` varchar(15) DEFAULT NULL,
-  `Rol` varchar(15) NOT NULL DEFAULT 'Docente',
-  PRIMARY KEY (`CCT`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `conducta`
---
-ALTER TABLE `conducta`
-  ADD CONSTRAINT `FK_EST_CON` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `domicilio`
---
-ALTER TABLE `domicilio`
-  ADD CONSTRAINT `FK_EST_DOM` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_TUT_DOM` FOREIGN KEY (`IdTutor`) REFERENCES `tutor` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `informacion_clinica`
---
-ALTER TABLE `informacion_clinica`
-  ADD CONSTRAINT `FK_ESTUDIANTES_INFORMACION_CLINICA` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `logro`
---
-ALTER TABLE `logro`
-  ADD CONSTRAINT `fk_LOG_EST` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `reporte`
---
-ALTER TABLE `reporte`
-  ADD CONSTRAINT `FK_EST_REP` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_USU_REP` FOREIGN KEY (`CCT`) REFERENCES `usuario` (`CCT`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-07-13 16:45:13
