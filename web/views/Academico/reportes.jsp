@@ -10,11 +10,18 @@
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Información Académica</li>
+        <li class="breadcrumb-item" aria-current="page"> <b>Reportes</b></li>
+    </ol>
+</nav>
+
 <div class="text-center bg-white mx-4 my-4 px-4 py-4">
     <form action="ingresarAcademico" method="post" accept-charset="utf-8">
         <div class="row">
             <div class="col">
-                <div class="bg-gris text-center text-white rounded-pill border border-white w-auto">Reporte</div>
+                <div class="bg-gris text-center text-white   border border-white w-auto"><b>Reporte</b></div>
             </div>
         </div>
 
@@ -23,7 +30,7 @@
         <div class="row">
             <div class="col">
                 <label class="mx-2" for="matricula">Alumno:</label>
-                <input class="form-control-sm text-center w-50 rounded-pill my-2 border border-secondary" type="text" name="matricula" id="matricula" placeholder="Matrícula">
+                <input class="form-control-sm text-center w-50   my-2 border border-secondary" type="text" name="matricula" id="matricula" placeholder="Matrícula">
             </div>
 
             <div class="col my-2">
@@ -46,22 +53,22 @@
         <div class="row my-3">
             <div class="form-row col mx-4">
                 <label class="mx-2" for="motivo">Motivo:</label>
-                <input class="form-control-sm text-center w-50 rounded-pill border border-secondary" type="text" name="motivo" id="motivo" placeholder="Motivo">
+                <input class="form-control-sm text-center w-50   border border-secondary" type="text" name="motivo" id="motivo" placeholder="Motivo">
             </div>
 
             <div class="form-row col">
                 <div class="col">Fecha: </div>
 
                 <div class="col">
-                    <input class="form-control-sm text-center w-75 rounded-pill border border-secondary" type="text" name="year" id="year" placeholder="Año">
+                    <input class="form-control-sm text-center w-75   border border-secondary" type="text" name="year" id="year" placeholder="Año">
                 </div>
 
                 <div class="col">
-                    <input class="form-control-sm text-center w-75 rounded-pill border border-secondary" type="text" name="month" id="month" placeholder="Mes">
+                    <input class="form-control-sm text-center w-75   border border-secondary" type="text" name="month" id="month" placeholder="Mes">
                 </div>
 
                 <div class="col">
-                    <input class="form-control-sm text-center w-75 rounded-pill border border-secondary" type="text" name="day" id="day" placeholder="Día">
+                    <input class="form-control-sm text-center w-75   border border-secondary" type="text" name="day" id="day" placeholder="Día">
                 </div>
             </div>
         </div>

@@ -10,6 +10,13 @@
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Información Clínica</li>
+        <li class="breadcrumb-item" aria-current="page"> <b>Eliminar Registro</b></li>
+    </ol>
+</nav>
+
 <div class="container" id="page-content-wrapper ">
     <!-- no quitar este contenedor -->
     <br>

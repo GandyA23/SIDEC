@@ -10,10 +10,18 @@
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Cuentas</li>
+        <li class="breadcrumb-item" aria-current="page"> <b>Añadir registro</b></li>
+    </ol>
+</nav>
+
 <div id="page-content-wrapper"><!-- no quitar este contenedor -->
-    <!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)-->
+    <!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)   -->
+
     <div class="jumbotron text-center bg-white" >
-        <div class="p-2 mb-2 bg-secondary text-white" style="border-radius: 7px">Cuenta de usuario</div>
+        <div class=" bg-secondary text-white" style="border-radius: 7px"><b>Cuenta de usuario</b></div> <br>
         <form>
             <div  class="d-inline-flex p-3 bd-highlight">
                 <input class="form-control text-center " type="text" placeholder="CCT">
@@ -34,11 +42,11 @@
                     <label class="form-check-label text-secondary"><b>Cargo:</b> </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hombre" id="director" value="Director">
-                    <label class="form-check-label" for="director">Director</label>
+                    <input class="form-check-input" type="radio" name="rol" id="radDirector" value="Director">
+                    <label class="form-check-label" for="radDirector">Director</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="docente" id="docente" value="Docente">
+                    <input class="form-check-input" type="radio" name="rol" id="docente" value="Docente">
                     <label class="form-check-label" for="docente">Docente</label>
                 </div>
             </div>
@@ -57,6 +65,5 @@
         </form>
     </div>
 </div><!-- no quitar este contenedor -->
-
 
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

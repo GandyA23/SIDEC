@@ -10,12 +10,19 @@
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Información Académica</li>
+        <li class="breadcrumb-item" aria-current="page"> <b>Buscar Registro</b></li>
+    </ol>
+</nav>
+
 <div class="text-center bg-white mx-4 my-4 px-4 py-4">
     <form action="buscarAcademico" method="post" accept-charset="utf-8">
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <div class="bg-gris text-center text-white border border-white mx-auto w-50 bordes-redondos">Busqueda de registro</div>
+                    <div class="bg-gris text-center text-white border border-white mx-auto w-50 bordes-redondos"><b>Busqueda de registro</b></div>
                 </div>
             </div>
 
@@ -35,7 +42,7 @@
         </div>
     </form>
 
-    <div class="bg-gris text-center text-white rounded-pill border border-white w-auto">Formación Destacada</div>
+    <div class="bg-gris text-center text-white rounded-pill border border-white w-auto"><b>Formación Destacada</b></div>
 
     <table class="table mx-0 my-0">
         <tr>
@@ -71,7 +78,7 @@
         </tr>
     </table>
 
-    <div class="bg-gris text-center text-white rounded-pill border border-white w-auto">Conducta</div>
+    <div class="bg-gris text-center text-white rounded-pill border border-white w-auto"><b>Conducta</b></div>
 
     <table class="table mx-0 my-0">
         <tr>

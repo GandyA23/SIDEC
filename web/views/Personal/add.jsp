@@ -10,22 +10,25 @@
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Información Personal</li>
+        <li class="breadcrumb-item" aria-current="page"> <b>Añadir Registro</b></li>
+    </ol>
+</nav>
+
 <div class="d-flex justify-content-start mx-auto" style="width: 100%" id="page-content-wrapper"><!-- no quitar este contenedor -->
     <form class="container">
         <div style="padding: 1%"></div>
         <div class="form-row justify-content-around">
+            <div class="col-md-4 bg-gris text-center" style="border-radius: 7px;">
+                <b style="color:white;">Fotografía</b>
+            </div>
 
-
-            <div class="col-md-4 bg-gris text-center" style="border-radius: 7px;"><b style="color:white;">
-                Fotografía
-            </b></div>
-
-
-            <div class="col-md-7 bg-gris text-center" style="border-radius: 7px;"><b style="color:white">
-                Información Personal
-            </b></div>
+            <div class="col-md-7 bg-gris text-center" style="border-radius: 7px;">
+                <b style="color:white">Información Personal</b>
+            </div>
         </div>
-
 
         <div class="form-row justify-content-around">
             <div class="col-md-4">
@@ -41,13 +44,8 @@
                 </div>
             </div>
 
-
-
             <div class="col-md-7">
-
-                <div style="padding: 1%">
-
-                </div>
+                <div style="padding: 1%"></div>
                 <div class="form-row p-1">
                     <div class="col">
                         <input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula">
@@ -56,8 +54,6 @@
                         <input type="text" class="form-control form-control-sm text-center" placeholder="Curp">
                     </div>
                 </div>
-
-
 
                 <div class="form-row p-1">
                     <div class="col">
@@ -70,7 +66,6 @@
                         <input type="text" class="form-control form-control-sm text-center" placeholder="Apellido materno">
                     </div>
                 </div>
-
 
                 <div class="form-row justify-content-center p-1">
                     <div class="col-2">
@@ -86,7 +81,6 @@
                     </div>
                 </div>
 
-
                 <div class="form-row justify-content-center p-1">
                     <div class="col-4 justify-content-center">
                         <b style="color:gray">Fecha de nacimiento:</b>
@@ -101,7 +95,6 @@
                         <input type="text" class="form-control form-control-sm text-center" placeholder="Año">
                     </div>
                 </div>
-
 
                 <div class="form-row p-1">
                     <div class="col">
@@ -219,7 +212,6 @@
                         </div>
                     </div>
 
-
                     <div class="form-row p-1">
                         <div class="col">
                             <input type="text" class="form-control form-control-sm text-center" placeholder="Correo electrónico">
@@ -246,10 +238,9 @@
                 </div>
             </div>
         </div>
-
+    </form>
 </div>
 
-</form>
 </div><!-- no quitar este contenedor -->
 
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

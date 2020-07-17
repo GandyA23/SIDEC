@@ -10,12 +10,19 @@
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Cuentas</li>
+        <li class="breadcrumb-item" aria-current="page"> <b>Eliminar registro</b></li>
+    </ol>
+</nav>
+
 <div id="page-content-wrapper"><!-- no quitar este contenedor -->
 
     <!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)-->
     <div class="jumbotron text-center bg-white" >
         <div class="mx-auto" style="width: 35%;">
-            <div class="p-2 mb-2 bg-secondary text-white text-center row-center" style="border-radius: 7px;">Búsqueda de registro</div>
+            <div class="bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de registro</b></div> <br>
             <form class="form-inline">
                 <div class="form-group mx-auto">
                     <input type="text" class="form-control text-center" id="inputPassword2" placeholder="CCT">
@@ -26,31 +33,31 @@
             </form>
         </div>
         <br>
-        <div class="p-2 mb-2 bg-secondary text-white" style="border-radius: 7px">Datos del usuario</div>
+        <div class="bg-secondary text-white" style="border-radius: 7px"><b>Datos del usuario</b></div> <br>
         <table class="table table-hover">
-            <tbody >
+            <tbody>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary" >Nombre</th>
                 <td ></td>
                 </td>
             <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Apellido paterno</th>
+                <td scope="row" class="font-italic text-left text-secondary">Apellido paterno</tr>
                 <td ></td>
                 </td>
             <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Apellido materno</th>
+                <td scope="row" class="font-italic text-left text-secondary">Apellido materno</tr>
                 <td ></td>
                 </td>
             <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Cargo</th>
+                <td scope="row" class="font-italic text-left text-secondary">Cargo</tr>
                 <td ></td>
                 </td>
             <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Correo electrónico</th>
+                <td scope="row" class="font-italic text-left text-secondary">Correo electrónico</tr>
                 <td ></td>
                 </td>
             <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Contraseña</th>
+                <td scope="row" class="font-italic text-left text-secondary">Contraseña</tr>
                 <td ></td>
                 </td>
             </tbody>

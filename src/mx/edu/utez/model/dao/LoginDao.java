@@ -15,22 +15,15 @@ public class LoginDao extends conexion {
         String CCT = logben.getCct();
         String PASS = logben.getPassword();
         String query = null ;
-
         String rolBD = null;
-
 
         PreparedStatement statment = null;
         ResultSet resulSet = null;
-
-        try {
-            query = "SELECT Rol FROM USUARIO WHERE CCT = " + CCT + "AND Password = AES_DECRYPT(" + PASS + ", " + conexion.contraEncript() + ")";
-            statment = crearConexion().prepareStatement(query); //CONSULTAR
+        try{
+            statment = crearConexion().prepareStatement("SELECT Rol FROM usuario WHERE CCT = '"+CCT+"' AND Password = '"+PASS+"'");
             resulSet = statment.executeQuery();
-
             if (resulSet.next()){
-
                 rolBD = resulSet.getString("Rol");
-
                 if(rolBD.equals("Administrador")){
                     return rolBD;
                 }else if(rolBD.equals("Director")){

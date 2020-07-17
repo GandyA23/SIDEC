@@ -10,12 +10,19 @@
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Información Académica</li>
+        <li class="breadcrumb-item" aria-current="page"> <b>Añadir Registro</b></li>
+    </ol>
+</nav>
+
 <div class="text-center bg-white mx-4 my-4 px-4 py-4">
     <form action="ingresarAcademico" method="post" accept-charset="utf-8">
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <div class="bg-gris text-center text-white rounded-pill border border-white w-auto">Formación Destacada</div>
+                    <div class="bg-gris text-center text-white rounded-pill border border-white w-auto"> <b>Formación Destacada</b></div>
                     <input class="form-control-sm text-center w-25  my-4 border border-secondary" type="text" name="matricula" placeholder="Matrícula">
                 </div>
             </div>
@@ -65,7 +72,7 @@
             </div>
         </div>
 
-        <div class="bg-gris text-center text-white rounded-pill border border-white w-auto ">Conducta</div>
+        <div class="bg-gris text-center text-white rounded-pill border border-white w-auto "><b>Conducta</b></div>
 
         <div class="form-group">
             <%--<div class="row">
