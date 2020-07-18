@@ -26,6 +26,7 @@
         </footer>
 
 <!---------------------------------------------------------------------------------------->
+
     <script src="${pageContext.request.contextPath}/assets/js/validaciones.js"></script>
     <script src="https://kit.fontawesome.com/2efaf80395.js" crossorigin="anonymous"></script>
     <script src="${pageContext.request.contextPath}/assets/css/jquery/jquery.min.js"></script>

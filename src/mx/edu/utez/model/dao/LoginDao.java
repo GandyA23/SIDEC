@@ -10,31 +10,25 @@ import java.sql.Statement;
 
 public class LoginDao extends conexion {
 
-    public String validarRol(LoginBean logben) {
-
+    public LoginBean validarRol(LoginBean logben) {
         String CCT = logben.getCct();
         String PASS = logben.getPassword();
-        String query = null ;
-        String rolBD = null;
 
         PreparedStatement statment = null;
         ResultSet resulSet = null;
+
         try{
-            statment = crearConexion().prepareStatement("SELECT Rol FROM usuario WHERE CCT = '"+CCT+"' AND Password = '"+PASS+"'");
+            statment = crearConexion().prepareStatement("SELECT CCT, Password, Rol FROM usuario WHERE CCT = '"+CCT+"' AND Password = '"+PASS+"'");
             resulSet = statment.executeQuery();
             if (resulSet.next()){
-                rolBD = resulSet.getString("Rol");
-                if(rolBD.equals("Administrador")){
-                    return rolBD;
-                }else if(rolBD.equals("Director")){
-                    return rolBD;
-                }else if(rolBD.equals("Docente")){
-                    return rolBD;
-                }
+                logben.setCct(resulSet.getString("CCT"));
+                logben.setPassword(resulSet.getString("Password"));
+                logben.setRol(resulSet.getString("Rol"));
+                return logben;
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "Algo Salio Mal :c";
+        return null;
     }
 }

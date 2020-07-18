@@ -1,5 +1,7 @@
-const ctrRol = document.getElementById("mostrarRol").outerText;
+
 (function(){
+    let ctrRol = document.getElementById("mostrarRol");
+    alert(ctrRol);
    switch (ctrRol) {
       case "Director":
             for(var i=1; i<=4; i++){
