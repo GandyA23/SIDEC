@@ -22,30 +22,30 @@
     <div class="jumbotron text-center bg-white" >
         <div class="mx-auto" style="width: 35%;">
             <div class=" bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de registro</b></div> <br>
-            <form class="form-inline">
+            <form class="form-inline" action="<%=request.getContextPath()%>/UsuarioServlet" method="post">
                 <div class="form-group mx-auto">
                     <input type="text" class="form-control text-center" id="inputPassword2" placeholder="CCT">
                 </div>
                 <div class="form-group mx-auto" style="width: 40%;">
-                    <button type="submit" class="btn btn-danger btn-block" >BUSCAR</button>
+                    <button type="submit" class="btn btn-danger btn-block" name="accion" value="search">BUSCAR</button>
                 </div>
             </form>
         </div>
         <br>
         <div class="bg-secondary text-white "style="border-radius: 7px" ><b>Cuenta de usuario</b></div> <br>
-        <form>
+        <form method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
             <div  class="d-inline-flex p-3 bd-highlight">
-                <input class="form-control text-center " type="text" placeholder="CCT">
+                <input class="form-control text-center " type="text" name="cct" placeholder="CCT">
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control text-center " placeholder="Nombre (s)">
+                    <input type="text" class="form-control text-center " name="nombre" placeholder="Nombre (s)">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control text-center " placeholder="Apellido paterno">
+                    <input type="text" class="form-control text-center " name="apellido1" placeholder="Primer Apellido">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control text-center " placeholder="Apellido materno">
+                    <input type="text" class="form-control text-center " name="apellido2" placeholder="Segundo Apellido">
                 </div>
             </div>
             <div  class="d-inline-flex p-3 bd-highlight">
@@ -63,15 +63,15 @@
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input class="form-control text-center " type="text" placeholder="Correo electrónico">
+                <input class="form-control text-center " type="text" name="correo" placeholder="Correo electrónico">
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input class="form-control text-center " type="text" placeholder="Contraseña">
+                <input class="form-control text-center " type="text" name="password" placeholder="Contraseña">
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight">
-                <button type="button" class="btn btn-danger " style="width: 150px">Actualizar</button>
+                <button type="button" class="btn btn-danger " style="width: 150px" name="accion" value="update">Actualizar</button>
             </div>
         </form>
     </div>

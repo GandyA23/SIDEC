@@ -22,19 +22,19 @@
 
     <div class="jumbotron text-center bg-white" >
         <div class=" bg-secondary text-white" style="border-radius: 7px"><b>Cuenta de usuario</b></div> <br>
-        <form>
+        <form method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
             <div  class="d-inline-flex p-3 bd-highlight">
-                <input class="form-control text-center " type="text" placeholder="CCT">
+                <input name="cct" class="form-control text-center " type="text" placeholder="CCT">
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control text-center " placeholder="Nombre (s)">
+                    <input name="nombre" type="text" class="form-control text-center " placeholder="Nombre (s)">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control text-center " placeholder="Apellido paterno">
+                    <input name="apellido1" type="text" class="form-control text-center " placeholder="Apellido paterno">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control text-center " placeholder="Apellido materno">
+                    <input name="apellido2" type="text" class="form-control text-center " placeholder="Apellido materno">
                 </div>
             </div>
             <div  class="d-inline-flex p-3 bd-highlight">
@@ -52,15 +52,15 @@
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input class="form-control text-center " type="text" placeholder="Correo electrónico">
+                <input name="correo" class="form-control text-center " type="text" placeholder="Correo electrónico">
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input class="form-control text-center " type="text" placeholder="Contraseña">
+                <input name="password" class="form-control text-center " type="text" placeholder="Contraseña">
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight">
-                <button type="button" class="btn btn-danger" style="width: 150px">Registrar</button>
+                <button type="button" class="btn btn-danger" style="width: 150px" name="accion" value="add">Registrar</button>
             </div>
         </form>
     </div>
