@@ -23,12 +23,12 @@
     <div class="jumbotron text-center bg-white" >
         <div class="mx-auto" style="width: 35%;">
             <div class="bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de registro</b></div> <br>
-            <form class="form-inline">
+            <form class="form-inline" action="">
                 <div class="form-group mx-auto">
                     <input type="text" class="form-control text-center" id="inputPassword2" placeholder="CCT">
                 </div>
                 <div class="form-group mx-auto" style="width: 40%;">
-                    <button type="submit" class="btn btn-danger btn-block" >BUSCAR</button>
+                    <button type="submit" class="btn btn-danger btn-block" name="accion" value="search">BUSCAR</button>
                 </div>
             </form>
         </div>
@@ -42,29 +42,31 @@
                 </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Apellido paterno</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Apellido materno</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Cargo</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Correo electrónico</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Contraseña</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             </tbody>
         </table>
-        <div  class="d-inline-flex p-2 bd-highlight">
-            <button type="button" class="btn btn-danger" style="width: 150px">Eliminar</button>
-        </div>
+        <form action="<%=request.getContextPath()%>/UsuarioServlet" method="post">
+            <div  class="d-inline-flex p-2 bd-highlight">
+                <button type="button" class="btn btn-danger" style="width: 150px" name="accion" value="delete">Eliminar</button>
+            </div>
+        </form>
     </div>
 
 

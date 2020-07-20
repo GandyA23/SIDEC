@@ -26,10 +26,10 @@
             <div class="bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de registro</b></div> <br>
             <form class="form-inline">
                 <div class="form-group mx-auto">
-                    <input type="text" class="form-control text-center" id="inputPassword2" placeholder="CCT">
+                    <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT">
                 </div>
                 <div class="form-group mx-auto" style="width: 40%;">
-                    <button type="submit" class="btn btn-danger btn-block" >BUSCAR</button>
+                    <button type="submit" class="btn btn-danger btn-block" name="accion" value="search">BUSCAR</button>
                 </div>
             </form>
         </div>
@@ -39,28 +39,28 @@
             <tbody >
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary" >Nombre</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Apellido paterno</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Apellido materno</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Cargo</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Correo electrónico</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             <tr>
                 <td scope="row" class="font-italic text-left text-secondary">Contraseña</tr>
-                <td ></td>
-                </td>
+            <td ></td>
+            </td>
             </tbody>
         </table>
     </div>
