@@ -1,6 +1,6 @@
 package mx.edu.utez.model.bean;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class EstudianteBean {
     private String matricula;
@@ -111,4 +111,5 @@ public class EstudianteBean {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
 }

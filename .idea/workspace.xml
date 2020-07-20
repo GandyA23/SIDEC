@@ -26,10 +26,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a81fa228-ed59-4548-9b30-582f3c14b64c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/controller/PersonalServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/controller/PersonalServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/EstudianteBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/EstudianteBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/Personal/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Personal/add.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/Personal/delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Personal/delete.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/Personal/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Personal/search.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/Personal/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Personal/update.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +38,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -236,7 +235,8 @@
       <workItem from="1595085942652" duration="6743000" />
       <workItem from="1595099659025" duration="9393000" />
       <workItem from="1595114776139" duration="614000" />
-      <workItem from="1595116640149" duration="7497000" />
+      <workItem from="1595116640149" duration="8602000" />
+      <workItem from="1595173873409" duration="13242000" />
     </task>
     <servers />
   </component>
@@ -374,5 +374,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="0" y="0" key="new project wizard/0.0.1366.738@0.0.1366.738" timestamp="1593565015920" />
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595179129018">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1360.728@0.0.1360.728" timestamp="1595179129018" />
   </component>
 </project>

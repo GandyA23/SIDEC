@@ -117,7 +117,7 @@
                         -
                     </div>
                     <div class="col-2">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año fin" name="añofin">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año fin" name="añoFin">
                     </div>
                     <div class="col-3"></div>
                 </div>
