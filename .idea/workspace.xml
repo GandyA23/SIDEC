@@ -24,8 +24,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="a81fa228-ed59-4548-9b30-582f3c14b64c" name="Default Changelist" comment="" />
+=======
     <list default="true" id="a81fa228-ed59-4548-9b30-582f3c14b64c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Informacion_ClinicaBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/bean/Informacion_ClinicaBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/dao/Informacion_ClinicaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/dao/Informacion_ClinicaDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/assets/js/validaciones.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/js/validaciones.js" afterDir="false" />
@@ -34,7 +38,14 @@
       <change beforePath="$PROJECT_DIR$/web/views/Clinica/delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Clinica/delete.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/layout/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/layout/footer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/layout/header.jsp" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/web/views/Usuarios/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Usuarios/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views/Usuarios/delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Usuarios/delete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views/Usuarios/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Usuarios/search.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views/Usuarios/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/Usuarios/update.jsp" afterDir="false" />
+>>>>>>> eb364d1ee75423168b561285c0636ab992dea2d2
     </list>
+>>>>>>> de29e00c14bcf0a9316239da8f3cf869f98d7e63
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,9 +54,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="Class" />
         <option value="Jsp File" />
         <option value="JavaScript File" />
+=======
+        <option value="JavaScript File" />
+        <option value="Jsp File" />
+        <option value="Class" />
+>>>>>>> eb364d1ee75423168b561285c0636ab992dea2d2
       </list>
     </option>
   </component>
@@ -77,7 +94,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ZoofaryAmacuzac" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> eb364d1ee75423168b561285c0636ab992dea2d2
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -85,10 +106,10 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.1590909" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JSP" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -130,7 +151,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.55" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.56" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="SIDEC:war exploded">
@@ -202,6 +223,11 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.conexion" />
+      <item itemvalue="Application.Informacion_ClinicaDao" />
+      <item itemvalue="Tomcat Server.Tomcat" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Informacion_ClinicaDao" />
@@ -238,10 +264,25 @@
       <workItem from="1594919912122" duration="5599000" />
       <workItem from="1594945839500" duration="9093000" />
       <workItem from="1595085942652" duration="6743000" />
+<<<<<<< HEAD
       <workItem from="1595099659025" duration="9869000" />
       <workItem from="1595116904807" duration="11871000" />
       <workItem from="1595200298391" duration="10710000" />
       <workItem from="1595253265162" duration="2737000" />
+=======
+      <workItem from="1595099659025" duration="9393000" />
+      <workItem from="1595114776139" duration="614000" />
+      <workItem from="1595116640149" duration="8602000" />
+      <workItem from="1595173873409" duration="13242000" />
+<<<<<<< HEAD
+      <workItem from="1595205779132" duration="4421000" />
+      <workItem from="1595214250315" duration="1672000" />
+=======
+      <workItem from="1595214908752" duration="445000" />
+      <workItem from="1595215431085" duration="77000" />
+      <workItem from="1595215581050" duration="32000" />
+>>>>>>> de29e00c14bcf0a9316239da8f3cf869f98d7e63
+>>>>>>> eb364d1ee75423168b561285c0636ab992dea2d2
     </task>
     <servers />
   </component>
@@ -265,9 +306,16 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="301" y="263" key="#Template_Data_Languages/0.0.1600.860@0.0.1600.860" timestamp="1594924007471" />
+<<<<<<< HEAD
     <state x="248" y="81" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595256963568">
       <screen x="0" y="0" width="1600" height="860" />
+=======
+    <state x="212" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595215465063">
+      <screen x="0" y="0" width="1366" height="728" />
+>>>>>>> eb364d1ee75423168b561285c0636ab992dea2d2
     </state>
+    <state x="211" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1360.728@0.0.1360.728" timestamp="1595115358276" />
+    <state x="212" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1595215465063" />
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1593417134684" />
     <state x="248" y="81" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860/642.-768.1366.728@0.0.1600.860" timestamp="1595256963568" />
     <state x="248" y="81" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1594843911501" />
@@ -362,11 +410,20 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="904" height="135" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1593547602137" />
+<<<<<<< HEAD
     <state width="1359" height="56" key="GridCell.Tab.2.right/0.0.1600.860/642.-768.1366.728@0.0.1600.860" timestamp="1595257009586" />
     <state width="1359" height="523" key="GridCell.Tab.2.right/0.0.1600.860@0.0.1600.860" timestamp="1595213891171" />
     <state x="254" y="9" key="SettingsEditor" timestamp="1595108916401">
       <screen x="0" y="0" width="1600" height="860" />
+=======
+    <state width="1359" height="287" key="GridCell.Tab.2.right/0.0.1600.860/642.-768.1366.728@0.0.1600.860" timestamp="1595109306164" />
+    <state width="1359" height="290" key="GridCell.Tab.2.right/0.0.1600.860@0.0.1600.860" timestamp="1594954988762" />
+    <state x="217" y="0" key="SettingsEditor" timestamp="1595215614922">
+      <screen x="0" y="0" width="1366" height="728" />
+>>>>>>> eb364d1ee75423168b561285c0636ab992dea2d2
     </state>
+    <state x="216" y="8" key="SettingsEditor/0.0.1360.728@0.0.1360.728" timestamp="1595114910592" />
+    <state x="217" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1595215614922" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1593894592029" />
     <state x="254" y="9" key="SettingsEditor/0.0.1600.860/642.-768.1366.728@0.0.1600.860" timestamp="1595108916400" />
     <state x="254" y="9" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1594845872021" />
@@ -378,9 +435,16 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="0" y="0" key="new project wizard/0.0.1366.738@0.0.1366.738" timestamp="1593565015920" />
+<<<<<<< HEAD
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1595118013559">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1595118013559" />
+=======
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595179129018">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1360.728@0.0.1360.728" timestamp="1595179129018" />
+>>>>>>> eb364d1ee75423168b561285c0636ab992dea2d2
   </component>
 </project>

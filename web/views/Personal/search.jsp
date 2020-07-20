@@ -40,11 +40,11 @@
 					</div>
 					<div>
 						<div style="padding: 1%"></div>
-						<input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula">
+						<input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula" name="matricula">
 					</div>
 					<div style="padding: 2%"></div>
 					<div class="form-row justify-content-center">
-						<button type="button" class="btn btn-primary bg-danger" style="width: 50%">Buscar</button>
+						<button type="button" class="btn btn-primary bg-danger" name="listener" value="buscar" style="width: 50%">Buscar</button>
 					</div>
 				</div>
 			</div>

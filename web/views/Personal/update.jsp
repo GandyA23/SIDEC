@@ -36,11 +36,11 @@
                         <img src="${pageContext.request.contextPath}/assets/img/user5.png" style="width: 40%;height: 100%">
                     </div>
                     <div>
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula" name="matricula">
                     </div>
                     <div style="padding: 2%"></div>
                     <div class="form-row justify-content-center">
-                        <button type="button" class="btn btn-primary bg-danger" style="width: 50%">Buscar</button>
+                        <button type="button" class="btn btn-primary bg-danger" name="listener" value="buscarMatricula" style="width: 50%">Buscar</button>
                     </div>
                     <div style="padding: 2%"></div>
                     <div class=" justify-content-center">
@@ -57,22 +57,22 @@
                 </div>
                 <div class="form-row p-1">
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula" name="matricula">
                     </div>
                     <div class="col-7">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Curp">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Curp" name="curp">
                     </div>
                 </div>
 
                 <div class="form-row p-1">
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Nombre(s)">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Nombre(s)" name="nombre">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Apellido paterno">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Primer apellido" name="apellido1">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Apellido materno">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Segundo apellido" name="apellido2">
                     </div>
                 </div>
 
@@ -95,22 +95,22 @@
                         <b style="color:gray">Fecha de nacimiento:</b>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Día">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Día" name="dia">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Mes">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Mes" name="mes">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año" name="año">
                     </div>
                 </div>
 
                 <div class="form-row p-1">
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono" name="telefono">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Correo electrónico">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Correo electrónico" name="correo">
                     </div>
                 </div>
 
@@ -120,13 +120,13 @@
                         <b style="color:gray">Ciclo escolar:</b>
                     </div>
                     <div class="col-2">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año inicio">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año inicio" name="añoinicio">
                     </div>
                     <div class="col-1 justify-content-center row">
                         -
                     </div>
                     <div class="col-2">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año fin">
+                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año fin" name="añofin">
                     </div>
                     <div class="col-3"></div>
                 </div>
@@ -136,7 +136,7 @@
                         <b style="color:gray">Nivel educativo actual:</b>
                     </div>
                     <div class="col-6">
-                        <select class="custom-select">
+                        <select class="custom-select" name="seleccion">
                             <option selected>Selección</option>
                             <option value="1">Primaria</option>
                             <option value="2">Secundaria</option>
@@ -159,24 +159,24 @@
                 <div>
                     <div class="form-row p-1 justify-content-center">
                         <div class="col-6">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Calle">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Calle" name="calle">
                         </div>
                         <div class="col-2">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="No.Int">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="No.Int" name="interior">
                         </div>
                         <div class="col-2">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="No.Ext">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="No.Ext" name="exterior">
                         </div>
                     </div>
                     <div class="form-row p-1 ">
                         <div class="col">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Código postal">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Código postal" name="codigoPostal">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Colonia">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Colonia" name="colonia">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Municipio">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Municipio" name="municipio">
                         </div>
                     </div>
                 </div>
@@ -196,13 +196,13 @@
                 <div>
                     <div class="form-row p-1">
                         <div class="col-4">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Nombre(s)">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Nombre(s)" name="tutorNombre">
                         </div>
                         <div class="col-4">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Apellido paterno">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Primer apellido" name="tutorApellido1">
                         </div>
                         <div class="col-4">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Apellido materno">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Segundo apellido" name="tutorApellido2">
                         </div>
                     </div>
 
@@ -222,13 +222,13 @@
 
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Correo electrónico">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Correo electrónico" name="tutorCorreo">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono personal">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono personal" name="tutorTelefono">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono del trabajo">
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono del trabajo" name="tutorTelTrabajo">
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
             <div class="col-11">
                 <div>
                     <div class="row justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg bg-danger" style="width: 40%">Actualizar</button>
+                        <button type="submit" class="btn btn-primary btn-lg bg-danger" name="listener" value="actualizar" style="width: 40%">Actualizar</button>
                     </div>
                 </div>
             </div>
