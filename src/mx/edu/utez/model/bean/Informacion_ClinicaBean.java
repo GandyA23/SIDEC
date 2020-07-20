@@ -2,22 +2,25 @@ package mx.edu.utez.model.bean;
 
 public class Informacion_ClinicaBean {
 
-    private String matricula = "01234";//new EstudianteBean().getMatricula();
-    private double peso = 68.2;
-    private double estatura = 1.80;
-    private double imc = 32.01;
-    private String tipoSangre = "A+";
-    private String numeroSeguro = "1233454";
-    private String unidadMedica = "111114";
-    private String alergias = "Al pasto";
-    private String enferCronicas = "Ninguna";
-    private String enferHereditarias = "Ninguna";
-    private String discapacidades = "Ninguna";
-    private String diagPsico = "Es algo nervioso";
+    private String matricula ;
+    private String peso;
+    private String estatura;
+    private String imc ;
+    private String tipoSangre;
+    private String numeroSeguro;
+    private String unidadMedica;
+    private String alergias;
+    private String enferCronicas;
+    private String enferHereditarias;
+    private String discapacidades;
+    private String diagPsico;
 
-    /*public Informacion_ClinicaBean(double peso, double estatura, double imc, String tipoSangre, String numeroSeguro,
-                                   String unidadMedica, String alergias, String enferCronicas, String enferHereditarias,
-                                   String discapacidades, String diagPsico) {
+    public Informacion_ClinicaBean(){
+
+    }
+
+    public Informacion_ClinicaBean(String matricula, String peso, String estatura, String imc, String tipoSangre, String numeroSeguro, String unidadMedica, String alergias, String enferCronicas, String enferHereditarias, String discapacidades, String diagPsico) {
+        this.matricula = matricula;
         this.peso = peso;
         this.estatura = estatura;
         this.imc = imc;
@@ -29,33 +32,50 @@ public class Informacion_ClinicaBean {
         this.enferHereditarias = enferHereditarias;
         this.discapacidades = discapacidades;
         this.diagPsico = diagPsico;
-    }*/
+    }
+
+    public Informacion_ClinicaBean(String matricula, String peso, String estatura, String tipoSangre, String numeroSeguro,
+                                   String unidadMedica, String alergias, String enferCronicas, String enferHereditarias,
+                                   String discapacidades, String diagPsico) {
+        this.matricula = matricula;
+    	this.peso = peso;
+        this.estatura = estatura;
+        this.tipoSangre = tipoSangre;
+        this.numeroSeguro = numeroSeguro;
+        this.unidadMedica = unidadMedica;
+        this.alergias = alergias;
+        this.enferCronicas = enferCronicas;
+        this.enferHereditarias = enferHereditarias;
+        this.discapacidades = discapacidades;
+        this.diagPsico = diagPsico;
+    }
+
+
+
 
     public String getMatricula() { return matricula; }
 
     public void setMatricula(String matricula) { this.matricula = matricula; }
 
-    public double getPeso() {
+    public String getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(String peso) {
         this.peso = peso;
     }
 
-    public double getEstatura() {
+    public String getEstatura() {
         return estatura;
     }
 
-    public void setEstatura(double estatura) {
+    public void setEstatura(String estatura) {
         this.estatura = estatura;
     }
 
-    public double getImc() {
-        return imc;
-    }
+    public String getImc() { return imc; }
 
-    public void setImc(double imc) {
+    public void setImc(String imc) {
         this.imc = imc;
     }
 

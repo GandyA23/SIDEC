@@ -23,7 +23,7 @@
 
     <!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)-->
     <div class="container">
-        <form action="" method="POST">
+        <form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
             <br>
             <div class="row">
                 <div class="col-md">
@@ -32,19 +32,18 @@
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" name="matricula" class="form-control  text-center" placeholder="Matricula">
+                    <input type="text" id="mat"name="matricula" class="form-control  text-center" placeholder="Matricula" required>
                 </div>
                 <div class="col">
-                    <input type="text" name="numeroSeguro" class="form-control  text-center"
-                           placeholder="Número Seguro Medico">
+                    <input type="text" name="numeroSeguro" class="form-control  text-center" placeholder="Número Seguro Medico" required>
                 </div>
                 <div class="col">
-                    <input type="text" name="unidadMedica" class="form-control  text-center" placeholder="Unidad médica">
+                    <input type="text" name="unidadMedica" class="form-control  text-center" placeholder="Unidad médica" required>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <select name="tipoSangre" class="form-control">
+                    <select name="tipoSangre" class="form-control" required>
                         <option selected>Tipo de sangre</option>
                         <option>A+</option>
                         <option>A-</option>
@@ -57,16 +56,15 @@
                     </select>
                 </div>
                 <div class="col">
-                    <input type="number" name="peso" class="form-control  text-center" placeholder="Peso">
+                    <input type="number" min="0" step="any" name="peso" class="form-control  text-center" placeholder="Peso" required>
                 </div>
                 <div class="col">
-                    <input type="number" name="estatura" class="form-control  text-center" placeholder="Estatura">
+                    <input type="number" min="0" step="any" name="estatura" class="form-control  text-center" placeholder="Estatura" required>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-              <textarea class="form-control" name="diagPsico"  rows="2"
-                        placeholder="Diagnóstico psicopedagogico"></textarea>
+              <textarea class="form-control" name="diagPsico"  rows="2" placeholder="Diagnóstico psicopedagogico"></textarea>
                 </div>
             </div>
             <div class="container-fluid text-center">
@@ -78,6 +76,8 @@
                 <div class="row form-group">
                     <div class="col">
                         <label>Crónicas:</label>
+
+
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="opc_cronica" id="inlineRadio1"
                                    value="si_cronica">
@@ -107,8 +107,8 @@
                                 <option>Hipertensión</option>
                                 <option>Osteoporosis</option>
                                 <option>Colesterol</option>
-                                <option>Depresión</option>
-                                <option>Cáncer</option>
+                                <option>Depresion</option>
+                                <option>Cancer</option>
                                 <option>Otro</option>
                             </select>
                         </div>
@@ -146,9 +146,9 @@
                                 <option>Anemia</option>
                                 <option>Daltonismo</option>
                                 <option>Diabetes</option>
-                                <option>Mipía</option>
-                                <option>Síndrome de Marfan</option>
-                                <option>Cáncer</option>
+                                <option>Mipia</option>
+                                <option>Sindrome de Marfan</option>
+                                <option>Cancer</option>
                                 <option>Otro</option>
                             </select>
                         </div>
@@ -185,12 +185,12 @@
                         <div class="col">
                             <select name="alergias1" class="form-control">
                                 <option selected>Seleccione</option>
-                                <option>Ácaros</option>
+                                <option>Acaros</option>
                                 <option>Polen</option>
                                 <option>Pelo de Animales</option>
                                 <option>Picaduras Insectos</option>
                                 <option>Moho</option>
-                                <option>Látex</option>
+                                <option>Latex</option>
                                 <option>Alimentos</option>
                                 <option>Fragancias</option>
                                 <option>Otro</option>
@@ -225,7 +225,7 @@
                         <div class="col">
                             <select name="discapacidades1" id="inputState" class="form-control">
                                 <option selected>Seleccione</option>
-                                <option>Física</option>
+                                <option>Fisica</option>
                                 <option>Psíquica</option>
                                 <option>Sensorial</option>
                                 <option>Intelectual o Mental</option>
@@ -233,15 +233,14 @@
                             </select>
                         </div>
                         <div class="col">
-                  <textarea class="form-control" name="discapacidades2" id="exampleFormControlTextarea1"
-                            rows="2" placeholder="Descripción:"></textarea>
+                  <textarea class="form-control" name="discapacidades2" id="exampleFormControlTextarea1" rows="2" placeholder="Descripción:"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-5">
-                    <button type="submit" class="btn bg-danger btn-sm btn-block text-white"><b>Añadir</b></button>
+                    <button type="submit" class="btn bg-danger btn-sm btn-block text-white" name="accion" value="add" onclick="exitoso()"><b>Añadir</b></button>
                 </div>
             </div>
         </form>

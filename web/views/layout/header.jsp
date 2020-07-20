@@ -23,6 +23,8 @@
 		<link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/assets/img/favicon.ico">
 
 
+
+
 		<script src="https://kit.fontawesome.com/2efaf80395.js" crossorigin="anonymous"></script>
 		</head>
 		<body>

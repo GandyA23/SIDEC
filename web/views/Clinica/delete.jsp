@@ -1,4 +1,5 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="mx.edu.utez.model.bean.Informacion_ClinicaBean" %><%--
   Created by IntelliJ IDEA.
   User: Gandy Avila
   Date: 29/06/2020
@@ -9,6 +10,7 @@
 
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
+
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -27,51 +29,55 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <form action="">
+            <form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
                 <div class="row form-group">
                     <div class="col">
                         <input type="text" name="matricula" class="form-control  text-center" placeholder="Matricula">
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn bg-danger btn-block text-white"><b>Buscar</b></button>
+                        <button type="submit" class="btn bg-danger btn-block text-white" name="accion" value="search"><b>Buscar</b></button>
                     </div>
                 </div>
             </form>
         </div>
+
         <div class="row">
             <div class="col-md">
                 <p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos Clínicos</b></p>
             </div>
             <table class="table font-italic text-dark">
                 <tbody>
+                <c:forEach var="clinica" items="${listClinica}">
                 <tr>
                     <td>Número de seguro médico</td>
-                    <td></td>
+                    <td> <c:out value="${clinica.numeroSeguro}"></c:out></td>
                 </tr>
                 <tr>
                     <td>Unidad médica</td>
-                    <td></td>
+                    <td><c:out value="${clinica.unidadMedica}"></c:out></td>
                 </tr>
                 <tr>
                     <td>Peso</td>
-                    <td></td>
+                    <td><c:out value="${clinica.peso}"></c:out></td>
                 </tr>
                 <tr>
                     <td>Estatura</td>
-                    <td></td>
+                    <td><c:out value="${clinica.estatura}"></c:out></td>
                 </tr>
                 <tr>
                     <td>IMC</td>
-                    <td></td>
+                    <td><c:out value="${clinica.imc}"></c:out></td>
                 </tr>
                 <tr>
                     <td>Tipo de sangre</td>
-                    <td></td>
+                    <td><c:out value="${clinica.tipoSangre}"></c:out></td>
                 </tr>
                 <tr>
                     <td>Diagnóstico psicopedagógico</td>
-                    <td></td>
+                    <td><c:out value="${clinica.diagPsico}"></c:out></td>
                 </tr>
+
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -81,29 +87,31 @@
             </div>
             <table class="table font-italic text-dark">
                 <tbody>
+            <c:forEach var="clinica" items="${listClinica}">
                 <tr>
                     <td>Enfermedades crónicas</td>
-                    <td></td>
+                    <td><c:out value="${clinica.enferCronicas}"></c:out></td>
                 </tr>
                 <tr>
                     <td>Enfermedades hereditarias</td>
-                    <td></td>
+                    <td><c:out value="${clinica.enferHereditarias}"></c:out></td>
                 </tr>
                 <tr>
                     <td>Alergias</td>
-                    <td></td>
+                    <td><c:out value="${clinica.alergias}"></c:out></td>
                 </tr>
                 <tr>
                     <td>Discapacidad</td>
-                    <td></td>
+                    <td><c:out value="${clinica.discapacidades}"></c:out></td>
                 </tr>
+            </c:forEach>
                 </tbody>
             </table>
         </div>
-        <form action="">
+        <form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-5">
-                    <button type="submit" class="btn bg-danger btn-sm btn-block text-white"><b>Eliminar</b></button>
+                    <button id="eliminar" type="submit" class="btn bg-danger btn-sm btn-block text-white" onclick="confirmacion()" name="accion" value="delete"><b>Eliminar</b></button>
                 </div>
             </div>
         </form>

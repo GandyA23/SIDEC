@@ -37,6 +37,7 @@
                 </div>
 
                 <div class="col-sm-4 m-3 bg-white mx-auto" style="height: 45%; width: 90%; border-radius: 30px;">
+
                     <form method="post" action="<%=request.getContextPath()%>/LoginServlet">
                         <div class=" d-flex justify-content-center">
                             <h3 style="font-weight: bold; text-align: center;"><u>Iniciar Sesión</u></h3>
