@@ -5,6 +5,7 @@
   Time: 06:13 a. m.
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
@@ -14,7 +15,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Cuentas</li>
-        <li class="breadcrumb-item" aria-current="page"> <b>Actualizar Datos</b></li>
+        <li class="breadcrumb-item" aria-current="page"> <b>Buscar registro</b></li>
     </ol>
 </nav>
 
@@ -24,12 +25,12 @@
     <div class="jumbotron text-center bg-white" >
         <div class="mx-auto" style="width: 35%;">
             <div class="bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de registro</b></div> <br>
-            <form class="form-inline">
+            <form class="form-inline" method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
                 <div class="form-group mx-auto">
                     <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT">
                 </div>
                 <div class="form-group mx-auto" style="width: 40%;">
-                    <button type="submit" class="btn btn-danger btn-block" name="accion" value="search">BUSCAR</button>
+                    <button type="submit" class="btn btn-danger btn-block" name="accion" value="search:3">BUSCAR</button>
                 </div>
             </form>
         </div>
@@ -37,30 +38,35 @@
         <div class="bg-secondary text-white " style="border-radius: 7px"><b>Datos del usuario</b></div> <br>
         <table class="table table-hover">
             <tbody >
-            <tr>
-                <td scope="row" class="font-italic text-left text-secondary" >Nombre</tr>
-            <td ></td>
-            </td>
-            <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Apellido paterno</tr>
-            <td ></td>
-            </td>
-            <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Apellido materno</tr>
-            <td ></td>
-            </td>
-            <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Cargo</tr>
-            <td ></td>
-            </td>
-            <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Correo electrónico</tr>
-            <td ></td>
-            </td>
-            <tr>
-                <td scope="row" class="font-italic text-left text-secondary">Contraseña</tr>
-            <td ></td>
-            </td>
+            <c:forEach var="usuarios" items="${usuariosList}">
+                <tr>
+                    <td scope="row" class="font-italic text-left text-secondary">CCT</td>
+                    <td name="cctBuscado"><c:out value="${usuarios.cct}"></c:out></td>
+                </tr>
+                <tr>
+                    <td scope="row" class="font-italic text-left text-secondary">Nombre</td>
+                    <td><c:out value="${usuarios.nombre}"></c:out></td>
+                <tr>
+                    <td scope="row" class="font-italic text-left text-secondary">Primer Apellido</td>
+                    <td><c:out value="${usuarios.apellido1}"></c:out></td>
+                </tr>
+                <tr>
+                    <td scope="row" class="font-italic text-left text-secondary">Segundo Apellido</td>
+                    <td><c:out value="${usuarios.apellido2}"></c:out></td>
+                </tr>
+                <tr>
+                    <td scope="row" class="font-italic text-left text-secondary">Cargo</td>
+                    <td><c:out value="${usuarios.rol}"></c:out></td>
+                </tr>
+                <tr>
+                    <td scope="row" class="font-italic text-left text-secondary">Correo electrónico</td>
+                    <td><c:out value="${usuarios.correo}"></c:out></td>
+                </tr>
+                <tr>
+                    <td scope="row" class="font-italic text-left text-secondary">Contraseña</td>
+                    <td><c:out value="${usuarios.password}"></c:out></td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>

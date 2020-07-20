@@ -15,7 +15,10 @@ import java.io.IOException;
 @WebServlet("/PersonalServlet")
 public class PersonalServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String listener = request.getParameter("listener");
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
+        String listener = request.getParameter("listener");
     //usare tu tecnica milenaria ;v
 
         

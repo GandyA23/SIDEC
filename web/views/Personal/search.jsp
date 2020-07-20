@@ -52,7 +52,7 @@
 			<div class="col-md-7">
 				<div style="padding: 1%"></div>
 				<div class="table-responsive">
-					<table class="table table-sm">
+					<table class="table table-sm table-hover">
 						<tr>
 							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Nombre
 							</th>
@@ -107,7 +107,7 @@
 				<div class="form-row justify-content-center">
 					<div class="col-md-6">
 						<div class="table-responsive">
-							<table class="table table-sm">
+							<table class="table table-sm table-hover">
 								<tr>
 									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
 										Nombre
@@ -157,7 +157,7 @@
 
 					<div class="col-md-6">
 						<div class="table-responsive">
-							<table class="table table-sm">
+							<table class="table table-sm table-hover">
 								<tr>
 									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
 										Calle

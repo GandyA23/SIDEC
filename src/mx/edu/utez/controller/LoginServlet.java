@@ -13,13 +13,14 @@ import java.io.IOException;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String cct = request.getParameter("cct");
         String password = request.getParameter("password");
         LoginBean logben = new LoginBean(cct,password);
 
         LoginDao logdao = new LoginDao();
         try {
-
             LoginBean usuarioWeb = logdao.validarRol(logben);
             if(usuarioWeb == null){
                 System.out.println("Error de sesion");
@@ -32,6 +33,7 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("/views/main.jsp").forward(request, response);
             }else if(usuarioWeb.getRol().equals("Director")){
                 System.out.println("Es Director");
+
                 HttpSession sesionActiva = request.getSession();
                 sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
                 request.getRequestDispatcher("/views/main.jsp").forward(request, response);
@@ -41,33 +43,6 @@ public class LoginServlet extends HttpServlet {
                 sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
                 request.getRequestDispatcher("/views/main.jsp").forward(request, response);
             }
-/*
-            if (rol.equals("Administrador")){
-                System.out.println("Es Administrador");
-                HttpSession sesion = request.getSession();
-                sesion.setAttribute("Administrador", cct);
-                request.setAttribute("userName", cct);
-                request.setAttribute("rol",rol);
-
-
-            }else if(rol.equals("Director")){
-                System.out.println("Es Director");
-                HttpSession sesion = request.getSession();
-                sesion.setAttribute("Director", cct);
-                request.setAttribute("userName", cct);
-                request.setAttribute("rol",rol);
-                request.getRequestDispatcher("/views/main.jsp").forward(request, response);
-            }else if(rol.equals("Docente")){
-                System.out.println("Es Docente");
-                HttpSession sesion = request.getSession();
-                sesion.setAttribute("Docente", cct);
-                request.setAttribute("userName", cct);
-                request.setAttribute("rol",rol);
-                request.getRequestDispatcher("/views/main.jsp").forward(request, response);
-            }else{
-                System.out.println(rol);
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -9,6 +9,18 @@ public class UsuarioBean {
     private String apellido2;
     private String rol;
 
+    public UsuarioBean() {
+    }
+
+    public UsuarioBean(String cct, String password, String correo, String nombre, String apellido1, String apellido2, String rol) {
+        this.cct = cct;
+        this.password = password;
+        this.correo = correo;
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.rol = rol;
+    }
 
     public String getCct() {
         return cct;

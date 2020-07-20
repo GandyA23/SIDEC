@@ -12,16 +12,13 @@
 	HttpSession sesionActiva = request.getSession();
 	LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");
 %>
-
 <!-- LO QUE SE MOSTRARA EN LA PAGINA (borra esta parte hasta el final del div)-->
-
 <div class="jumbotron text-center bg-white">
 	<h1 class="display-1"><b>¡Bienvenid@!</b></h1>
 	<h3 class="display-4"><b><%out.print(usuarioWeb.getCct());%></b></h3>
 	<p class="lead">Para comenzar puedes dirigirte al menú de la izquierda donde se encuentran todas las funciones
 		para utilizar el sistema. Y si deseas ocultarlas da click en SIDEC</p>
 	<hr class="my-4">
-
 	<h2>¡Por un control mejorado con expedintes digitales!</h2>
 	<blockquote class="blockquote text-center">
 		<p class="mb-0 text-justify text-dark">El sistema de expedientes controlados se apoyo en modelos de desarrollo de software con

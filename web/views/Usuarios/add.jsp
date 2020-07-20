@@ -31,10 +31,10 @@
                     <input name="nombre" type="text" class="form-control text-center " placeholder="Nombre (s)">
                 </div>
                 <div class="col">
-                    <input name="apellido1" type="text" class="form-control text-center " placeholder="Apellido paterno">
+                    <input name="apellido1" type="text" class="form-control text-center " placeholder="Primer Apellido">
                 </div>
                 <div class="col">
-                    <input name="apellido2" type="text" class="form-control text-center " placeholder="Apellido materno">
+                    <input name="apellido2" type="text" class="form-control text-center " placeholder="Segundo Apellido">
                 </div>
             </div>
             <div  class="d-inline-flex p-3 bd-highlight">
@@ -46,7 +46,7 @@
                     <label class="form-check-label" for="radDirector">Director</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="rol" id="docente" value="Docente">
+                    <input class="form-check-input" type="radio" name="rol" id="docente" value="Docente" checked>
                     <label class="form-check-label" for="docente">Docente</label>
                 </div>
             </div>
@@ -56,11 +56,11 @@
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input name="password" class="form-control text-center " type="text" placeholder="Contraseña">
+                <input name="password" class="form-control text-center " type="password" placeholder="Contraseña">
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight">
-                <button type="button" class="btn btn-danger" style="width: 150px" name="accion" value="add">Registrar</button>
+                <button type="submit" class="btn btn-danger" style="width: 150px" name="accion" value="add">Registrar</button>
             </div>
         </form>
     </div>

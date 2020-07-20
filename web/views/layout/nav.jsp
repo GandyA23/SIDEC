@@ -152,5 +152,4 @@
 		<!-- ---------------------------------------------------------------------------------- -->
 
 		<!--Desde esta parte tienen que agregar el formulario que les toco-->
-
 		<div id="page-content-wrapper " style="width: 100%"> <!-- no quitar este contenedor -->

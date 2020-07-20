@@ -32,7 +32,7 @@
             <form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
                 <div class="row form-group">
                     <div class="col">
-                        <input type="text" name="matricula" class="form-control  text-center" placeholder="Matricula">
+                        <input type="text" name="matricula" class="form-control  text-center" placeholder="Matrícula">
                     </div>
                     <div class="col-md-4">
                         <button type="submit" class="btn bg-danger btn-block text-white" name="accion" value="search"><b>Buscar</b></button>
@@ -45,7 +45,7 @@
             <div class="col-md">
                 <p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos Clínicos</b></p>
             </div>
-            <table class="table font-italic text-dark">
+            <table class="table font-italic text-dark table-hover">
                 <tbody>
                 <c:forEach var="clinica" items="${listClinica}">
                 <tr>
@@ -85,7 +85,7 @@
             <div class="col-md">
                 <p class="bg-gris text-white text-center" style="border-radius: 30px;"><b>Control Clínicos</b></p>
             </div>
-            <table class="table font-italic text-dark">
+            <table class="table font-italic text-dark table-hover">
                 <tbody>
             <c:forEach var="clinica" items="${listClinica}">
                 <tr>
@@ -97,7 +97,7 @@
                     <td><c:out value="${clinica.enferHereditarias}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Alergias</td>
+                    <td>Alergías</td>
                     <td><c:out value="${clinica.alergias}"></c:out></td>
                 </tr>
                 <tr>
@@ -111,7 +111,7 @@
         <form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-5">
-                    <button id="eliminar" type="submit" class="btn bg-danger btn-sm btn-block text-white" onclick="confirmacion()" name="accion" value="delete"><b>Eliminar</b></button>
+                    <button type="submit" class="btn bg-danger btn-sm btn-block text-white" name="accion" value="delete"><b>Eliminar</b></button>
                 </div>
             </div>
         </form>

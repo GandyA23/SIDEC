@@ -34,7 +34,7 @@
 					<div class="row form-group">
 						<div class="col">
 							<input type="text" name="matricula" class="form-control  text-center"
-							       placeholder="Matricula">
+							       placeholder="Matrícula">
 						</div>
 						<div class="col-md-4">
 							<button type="submit" class="btn bg-rojo btn-block text-white"><b>Buscar</b></button>
@@ -52,7 +52,7 @@
 			<div class="row form-group">
 				<div class="col">
 					<input type="text" name="numeroSeguro" class="form-control  text-center"
-					       placeholder="Número Seguro Medico">
+					       placeholder="Número Seguro Médico">
 				</div>
 				<div class="col">
 					<input type="text" name="unidadMedica" class="form-control  text-center"
@@ -84,7 +84,7 @@
 			<div class="row form-group">
 				<div class="col">
               <textarea class="form-control" name="diagPsico" id="exampleFormControlTextarea1" rows="2"
-                        placeholder="Diagnóstico psicopedagogico"></textarea>
+                        placeholder="Diagnóstico psicopedagógico"></textarea>
 				</div>
 			</div>
 			<div class="container-fluid text-center">
@@ -114,8 +114,8 @@
 							<select class="form-control" name="enferCronicas1">
 								<option selected>Seleccione..</option>
 								<option>Cardiovasculares</option>
-								<option>Diabetes</option>
-								<option>Parkinson</option>
+								<option>Dabetes</option>
+								<option>Párkinson</option>
 								<option>Alzheimer</option>
 								<option>Hipertensión</option>
 								<option>Osteoporosis</option>
@@ -153,9 +153,9 @@
 						<div class="col">
 							<select name="enferHereditarias1" class="form-control">
 								<option selected>Seleccione</option>
-								<option>Anemia</option>
+								<option>Ánemia</option>
 								<option>Daltonismo</option>
-								<option>Diabetes</option>
+								<option>Díabetes</option>
 								<option>Mipía</option>
 								<option>Síndrome de Marfan</option>
 								<option>Cáncer</option>
@@ -171,7 +171,7 @@
 				<br>
 				<div class="row form-group">
 					<div class="col">
-						<label>Alergias:</label>
+						<label>Alergías:</label>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio5"
 							       value="si_alergias">

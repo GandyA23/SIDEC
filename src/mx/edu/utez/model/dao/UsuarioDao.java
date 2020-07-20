@@ -5,26 +5,17 @@ import mx.edu.utez.utility.conexion;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDao extends conexion {
-    public static String insertarDatos(){
-        UsuarioBean usuarioBean = new UsuarioBean();
-        String cct = usuarioBean.getCct();
-        String password = usuarioBean.getPassword();
-        String correo = usuarioBean.getCorreo();
-        String nombre =usuarioBean.getNombre();
-        String apellido1 = usuarioBean.getApellido1();
-        String apellido2 = usuarioBean.getApellido2();
-        String rol = usuarioBean.getRol();
-
-        //ResultSet resulSet = null;
-
+    public String insertarDatos(UsuarioBean uBean){
         try{
             int resul;
             PreparedStatement statment = null;
             statment = crearConexion().prepareStatement(
-                    "INSERT INTO Usuario VALUES('"+cct+"', '"+password +"', '"+correo+"','"+nombre+"','"+apellido1+"', " +
-                            "'"+apellido2+"','"+rol+"')");;
+                    "INSERT INTO Usuario VALUES('"+uBean.getCct()+"', '"+uBean.getPassword() +"', '"+uBean.getCorreo()+"','"+uBean.getNombre()+"','"+uBean.getApellido1()+"', " +
+                            "'"+uBean.getApellido2()+"','"+uBean.getRol()+"')");;
             resul = statment.executeUpdate();
             if(resul==1)
                 return "Todo bien";
@@ -34,60 +25,57 @@ public class UsuarioDao extends conexion {
         return "Algo salio mal";
     }
 
-    public static String elimiarDatos( String cct){
+    public void elimiarDatos(String cct){
         try{
+            System.out.println(cct);
             int resul;
             PreparedStatement statment = null;
-            statment = crearConexion().prepareStatement("DELETE FROM Usuario WHERE CCT = '"+cct+"'");
+            statment = crearConexion().prepareStatement("DELETE FROM usuario WHERE CCT = '"+cct+"'");
             resul = statment.executeUpdate();
             if(resul==1)
-                return "Todo bien";
+                System.out.println("eliminado");
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "Algo salio mal";
     }
-    public static String modificarDatos(){
+    public String modificarDatos(){
         UsuarioBean usuarioBean = new UsuarioBean();
 
         return "Algo salio mal";
     }
 
-    public static String consultarDatos(String cct){
-        ;
-        String password = null;
-        String correo = null;
-        String nombre = null;
-        String apellido1 = null;
-        String apellido2 = null;
-        String rol = null;
+    public List<UsuarioBean> consultarDatos(String cct){
+        List<UsuarioBean> usuariosList = new ArrayList<>();
+
         ResultSet resultSet = null;
         PreparedStatement statment = null;
         try{
             statment = crearConexion().prepareStatement("SELECT * FROM Usuario WHERE CCT = '"+cct+"'");
             resultSet= statment.executeQuery();
             if(resultSet.next()){
-                password = resultSet.getString("Password");
-                correo = resultSet.getString("Correo");
-                nombre = resultSet.getString("Nombre");
-                apellido1 = resultSet.getString("Apellido1");
-                apellido2 = resultSet.getString("Apellido2");
-                rol = resultSet.getString("Rol");
+                String password = resultSet.getString("Password");
+                String correo = resultSet.getString("Correo");
+                String nombre = resultSet.getString("Nombre");
+                String apellido1 = resultSet.getString("Apellido1");
+                String apellido2 = resultSet.getString("Apellido2");
+                String rol = resultSet.getString("Rol");
+                usuariosList.add(new UsuarioBean(cct,password, correo, nombre, apellido1,apellido2,rol));
 
-                return "Todo bien";
+
+                return usuariosList;
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "Algo salio mal";
+        return null;
     }
 
-    public static String actualizarDatos(String cct, String password, String correo, String nombre, String apellido1, String apellido2, String rol){
+    public String actualizarDatos(String cct, String password, String correo, String nombre, String apellido1, String apellido2, String rol){
         try{
             int resul;
             PreparedStatement statment = null;
             statment = crearConexion().prepareStatement(
-                    "UPDATE Usuario SET ");
+                    "UPDATE usuario SET Password = '"+ password+"', Correo='"+correo+"', Nombre= '"+nombre+"', Apellido1='"+apellido1+"', Apellido2 = '"+apellido2+"', Rol = '"+rol+"' WHERE CCT = '"+cct+"'");
             resul = statment.executeUpdate();
             if(resul==1)
                 return "Todo bien";

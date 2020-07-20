@@ -44,7 +44,7 @@
 
     <div class="bg-gris text-center text-white rounded-pill border border-white w-auto"><b>Formación Destacada</b></div>
 
-    <table class="table mx-0 my-0">
+    <table class="table mx-0 my-0 table-hover">
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Diplomas</td>
         </tr>
@@ -80,7 +80,7 @@
 
     <div class="bg-gris text-center text-white rounded-pill border border-white w-auto"><b>Conducta</b></div>
 
-    <table class="table mx-0 my-0">
+    <table class="table mx-0 my-0 table-hover">
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Comportamiento en clase</td>
         </tr>

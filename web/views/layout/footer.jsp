@@ -26,29 +26,9 @@
         </footer>
 
 <!---------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://kit.fontawesome.com/2efaf80395.js" crossorigin="anonymous"></script>
     <script src="${pageContext.request.contextPath}/assets/css/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
-	<script src="${pageContext.request.contextPath}/assets/js/mensajes.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/validaciones.js"></script>
-
+    <script src="${pageContext.request.contextPath}/assets/js/validacionesRol.js"></script>
     <script>
     $("#menu-toggle").click(function (e) {
     e.preventDefault();

@@ -42,7 +42,7 @@
             <div class="col-md">
                 <p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos Clínicos</b></p>
             </div>
-            <table class="table font-italic text-dark">
+            <table class="table font-italic text-dark table-hover">
                 <tbody>
                 <tr>
                     <td>Número de seguro médico</td>
@@ -79,7 +79,7 @@
             <div class="col-md">
                 <p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Control Clínicos</b></p>
             </div>
-            <table class="table font-italic text-dark">
+            <table class="table font-italic text-dark table-hover">
                 <tbody>
                 <tr>
                     <td>Enfermedades crónicas</td>
@@ -90,7 +90,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Alergias</td>
+                    <td>Alergías</td>
                     <td></td>
                 </tr>
                 <tr>
