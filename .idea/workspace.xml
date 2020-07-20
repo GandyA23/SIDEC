@@ -24,10 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a81fa228-ed59-4548-9b30-582f3c14b64c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mx/edu/utez/model/dao/Informacion_PersonalDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/edu/utez/model/dao/Informacion_PersonalDao.java" afterDir="false" />
-    </list>
+    <list default="true" id="a81fa228-ed59-4548-9b30-582f3c14b64c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -236,7 +233,7 @@
       <workItem from="1595116640149" duration="8602000" />
       <workItem from="1595173873409" duration="13242000" />
       <workItem from="1595205779132" duration="4421000" />
-      <workItem from="1595214250315" duration="1498000" />
+      <workItem from="1595214250315" duration="1672000" />
     </task>
     <servers />
   </component>
