@@ -2,9 +2,7 @@ package mx.edu.utez.model.bean;
 
 public class DomicilioBean {
 
-    private EstudianteBean estudiante = new EstudianteBean();
-    private TutorBean tutor = new TutorBean();
-
+    private String matriculaEstudiante;
     private String calle;
     private String noExterior;
     private String noInterior;
@@ -12,20 +10,26 @@ public class DomicilioBean {
     private String municipio;
     private String codigoPostal;
 
-    public EstudianteBean getEstudiante() {
-        return estudiante;
+    public DomicilioBean() {
+
     }
 
-    public void setEstudiante(EstudianteBean estudiante) {
-        this.estudiante = estudiante;
+    public DomicilioBean(String matriculaEstudiante, String calle, String noExterior, String noInterior, String colonia, String municipio, String codigoPostal) {
+        this.matriculaEstudiante = matriculaEstudiante;
+        this.calle = calle;
+        this.noExterior = noExterior;
+        this.noInterior = noInterior;
+        this.colonia = colonia;
+        this.municipio = municipio;
+        this.codigoPostal = codigoPostal;
     }
 
-    public TutorBean getTutor() {
-        return tutor;
+    public String getMatriculaEstudiante() {
+        return matriculaEstudiante;
     }
 
-    public void setTutor(TutorBean tutor) {
-        this.tutor = tutor;
+    public void setMatriculaEstudiante(String matriculaEstudiante) {
+        this.matriculaEstudiante = matriculaEstudiante;
     }
 
     public String getCalle() {

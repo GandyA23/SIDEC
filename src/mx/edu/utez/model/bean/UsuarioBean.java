@@ -12,7 +12,7 @@ public class UsuarioBean {
     public UsuarioBean() {
     }
 
-    public UsuarioBean(String cct, String password, String correo, String nombre, String apellido1, String apellido2, String rol) {
+    public UsuarioBean(String cct, String password, String correo, String nombre, String apellido1, String apellido2, String rol){
         this.cct = cct;
         this.password = password;
         this.correo = correo;

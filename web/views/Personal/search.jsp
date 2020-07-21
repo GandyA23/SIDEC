@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
@@ -44,7 +44,7 @@
 					</div>
 					<div style="padding: 2%"></div>
 					<div class="form-row justify-content-center">
-						<button type="button" class="btn btn-primary bg-danger" name="listener" value="buscar" style="width: 50%">Buscar</button>
+						<button type="submit" class="btn btn-primary bg-danger" name="listener" value="buscar:3" style="width: 50%">Buscar</button>
 					</div>
 				</div>
 			</div>
@@ -53,19 +53,15 @@
 				<div style="padding: 1%"></div>
 				<div class="table-responsive">
 					<table class="table table-sm table-hover">
+
 						<tr>
-							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Nombre
-							</th>
+
 						</tr>
 						<tr>
-							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Apellido
-								paterno
-							</td>
+
 						</tr>
 						<tr>
-							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Apellido
-								materno
-							</td>
+
 						</tr>
 						<tr>
 							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Teléfono
@@ -108,20 +104,15 @@
 					<div class="col-md-6">
 						<div class="table-responsive">
 							<table class="table table-sm table-hover">
+								<c:forEach var="alumnoLista" items="${alummoLista}">
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Nombre
-									</th>
+							<td name="cctBuscado"><c:out value="${alumnoLista.nombre}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Apellido paterno
-									</td>
+							<td name="cctBuscado"><c:out value="${alumnoLista.apellido1}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Apellido materno
-									</td>
+							<td name="cctBuscado"><c:out value="${alumnoLista.apellido2}"></c:out></td>
 								</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
@@ -151,6 +142,7 @@
 								<tr>
 									<td></td>
 								</tr>
+								</c:forEach>
 							</table>
 						</div>
 					</div>
@@ -201,6 +193,7 @@
 								<tr>
 									<td></td>
 								</tr>
+
 							</table>
 						</div>
 					</div>

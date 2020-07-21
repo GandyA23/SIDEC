@@ -14,7 +14,25 @@ public class EstudianteBean {
     private String genero;
     private String cicloEscolar;
     private String nivelActual;
-    private boolean status;
+    private int status;
+
+    public EstudianteBean() {
+    }
+
+    public EstudianteBean(String matricula, String curp, String nombre, String apellido1, String apellido2, Date fechaNacimiento, String telefono, String correo, String genero, String cicloEscolar, String nivelActual, int status) {
+        this.matricula = matricula;
+        this.curp = curp;
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.genero = genero;
+        this.cicloEscolar = cicloEscolar;
+        this.nivelActual = nivelActual;
+        this.status = status;
+    }
 
     public String getMatricula() {
         return matricula;
@@ -104,12 +122,11 @@ public class EstudianteBean {
         this.nivelActual = nivelActual;
     }
 
-    public boolean isStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
-
 }

@@ -72,6 +72,7 @@ public class UsuarioServlet extends HttpServlet {
 
 
             case "search":
+
                 UsuarioDao usuarioDao =new UsuarioDao();
                 cct = request.getParameter("cct");
                 System.out.println(cct +" "+ accion);

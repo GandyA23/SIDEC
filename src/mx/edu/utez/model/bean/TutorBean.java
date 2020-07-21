@@ -2,7 +2,6 @@ package mx.edu.utez.model.bean;
 
 public class TutorBean {
 
-    private int id;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -11,12 +10,17 @@ public class TutorBean {
     private String correo;
     private String genero;
 
-    public int getId() {
-        return id;
+    public TutorBean() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public TutorBean(String nombre, String apellido1, String apellido2, String telefonoPersonal, String telefonoTrabajo, String correo, String genero) {
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.telefonoPersonal = telefonoPersonal;
+        this.telefonoTrabajo = telefonoTrabajo;
+        this.correo = correo;
+        this.genero = genero;
     }
 
     public String getNombre() {
