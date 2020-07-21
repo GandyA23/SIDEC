@@ -26,7 +26,7 @@
 
             <form class="form-inline" action="<%=request.getContextPath()%>/UsuarioServlet" method="post">
                 <div class="form-group mx-auto">
-                    <input type="text" class="form-control text-center" name="cct" id="inputPassword2" placeholder="CCT">
+                    <input type="text" class="form-control text-center" name="cct" id="inputPassword2" placeholder="CCT" required>
                 </div>
                 <div class="form-group mx-auto" style="width: 40%;">
                     <button type="submit" class="btn btn-danger btn-block" name="accion" value="search:2">BUSCAR</button>
@@ -40,10 +40,14 @@
             <c:forEach var="usuarios" items="${usuariosList}">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control text-center" value="<c:out value="${usuarios.nombre}"/>" name="nombre" placeholder="Nombre (s)">
+                    <input type="text" class="form-control text-center" value="<c:out value="${usuarios.cct}"/>" placeholder="Matrícula" readonly>
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control text-center" value="<c:out value="${usuarios.nombre}"/>" name="nombre" placeholder="Nombre (s)" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control text-center " value="<c:out value="${usuarios.apellido1}"/>" name="apellido1" placeholder="Primer Apellido">
+                    <input type="text" class="form-control text-center " value="<c:out value="${usuarios.apellido1}"/>" name="apellido1" placeholder="Primer Apellido" required>
                 </div>
                 <div class="col">
                     <input type="text" class="form-control text-center " value="<c:out value="${usuarios.apellido2}"/>" name="apellido2" placeholder="Segundo Apellido">
@@ -58,7 +62,7 @@
 
                 <c:if test="${usuarios.rol == 'Director'}">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="rol" id="radDirector" value="Director"checked>
+                        <input class="form-check-input" type="radio" name="rol" id="radDirector" value="Director" checked>
                         <label class="form-check-label" for="radDirector">Director</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -85,11 +89,11 @@
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input class="form-control text-center " type="text" value="<c:out value="${usuarios.correo}"/>" name="correo" placeholder="Correo electrónico">
+                <input class="form-control text-center " type="text" value="<c:out value="${usuarios.correo}"/>" name="correo" placeholder="Correo electrónico" required>
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input class="form-control text-center " type="text" value="<c:out value="${usuarios.password}"/>" name="password" placeholder="Contraseña">
+                <input class="form-control text-center " type="text" value="<c:out value="${usuarios.password}"/>" name="password" placeholder="Contraseña" required>
             </div>
             </c:forEach>
             <br>

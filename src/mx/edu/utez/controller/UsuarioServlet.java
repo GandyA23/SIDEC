@@ -32,9 +32,6 @@ public class UsuarioServlet extends HttpServlet {
              accion= accionOpc;
         }
 
-
-
-
         String password;
         String correo;
         String nombre;

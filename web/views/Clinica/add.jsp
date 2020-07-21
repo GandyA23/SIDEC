@@ -6,10 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
-
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -20,7 +18,6 @@
 
 <div class="container" id="page-content-wrapper">
     <!-- no quitar este contenedor -->
-
     <!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)-->
     <div class="container">
         <form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
@@ -32,7 +29,7 @@
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <input type="text" id="mat"name="matricula" class="form-control  text-center" placeholder="Matrícula" required>
+                    <input type="text" id="mat" name="matricula" class="form-control  text-center" placeholder="Matrícula" required>
                 </div>
                 <div class="col">
                     <input type="text" name="numeroSeguro" class="form-control  text-center" placeholder="Número Seguro Médico" required>
@@ -77,7 +74,6 @@
                     <div class="col">
                         <label>Crónicas:</label>
 
-
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="opc_cronica" id="inlineRadio1"
                                    value="si_cronica">
@@ -88,14 +84,6 @@
                                    value="no_cronica">
                             <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
-
-                        <%--
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary">+</button>
-                        </div>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary">-</button>
-                        </div>--%>
 
                         <div class="col">
                             <select name="enferCronicas1"class="form-control">
@@ -132,14 +120,6 @@
                             <label class="form-check-label" for="inlineRadio4">No</label>
                         </div>
 
-                        <%--
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary">+</button>
-                        </div>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary">-</button>
-                        </div> --%>
-
                         <div class="col">
                             <select name="enferHereditarias1" class="form-control">
                                 <option selected>Seleccione</option>
@@ -161,8 +141,6 @@
                 <br>
                 <div class="row form-group">
                     <div class="col">
-
-
                         <label >Alergías:</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio5"
@@ -174,14 +152,7 @@
                                    value="no_alergias">
                             <label class="form-check-label" for="inlineRadio6">No</label>
                         </div>
- <%--
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary">+</button>
-                        </div>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary">-</button>
-                        </div>
-                        --%>
+
                         <div class="col">
                             <select name="alergias1" class="form-control">
                                 <option selected>Seleccione</option>
@@ -214,13 +185,6 @@
                                    value="no_discapacidad">
                             <label class="form-check-label" for="inlineRadio8">No</label>
                         </div>
-                        <%--
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary">+</button>
-                        </div>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary">-</button>
-                        </div> --%>
 
                         <div class="col">
                             <select name="discapacidades1" id="inputState" class="form-control">

@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="mx.edu.utez.model.bean.Informacion_ClinicaBean" %><%--
+
+<%--
   Created by IntelliJ IDEA.
   User: Gandy Avila
   Date: 29/06/2020
@@ -7,10 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -32,15 +31,14 @@
             <form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
                 <div class="row form-group">
                     <div class="col">
-                        <input type="text" name="matricula" class="form-control  text-center" placeholder="Matrícula">
+                        <input type="text" name="matricula" class="form-control  text-center" placeholder="Matrícula" required>
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn bg-danger btn-block text-white" name="accion" value="search"><b>Buscar</b></button>
+                        <button type="submit" class="btn bg-danger btn-block text-white" name="accion" value="search:1"><b>Buscar</b></button>
                     </div>
                 </div>
             </form>
         </div>
-
         <div class="row">
             <div class="col-md">
                 <p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos Clínicos</b></p>
@@ -49,34 +47,26 @@
                 <tbody>
                 <c:forEach var="clinica" items="${listClinica}">
                 <tr>
-                    <td>Número de seguro médico</td>
-                    <td> <c:out value="${clinica.numeroSeguro}"></c:out></td>
+                    <td>Número de seguro médico</td><td><c:out value="${clinica.numeroSeguro}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Unidad médica</td>
-                    <td><c:out value="${clinica.unidadMedica}"></c:out></td>
+                    <td>Unidad médica</td><td><c:out value="${clinica.unidadMedica}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Peso</td>
-                    <td><c:out value="${clinica.peso}"></c:out></td>
+                    <td>Peso</td><td><c:out value="${clinica.peso}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Estatura</td>
-                    <td><c:out value="${clinica.estatura}"></c:out></td>
+                    <td>Estatura</td><td><c:out value="${clinica.estatura}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>IMC</td>
-                    <td><c:out value="${clinica.imc}"></c:out></td>
+                    <td>IMC</td><td><c:out value="${clinica.imc}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Tipo de sangre</td>
-                    <td><c:out value="${clinica.tipoSangre}"></c:out></td>
+                    <td>Tipo de sangre</td><td><c:out value="${clinica.tipoSangre}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Diagnóstico psicopedagógico</td>
-                    <td><c:out value="${clinica.diagPsico}"></c:out></td>
+                    <td>Diagnóstico psicopedagógico</td><td><c:out value="${clinica.diagPsico}"></c:out></td>
                 </tr>
-
                 </c:forEach>
                 </tbody>
             </table>
@@ -89,20 +79,16 @@
                 <tbody>
             <c:forEach var="clinica" items="${listClinica}">
                 <tr>
-                    <td>Enfermedades crónicas</td>
-                    <td><c:out value="${clinica.enferCronicas}"></c:out></td>
+                    <td>Enfermedades crónicas</td><td><c:out value="${clinica.enferCronicas}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Enfermedades hereditarias</td>
-                    <td><c:out value="${clinica.enferHereditarias}"></c:out></td>
+                    <td>Enfermedades hereditarias</td><td><c:out value="${clinica.enferHereditarias}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Alergías</td>
-                    <td><c:out value="${clinica.alergias}"></c:out></td>
+                    <td>Alergías</td><td><c:out value="${clinica.alergias}"></c:out></td>
                 </tr>
                 <tr>
-                    <td>Discapacidad</td>
-                    <td><c:out value="${clinica.discapacidades}"></c:out></td>
+                    <td>Discapacidad</td><td><c:out value="${clinica.discapacidades}"></c:out></td>
                 </tr>
             </c:forEach>
                 </tbody>

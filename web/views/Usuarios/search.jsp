@@ -27,7 +27,7 @@
             <div class="bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de registro</b></div> <br>
             <form class="form-inline" method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
                 <div class="form-group mx-auto">
-                    <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT">
+                    <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" required>
                 </div>
                 <div class="form-group mx-auto" style="width: 40%;">
                     <button type="submit" class="btn btn-danger btn-block" name="accion" value="search:3">BUSCAR</button>

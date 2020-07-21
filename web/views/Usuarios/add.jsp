@@ -24,14 +24,14 @@
         <div class=" bg-secondary text-white" style="border-radius: 7px"><b>Cuenta de usuario</b></div> <br>
         <form method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
             <div  class="d-inline-flex p-3 bd-highlight">
-                <input name="cct" class="form-control text-center " type="text" placeholder="CCT">
+                <input name="cct" class="form-control text-center " type="text" placeholder="CCT" required>
             </div>
             <div class="row">
                 <div class="col">
-                    <input name="nombre" type="text" class="form-control text-center " placeholder="Nombre (s)">
+                    <input name="nombre" type="text" class="form-control text-center " placeholder="Nombre (s)" required>
                 </div>
                 <div class="col">
-                    <input name="apellido1" type="text" class="form-control text-center " placeholder="Primer Apellido">
+                    <input name="apellido1" type="text" class="form-control text-center " placeholder="Primer Apellido" required>
                 </div>
                 <div class="col">
                     <input name="apellido2" type="text" class="form-control text-center " placeholder="Segundo Apellido">
@@ -42,7 +42,7 @@
                     <label class="form-check-label text-secondary"><b>Cargo:</b> </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="rol" id="radDirector" value="Director">
+                    <input class="form-check-input" type="radio" name="rol" id="radDirector" value="Director" required>
                     <label class="form-check-label" for="radDirector">Director</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -52,11 +52,11 @@
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input name="correo" class="form-control text-center " type="text" placeholder="Correo electrónico">
+                <input name="correo" class="form-control text-center " type="text" placeholder="Correo electrónico" required>
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input name="password" class="form-control text-center " type="password" placeholder="Contraseña">
+                <input name="password" class="form-control text-center " type="password" placeholder="Contraseña" required>
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight">

@@ -29,7 +29,7 @@
 			<form class="form-inline" method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
 				<div class="form-group mx-auto">
 					<input type="text" class="form-control text-center" id="inputPassword2" name="cct"
-					       placeholder="CCT">
+					       placeholder="CCT" required>
 				</div>
 				<div class="form-group mx-auto" style="width: 40%;">
 					<button type="submit" class="btn btn-danger btn-block" name="accion" value="search:1">BUSCAR</button>

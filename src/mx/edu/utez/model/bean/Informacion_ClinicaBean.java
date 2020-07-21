@@ -1,145 +1,178 @@
 package mx.edu.utez.model.bean;
 
 public class Informacion_ClinicaBean {
+	private String matricula;
+	private String peso;
+	private String estatura;
+	private String imc;
+	private String tipoSangre;
+	private String numeroSeguro;
+	private String unidadMedica;
 
-    private String matricula ;
-    private String peso;
-    private String estatura;
-    private String imc ;
-    private String tipoSangre;
-    private String numeroSeguro;
-    private String unidadMedica;
-    private String alergias;
-    private String enferCronicas;
-    private String enferHereditarias;
-    private String discapacidades;
-    private String diagPsico;
+	private String tipoalergias;
+	private String alergias;
 
-    public Informacion_ClinicaBean(){
+	private String tipoEnferCronicas;
+	private String enferCronicas;
 
-    }
+	private String tipoEnferHereditarias;
+	private String enferHereditarias;
 
-    public Informacion_ClinicaBean(String matricula, String peso, String estatura, String imc, String tipoSangre, String numeroSeguro, String unidadMedica, String alergias, String enferCronicas, String enferHereditarias, String discapacidades, String diagPsico) {
-        this.matricula = matricula;
-        this.peso = peso;
-        this.estatura = estatura;
-        this.imc = imc;
-        this.tipoSangre = tipoSangre;
-        this.numeroSeguro = numeroSeguro;
-        this.unidadMedica = unidadMedica;
-        this.alergias = alergias;
-        this.enferCronicas = enferCronicas;
-        this.enferHereditarias = enferHereditarias;
-        this.discapacidades = discapacidades;
-        this.diagPsico = diagPsico;
-    }
+	private String tipoDiscapacidades;
+	private String discapacidades;
 
-    public Informacion_ClinicaBean(String matricula, String peso, String estatura, String tipoSangre, String numeroSeguro,
-                                   String unidadMedica, String alergias, String enferCronicas, String enferHereditarias,
-                                   String discapacidades, String diagPsico) {
-        this.matricula = matricula;
-    	this.peso = peso;
-        this.estatura = estatura;
-        this.tipoSangre = tipoSangre;
-        this.numeroSeguro = numeroSeguro;
-        this.unidadMedica = unidadMedica;
-        this.alergias = alergias;
-        this.enferCronicas = enferCronicas;
-        this.enferHereditarias = enferHereditarias;
-        this.discapacidades = discapacidades;
-        this.diagPsico = diagPsico;
-    }
+	private String diagPsico;
 
+	public Informacion_ClinicaBean() {
+	}
 
+	public Informacion_ClinicaBean(String matricula, String peso, String estatura, String imc, String tipoSangre, String numeroSeguro,
+	                               String unidadMedica, String tipoalegias, String alergias, String tipoEnferCronicas, String enferCronicas,
+	                               String tipoEnferHereditarias, String enferHereditarias, String tipoDiscapacidades, String discapacidades,
+	                               String diagPsico) {
+		this.matricula = matricula;
+		this.peso = peso;
+		this.estatura = estatura;
+		this.imc = imc;
+		this.tipoSangre = tipoSangre;
+		this.numeroSeguro = numeroSeguro;
+		this.unidadMedica = unidadMedica;
+		this.tipoalergias = tipoalegias;
+		this.alergias = alergias;
+		this.tipoEnferCronicas = tipoEnferCronicas;
+		this.enferCronicas = enferCronicas;
+		this.tipoEnferHereditarias = tipoEnferHereditarias;
+		this.enferHereditarias = enferHereditarias;
+		this.tipoDiscapacidades = tipoDiscapacidades;
+		this.discapacidades = discapacidades;
+		this.diagPsico = diagPsico;
+	}
 
+	public String getMatricula() {
+		return matricula;
+	}
 
-    public String getMatricula() { return matricula; }
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 
-    public void setMatricula(String matricula) { this.matricula = matricula; }
+	public String getPeso() {
+		return peso;
+	}
 
-    public String getPeso() {
-        return peso;
-    }
+	public void setPeso(String peso) {
+		this.peso = peso;
+	}
 
-    public void setPeso(String peso) {
-        this.peso = peso;
-    }
+	public String getEstatura() {
+		return estatura;
+	}
 
-    public String getEstatura() {
-        return estatura;
-    }
+	public void setEstatura(String estatura) {
+		this.estatura = estatura;
+	}
 
-    public void setEstatura(String estatura) {
-        this.estatura = estatura;
-    }
+	public String getImc() {
+		return imc;
+	}
 
-    public String getImc() { return imc; }
+	public void setImc(String imc) {
+		this.imc = imc;
+	}
 
-    public void setImc(String imc) {
-        this.imc = imc;
-    }
+	public String getTipoSangre() {
+		return tipoSangre;
+	}
 
-    public String getTipoSangre() {
-        return tipoSangre;
-    }
+	public void setTipoSangre(String tipoSangre) {
+		this.tipoSangre = tipoSangre;
+	}
 
-    public void setTipoSangre(String tipoSangre) {
-        this.tipoSangre = tipoSangre;
-    }
+	public String getNumeroSeguro() {
+		return numeroSeguro;
+	}
 
-    public String getNumeroSeguro() {
-        return numeroSeguro;
-    }
+	public void setNumeroSeguro(String numeroSeguro) {
+		this.numeroSeguro = numeroSeguro;
+	}
 
-    public void setNumeroSeguro(String numeroSeguro) {
-        this.numeroSeguro = numeroSeguro;
-    }
+	public String getUnidadMedica() {
+		return unidadMedica;
+	}
 
-    public String getUnidadMedica() {
-        return unidadMedica;
-    }
+	public void setUnidadMedica(String unidadMedica) {
+		this.unidadMedica = unidadMedica;
+	}
 
-    public void setUnidadMedica(String unidadMedica) {
-        this.unidadMedica = unidadMedica;
-    }
+	public String getTipoalergias() {
+		return tipoalergias;
+	}
 
-    public String getAlergias() {
-        return alergias;
-    }
+	public void setTipoalergias(String tipoalergias) {
+		this.tipoalergias = tipoalergias;
+	}
 
-    public void setAlergias(String alergias) {
-        this.alergias = alergias;
-    }
+	public String getAlergias() {
+		return alergias;
+	}
 
-    public String getEnferCronicas() {
-        return enferCronicas;
-    }
+	public void setAlergias(String alergias) {
+		this.alergias = alergias;
+	}
 
-    public void setEnferCronicas(String enferCronicas) {
-        this.enferCronicas = enferCronicas;
-    }
+	public String getTipoEnferCronicas() {
+		return tipoEnferCronicas;
+	}
 
-    public String getEnferHereditarias() {
-        return enferHereditarias;
-    }
+	public void setTipoEnferCronicas(String tipoEnferCronicas) {
+		this.tipoEnferCronicas = tipoEnferCronicas;
+	}
 
-    public void setEnferHereditarias(String enferHereditarias) {
-        this.enferHereditarias = enferHereditarias;
-    }
+	public String getEnferCronicas() {
+		return enferCronicas;
+	}
 
-    public String getDiscapacidades() {
-        return discapacidades;
-    }
+	public void setEnferCronicas(String enferCronicas) {
+		this.enferCronicas = enferCronicas;
+	}
 
-    public void setDiscapacidades(String discapacidades) {
-        this.discapacidades = discapacidades;
-    }
+	public String getTipoEnferHereditarias() {
+		return tipoEnferHereditarias;
+	}
 
-    public String getDiagPsico() {
-        return diagPsico;
-    }
+	public void setTipoEnferHereditarias(String tipoEnferHereditarias) {
+		this.tipoEnferHereditarias = tipoEnferHereditarias;
+	}
 
-    public void setDiagPsico(String diagPsico) {
-        this.diagPsico = diagPsico;
-    }
+	public String getEnferHereditarias() {
+		return enferHereditarias;
+	}
+
+	public void setEnferHereditarias(String enferHereditarias) {
+		this.enferHereditarias = enferHereditarias;
+	}
+
+	public String getTipoDiscapacidades() {
+		return tipoDiscapacidades;
+	}
+
+	public void setTipoDiscapacidades(String tipoDiscapacidades) {
+		this.tipoDiscapacidades = tipoDiscapacidades;
+	}
+
+	public String getDiscapacidades(){
+		return  discapacidades;
+	}
+
+	public void setDiscapacidades(String discapacidades) {
+		this.discapacidades = discapacidades;
+	}
+
+	public String getDiagPsico() {
+		return diagPsico;
+	}
+
+	public void setDiagPsico(String diagPsico) {
+		this.diagPsico = diagPsico;
+	}
 }
