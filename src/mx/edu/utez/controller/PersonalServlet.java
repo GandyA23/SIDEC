@@ -3,6 +3,7 @@ package mx.edu.utez.controller;
 import mx.edu.utez.model.bean.DomicilioBean;
 import mx.edu.utez.model.bean.EstudianteBean;
 import mx.edu.utez.model.bean.TutorBean;
+import mx.edu.utez.model.dao.Informacion_PersonalDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +29,7 @@ public class PersonalServlet extends HttpServlet {
             TutorBean tutor = new TutorBean();
             DomicilioBean domicilio = new DomicilioBean();
             EstudianteBean alumno = new EstudianteBean();
+            Informacion_PersonalDao dataAccess1 = new Informacion_PersonalDao();
             //DATOS DEL ESTUDIANTE
 
             alumno.setMatricula(request.getParameter("matricula"));
@@ -37,16 +39,15 @@ public class PersonalServlet extends HttpServlet {
             alumno.setApellido2(request.getParameter("apellido2"));
             alumno.setGenero(request.getParameter("customRadioInline1"));
             String fechaDeNacimeinto = request.getParameter("dia")+"-"+request.getParameter("mes")+"-"+request.getParameter("año");
+
             Date miFecha = new Date(java.util.Date.parse(fechaDeNacimeinto));
             alumno.setFechaNacimiento(miFecha);
 
-            //String dia = request.getParameter("dia");
-            //String mes = request.getParameter("mes");
-            //String año = request.getParameter("año");
             alumno.setTelefono(request.getParameter("telefono"));
             alumno.setCorreo(request.getParameter("correo"));
             alumno.setCicloEscolar(request.getParameter("añoInicio")+"-"+request.getParameter("añoFin"));
             alumno.setNivelActual(request.getParameter("seleccion"));
+            alumno.setStatus(true);
 
             //DATOS DEL DOMICILIO
             domicilio.setCalle(request.getParameter("calle"));
@@ -65,9 +66,17 @@ public class PersonalServlet extends HttpServlet {
             tutor.setCorreo(request.getParameter("tutorCorreo"));
             tutor.setTelefonoPersonal(request.getParameter("tutorTelefono"));
             tutor.setTelefonoTrabajo(request.getParameter("tutorTelTrabajo"));
-
+            try{
+                String estado = dataAccess1.insertarDatos(alumno,tutor,domicilio);
+                System.out.println(estado);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            request.getRequestDispatcher("/views/Personal/add.jsp").forward(request, response);
             break;
         case "eliminar":
+            Informacion_PersonalDao dataAccess2 = new Informacion_PersonalDao();
+
             break;
         case "buscar":
             break;

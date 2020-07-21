@@ -18,7 +18,7 @@
 </nav>
 
 <div class="d-flex justify-content-start mx-auto" style="width: 100%" id="page-content-wrapper"><!-- no quitar este contenedor -->
-    <form class="container">
+    <form class="container" method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
         <div style="padding: 1%"></div>
         <div class="form-row justify-content-around">
             <div class="col-md-4 bg-gris text-center" style="border-radius: 7px;">
