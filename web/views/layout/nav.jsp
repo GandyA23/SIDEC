@@ -1,23 +1,23 @@
 	<%@ page import="mx.edu.utez.model.bean.LoginBean" %>
 		<%--
-		  Created by IntelliJ IDEA.
-		  User: Gandy Avila
-		  Date: 29/06/2020
-		  Time: 02:36 a. m.
-		  To change this template use File | Settings | File Templates.
-	--%>
-		<%
+			  Created by IntelliJ IDEA.
+			  User: Gandy Avila
+			  Date: 29/06/2020
+			  Time: 02:36 a. m.
+			  To change this template use File | Settings | File Templates.
+		--%>
+			<%
            HttpSession sesionActiva = request.getSession();
            LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");
            %>
 		<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 		<nav class="navbar navbar-expand-lg navbar-light bg-rojo">
 		<a href="${pageContext.request.contextPath}/views/main.jsp" title="Interfaz SIDEC">
-		<img href style="border-radius: 50%; width: 55px; height: 50px;" src="${pageContext.request.contextPath}
-		/assets/img/LogoESC.jpg" alt="">
+		<img style="border-radius: 50%; width: 55px; height: 50px;" src="${pageContext.request.contextPath}
+		/assets/img/LogoESC.jpg" alt="Logo SIDEC">
 		</a>
 
-		<button class="btn text-white m-2" id="menu-toggle" style="font-size: 20px"> <b>SIDEC</b> | Sistema de
+		<button class="btn text-white m-2" id="menu-toggle" style="font-size: 25px"> <b>SIDEC</b> | Sistema de
 		Expedientes Controlados </button>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
@@ -26,16 +26,17 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 		<li class="nav-item active">
-		<a id="mostrarRol" class="nav-link bg-gris text-white mr-1 border border-white" href="#"><%out.print(usuarioWeb.getRol());%></a>
+		<a id="mostrarRol" class="nav-link bg-gris text-white mr-1 border border-white"
+		href="#"><%out.print(usuarioWeb.getRol());%></a>
 		<%-- <span class="sr-only">(current)</span> --%>
 		</li>
 		<li class="nav-item active">
-		<a class="nav-link bg-gris text-white mr-1 border border-white" href="${pageContext.request.contextPath}/CerrarSesionServlet">Cerrar Sesión</a>
+		<a class="nav-link bg-gris text-white mr-1 border border-white" href="${pageContext.request.contextPath}
+		/CerrarSesionServlet">Cerrar Sesión</a>
 		</li>
 		</ul>
 		</div>
 		</nav>
-
 		<!-- BARRA LATERAL -->
 		<div class="d-flex" id="wrapper">
 		<!--Encabezado Alumno-->
@@ -142,10 +143,9 @@
 		</div>
 		</div>
 
-		<div style="padding: 60%"></div>
-		<div class="d-flex align-items-end bg-white">
-		<img class="iIebem" src="${pageContext.request.contextPath}/assets/img/iebem.png" alt="" srcset="">
-		</div>
+		<img style=" border: black 2px solid; width: 100%" src="${pageContext.request.contextPath}/assets/img/iebem.png"
+		alt="Logo IEBEM" >
+
 		</div>
 		</div>
 		</div>

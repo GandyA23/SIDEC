@@ -12,11 +12,10 @@ import java.util.List;
 public class Informacion_ClinicaDao extends conexion {
 
 	public int insertarDatos(Informacion_ClinicaBean clinicaBean) {
-		double peso = Double.parseDouble(clinicaBean.getPeso());
-		double estatura = Double.parseDouble(clinicaBean.getEstatura());
-		double imc = peso / (estatura * estatura);
-		//ResultSet resulSet = null;
 		try {
+			double peso = Double.parseDouble(clinicaBean.getPeso());
+			double estatura = Double.parseDouble(clinicaBean.getEstatura());
+			double imc = peso / (estatura * estatura);
 			int resul;
 			PreparedStatement statment = crearConexion().prepareStatement(
 					"INSERT INTO informacion_clinica VALUES('" + clinicaBean.getMatricula() + "', '" + peso + "', '" + estatura + "','" + imc + "','" +
@@ -46,13 +45,25 @@ public class Informacion_ClinicaDao extends conexion {
 		return 0;
 	}
 
-	public String modificarDatos() {
-		return "Algo salio mal";
+	public int modificarDatos(Informacion_ClinicaBean clinicaBean) {
+		try {
+			double peso = Double.parseDouble(clinicaBean.getPeso());
+			double estatura = Double.parseDouble(clinicaBean.getEstatura());
+			double imc = peso / (estatura * estatura);
+			int resul;
+			PreparedStatement statement = crearConexion().prepareStatement("UPDATE informacion_clinica SET Peso = '"+peso+"', Estatura = '"+estatura+"', Imc = '"+imc+"', TipoSangre = '"+clinicaBean.getTipoSangre()+"', NumeroSeguro = '"+ clinicaBean.getNumeroSeguro()+"', UnidadMedica = '"+clinicaBean.getUnidadMedica()+"' , Alergias = '"+clinicaBean.getAlergias()+"', EnferCronicas = '"+clinicaBean.getEnferCronicas()+"', EnferHereditarias = '"+clinicaBean.getEnferHereditarias()+"', Discapacidades = '"+clinicaBean.getDiscapacidades()+"', DiagPsico = '"+clinicaBean.getDiagPsico()+"' WHERE MatEstudiante = '"+clinicaBean.getMatricula()+"' ");
+			resul=statement.executeUpdate();
+			if(resul==1)
+				return resul;
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	public List<Informacion_ClinicaBean> consultarDatos(String matricula) {
-		List<Informacion_ClinicaBean> listDatosClinica = new ArrayList<>();
 		try {
+			List<Informacion_ClinicaBean> listDatosClinica = new ArrayList<>();
 			PreparedStatement statement = null;
 			ResultSet resultSet = null;
 			statement = crearConexion().prepareStatement("SELECT * FROM informacion_clinica WHERE MatEstudiante = '" + matricula + "'");

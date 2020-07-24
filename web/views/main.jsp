@@ -14,12 +14,11 @@
 %>
 <!-- LO QUE SE MOSTRARA EN LA PAGINA (borra esta parte hasta el final del div)-->
 <div class="jumbotron text-center bg-white">
-	<h1 class="display-1"><b>¡Bienvenid@!</b></h1>
+	<h1 class="display-3"><b>¡Bienvenido!</b></h1>
 	<h3 class="display-4"><b><%out.print(usuarioWeb.getCct());%></b></h3>
-	<p class="lead">Para comenzar puedes dirigirte al menú de la izquierda donde se encuentran todas las funciones
-		para utilizar el sistema. Y si deseas ocultarlas da click en SIDEC</p>
+	<p class="lead">Para comenzar puedes dirigirte al menú de la izquierda donde se encuentran todas las funciones para utilizar el sistema. Y si deseas ocultarlas da click en SIDEC</p>
 	<hr class="my-4">
-	<h2>¡Por un control mejorado con expedintes digitales!</h2>
+	<h2>¡Por un control mejorado con expedientes digitales!</h2>
 	<blockquote class="blockquote text-center">
 		<p class="mb-0 text-justify text-dark">El sistema de expedientes controlados se apoyo en modelos de desarrollo de software con
 			herramientas del mundo actual. Esta aplicación fue inicialmente concebida para ser
@@ -30,8 +29,6 @@
 			ofrecer importantes mejoras funcionales y de uso.</p>
 		<footer class="blockquote-footer">Estudiantes de Desarrollo de Software<cite title="Source Title"> UTEZ</cite></footer>
 	</blockquote>
-
-	<a class="btn btn-primary btn-sm" href="${pageContext.request.contextPath}/views/Personal/xcontrol.jsp" role="button">Control de Alumnos</a>
+	<a class="btn btn-primary btn-sm" href="${pageContext.request.contextPath}/ListaEstudiantesServlet" role="button">Control de Alumnos</a>
 </div>
-
 <jsp:include page="layout/footer.jsp"></jsp:include>

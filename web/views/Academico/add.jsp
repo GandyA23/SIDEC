@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col">
                     <div class="bg-gris text-center text-white rounded-pill border border-white w-auto"> <b>Formación Destacada</b></div>
-                    <input class="form-control-sm text-center w-25  my-4 border border-secondary" type="text" name="matricula" placeholder="Matrícula">
+                    <input class="form-control-sm text-center w-25  my-4 border border-secondary" type="text" maxlength="15" name="matricula" placeholder="Matrícula">
                 </div>
             </div>
 
@@ -91,7 +91,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-danger text-center text-white rounded w-25">Registrar</button>
+                    <button type="submit" class="btn btn-danger text-center text-white rounded w-25"><b>Registrar</b></button>
                 </div>
             </div>
         </div>

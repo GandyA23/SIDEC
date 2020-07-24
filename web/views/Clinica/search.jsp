@@ -21,6 +21,7 @@
     <!-- no quitar este contenedor -->
     <br>
     <div class="container">
+        <button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
         <div class="row">
             <div class="col-md">
                 <p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Búsqueda de Registro</b></p>
@@ -30,7 +31,7 @@
             <form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
                 <div class="row form-group">
                     <div class="col">
-                        <input type="text" name="matricula" class="form-control  text-center" placeholder="Matricula" required>
+                        <input type="text" name="matricula" class="form-control text-center" maxlength="15" placeholder="Matricula" required>
                     </div>
                     <div class="col-md-4">
                         <button type="submit" class="btn bg-danger btn-block text-white" name="accion" value="search:3"> <b>Buscar</b></button>
@@ -78,16 +79,37 @@
                 <tbody>
                 <c:forEach var="clinica" items="${listClinica}">
                 <tr>
-                    <td>Enfermedades crónicas</td> <td><c:out value="${clinica.enferCronicas}"></c:out></td>
-                </tr>
+                    <td>Enfermedades crónicas</td>
+                    <td>
+                        <c:if test="${clinica.tipoEnferCronicas != 'Seleccione'}">
+                            <c:out value="${clinica.tipoEnferCronicas}"/>
+                        </c:if>
+                        <c:out value="${clinica.enferCronicas}"></c:out>
+                    </td>                </tr>
                 <tr>
-                    <td>Enfermedades hereditarias</td> <td><c:out value="${clinica.enferHereditarias}"></c:out></td>
-                </tr>
+                    <td>Enfermedades hereditarias</td>
+                    <td>
+                        <c:if test="${clinica.tipoEnferHereditarias != 'Seleccione'}">
+                            <c:out value="${clinica.tipoEnferHereditarias}"/>
+                        </c:if>
+                        <c:out value="${clinica.enferHereditarias}"></c:out>
+                    </td>                </tr>
                 <tr>
-                    <td>Alergías</td> <td><c:out value="${clinica.alergias}"></c:out></td>
-                </tr>
+                    <td>Alergías</td>
+                    <td>
+                        <c:if test="${clinica.tipoalergias != 'Seleccione'}">
+                            <c:out value="${clinica.tipoalergias}"/>
+                        </c:if>
+                        <c:out value="${clinica.alergias}"></c:out>
+                    </td>                </tr>
                 <tr>
-                    <td>Discapacidad</td> <td><c:out value="${clinica.discapacidades}"></c:out></td>
+                    <td>Discapacidad</td>
+                    <td>
+                        <c:if test="${clinica.tipoDiscapacidades!='Seleccione'}">
+                            <c:out value="${clinica.tipoDiscapacidades}"/>
+                        </c:if>
+                        <c:out value="${clinica.discapacidades}"></c:out>
+                    </td>
                 </tr>
                 </c:forEach>
                 </tbody>

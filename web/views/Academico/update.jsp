@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="col">
-                    <button type="button" class="btn btn-danger text-center border border-secondary text-white rounded w-100">Buscar</button>
+                    <button type="button" class="btn btn-danger text-center border border-secondary text-white rounded w-100"><b>Buscar</b></button>
                 </div>
 
                 <div class="col"></div>
@@ -124,7 +124,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-danger text-center text-white rounded w-25">Actualizar</button>
+                    <button type="button" class="btn btn-danger text-center text-white rounded w-25"><b>Actualizar</b></button>
                 </div>
             </div>
         </div>

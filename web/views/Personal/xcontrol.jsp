@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -18,12 +19,11 @@
 
 <div style="width: 100%" id="page-content-wrapper">
 	<!-- no quitar este contenedor -->
-
-
 	<nav>
 		<div class="nav nav-tabs " id="nav-tab" role="tablist">
 			<a class="nav-item nav-link text-danger active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
 			   aria-controls="nav-home" aria-selected="true"> <b>Búsqueda rápida</b> </a>
+
 			<a class="nav-item nav-link text-danger" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
 			   aria-controls="nav-profile" aria-selected="false"><b>Eliminados</b></a>
 		</div>
@@ -31,20 +31,12 @@
 
 	<div class="tab-content" id="nav-tabContent">
 		<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
 			<div class="container">
 				<br>
-				<div class="row form-group">
-					<div class="col">
-						<input type="text" name="matricula" class="form-control  text-center" placeholder="Matricula, Nombre o Apellido">
-					</div>
-					<div class="col-md-4">
-						<button type="submit" class="btn bg-danger btn-block text-white"><b>Buscar</b></button>
-					</div>
-				</div>
+				<h2>Búsqueda Estudiantes</h2>
+				<h6>Puedes buscar por matricula, nombre o apellidos.</h6>
 				<hr class="my-3">
-
-				<table class="table">
+				<table class="table table-sm table-hover text-center display responsive nowrap" width="100%" id="tablaActivos">
 					<thead class="thead-light">
 					<tr>
 						<th scope="col">Matricula</th>
@@ -54,76 +46,87 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-					</tr>
+					<c:forEach var="est" items="${listEstudianteActivo}">
+						<tr>
+							<td><c:out value="${est.matricula}"></c:out></td>
+							<td><c:out value="${est.nombre}"></c:out></td>
+							<td><c:out value="${est.apellido1}"></c:out></td>
+							<td><c:out value="${est.apellido2}"></c:out></td>
+						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
-
 			</div>
 		</div>
-
 
 
 		<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 			<div class="container">
 				<br>
-				<table class="table">
-					<thead class="thead-light">
-					<tr>
-						<th scope="col">Matricula</th>
-						<th scope="col">Nombre</th>
-						<th scope="col">Primer apellido</th>
-						<th scope="col">Segundo apellido</th>
-						<th scope="col">Activar</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td> <button type="button" class="btn btn-danger">Si</button> </td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-						<td> <button type="button" class="btn btn-danger">Si</button> </td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-						<td> <button type="button" class="btn btn-danger">Si</button> </td>
-					</tr>
-					</tbody>
-				</table>
+				<h2>Estudiantes Eliminados</h2>
+				<h6>Da click en el botón del registro del alumno para activarlo.</h6>
+				<hr class="my-3">
+				<form action="${pageContext.request.contextPath}/ListaEstudiantesServlet" method="post">
+					<table class="table table-sm table-hover text-center display responsive nowrap" width="100%" id="tablaDesactivos">
+						<thead class="thead-light">
+						<tr>
+							<th scope="col">Matricula</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Primer apellido</th>
+							<th scope="col">Segundo apellido</th>
+							<th scope="col">Activar</th>
+						</tr>
+						</thead>
+						<tbody>
+						<c:forEach var="est" items="${listEstudianteDesactivo}">
+							<tr>
+								<td><c:out value="${est.matricula}"></c:out></td>
+								<td><c:out value="${est.nombre}"></c:out></td>
+								<td><c:out value="${est.apellido1}"></c:out></td>
+								<td><c:out value="${est.apellido2}"></c:out></td>
+								<td>
+									<button onclick="pregunta()" type="button" class="btn btn-sm bg-danger btn-block text-white">
+										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+										</svg>
+									</button>
+									<button id="enviarForm" type="submit" name="matricula" value="<c:out value="${est.matricula}"></c:out>" hidden></button>
+								</td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>
 
-
-
-
 </div>
-</div><!-- no quitar este contenedor -->
+</div> <!-- no quitar este contenedor -->
+
+<script>
+	function pregunta() {
+		Swal.fire({
+			title: '¿Activar Estudiante?',
+			text: "Podrás ver de nuevo el alumno dentro del sistema",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#6c757d',
+			cancelButtonColor: '#3085d6',
+			confirmButtonText: 'Si, Realizar!'
+		}).then((result) => {
+			if (result.value) {
+				Swal.fire(
+					'Realizado!',
+					'Se efectuo la acción',
+					'success'
+				)
+				setTimeout(function () {
+					document.getElementById("enviarForm").click();
+				},1000)
+			}
+		})
+	}
+</script>
+
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

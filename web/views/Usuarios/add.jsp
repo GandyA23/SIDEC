@@ -6,10 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Cuentas</li>
@@ -21,29 +20,32 @@
     <!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)   -->
 
     <div class="jumbotron text-center bg-white" >
+
+        <button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
+
         <div class=" bg-secondary text-white" style="border-radius: 7px"><b>Cuenta de usuario</b></div> <br>
         <form method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
             <div  class="d-inline-flex p-3 bd-highlight">
-                <input name="cct" class="form-control text-center " type="text" placeholder="CCT" required>
+                <input name="cct" class="form-control text-center" maxlength="15" type="text" placeholder="CCT" required>
             </div>
             <div class="row">
                 <div class="col">
-                    <input name="nombre" type="text" class="form-control text-center " placeholder="Nombre (s)" required>
+                    <input name="nombre" type="text" class="form-control text-center" maxlength="30" placeholder="Nombre(s)" required>
                 </div>
                 <div class="col">
-                    <input name="apellido1" type="text" class="form-control text-center " placeholder="Primer Apellido" required>
+                    <input name="apellido1" type="text" class="form-control text-center" maxlength="15" placeholder="Primer Apellido" required>
                 </div>
                 <div class="col">
-                    <input name="apellido2" type="text" class="form-control text-center " placeholder="Segundo Apellido">
+                    <input name="apellido2" type="text" class="form-control text-center" maxlength="15" placeholder="Segundo Apellido">
                 </div>
             </div>
             <div  class="d-inline-flex p-3 bd-highlight">
                 <div class="form-check form-check-inline">
                     <label class="form-check-label text-secondary"><b>Cargo:</b> </label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="rol" id="radDirector" value="Director" required>
-                    <label class="form-check-label" for="radDirector">Director</label>
+                <div class="form-check form-check-inline" id="ctrDirector5">
+                    <input class="form-check-input" type="radio" name="rol" id="director" value="Director" required>
+                    <label class="form-check-label" for="director">Director</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="rol" id="docente" value="Docente" checked>
@@ -52,15 +54,15 @@
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input name="correo" class="form-control text-center " type="text" placeholder="Correo electrónico" required>
+                <input name="correo" class="form-control text-center" type="email" maxlength="30" placeholder="Correo electrónico" >
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight centro">
-                <input name="password" class="form-control text-center " type="password" placeholder="Contraseña" required>
+                <input name="password" class="form-control text-center " type="text" maxlength="20" placeholder="Contraseña" required>
             </div>
             <br>
             <div  class="d-inline-flex p-2 bd-highlight">
-                <button type="submit" class="btn btn-danger" style="width: 150px" name="accion" value="add">Registrar</button>
+                <button type="submit" class="btn btn-danger" style="width: 150px" name="accion" value="add"><b>Registrar</b></button>
             </div>
         </form>
     </div>

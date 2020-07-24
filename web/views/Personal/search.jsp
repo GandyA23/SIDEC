@@ -19,17 +19,16 @@
 
 <div class="d-flex justify-content-start mx-auto" style="width: 100%" id="page-content-wrapper">
 	<!-- no quitar este contenedor -->
-	<form class="container">
+	<form class="container" method="post" action="<%=request.getContextPath()%>/PersonalServlet">
 		<div style="padding: 1%"></div>
 		<div class="form-row justify-content-around">
 			<div class="col-md-4 bg-gris text-center" style="border-radius: 7px;">
-				<b style="color:white;">Actualizar Estudiante</b>
+				<b style="color:white;">Datos del Estudiante</b>
 			</div>
 			<div class="col-md-7 bg-gris text-center" style="border-radius: 7px;">
 				<b style="color:white">Datos del tutor</b>
 			</div>
 		</div>
-
 		<div class="form-row justify-content-around">
 			<div class="col-md-4">
 				<div>
@@ -48,47 +47,48 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="col-md-7">
 				<div style="padding: 1%"></div>
 				<div class="table-responsive">
 					<table class="table table-sm table-hover">
-
+						<tbody>
+						<c:forEach var="tutor" items="${tutorLista}">
 						<tr>
-
+							<td scope="row" class="font-italic text-left text-secondary">Nombre</td>
+							<td><c:out value="${tutor.nombre}"></c:out></td>
 						</tr>
 						<tr>
-
+							<td scope="row" class="font-italic text-left text-secondary">Primer apellido</td>
+							<td><c:out value="${tutor.apellido1}"></c:out></td>
 						</tr>
 						<tr>
-
+							<td scope="row" class="font-italic text-left text-secondary">Segundo apellido</td>
+							<td><c:out value="${tutor.apellido2}"></c:out></td>
 						</tr>
 						<tr>
-							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Teléfono
-								personal
-							</td>
+							<td scope="row" class="font-italic text-left text-secondary">Teléfono personal</td>
+							<td><c:out value="${tutor.telefonoPersonal}"></c:out></td>
 						</tr>
 						<tr>
-							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Teléfono
-								de trabajo
-							</td>
+							<td scope="row" class="font-italic text-left text-secondary">Teléfono de Trabajo</td>
+							<td><c:out value="${tutor.telefonoTrabajo}"></c:out></td>
 						</tr>
 						<tr>
-							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Correo
-								electrónico
-							</td>
+							<td scope="row" class="font-italic text-left text-secondary">Correo</td>
+							<td><c:out value="${tutor.correo}"></c:out></td>
 						</tr>
 						<tr>
-							<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">Género
-							</td>
+							<td scope="row" class="font-italic text-left text-secondary">Género</td>
+							<td><c:out value="${tutor.genero}"></c:out></td>
 						</tr>
-						<tr>
-							<td></td>
-						</tr>
+						</c:forEach>>
+						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
+
+
 
 		<div style="padding: 1%"></div>
 		<div class="form-row justify-content-around">
@@ -96,7 +96,6 @@
 				<b style="color:white">Datos del alumno</b>
 			</div>
 		</div>
-
 		<div class="col-md-12">
 			<div style="padding: 1%"></div>
 			<div>
@@ -104,45 +103,58 @@
 					<div class="col-md-6">
 						<div class="table-responsive">
 							<table class="table table-sm table-hover">
-								<c:forEach var="alumnoLista" items="${alummoLista}">
+							<tbody>
+								<c:forEach var="alumno" items="${alummoLista}">
 								<tr>
-							<td name="cctBuscado"><c:out value="${alumnoLista.nombre}"></c:out></td>
+									<td scope="row" class="font-italic text-left text-secondary">Matrícula</td>
+									<td><c:out value="${alumno.matricula}"></c:out></td>
 								</tr>
 								<tr>
-							<td name="cctBuscado"><c:out value="${alumnoLista.apellido1}"></c:out></td>
+									<td scope="row" class="font-italic text-left text-secondary">Curp</td>
+									<td><c:out value="${alumno.curp}"></c:out></td>
 								</tr>
 								<tr>
-							<td name="cctBuscado"><c:out value="${alumnoLista.apellido2}"></c:out></td>
+									<td scope="row" class="font-italic text-left text-secondary">Nombre</td>
+									<td><c:out value="${alumno.nombre}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Curp
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Primer apellido</td>
+									<td><c:out value="${alumno.apellido1}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Fecha de nacimiento
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Segundo apellido</td>
+									<td><c:out value="${alumno.apellido2}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Teléfono
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Fecha de nacimiento</td>
+									<td><c:out value="${alumno.fechaNacimiento}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Correo electrónico
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Teléfono</td>
+									<td><c:out value="${alumno.telefono}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Género
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Correo</td>
+									<td><c:out value="${alumno.corre}"></c:out></td>
 								</tr>
 								<tr>
-									<td></td>
+									<td scope="row" class="font-italic text-left text-secondary">Fecha de nacimiento</td>
+									<td><c:out value="${alumno.correo}"></c:out></td>
+								</tr>
+								<tr>
+									<td scope="row" class="font-italic text-left text-secondary">Ciclo escolar</td>
+									<td><c:out value="${alumno.genero}"></c:out></td>
+								</tr>
+								<tr>
+									<td scope="row" class="font-italic text-left text-secondary">Nivel actual</td>
+									<td><c:out value="${alumno.nivelActual}"></c:out></td>
+								</tr>
+								<tr>
+									<td scope="row" class="font-italic text-left text-secondary">Estatus</td>
+									<td><c:out value="${alumno.status}"></c:out></td>
 								</tr>
 								</c:forEach>
+								</tbody>
 							</table>
 						</div>
 					</div>
@@ -150,50 +162,34 @@
 					<div class="col-md-6">
 						<div class="table-responsive">
 							<table class="table table-sm table-hover">
+								<tbody>
+								<c:forEach var="domicilio" items="${domicilioLista}">
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Calle
-									</th>
+									<td scope="row" class="font-italic text-left text-secondary">Calle</td>
+									<td><c:out value="${domicilioLista.calle}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Número exterior
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Noº Interior</td>
+									<td><c:out value="${domicilioLista.noInterior}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Número interior
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Noº Exterior</td>
+									<td><c:out value="${domicilioLista.noExterior}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Código postal
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Colonia</td>
+									<td><c:out value="${domicilioLista.colonia}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Colonia
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">municipio</td>
+									<td><c:out value="${domicilioLista.municipio}"></c:out></td>
 								</tr>
 								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Municipio
-									</td>
+									<td scope="row" class="font-italic text-left text-secondary">Código postal</td>
+									<td><c:out value="${domicilioLista.codigoPostal}"></c:out></td>
 								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Ciclo escolar
-									</td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secundary" style="font-size: 80%">
-										Nivel educativo
-									</td>
-								</tr>
-								<tr>
-									<td></td>
-								</tr>
-
+								</c:forEach>
+								</tbody>
 							</table>
 						</div>
 					</div>

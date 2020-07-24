@@ -16,7 +16,6 @@ import java.util.List;
 public class UsuarioServlet extends HttpServlet {
     private String cct;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
 
@@ -61,8 +60,8 @@ public class UsuarioServlet extends HttpServlet {
                 usuBean.setRol(rol);
 
                 try {
-                    String resultado = usuDao.insertarDatos(usuBean);
-                    System.out.println(resultado);
+                    int respuesta = usuDao.insertarDatos(usuBean);
+                    request.setAttribute("respuestaSMS", respuesta);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -72,13 +71,14 @@ public class UsuarioServlet extends HttpServlet {
 
 
             case "search":
-
                 UsuarioDao usuarioDao =new UsuarioDao();
                 cct = request.getParameter("cct");
-                System.out.println(cct +" "+ accion);
                 try {
                     List<UsuarioBean> usuariosList = usuarioDao.consultarDatos(cct);
                     request.setAttribute("usuariosList", usuariosList);
+                    if(usuariosList == null){
+                        request.setAttribute("respuestaSMS", 0);
+                    }
                     switch (opc){
                         case "1":
                             request.getRequestDispatcher("/views/Usuarios/delete.jsp").forward(request, response);
@@ -90,19 +90,15 @@ public class UsuarioServlet extends HttpServlet {
                             request.getRequestDispatcher("/views/Usuarios/search.jsp").forward(request, response);
                             break;
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
 
-
             case "delete":
-
                 UsuarioDao usDao = new UsuarioDao();
                 try {
-                    usDao.elimiarDatos(cct);
-                    System.out.println("elimino");
+                    int respuesta = usDao.elimiarDatos(cct);
                     request.getRequestDispatcher("/views/Usuarios/delete.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -113,22 +109,13 @@ public class UsuarioServlet extends HttpServlet {
                 UsuarioDao uDao = new UsuarioDao();
                 password = request.getParameter("password");
                 correo = request.getParameter("correo");
-
-
                 nombre = request.getParameter("nombre");
-
-
                 apellido1 = request.getParameter("apellido1");
-
-
                 apellido2= request.getParameter("apellido2");
-
                 rol = request.getParameter("rol");
-                System.out.println(cct+" "+password+ " "+ correo+" "+nombre+" "+apellido1+" "+apellido2+" "+rol
-                );
                 try {
-                    String respuesta = uDao.actualizarDatos(cct,password,correo,nombre,apellido1,apellido2,rol);
-                    System.out.println(respuesta);
+                    int respuesta = uDao.actualizarDatos(cct,password,correo,nombre,apellido1,apellido2,rol);
+
                     request.getRequestDispatcher("/views/Usuarios/update.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();

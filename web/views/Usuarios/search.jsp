@@ -23,14 +23,16 @@
 
     <!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)-->
     <div class="jumbotron text-center bg-white" >
-        <div class="mx-auto" style="width: 35%;">
+        <button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
+
+        <div class="col-md-6 mx-auto">
             <div class="bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de registro</b></div> <br>
             <form class="form-inline" method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
                 <div class="form-group mx-auto">
-                    <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" required>
+                    <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" maxlength="15" required>
                 </div>
                 <div class="form-group mx-auto" style="width: 40%;">
-                    <button type="submit" class="btn btn-danger btn-block" name="accion" value="search:3">BUSCAR</button>
+                    <button type="submit" class="btn btn-danger btn-block" name="accion" value="search:3"><b>Buscar</b></button>
                 </div>
             </form>
         </div>
@@ -64,7 +66,7 @@
                 </tr>
                 <tr>
                     <td scope="row" class="font-italic text-left text-secondary">Contraseña</td>
-                    <td><c:out value="${usuarios.password}"></c:out></td>
+                    <td>******<%--<c:out value="${usuarios.password}"></c:out>--%></td>
                 </tr>
             </c:forEach>
             </tbody>

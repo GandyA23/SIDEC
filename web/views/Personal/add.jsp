@@ -138,7 +138,6 @@
         </div>
 
         <div style="padding: 1%"></div>
-aw
 
         <div class="form-row justify-content-around">
             <div class="col-12 bg-gris text-center" style="border-radius: 7px;"><b style="color:white">
@@ -168,7 +167,7 @@ aw
                             <input type="text" class="form-control form-control-sm text-center" placeholder="Colonia" name="colonia" required maxlength="30">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control form-control-sm text-center" placeholder="Municipio" name="municipio" required maxlength="30" >
+                            <input type="text" class="form-control form-control-sm text-center" placeholder="Municipio" name="municipio" required maxlength="30">
                         </div>
                     </div>
                 </div>

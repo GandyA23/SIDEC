@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="col">
-                    <button type="button" class="btn btn-danger text-center border border-secondary text-white rounded w-100">Buscar</button>
+                    <button type="button" class="btn btn-danger text-center border border-secondary text-white rounded w-100"><b>Buscar</b></button>
                 </div>
 
                 <div class="col"></div>
@@ -45,64 +45,55 @@
     <div class="bg-gris text-center text-white rounded-pill border border-white w-auto"><b>Formación Destacada</b></div>
 
     <table class="table mx-0 my-0 table-hover">
+        <tbody>
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Diplomas</td>
-        </tr>
-
-        <tr>
-            <td id="diplomas"></td>
+            <td></td>
         </tr>
 
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Certificados</td>
-        </tr>
-
-        <tr>
-            <td id="certificados"></td>
+            <td></td>
         </tr>
 
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Reconocimientos</td>
-        </tr>
-
-        <tr>
-            <td id="reconocimientos"></td>
+            <td></td>
         </tr>
 
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Menciones honoríficas</td>
+            <td></td>
         </tr>
-
-        <tr>
-            <td id="menciones"></td>
-        </tr>
+        </tbody>
     </table>
 
     <div class="bg-gris text-center text-white rounded-pill border border-white w-auto"><b>Conducta</b></div>
 
     <table class="table mx-0 my-0 table-hover">
+        <tbody>
+        <%--
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Comportamiento en clase</td>
         </tr>
-<%--
+
         <tr>
             <td id="comportamiento"></td>
         </tr>
 --%>
         <tr>
             <td align="left" class="mx-0 my-0 text-muted">Observaciones</td>
+            <td></td>
         </tr>
 
-        <tr>
-            <td id="observaciones"></td>
-        </tr>
+        </tbody>
     </table>
 
     <form action="eliminarAcademica" method="post" accept-charset="utf-8">
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-danger text-center border border-secondary text-white rounded w-25">Eliminar</button>
+                    <button type="submit" class="btn btn-danger text-center border border-secondary text-white rounded w-25"><b>Eliminar</b></button>
                 </div>
             </div>
         </div>

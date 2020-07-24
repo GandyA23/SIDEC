@@ -7,7 +7,6 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
@@ -22,18 +21,23 @@
 
 	<!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)-->
 	<div class="jumbotron text-center bg-white">
-		<div class="mx-auto" style="width: 35%;">
+		<button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
+		<div class="mx-auto col-md-6">
 			<div class="bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de
 				registro</b></div>
 			<br>
 			<form class="form-inline" method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
-				<div class="form-group mx-auto">
-					<input type="text" class="form-control text-center" id="inputPassword2" name="cct"
-					       placeholder="CCT" required>
-				</div>
-				<div class="form-group mx-auto" style="width: 40%;">
-					<button type="submit" class="btn btn-danger btn-block" name="accion" value="search:1">BUSCAR</button>
-				</div>
+
+					<div class="form-group mx-auto">
+						<input type="text" class="form-control text-center" id="inputPassword2" name="cct"
+						placeholder="CCT" maxlength="15" required>
+					</div>
+					<div class="form-group mx-auto" style="width: 40%;">
+						<button type="submit" class="btn btn-danger btn-block" name="accion" value="search:1">
+							<b>Búscar</b></button>
+					</div>
+
+
 			</form>
 		</div>
 		<br>
@@ -68,22 +72,44 @@
 					</tr>
 					<tr>
 						<td scope="row" class="font-italic text-left text-secondary">Contraseña</td>
-						<td><c:out value="${usuarios.password}"></c:out></td>
+						<td>******<%--<c:out value="${usuarios.password}"></c:out>--%></td>
 					</tr>
 				</c:forEach>
 				</tbody>
 			</table>
 
 			<div class="d-inline-flex p-2 bd-highlight">
-				<button type="submit" class="btn btn-danger" style="width: 150px" name="accion" value="delete">
-					Eliminar
+				<button onclick="pregunta()" type="button" class="btn btn-danger" style="width: 150px"><b>Eliminar</b>
 				</button>
+				<button id="enviarForm" type="submit" name="accion" hidden value="delete"></button>
 			</div>
 		</form>
 	</div>
 
-
 </div>
 <!-- no quitar este contenedor -->
-
+<script>
+	function pregunta() {
+		Swal.fire({
+			title: '¿Realizar Acción?',
+			text: "Los cambios son irreversibles!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#6c757d',
+			cancelButtonColor: '#3085d6',
+			confirmButtonText: 'Si, Realizar!'
+		}).then((result) => {
+			if (result.value) {
+				Swal.fire(
+					'Realizado!',
+					'Se efectuo la acción',
+					'success'
+				)
+				setTimeout(function () {
+					document.getElementById("enviarForm").click();
+				}, 1000)
+			}
+		})
+	}
+</script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

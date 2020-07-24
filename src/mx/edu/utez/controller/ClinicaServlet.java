@@ -86,8 +86,9 @@ public class ClinicaServlet extends HttpServlet {
 					} else {
 						clinicaBean.setDiscapacidades("Ninguna");
 					}
+
 					int respuesta = clinicaDao.insertarDatos(clinicaBean);
-					System.out.println(respuesta);
+					request.setAttribute("respuestaSMS", respuesta);
 					request.getRequestDispatcher("/views/Clinica/add.jsp").forward(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -98,6 +99,9 @@ public class ClinicaServlet extends HttpServlet {
 				try{
 					matricula = request.getParameter("matricula");
 					List<Informacion_ClinicaBean> listClinica = clinicaDao.consultarDatos(matricula);
+					if(listClinica == null){
+						request.setAttribute("respuestaSMS", 0);
+					}
 					request.setAttribute("listClinica", listClinica);
 					switch (opc){
 						case "1":
@@ -127,11 +131,65 @@ public class ClinicaServlet extends HttpServlet {
 
 			case "update":
 				try{
+					clinicaBean.setMatricula(matricula);
+					clinicaBean.setNumeroSeguro(request.getParameter("numeroSeguro"));
+					clinicaBean.setUnidadMedica(request.getParameter("unidadMedica"));
+					clinicaBean.setTipoSangre(request.getParameter("tipoSangre"));
+					clinicaBean.setPeso(request.getParameter("peso"));
+					clinicaBean.setEstatura(request.getParameter("estatura"));
+
+					String diagnostico = request.getParameter("diagPsico");
+					if (diagnostico.isEmpty()) {
+						clinicaBean.setDiagPsico("Ninguno");
+					}else{
+						clinicaBean.setDiagPsico(diagnostico);
+					}
+
+					String opc_cronica = request.getParameter("opc_cronica");
+					if (opc_cronica.equals("si_cronica")) {
+						String cronica1 = request.getParameter("enferCronicas1");
+						String cronica2 = request.getParameter("enferCronicas2");
+						clinicaBean.setEnferCronicas(cronica1 + ":" + cronica2);
+					} else {
+						clinicaBean.setEnferCronicas("Ninguna");
+					}
+
+					String opc_hereditaria = request.getParameter("opc_hereditaria");
+					if (opc_hereditaria.equals("si_hereditaria")) {
+						String hereditaria1 = request.getParameter("enferHereditarias1");
+						String hereditaria2 = request.getParameter("enferHereditarias2");
+						clinicaBean.setEnferHereditarias(hereditaria1 + ":" + hereditaria2);
+					} else {
+						clinicaBean.setEnferHereditarias("Ninguna");
+					}
+
+					String opc_alergia = request.getParameter("opc_alergias");
+					if (opc_alergia.equals("si_alergias")) {
+						String alergia1 = request.getParameter("alergias1");
+						String alergia2 = request.getParameter("alergias2");
+						clinicaBean.setAlergias(alergia1 + ":" + alergia2);
+					} else {
+						clinicaBean.setAlergias("Ninguna");
+					}
+
+					String opc_discapacidad = request.getParameter("opc_discapacidad");
+					if (opc_discapacidad.equals("si_discapacidad")) {
+						String discapacidad1 = request.getParameter("discapacidades1");
+						String discapacidad2 = request.getParameter("discapacidades2");
+						clinicaBean.setDiscapacidades(discapacidad1 + ":" + discapacidad2);
+					} else {
+						clinicaBean.setDiscapacidades("Ninguna");
+					}
+
+					int respuesta = clinicaDao.modificarDatos(clinicaBean);
+					System.out.println(respuesta);
+					request.getRequestDispatcher("/views/Clinica/update.jsp").forward(request, response);
 
 				}catch (Exception e){
 					e.printStackTrace();
 				}
 				break;
+
 		}
 
 	}

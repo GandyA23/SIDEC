@@ -14,25 +14,25 @@ public class Informacion_PersonalDao extends conexion {
     public static String insertarDatos(EstudianteBean alumno, TutorBean tutor, DomicilioBean domicilio){
 
         try{
-            System.out.println("llego hasta la conexion");
 
             String idTutor=null;
             int estado;
+
             PreparedStatement sentencia1 = null;
             PreparedStatement sentencia2 = null;
             PreparedStatement sentencia3 = null;
             PreparedStatement sentencia4 = null;
 
-            System.out.println(alumno.getMatricula()+"''"+alumno.getCurp()+"''"+alumno.getNombre()+"','"+alumno.getApellido1()+"','"+alumno.getApellido2()+"','"+alumno.getFechaNacimiento()+"','"+alumno.getTelefono()+"','"+alumno.getCorreo()+"','"+alumno.getGenero()+"','"+alumno.getCicloEscolar()+"','"+alumno.getNivelActual()+"','"+alumno.getStatus());
             sentencia1 = crearConexion().prepareStatement(
                     "INSERT INTO estudiante values('"+alumno.getMatricula()+"','"+alumno.getCurp()+"','"+alumno.getNombre()+"','"+alumno.getApellido1()+"','"+alumno.getApellido2()+"','"+alumno.getFechaNacimiento()+"','"+alumno.getTelefono()+"','"+alumno.getCorreo()+"','"+alumno.getGenero()+"','"+alumno.getCicloEscolar()+"','"+alumno.getNivelActual()+"','"+alumno.getStatus()+"');"
             );
+
+
             estado = sentencia1.executeUpdate();
             if(estado==1){
                 System.out.println("Se ejecuto el Alumno");
             }
 
-            System.out.println(tutor.getNombre()+"','"+tutor.getApellido1()+"','"+tutor.getApellido2()+"','"+tutor.getTelefonoPersonal()+"','"+tutor.getTelefonoTrabajo()+"','"+tutor.getCorreo()+"','"+tutor.getGenero());
             sentencia2 = crearConexion().prepareStatement(
                     "INSERT INTO tutor values(null,'"+tutor.getNombre()+"','"+tutor.getApellido1()+"','"+tutor.getApellido2()+"','"+tutor.getTelefonoPersonal()+"','"+tutor.getTelefonoTrabajo()+"','"+tutor.getCorreo()+"','"+tutor.getGenero()+"')"
             );
@@ -50,8 +50,6 @@ public class Informacion_PersonalDao extends conexion {
                 System.out.println(idTutor);
             }
 
-
-            System.out.println(domicilio.getMatriculaEstudiante()+"',"+idTutor+",'"+domicilio.getCalle()+"','"+domicilio.getNoExterior()+"','"+domicilio.getNoInterior()+"','"+domicilio.getColonia()+"','"+domicilio.getMunicipio()+"','"+domicilio.getCodigoPostal());
             sentencia4 = crearConexion().prepareStatement(
                     "INSERT  INTO domicilio values('"+domicilio.getMatriculaEstudiante()+"', '"+idTutor+"'  ,'"+domicilio.getCalle()+"','"+domicilio.getNoExterior()+"','"+domicilio.getNoInterior()+"','"+domicilio.getColonia()+"','"+domicilio.getMunicipio()+"','"+domicilio.getCodigoPostal()+"')"
             );
@@ -59,7 +57,7 @@ public class Informacion_PersonalDao extends conexion {
             if(estado==1){
                 System.out.println("Se ejecuto docimilio");
             }
-            return "1";
+            return "Operaciones exitosas";
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -130,7 +128,7 @@ public class Informacion_PersonalDao extends conexion {
         }
         return null;
     }
-    public static String modificarDatos(){
+    public static String modificarDatos(String matricula, String nombre, String apellido1, String apellido2, String genero1, String dia, String mes, String año, String telefono, String correo, String añoInicio, String añoFin, String seleccion, String calle,String interior, String exterior, String codigoPostal, String colonia, String municipio, String tutorNombre, String tutorApellido1,String tutorApellido2, String genero2, String tutorCorreo, String tutorTelefono,String tutorTelTrabajo ){
         return "1";
     }
 }

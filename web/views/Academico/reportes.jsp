@@ -53,7 +53,13 @@
         <div class="row my-3">
             <div class="form-row col mx-4">
                 <label class="mx-2" for="motivo">Motivo:</label>
-                <input class="form-control-sm text-center w-50   border border-secondary" type="text" name="motivo" id="motivo" placeholder="Motivo">
+                <select name="motivo" id="motivo" class="form-control">
+                    <option selected>Seleccione</option>
+                    <option>Conducta</option>
+                    <option>Agresión</option>
+                    <option>Acoso</option>
+                    <option>Otro</option>
+                </select>
             </div>
 
             <div class="form-row col">
@@ -90,7 +96,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-danger text-center text-white rounded w-25">Reportar</button>
+                    <button type="button" class="btn btn-danger text-center text-white rounded w-25"><b>Reportar</b></button>
                 </div>
             </div>
         </div>
