@@ -116,16 +116,14 @@
 
 		<!--Encabezado Usuarios-->
 		<div class=" sidebar-heading text-center">
-		<img id="ctrDocente7" src="${pageContext.request.contextPath}/assets/img/profesor.png" style="width: 30px;
-		height: 30px; position: absolute;"><a></a>
-		<img id="ctrDocente8" src="${pageContext.request.contextPath}/assets/img/jefe.png" style="width: 30px; height:
-		30px; position:relative;"><b id="ctrDocente9" >Usuarios</b>
+		<img id="ctrDocente7" src="${pageContext.request.contextPath}/assets/img/jefe.png" style="width: 30px; height:
+		30px; position:relative;"><b id="ctrDocente8" >Usuarios</b>
 		</div>
 		<!-- ---------------------------------------------------------------------------------- -->
 
 		<!--Grupo de cuentas con sub menú-->
-		<div class="list-group list-group-flush">
-		<a id="ctrDocente10" class="btn btn-danger bg-rojobajo text-left" data-toggle="collapse"
+		<div class="list-group list-group-flush" >
+		<a id="ctrDocente9" class="btn btn-danger bg-rojobajo text-left" data-toggle="collapse"
 		href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample">
 		<img src="${pageContext.request.contextPath}/assets/img/candado.png" style="width: 15%; height: 15%">Cuentas
 		</a>
@@ -143,7 +141,7 @@
 		</div>
 		</div>
 
-		<img style=" border: black 2px solid; width: 100%" src="${pageContext.request.contextPath}/assets/img/iebem.png"
+		<img style="border: #000000 2px solid; width: 100%" src="${pageContext.request.contextPath}/assets/img/iebem.png"
 		alt="Logo IEBEM" >
 
 		</div>

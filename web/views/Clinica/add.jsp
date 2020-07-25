@@ -29,23 +29,24 @@
 					<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos Clínicos</b></p>
 				</div>
 			</div>
-			<div class="row form-group">
+			<div class="row form-group col-md d-inline-flex">
 
-				<div class="col">
+				<div class="col-md">
 					<input type="text" id="mat" name="matricula" class="form-control  text-center"
 					       maxlength="15" placeholder="Matrícula" required>
 				</div>
-				<div class="col">
+				<div class="col-md">
 					<input type="text" name="numeroSeguro" class="form-control  text-center"
 					       maxlength="20" placeholder="Número Seguro Médico" required>
 				</div>
-				<div class="col">
+				<div class="col-md">
 					<input type="text" name="unidadMedica" class="form-control  text-center" placeholder="Unidad médica"
 					       maxlength="10" required>
 				</div>
 			</div>
-			<div class="row form-group">
-				<div class="col">
+			<br>
+			<div class="row form-group col-md d-inline-flex">
+				<div class="col-md">
 					<select name="tipoSangre" class="form-control" required>
 						<option selected>Tipo de sangre</option>
 						<option>A+</option>
@@ -58,16 +59,16 @@
 						<option>AB-</option>
 					</select>
 				</div>
-				<div class="col">
+				<div class="col-md">
 					<input type="number" min="0" step="any" name="peso" class="form-control  text-center"
 					       placeholder="Peso" required>
 				</div>
-				<div class="col">
+				<div class="col-md">
 					<input type="number" min="0" step="any" name="estatura" class="form-control  text-center"
 					       placeholder="Estatura" required>
 				</div>
 			</div>
-			<div class="row form-group">
+			<div class="row form-group col-md d-inline-flex">
 				<div class="col">
 					<textarea class="form-control" name="diagPsico" rows="2"
 					          placeholder="Diagnóstico psicopedagógico"></textarea>
@@ -76,11 +77,11 @@
 			<div class="container-fluid text-center">
 				<div class="row">
 					<div class="col-md">
-						<p class="bg-gris text-white" style=" border-radius: 30px;"><b>Enfermedades</b></p>
+						<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Enfermedades</b></p>
 					</div>
 				</div>
-				<div class="row form-group">
-					<div class="col">
+				<div class="row form-group col-md d-inline-flex">
+					<div class="col-md">
 						<label>Crónicas:</label>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_cronica" id="inlineRadio1"
@@ -93,7 +94,7 @@
 							<label class="form-check-label" for="inlineRadio2">No</label>
 						</div>
 
-						<div class="col">
+						<div class="col-md">
 							<select name="enferCronicas1" class="form-control">
 								<option selected>Seleccione</option>
 								<option>Cardiovasculares</option>
@@ -108,13 +109,12 @@
 								<option>Otro</option>
 							</select>
 						</div>
-						<div class="col">
-                  <textarea class="form-control" name="enferCronicas2" rows="2"
-                            placeholder="Descripción:"></textarea>
+						<div class="col-md">
+							<textarea class="form-control" name="enferCronicas2" rows="2" placeholder="Descripción:"></textarea>
 						</div>
 					</div>
 
-					<div class="col">
+					<div class="col-md">
 						<label>Hereditarias:</label>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_hereditaria" id="inlineRadio3"
@@ -127,7 +127,7 @@
 							<label class="form-check-label" for="inlineRadio4">No</label>
 						</div>
 
-						<div class="col">
+						<div class="col-md">
 							<select name="enferHereditarias1" class="form-control">
 								<option selected>Seleccione</option>
 								<option>Anemia</option>
@@ -139,15 +139,15 @@
 								<option>Otro</option>
 							</select>
 						</div>
-						<div class="col">
+						<div class="col-md">
                   <textarea class="form-control" name="enferHereditarias2"
                             rows="2" placeholder="Descripción:"></textarea>
 						</div>
 					</div>
 				</div>
 				<br>
-				<div class="row form-group">
-					<div class="col">
+				<div class="row form-group col-md d-inline-flex">
+					<div class="col-md">
 						<label>Alergías:</label>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio5"
@@ -160,7 +160,7 @@
 							<label class="form-check-label" for="inlineRadio6">No</label>
 						</div>
 
-						<div class="col">
+						<div class="col-md">
 							<select name="alergias1" class="form-control">
 								<option selected>Seleccione</option>
 								<option>Ácaros</option>
@@ -174,12 +174,12 @@
 								<option>Otro</option>
 							</select>
 						</div>
-						<div class="col">
+						<div class="col-md">
                   <textarea class="form-control" name="alergias2" rows="2"
                             placeholder="Descripción:"></textarea>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col-md">
 						<label>Discapacidad:</label>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_discapacidad" id="inlineRadio7"
@@ -192,7 +192,7 @@
 							<label class="form-check-label" for="inlineRadio8">No</label>
 						</div>
 
-						<div class="col">
+						<div class="col-md">
 							<select name="discapacidades1" id="inputState" class="form-control">
 								<option selected>Seleccione</option>
 								<option>Física</option>
@@ -202,7 +202,7 @@
 								<option>Otro</option>
 							</select>
 						</div>
-						<div class="col">
+						<div class="col-md">
 							<textarea class="form-control" name="discapacidades2" id="exampleFormControlTextarea1"
 							          rows="2" placeholder="Descripción:"></textarea>
 						</div>

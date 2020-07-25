@@ -115,7 +115,6 @@ public class UsuarioServlet extends HttpServlet {
                 rol = request.getParameter("rol");
                 try {
                     int respuesta = uDao.actualizarDatos(cct,password,correo,nombre,apellido1,apellido2,rol);
-
                     request.getRequestDispatcher("/views/Usuarios/update.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();

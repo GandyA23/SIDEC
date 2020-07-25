@@ -5,13 +5,6 @@ import java.sql.DriverManager;
 
 public class conexion {
 
-    public static String contraEncript(){
-        final String PASSENCRYPT="ALGO";
-        return PASSENCRYPT;
-    }
-
-
-
     public static Connection crearConexion(){
         Connection con = null;
         String url = "jdbc:mysql://localhost:3306/sidec";

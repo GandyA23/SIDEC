@@ -50,6 +50,7 @@ public class ControlDao extends conexion {
 
 	public void statusEstudiante(String matricula) {
 		try {
+			System.out.println(matricula);
 			PreparedStatement pst = crearConexion().prepareStatement("UPDATE estudiante SET Status = 1 WHERE Matricula = '"+matricula+"'");
 			pst.executeUpdate();
 		} catch (SQLException e) {

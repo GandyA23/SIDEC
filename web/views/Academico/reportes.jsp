@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
@@ -17,90 +17,70 @@
     </ol>
 </nav>
 
-<div class="text-center bg-white mx-4 my-4 px-4 py-4">
-    <form action="ingresarAcademico" method="post" accept-charset="utf-8">
+<div class="container" id="page-content-wrapper">
+    <div class="container text-center bg-white">
+        <button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
+        <br>
         <div class="row">
-            <div class="col">
-                <div class="bg-gris text-center text-white   border border-white w-auto"><b>Reporte</b></div>
+            <div class="col-md">
+                <p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Reporte</b></p>
             </div>
         </div>
-
-        <div class="my-3 row"></div>
-
-        <div class="row">
-            <div class="col">
-                <label class="mx-2" for="matricula">Alumno:</label>
-                <input class="form-control-sm text-center w-50   my-2 border border-secondary" type="text" name="matricula" id="matricula" placeholder="Matrícula">
-            </div>
-
-            <div class="col my-2">
-                <label for="folio">Folio:</label>
-            </div>
-
-            <div id="folio" class="col my-2">Número</div>
-        </div>
-
-        <div class="row">
-            <div class="col"></div>
-
-            <div class="col my-0">
-                <label for="realizado">Realizado por:</label>
-            </div>
-
-            <div id="realizado" class="col my-0">[CCT/ROL]</div>
-        </div>
-
-        <div class="row my-3">
-            <div class="form-row col mx-4">
-                <label class="mx-2" for="motivo">Motivo:</label>
-                <select name="motivo" id="motivo" class="form-control">
-                    <option selected>Seleccione</option>
-                    <option>Conducta</option>
-                    <option>Agresión</option>
-                    <option>Acoso</option>
-                    <option>Otro</option>
-                </select>
-            </div>
-
-            <div class="form-row col">
-                <div class="col">Fecha: </div>
-
-                <div class="col">
-                    <input class="form-control-sm text-center w-75   border border-secondary" type="text" name="year" id="year" placeholder="Año">
+        <form action="">
+            <div class="row form-group d-inline-flex">
+                <div class="col-md">
+                    <label class="mx-2" for="matricula">Alumno:</label>
+                    <input class="form-control  text-center" type="text" id="matricula" name="matricula" maxlength="15" placeholder="Matrícula" required>
                 </div>
-
-                <div class="col">
-                    <input class="form-control-sm text-center w-75   border border-secondary" type="text" name="month" id="month" placeholder="Mes">
+                <div class="col-md">
+                    <label class="mx-2" for="folio">Folio:</label>
+                    <input class="form-control  text-center" type="number" id="folio" name="folio" maxlength="15" placeholder="No." readonly>
                 </div>
-
-                <div class="col">
-                    <input class="form-control-sm text-center w-75   border border-secondary" type="text" name="day" id="day" placeholder="Día">
+                <div class="col-md">
+                    <label class="mx-2" for="realizado">Realizado:</label>
+                    <input class="form-control  text-center" type="number" id="realizado" name="realizado" maxlength="15" placeholder="CCT/ROL" readonly>
                 </div>
             </div>
-        </div>
+            <br>
+            <div class="row form-group d-inline-flex">
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col">
-                    <textarea class="form-control rounded mt-3" name="descripcion" placeholder="Descripción"></textarea>
+                <div class="col-md">
+                    <label class="mx-2" for="motivo">Motivo:</label>
+                    <select name="motivo" id="motivo" class="form-control" required>
+                        <option selected>Seleccione</option>
+                        <option>Conducta</option>
+                        <option>Agresión</option>
+                        <option>Acoso</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+
+                <div class="col-md">
+                    <label class="mx-2" for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" placeholder="Fecha" required>
+                </div>
+            </div>
+            <br>
+
+            <div class="row form-group col-md d-inline-flex">
+                <div class="col-md">
+                    <textarea class="form-control" rows="2"  ame="descripcion" placeholder="Descripción" required></textarea>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <textarea class="form-control rounded mt-3" name="canalizacion" placeholder="Canalización"></textarea>
+            <div class="row form-group col-md d-inline-flex">
+                <div class="col-md">
+                    <textarea class="form-control" rows="2" name="canalizacion" placeholder="Canalización" required></textarea>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="row">
-                <div class="col">
-                    <button type="button" class="btn btn-danger text-center text-white rounded w-25"><b>Reportar</b></button>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-4">
+                    <button type="submit" class="btn bg-danger btn-block text-white" name="accion" value="report"><b>Reportar</b></button>
                 </div>
             </div>
-        </div>
-    </form>
+
+        </form>
+    </div>
 </div>
-
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

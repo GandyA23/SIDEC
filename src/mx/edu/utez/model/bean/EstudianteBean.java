@@ -8,7 +8,7 @@ public class EstudianteBean {
     private String nombre;
     private String apellido1;
     private String apellido2;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String telefono;
     private String correo;
     private String genero;
@@ -19,7 +19,7 @@ public class EstudianteBean {
     public EstudianteBean() {
     }
 
-    public EstudianteBean(String matricula, String curp, String nombre, String apellido1, String apellido2, Date fechaNacimiento, String telefono, String correo, String genero, String cicloEscolar, String nivelActual, int status) {
+    public EstudianteBean(String matricula, String curp, String nombre, String apellido1, String apellido2, String fechaNacimiento, String telefono, String correo, String genero, String cicloEscolar, String nivelActual) {
         this.matricula = matricula;
         this.curp = curp;
         this.nombre = nombre;
@@ -31,7 +31,6 @@ public class EstudianteBean {
         this.genero = genero;
         this.cicloEscolar = cicloEscolar;
         this.nivelActual = nivelActual;
-        this.status = status;
     }
 
     public String getMatricula() {
@@ -74,11 +73,11 @@ public class EstudianteBean {
         this.apellido2 = apellido2;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

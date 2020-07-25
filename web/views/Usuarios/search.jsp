@@ -19,25 +19,30 @@
     </ol>
 </nav>
 
-<div id="page-content-wrapper"><!-- no quitar este contenedor -->
+<div class="container" id="page-content-wrapper"><!-- no quitar este contenedor -->
 
     <!-- LO QUE SE MOSTRARA EN LA PAGINA  (borra esta parte hasta el final del div)-->
-    <div class="jumbotron text-center bg-white" >
+    <div class="container jumbotron text-center bg-white" >
         <button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
 
-        <div class="col-md-6 mx-auto">
-            <div class="bg-secondary text-white text-center row-center" style="border-radius: 7px;"><b>Búsqueda de registro</b></div> <br>
+        <div class="row">
+            <div class="col-md">
+                <p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Búsqueda de registro</b></p>
+            </div>
+        </div>
             <form class="form-inline" method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
                 <div class="form-group mx-auto">
-                    <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" maxlength="15" required>
-                </div>
-                <div class="form-group mx-auto" style="width: 40%;">
-                    <button type="submit" class="btn btn-danger btn-block" name="accion" value="search:3"><b>Buscar</b></button>
+                    <div class="col">
+                        <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" maxlength="15" required>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-danger btn-block" name="accion" value="search:3"><b>Búscar</b></button>
+                    </div>
                 </div>
             </form>
         </div>
         <br>
-        <div class="bg-secondary text-white " style="border-radius: 7px"><b>Datos del usuario</b></div> <br>
+        <div class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos del usuario</b></div> <br>
         <table class="table table-hover">
             <tbody >
             <c:forEach var="usuarios" items="${usuariosList}">

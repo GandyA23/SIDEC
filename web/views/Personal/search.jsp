@@ -81,14 +81,12 @@
 							<td scope="row" class="font-italic text-left text-secondary">Género</td>
 							<td><c:out value="${tutor.genero}"></c:out></td>
 						</tr>
-						</c:forEach>>
+						</c:forEach>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
-
-
 
 		<div style="padding: 1%"></div>
 		<div class="form-row justify-content-around">
@@ -104,7 +102,7 @@
 						<div class="table-responsive">
 							<table class="table table-sm table-hover">
 							<tbody>
-								<c:forEach var="alumno" items="${alummoLista}">
+								<c:forEach var="alumno" items="${alumnoLista}">
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Matrícula</td>
 									<td><c:out value="${alumno.matricula}"></c:out></td>
@@ -135,23 +133,19 @@
 								</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Correo</td>
-									<td><c:out value="${alumno.corre}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Fecha de nacimiento</td>
 									<td><c:out value="${alumno.correo}"></c:out></td>
 								</tr>
+									<tr>
+										<td scope="row" class="font-italic text-left text-secondary">Género</td>
+										<td><c:out value="${alumno.genero}"></c:out></td>
+									</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Ciclo escolar</td>
-									<td><c:out value="${alumno.genero}"></c:out></td>
+									<td><c:out value="${alumno.cicloEscolar}"></c:out></td>
 								</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Nivel actual</td>
 									<td><c:out value="${alumno.nivelActual}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Estatus</td>
-									<td><c:out value="${alumno.status}"></c:out></td>
 								</tr>
 								</c:forEach>
 								</tbody>
@@ -166,27 +160,27 @@
 								<c:forEach var="domicilio" items="${domicilioLista}">
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Calle</td>
-									<td><c:out value="${domicilioLista.calle}"></c:out></td>
+									<td><c:out value="${domicilio.calle}"></c:out></td>
 								</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Noº Interior</td>
-									<td><c:out value="${domicilioLista.noInterior}"></c:out></td>
+									<td><c:out value="${domicilio.noInterior}"></c:out></td>
 								</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Noº Exterior</td>
-									<td><c:out value="${domicilioLista.noExterior}"></c:out></td>
+									<td><c:out value="${domicilio.noExterior}"></c:out></td>
 								</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Colonia</td>
-									<td><c:out value="${domicilioLista.colonia}"></c:out></td>
+									<td><c:out value="${domicilio.colonia}"></c:out></td>
 								</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">municipio</td>
-									<td><c:out value="${domicilioLista.municipio}"></c:out></td>
+									<td><c:out value="${domicilio.municipio}"></c:out></td>
 								</tr>
 								<tr>
 									<td scope="row" class="font-italic text-left text-secondary">Código postal</td>
-									<td><c:out value="${domicilioLista.codigoPostal}"></c:out></td>
+									<td><c:out value="${domicilio.codigoPostal}"></c:out></td>
 								</tr>
 								</c:forEach>
 								</tbody>

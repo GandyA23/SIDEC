@@ -5,6 +5,7 @@
   Time: 09:47 a. m.
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,7 @@
     </head>
 
     <body>
+
         <div class="d-flex align-items-center justify-content-center m-4 mx-auto">
             <div class=" row d-flex bg-redDark align-items-center justify-content-center mx-auto" style="height: 50%; width: 75%; border-radius: 30px;">
                 <div class="col-sm-7 m-3 d-flex justify-content-center p-4 mx-auto" style="height: 45%; width: 90%; border-radius: 30px;">
@@ -82,7 +84,7 @@
                             <button type="submit" value="Login" class="btn btn-danger btn-sm btn-block" style="border-radius:10px; color: white">Ingresar</button>
                         </div>
                     </form>
-
+                    <button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
                 </div>
             </div>
         </div>
@@ -93,6 +95,20 @@
                 información pública gubernamental y demás disposiciones aplicables.</h6>
         </footer>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        (function () {
+            var doc = document.getElementById("mostrarSMS").value;
+            if(doc == 'NO')
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error de Inicio de Sesión!',
+                    text: 'Verifique bien los datos',
+                })
+        }())
+
+
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

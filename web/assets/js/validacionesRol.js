@@ -1,22 +1,18 @@
-
 (function () {
 	let ctrRol = document.getElementById("mostrarRol").outerText;
-	switch (ctrRol) {
-		case "Director":
-			for (var i = 1; i <= 6; i++) {
-				var ctrl = `ctrDirector${i}`;
-				document.getElementById(ctrl).style.display = "none";
-			}
-			break;
-		case "Docente":
-			for (var i = 1; i <= 6; i++) {
-				var ctrl = `ctrDirector${i}`;
-				document.getElementById(ctrl).style.display = "none";
-			}
-			for (var i = 1; i <= 10; i++) {
-				var ctrl = `ctrDocente${i}`;
-				document.getElementById(ctrl).style.display = "none";
-			}
-			break;
+	if (ctrRol == "Director") {
+		for (var i = 1; i <= 4; i++) {
+			document.getElementById(`ctrDirector${i}`).style.display = 'none';
+		}
+	} else if (ctrRol == "Docente") {
+		for (var i = 1; i <= 4; i++) {
+			document.getElementById(`ctrDirector${i}`).style.display = 'none';
+		}
+		for (var i = 1; i <= 9; i++) {
+			document.getElementById(`ctrDocente${i}`).style.display = 'none';
+		}
+		document.getElementById("nav-profile-tab").style.display = 'none';
+
+
 	}
 }())

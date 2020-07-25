@@ -27,12 +27,12 @@
 		</footer>
 
 		<!---------------------------------------------------------------------------------------->
+		<script src="${pageContext.request.contextPath}/assets/js/validacionesRol.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 
 		<script src="${pageContext.request.contextPath}/assets/css/jquery/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="${pageContext.request.contextPath}/assets/js/validacionesRol.js"></script>
 
 		<script type="text/javascript" charset="utf8"
 		src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
@@ -65,5 +65,9 @@
 		});
 
 		</script>
+
+
+
+
 		</body>
 		</html>

@@ -27,6 +27,7 @@ public class LoginServlet extends HttpServlet {
 
             if(usuarioWeb == null){
                 System.out.println("Error de sesion");
+                request.setAttribute("respuestaSMS", "NO");
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
             else if (usuarioWeb.getRol().equals("Administrador")){

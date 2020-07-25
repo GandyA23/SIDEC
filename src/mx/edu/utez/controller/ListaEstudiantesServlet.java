@@ -29,15 +29,14 @@ public class ListaEstudiantesServlet extends HttpServlet {
 
 	private void listEstudiantes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String matricula = request.getParameter("matricula");
-		if(matricula != null){
+		System.out.println(matricula);
+		if(matricula != null)
 			controlDao.statusEstudiante(matricula);
-		}
 
 		List<ControlBean> listEstudianteActivo = controlDao.seleccionarTodosEstudiantesActivos();
 		request.setAttribute("listEstudianteActivo",listEstudianteActivo);
 		List<ControlBean> listEstudianteDesactivo = controlDao.seleccionarTodosEstudiantesDesactivos();
 		request.setAttribute("listEstudianteDesactivo",listEstudianteDesactivo);
-
 		request.getRequestDispatcher("/views/Personal/xcontrol.jsp").forward(request,response);
 	}
 
