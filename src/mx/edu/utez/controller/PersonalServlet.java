@@ -44,22 +44,18 @@ public class PersonalServlet extends HttpServlet {
 		switch (listener) {
 			case "añadir":
 				try{
-					//DATOS DEL ESTUDIANTE
 					alumno.setMatricula(request.getParameter("matricula"));
 					alumno.setCurp(request.getParameter("curp"));
 					alumno.setNombre(request.getParameter("nombre"));
 					alumno.setApellido1(request.getParameter("apellido1"));
 					alumno.setApellido2(request.getParameter("apellido2"));
 					alumno.setGenero(request.getParameter("genero1"));
-					String fechaDeNacimeinto = request.getParameter("año") + "-" + request.getParameter("mes") + "-" + request.getParameter("dia");
-					alumno.setFechaNacimiento(fechaDeNacimeinto);
+					alumno.setFechaNacimiento(request.getParameter("fechaDeNacimeinto"));
 					alumno.setTelefono(request.getParameter("telefono"));
 					alumno.setCorreo(request.getParameter("correo"));
 					alumno.setCicloEscolar(request.getParameter("añoInicio") + "-" + request.getParameter("añoFin"));
 					alumno.setNivelActual(request.getParameter("seleccion"));
 					alumno.setStatus(1);
-
-					//DATOS DEL DOMICILIO
 					domicilio.setMatriculaEstudiante(request.getParameter("matricula"));
 					domicilio.setCalle(request.getParameter("calle"));
 					domicilio.setNoInterior(request.getParameter("interior"));
@@ -67,9 +63,6 @@ public class PersonalServlet extends HttpServlet {
 					domicilio.setCodigoPostal(request.getParameter("codigoPostal"));
 					domicilio.setColonia(request.getParameter("colonia"));
 					domicilio.setMunicipio(request.getParameter("municipio"));
-
-					//DATOS DEL TUTOR
-
 					tutor.setNombre(request.getParameter("tutorNombre"));
 					tutor.setApellido1(request.getParameter("tutorApellido1"));
 					tutor.setApellido2(request.getParameter("tutorApellido2"));
@@ -77,16 +70,13 @@ public class PersonalServlet extends HttpServlet {
 					tutor.setCorreo(request.getParameter("tutorCorreo"));
 					tutor.setTelefonoPersonal(request.getParameter("tutorTelefono"));
 					tutor.setTelefonoTrabajo(request.getParameter("tutorTelTrabajo"));
-
 					int respuesta = personalDao.insertarDatos(alumno, tutor, domicilio);
 					request.setAttribute("respuestaSMS", respuesta);
-					System.out.println(respuesta);
 					request.getRequestDispatcher("/views/Personal/add.jsp").forward(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				break;
-
 
 			case "eliminar":
 				try{
@@ -100,14 +90,12 @@ public class PersonalServlet extends HttpServlet {
 			case "buscar":
 				try{
 					matricula = request.getParameter("matricula");
-
 					List<EstudianteBean> alumnoLista  = personalDao.datosEstudiante(matricula);
-					System.out.println("alumnoLista");
 					List<DomicilioBean> domicilioLista = personalDao.datosDomicilio(matricula);
-					System.out.println("domicilioLista");
 					List<TutorBean> tutorLista = personalDao.datosTutor();
-					System.out.println("tutorLista");
-
+					if(alumnoLista == null && domicilioLista == null && tutorLista == null){
+						request.setAttribute("respuestaSMS", 0);
+					}
 					request.setAttribute("alumnoLista",alumnoLista);
 					request.setAttribute("tutorLista",tutorLista);
 					request.setAttribute("domicilioLista",domicilioLista);
@@ -127,10 +115,33 @@ public class PersonalServlet extends HttpServlet {
 				}
 				break;
 			case "actualizar":
-				Informacion_PersonalDao dataAccess3 = new Informacion_PersonalDao();
-
 				try{
-				    String estado = dataAccess3.modificarDatos(request.getParameter("matricula"), request.getParameter("nombre"),request.getParameter("apellido1"), request.getParameter("apellido2"),request.getParameter("genero1"),request.getParameter("dia"),request.getParameter("mes"),request.getParameter("año"), request.getParameter("telefono"),request.getParameter("correo"), request.getParameter("añoInicio"), request.getParameter("añoFin"), request.getParameter("seleccion"), request.getParameter("calle "), request.getParameter("interior"), request.getParameter("exterior"), request.getParameter("codigoPostal"), request.getParameter("colonia"), request.getParameter("municipio"), request.getParameter("tutorNombre"), request.getParameter("tutorApellido1"), request.getParameter("tutorApellido2"), request.getParameter("genero2"),request.getParameter("tutorCorreo"), request.getParameter("tutorTelefono"),request.getParameter("tutorTelTrabajo"));
+					alumno.setMatricula(matricula);
+					alumno.setCurp(request.getParameter("curp"));
+					alumno.setNombre(request.getParameter("nombre"));
+					alumno.setApellido1(request.getParameter("apellido1"));
+					alumno.setApellido2(request.getParameter("apellido2"));
+					alumno.setGenero(request.getParameter("genero1"));
+					alumno.setFechaNacimiento(request.getParameter("fechaDeNacimeinto"));
+					alumno.setTelefono(request.getParameter("telefono"));
+					alumno.setCorreo(request.getParameter("correo"));
+					alumno.setCicloEscolar(request.getParameter("cicloEscolar"));
+					alumno.setNivelActual(request.getParameter("seleccion"));
+					domicilio.setCalle(request.getParameter("calle"));
+					domicilio.setNoInterior(request.getParameter("interior"));
+					domicilio.setNoExterior(request.getParameter("exterior"));
+					domicilio.setCodigoPostal(request.getParameter("codigoPostal"));
+					domicilio.setColonia(request.getParameter("colonia"));
+					domicilio.setMunicipio(request.getParameter("municipio"));
+					tutor.setNombre(request.getParameter("tutorNombre"));
+					tutor.setApellido1(request.getParameter("tutorApellido1"));
+					tutor.setApellido2(request.getParameter("tutorApellido2"));
+					tutor.setGenero(request.getParameter("genero2"));
+					tutor.setCorreo(request.getParameter("tutorCorreo"));
+					tutor.setTelefonoPersonal(request.getParameter("tutorTelefono"));
+					tutor.setTelefonoTrabajo(request.getParameter("tutorTelTrabajo"));
+					personalDao.modificarDatos(alumno,domicilio,tutor);
+					request.getRequestDispatcher("/views/Personal/update.jsp").forward(request, response);
 				}catch(Exception e){
 					e.printStackTrace();
 				}

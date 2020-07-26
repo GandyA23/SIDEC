@@ -17,181 +17,165 @@
 	</ol>
 </nav>
 
-<div class="d-flex justify-content-start mx-auto" style="width: 100%" id="page-content-wrapper">
-	<!-- no quitar este contenedor -->
-	<form class="container" method="post" action="<%=request.getContextPath()%>/PersonalServlet">
-		<div style="padding: 1%"></div>
-		<div class="form-row justify-content-around">
-			<div class="col-md-4 bg-gris text-center" style="border-radius: 7px;">
-				<b style="color:white;">Datos del Estudiante</b>
-			</div>
-			<div class="col-md-7 bg-gris text-center" style="border-radius: 7px;">
-				<b style="color:white">Datos del tutor</b>
+<div class="container" id="page-content-wrapper"><!-- no quitar este contenedor -->
+	<div class="container">
+		<button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
+
+		<div class="row">
+			<div class="col-md">
+				<p class="bg-gris text-white text-center" style="border-radius: 30px;"><b>Búsqueda de Registro</b></p>
 			</div>
 		</div>
-		<div class="form-row justify-content-around">
-			<div class="col-md-4">
-				<div>
-					<div style="padding: 2%"></div>
-					<div class="form-row justify-content-center">
-						<img src="${pageContext.request.contextPath}/assets/img/user5.png"
-						     style="width: 40%;height: 100%">
+		<div class="row d-flex justify-content-center">
+			<form action="<%=request.getContextPath()%>/PersonalServlet" method="post">
+				<div class="row form-group">
+					<div class="col">
+						<input type="text" class="form-control text-center" placeholder="Matrícula"  maxlength="15" name="matricula" required>
 					</div>
-					<div>
-						<div style="padding: 1%"></div>
-						<input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula" name="matricula">
-					</div>
-					<div style="padding: 2%"></div>
-					<div class="form-row justify-content-center">
-						<button type="submit" class="btn btn-primary bg-danger" name="listener" value="buscar:3" style="width: 50%">Buscar</button>
+					<div class="col-md-4">
+						<button type="submit" class="btn bg-danger btn-block text-white" name="listener" value="buscar:3"><b>Buscar</b></button>
 					</div>
 				</div>
+			</form>
+			<div class="col-md-3">
+				<button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal" data-target="#exampleModal">Ver foto</button>
 			</div>
-			<div class="col-md-7">
-				<div style="padding: 1%"></div>
-				<div class="table-responsive">
-					<table class="table table-sm table-hover">
-						<tbody>
-						<c:forEach var="tutor" items="${tutorLista}">
-						<tr>
-							<td scope="row" class="font-italic text-left text-secondary">Nombre</td>
-							<td><c:out value="${tutor.nombre}"></c:out></td>
-						</tr>
-						<tr>
-							<td scope="row" class="font-italic text-left text-secondary">Primer apellido</td>
-							<td><c:out value="${tutor.apellido1}"></c:out></td>
-						</tr>
-						<tr>
-							<td scope="row" class="font-italic text-left text-secondary">Segundo apellido</td>
-							<td><c:out value="${tutor.apellido2}"></c:out></td>
-						</tr>
-						<tr>
-							<td scope="row" class="font-italic text-left text-secondary">Teléfono personal</td>
-							<td><c:out value="${tutor.telefonoPersonal}"></c:out></td>
-						</tr>
-						<tr>
-							<td scope="row" class="font-italic text-left text-secondary">Teléfono de Trabajo</td>
-							<td><c:out value="${tutor.telefonoTrabajo}"></c:out></td>
-						</tr>
-						<tr>
-							<td scope="row" class="font-italic text-left text-secondary">Correo</td>
-							<td><c:out value="${tutor.correo}"></c:out></td>
-						</tr>
-						<tr>
-							<td scope="row" class="font-italic text-left text-secondary">Género</td>
-							<td><c:out value="${tutor.genero}"></c:out></td>
-						</tr>
-						</c:forEach>
-						</tbody>
-					</table>
+		</div>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Foto estudiante</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<img class="img-thumbnail" src="" alt="">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div style="padding: 1%"></div>
-		<div class="form-row justify-content-around">
-			<div class="col-12 bg-gris text-center" style="border-radius: 7px;">
-				<b style="color:white">Datos del alumno</b>
-			</div>
-		</div>
-		<div class="col-md-12">
-			<div style="padding: 1%"></div>
-			<div>
-				<div class="form-row justify-content-center">
-					<div class="col-md-6">
-						<div class="table-responsive">
-							<table class="table table-sm table-hover">
-							<tbody>
-								<c:forEach var="alumno" items="${alumnoLista}">
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Matrícula</td>
-									<td><c:out value="${alumno.matricula}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Curp</td>
-									<td><c:out value="${alumno.curp}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Nombre</td>
-									<td><c:out value="${alumno.nombre}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Primer apellido</td>
-									<td><c:out value="${alumno.apellido1}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Segundo apellido</td>
-									<td><c:out value="${alumno.apellido2}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Fecha de nacimiento</td>
-									<td><c:out value="${alumno.fechaNacimiento}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Teléfono</td>
-									<td><c:out value="${alumno.telefono}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Correo</td>
-									<td><c:out value="${alumno.correo}"></c:out></td>
-								</tr>
-									<tr>
-										<td scope="row" class="font-italic text-left text-secondary">Género</td>
-										<td><c:out value="${alumno.genero}"></c:out></td>
-									</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Ciclo escolar</td>
-									<td><c:out value="${alumno.cicloEscolar}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Nivel actual</td>
-									<td><c:out value="${alumno.nivelActual}"></c:out></td>
-								</tr>
-								</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="table-responsive">
-							<table class="table table-sm table-hover">
-								<tbody>
-								<c:forEach var="domicilio" items="${domicilioLista}">
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Calle</td>
-									<td><c:out value="${domicilio.calle}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Noº Interior</td>
-									<td><c:out value="${domicilio.noInterior}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Noº Exterior</td>
-									<td><c:out value="${domicilio.noExterior}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Colonia</td>
-									<td><c:out value="${domicilio.colonia}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">municipio</td>
-									<td><c:out value="${domicilio.municipio}"></c:out></td>
-								</tr>
-								<tr>
-									<td scope="row" class="font-italic text-left text-secondary">Código postal</td>
-									<td><c:out value="${domicilio.codigoPostal}"></c:out></td>
-								</tr>
-								</c:forEach>
-								</tbody>
-							</table>
-						</div>
+		<div class="row">
+			<div class="col-md">
+				<div class="row">
+					<div class="col-md">
+						<p class="bg-gris text-white text-center" style="border-radius: 30px;"><b>Datos del estudiante</b></p>
 					</div>
 				</div>
+				<table class="table font-italic text-dark table-hover">
+					<tbody>
+					<c:forEach var="alumno" items="${alumnoLista}">
+						<tr>
+							<td scope="row">Matrícula</td><td><c:out value="${alumno.matricula}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row">CURP</td><td><c:out value="${alumno.curp}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Nombre</td><td><c:out value="${alumno.nombre}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Primer apellido</td><td><c:out value="${alumno.apellido1}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Segundo apellido</td><td><c:out value="${alumno.apellido2}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Fecha de nacimiento</td><td><c:out value="${alumno.fechaNacimiento}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Teléfono</td><td><c:out value="${alumno.telefono}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Correo</td><td><c:out value="${alumno.correo}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Género</td><td><c:out value="${alumno.genero}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row"  >Ciclo escolar</td><td><c:out value="${alumno.cicloEscolar}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row"  >Nivel actual</td><td><c:out value="${alumno.nivelActual}"></c:out></td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md">
+				<div class="row">
+					<div class="col-md">
+						<p class="bg-gris text-white text-center" style="border-radius: 30px;"><b>Datos del tutor</b></p>
+					</div>
+				</div>
+				<table class="table font-italic text-dark table-hover">
+					<tbody>
+					<c:forEach var="tutor" items="${tutorLista}">
+						<tr>
+							<td scope="row">Nombre</td><td><c:out value="${tutor.nombre}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Primer apellido</td><td><c:out value="${tutor.apellido1}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row">Segundo apellido</td><td><c:out value="${tutor.apellido2}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Teléfono personal</td><td><c:out value="${tutor.telefonoPersonal}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Teléfono de trabajo</td><td><c:out value="${tutor.telefonoTrabajo}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Correo</td><td><c:out value="${tutor.correo}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Género</td><td><c:out value="${tutor.genero}"></c:out></td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md">
+				<div class="row">
+					<div class="col-md">
+						<p class="bg-gris text-white text-center" style="border-radius: 30px;"><b>Datos de domicilio</b></p>
+					</div>
+				</div>
+				<table class="table font-italic text-dark table-hover">
+					<tbody>
+					<c:forEach var="domicilio" items="${domicilioLista}">
+						<tr>
+							<td scope="row" >Calle</td><td><c:out value="${domicilio.calle}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Noº Interior</td><td><c:out value="${domicilio.noInterior}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Noº Exterior</td><td><c:out value="${domicilio.noExterior}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Colonia</td><td><c:out value="${domicilio.colonia}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Municipio</td><td><c:out value="${domicilio.municipio}"></c:out></td>
+						</tr>
+						<tr>
+							<td scope="row" >Código postal</td><td><c:out value="${domicilio.codigoPostal}"></c:out></td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
-	</form>
+
+	</div>
 </div>
-</div><!-- no quitar este contenedor -->
 
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

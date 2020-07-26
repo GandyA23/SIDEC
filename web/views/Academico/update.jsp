@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <form action="" method="post">
+            <form action="${pageContext.request.contextPath}/AcademicoServlet" method="post">
                 <div class="row form-group">
                     <div class="col">
                         <input type="text" name="matricula" class="form-control  text-center" maxlength="15" placeholder="Matrícula" required>
@@ -43,7 +43,7 @@
         </div>
         <br>
 
-        <form action="">
+        <form action="${pageContext.request.contextPath}/AcademicoServlet" method="post">
             <div  class="row form-group col-md-4 d-inline-flex">
                 <input type="text" name="matricula" class="form-control  text-center" maxlength="15" placeholder="Matrícula" readonly>
             </div>
@@ -94,10 +94,16 @@
                     <textarea class="form-control rounded mt-3" name="observaciones" placeholder="Observaciones"></textarea>
                 </div>
             </div>
+
+
+            <div class="row d-flex justify-content-center">
             <div class="col-md-4">
                 <button onclick="pregunta()" type="button" class="btn bg-danger btn-block text-white"><b>Actualizar</b></button>
-                    <button id="enviarForm" type="submit" name="accion" value="update" hidden><b>Actualizar</b></button>
+                    <button id="enviarForm" type="submit" name="accion" value="update" hidden></button>
             </div>
+            </div>
+
+
         </form>
 
 

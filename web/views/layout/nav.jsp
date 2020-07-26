@@ -117,7 +117,7 @@
 		<!--Encabezado Usuarios-->
 		<div class=" sidebar-heading text-center">
 		<img id="ctrDocente7" src="${pageContext.request.contextPath}/assets/img/jefe.png" style="width: 30px; height:
-		30px; position:relative;"><b id="ctrDocente8" >Usuarios</b>
+		30px; position:relative;"><b id="ctrDocente8" >Roles</b>
 		</div>
 		<!-- ---------------------------------------------------------------------------------- -->
 

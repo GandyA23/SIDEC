@@ -102,7 +102,7 @@
         <form method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4">
-                    <button onclick="pregunta()" type="button" class="btn btn-danger " style="width: 150px"><b>Actualizar</b> </button>
+                    <button onclick="pregunta()" type="button" class="btn bg-danger btn-block text-white"><b>Actualizar</b> </button>
                     <button id="enviarForm" type="submit" name="accion" hidden value="update"></button>
                 </div>
             </div>

@@ -26,7 +26,7 @@
 				<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Formación Destacada</b></p>
 			</div>
 		</div>
-		<form action="">
+		<form action="${pageContext.request.contextPath}/AcademicoServlet" method="post">
 			<div class="row form-group col-md-4 d-inline-flex">
 				<input type="text" name="matricula" class="form-control  text-center" maxlength="15"
 				       placeholder="Matrícula" required>

@@ -121,8 +121,7 @@ public class ClinicaServlet extends HttpServlet {
 
 			case "delete":
 				try{
-					int respuesta = clinicaDao.elimiarDatos(matricula);
-					System.out.println(respuesta);
+					clinicaDao.elimiarDatos(matricula);
 					request.getRequestDispatcher("/views/Clinica/delete.jsp").forward(request, response);
 				}catch (Exception e){
 					e.printStackTrace();
@@ -181,8 +180,7 @@ public class ClinicaServlet extends HttpServlet {
 						clinicaBean.setDiscapacidades("Ninguna");
 					}
 
-					int respuesta = clinicaDao.modificarDatos(clinicaBean);
-					System.out.println(respuesta);
+					clinicaDao.modificarDatos(clinicaBean);
 					request.getRequestDispatcher("/views/Clinica/update.jsp").forward(request, response);
 
 				}catch (Exception e){

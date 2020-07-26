@@ -63,20 +63,16 @@ public class UsuarioDao extends conexion {
 		return null;
 	}
 
-	public int actualizarDatos(String cct, String password, String correo, String nombre, String apellido1, String apellido2, String rol) {
+	public void actualizarDatos(String cct, String password, String correo, String nombre, String apellido1, String apellido2, String rol) {
 		try {
 			int resul;
 			PreparedStatement statment = null;
 			statment = crearConexion().prepareStatement(
 					"UPDATE usuario SET Password = '" + password + "', Correo='" + correo + "', Nombre= '" + nombre + "', Apellido1='" + apellido1 + "', Apellido2 = '" + apellido2 + "', Rol = '" + rol + "' WHERE CCT = '" + cct + "'");
 			resul = statment.executeUpdate();
-			if (resul == 1)
-				return resul;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0;
 	}
-
 
 }

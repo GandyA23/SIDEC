@@ -11,252 +11,305 @@
 <jsp:include page="/views/layout/nav.jsp"></jsp:include>
 
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">Información Personal</li>
-        <li class="breadcrumb-item" aria-current="page"> <b>Actualizar Datos</b></li>
-    </ol>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">Información Personal</li>
+		<li class="breadcrumb-item" aria-current="page"><b>Actualizar Datos</b></li>
+	</ol>
 </nav>
 
-<div class="d-flex container justify-content-start mx-auto" style="width: 100%" id="page-content-wrapper "><!-- no quitar este contenedor -->
-    <form class="container" method="post" action="<%=request.getContextPath()%>/PersonalServlet">
-        <div style="padding: 1%"></div>
-        <div class="form-row justify-content-around">
-            <div class="col-md-4 bg-gris text-center" style="border-radius: 7px;">
-                <b style="color:white;">Actualizar Estudiante</b>
-            </div>
-            <div class="col-md-7 bg-gris text-center" style="border-radius: 7px;"><b style="color:white">
-                Información Personal
-            </b></div>
-        </div>
+<div class="container" id="page-content-wrapper"><!-- no quitar este contenedor -->
+	<div class="container">
+		<button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
+		<div class="row">
+			<div class="col-md">
+				<p class="bg-gris text-white text-center" style="border-radius: 30px;"><b>Búsqueda de Registro</b></p>
+			</div>
+		</div>
 
-        <div class="form-row justify-content-around">
-            <div class="col-md-4">
-                <div>
-                    <div style="padding: 2%"></div>
-                    <div class="form-row justify-content-center">
-                        <img src="${pageContext.request.contextPath}/assets/img/user5.png" style="width: 40%;height: 100%">
-                    </div>
-                    <div>
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula" name="matricula" required maxlength="15">
-                    </div>
-                    <div style="padding: 2%"></div>
-                    <div class="form-row justify-content-center">
-                        <button type="submit" class="btn btn-primary bg-danger" name="listener" value="buscarMatricula:2" style="width: 50%">Buscar</button>
-                    </div>
-                    <div style="padding: 2%"></div>
-                    <div class=" justify-content-center">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                            <label class="custom-file-label" for="customFileLang">Cambiar Foto</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+		<div class="row d-flex justify-content-center">
+			<form action="<%=request.getContextPath()%>/PersonalServlet" method="post">
+				<div class="row form-group">
+					<div class="col">
+						<input type="text" class="form-control text-center" placeholder="Matrícula" maxlength="15"
+						       name="matricula" required>
+					</div>
+					<div class="col-md-4">
+						<button type="submit" class="btn bg-danger btn-block text-white" name="listener"
+						        value="buscar:2"><b>Buscar</b></button>
+					</div>
+				</div>
+			</form>
+		</div>
 
-    <form class="container" action="<%=request.getContextPath()%>/PersonalServlet" method="post">
-            <div class="col-md-7">
-                <div style="padding: 1%">
-                </div>
-                <c:forEach var="alumno" items="${alummoLista}">
-                <div class="form-row p-1">
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula" name="matricula" disabled>
-                    </div>
-                    <div class="col-7">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Curp" name="curp" disabled>
-                    </div>
-                </div>
+		<form method="post" action="<%=request.getContextPath()%>/PersonalServlet">
+			<div class="row">
+				<div class="col-md">
+					<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos estudiante</b></p>
+				</div>
+			</div>
+			<c:forEach var="alumno" items="${alumnoLista}">
+				<div class="row form-group col-md d-inline-flex">
+					<div class="col-md">
+						<button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal"
+						        data-target="#exampleModal">Cambiar foto
+						</button>
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula"
+						       name="matricula" required maxlength="15"
+						       value="<c:out value="${alumno.matricula}"></c:out>" readonly>
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center" placeholder="CURP"
+						       name="curp" value="<c:out value="${alumno.curp}"></c:out>" maxlength="18" required>
+					</div>
+				</div>
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+				     aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Foto estudiante</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="customFileLang" lang="es">
+									<label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+								</div>
+								<img class="img-thumbnail" src="" alt="">
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <div class="form-row p-1">
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Nombre(s)" name="nombre" required maxlength="30">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Primer apellido" name="apellido1" required maxlength="15">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Segundo apellido" name="apellido2" maxlength="15">
-                    </div>
-                </div>
+				<div class="row form-group col-md d-inline-flex">
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center" placeholder="Nombre(s)"
+						       name="nombre" required maxlength="30" value="<c:out value="${alumno.nombre}"></c:out>">
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Primer apellido" name="apellido1" required maxlength="15"
+						       value="<c:out value="${alumno.apellido1}"></c:out>">
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Segundo apellido" name="apellido2" maxlength="15"
+						       value="<c:out value="${alumno.apellido2}"></c:out>">
+					</div>
+					<div class="col-md">
+						<label>Género:</label>
+						<c:if test="${alumno.genero == 'Hombre'}">
+							<div class="form-check form-check-inline">
+								<input type="radio" id="customRadioInline1" name="genero1" value="Hombre"
+								       class="form-check-input" required checked>
+								<label class="form-check-label" for="customRadioInline1">Hombre</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="customRadioInline2" name="genero1" value="Mujer"
+								       class="form-check-input">
+								<label class="form-check-label" for="customRadioInline2">Mujer</label>
+							</div>
+						</c:if>
+						<c:if test="${alumno.genero == 'Mujer'}">
+							<div class="form-check form-check-inline">
+								<input type="radio" id="customRadioInline1" name="genero1" value="Hombre"
+								       class="form-check-input" required>
+								<label class="form-check-label" for="customRadioInline1">Hombre</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="customRadioInline2" name="genero1" value="Mujer"
+								       class="form-check-input" checked>
+								<label class="form-check-label" for="customRadioInline2">Mujer</label>
+							</div>
+						</c:if>
 
-                <div class="form-row justify-content-center p-1">
-                    <div class="col-2 justify-content-center">
-                        <label><strong style="color:gray">Género:</strong></label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="genero1" value="Hombre" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline1">Hombre</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline2" name="genero1" value="Mujer" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline2">Mujer</label>
-                    </div>
-                </div>
+					</div>
+				</div>
+				<div class="row form-group col-md d-inline-flex">
+					<label>Fecha de nacimiento:</label>
+					<div class="col-md">
+						<input type="date" class="form-control form-control-sm text-center"
+						       placeholder="Fecha" value="<c:out value="${alumno.fechaNacimiento}"></c:out>"
+						       name="fechaDeNacimeinto" required>
+					</div>
 
-                <div class="form-row justify-content-center p-1">
-                    <div class="col-4 justify-content-center">
-                        <b style="color:gray">Fecha de nacimiento:</b>
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Día" name="dia" required>
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Mes" name="mes" required>
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año" name="año" required>
-                    </div>
-                </div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Teléfono" name="telefono" required maxlength="10"
+						       value="<c:out value="${alumno.telefono}"></c:out>">
+					</div>
+					<div class="col-md">
+						<input type="email" class="form-control form-control-sm text-center"
+						       placeholder="Correo electrónico" name="correo" maxlength="30"
+						       value="<c:out value="${alumno.correo}"></c:out>">
+					</div>
+				</div>
+				<div class="row form-group col-md d-inline-flex">
+					<label>Ciclo escolar:</label>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Ciclo Escolar" name="cicloEscolar"
+						       value="<c:out value="${alumno.cicloEscolar}"></c:out>">
+					</div>
 
-                <div class="form-row p-1">
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono" name="telefono" maxlength="10">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Correo electrónico" name="correo" maxlength="30">
-                    </div>
-                </div>
+					<label>Nivel educativo actual:</label>
+					<div class="col-md">
+						<select class="custom-select" name="seleccion" required>
+							<option selected><c:out value="${alumno.nivelActual}"></c:out></option>
+							<option>Primaria</option>
+							<option>Secundaria</option>
+						</select>
+					</div>
+				</div>
+			</c:forEach>
+			<div class="row">
+				<div class="col-md">
+					<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Domicilio</b></p>
+				</div>
+			</div>
+			<c:forEach var="domicilio" items="${domicilioLista}">
+				<div class="row form-group col-md d-inline-flex">
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-sm text-center" placeholder="Calle"
+						       name="calle" required maxlength="30" value="<c:out value="${domicilio.calle}"></c:out>">
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="No.Int" name="interior"  maxlength="5"
+						       value="<c:out value="${domicilio.noInterior}"></c:out>">
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="No.Ext" name="exterior"  maxlength="5"
+						       value="<c:out value="${domicilio.noExterior}"></c:out>">
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Código postal" name="codigoPostal" required maxlength="5"
+						       value="<c:out value="${domicilio.codigoPostal}"></c:out>">
+					</div>
+				</div>
+				<div class="row form-group col-md d-inline-flex">
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Colonia" name="colonia" required maxlength="30"
+						       value="<c:out value="${domicilio.colonia}"></c:out>">
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Municipio" name="municipio" required maxlength="30"
+						       value="<c:out value="${domicilio.municipio}"></c:out>">
+					</div>
+				</div>
+			</c:forEach>
+			<div class="row">
+				<div class="col-md">
+					<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos tutor</b></p>
+				</div>
+			</div>
+			<c:forEach var="tutor" items="${tutorLista}">
+				<div class="row form-group col-md d-inline-flex">
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Nombre(s)" name="tutorNombre" required maxlength="30"
+						       value="<c:out value="${tutor.nombre}"></c:out>">
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Primer apellido" name="tutorApellido1" required maxlength="15"
+						       value="<c:out value="${tutor.apellido1}"></c:out>">
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Segundo apellido"
+						       name="tutorApellido2" required maxlength="15"
+						       value="<c:out value="${tutor.apellido2}"></c:out>">
+					</div>
+					<div class="col-md">
+						<label>Género</label>
+						<c:if test="${tutor.genero == 'Hombre'}">
+							<div class="form-check form-check-inline">
+								<input type="radio" id="customRadioInline3" name="genero2" value="Hombre"
+								       class="form-check-input" required checked>
+								<label class="form-check-label" for="customRadioInline3">Hombre</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input type="radio" id="customRadioInline4" name="genero2" value="Mujer"
+								       class="form-check-input">
+								<label class="form-check-label" for="customRadioInline4">Mujer</label>
+							</div>
+						</c:if>
+						<c:if test="${tutor.genero == 'Mujer'}">
+							<div class="form-check form-check-inline">
+								<input type="radio" id="customRadioInline3" name="genero2" value="Hombre"
+								       class="form-check-input" required>
+								<label class="form-check-label" for="customRadioInline3">Hombre</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input type="radio" id="customRadioInline4" name="genero2" value="Mujer"
+								       class="form-check-input" checked>
+								<label class="form-check-label" for="customRadioInline4">Mujer</label>
+							</div>
+						</c:if>
+					</div>
+				</div>
+				<div class="row form-group col-md d-inline-flex">
+					<div class="col-md">
+						<input type="email" class="form-control form-control-sm text-center"
+						       placeholder="Correo electrónico" name="tutorCorreo" maxlength="30" value="<c:out value="${tutor.correo}"></c:out>">
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono personal"
+						       name="tutorTelefono" required maxlength="10" value="<c:out value="${tutor.telefonoPersonal}"></c:out>">
+					</div>
+					<div class="col-md">
+						<input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono del trabajo"
+						       name="tutorTelTrabajo" maxlength="10" value="<c:out value="${tutor.telefonoTrabajo}"></c:out>">
+					</div>
+				</div>
+			</c:forEach>
+			<br>
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-4">
+					<button onclick="pregunta()" type="button" class="btn bg-danger btn-block text-white">
+						<b>Actualizar</b></button>
+					<button id="enviarForm" type="submit" name="listener" value="actualizar" hidden></button>
+				</div>
+			</div>
 
-                <div class="form-row p-1">
-                    <div class="col-3"></div>
-                    <div class="col-3 row justify-content-center">
-                        <b style="color:gray">Ciclo escolar:</b>
-                    </div>
-                    <div class="col-2">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año inicio" name="añoinicio">
-                    </div>
-                    <div class="col-1 justify-content-center row">
-                        -
-                    </div>
-                    <div class="col-2">
-                        <input type="text" class="form-control form-control-sm text-center" placeholder="Año fin" name="añofin">
-                    </div>
-                    <div class="col-3"></div>
-                </div>
+		</form>
 
-                <div class="form-row p-1">
-                    <div class="col-6 justify-content-center row p-1">
-                        <b style="color:gray">Nivel educativo actual:</b>
-                    </div>
-                    <div class="col-6">
-                        <select class="custom-select" name="seleccion" required>
-                            <option selected>Selección</option>
-                            <option>Primaria</option>
-                            <option>Secundaria</option>
-                        </select>
-                    </div>
-                </div>
-                </c:forEach>
-            </div>
-
-            <div style="padding: 1%"></div>
-
-            <div class="form-row justify-content-around">
-                <div class="col-12 bg-gris text-center" style="border-radius: 7px;">
-                    <b style="color:white">Domicilio</b>
-                </div>
-            </div>
-
-            <div class="form-row justify-content-around p-2">
-                <div class="col-11">
-                    <div>
-                        <c:forEach var="domicilio" items="${domicilioLista}">
-                        <div class="form-row p-1 justify-content-center">
-                            <div class="col-6">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Calle" name="calle" required maxlength="30">
-                            </div>
-                            <div class="col-2">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="No.Int" name="interior" required maxlength="5">
-                            </div>
-                            <div class="col-2">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="No.Ext" name="exterior" required maxlength="5">
-                            </div>
-                        </div>
-                        <div class="form-row p-1 ">
-                            <div class="col">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Código postal" name="codigoPostal" required maxlength="5">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Colonia" name="colonia" required maxlength="30">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Municipio" name="municipio" required maxlength="30">
-                            </div>
-                        </div>
-                        </c:forEach>
-                    </div>
-                </div>
-            </div>
-
-            <div style="padding: 1%"></div>
-
-            <div class="form-row justify-content-around">
-                <div class="col-12 bg-gris text-center" style="border-radius: 7px;">
-                    <b style="color:white">Datos del tutor</b>
-                </div>
-            </div>
-
-            <div class="form-row justify-content-around p-2">
-                <div class="col-11">
-                    <div>
-                        <c:forEach var="tutor" items="${tutorLista}">
-                        <div class="form-row p-1">
-                            <div class="col-4">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Nombre(s)" name="tutorNombre" required maxlength="30">
-                            </div>
-                            <div class="col-4">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Primer apellido" name="tutorApellido1" required maxlength="15">
-                            </div>
-                            <div class="col-4">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Segundo apellido" name="tutorApellido2" required maxlength="15">
-                            </div>
-                        </div>
-
-                        <div class="form-row justify-content-center p-1">
-                            <div class="col-2 row justify-content-center">
-                                <label><strong style="color:gray">Género:</strong></label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline3" name="genero2" value="Hombre" class="custom-control-input" required>
-                                <label class="custom-control-label" for="customRadioInline3">Hombre</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline4" name="genero2" value="Mujer" class="custom-control-input">
-                                <label class="custom-control-label" for="customRadioInline4">Mujer</label>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Correo electrónico" name="tutorCorreo" maxlength="30">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono personal" name="tutorTelefono" required maxlength="10">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono del trabajo" name="tutorTelTrabajo" maxlength="10">
-                            </div>
-                        </div>
-                        </c:forEach>
-                    </div>
-                </div>
-            </div>
-
-            <div style="padding: 3%"></div>
-
-            <div class="form-row justify-content-around">
-                <div class="col-11">
-                    <div>
-                        <div class="row justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-lg bg-danger" name="listener" value="actualizar" style="width: 40%">Actualizar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </form>
+	</div>
 </div>
-</div><!-- no quitar este contenedor -->
-
+<script>
+	function pregunta() {
+		Swal.fire({
+			title: '¿Realizar Acción?',
+			text: "Los cambios son irreversibles!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#6c757d',
+			cancelButtonColor: '#3085d6',
+			confirmButtonText: 'Si, Realizar!'
+		}).then((result) => {
+			if (result.value) {
+				Swal.fire(
+					'Realizado!',
+					'Se efectuo la acción',
+					'success'
+				)
+				setTimeout(function () {
+					document.getElementById("enviarForm").click();
+				}, 1000)
+			}
+		})
+	}
+</script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

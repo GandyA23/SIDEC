@@ -29,8 +29,8 @@
 					<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos Clínicos</b></p>
 				</div>
 			</div>
-			<div class="row form-group col-md d-inline-flex">
 
+			<div class="row form-group col-md d-inline-flex">
 				<div class="col-md">
 					<input type="text" id="mat" name="matricula" class="form-control  text-center"
 					       maxlength="15" placeholder="Matrícula" required>
@@ -212,7 +212,7 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-4">
 					<button type="submit" class="btn bg-danger btn-block text-white " name="accion"
-					        value="add"><b>Añadir</b></button>
+					        value="add"><b>Registrar</b></button>
 				</div>
 			</div>
 		</form>

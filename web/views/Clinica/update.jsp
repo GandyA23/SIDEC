@@ -47,6 +47,7 @@
 				<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos Clínicos</b></p>
 			</div>
 		</div>
+
 		<form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
 			<c:forEach var="clinica" items="${listClinica}">
 				<div class="row form-group col-md d-inline-flex">

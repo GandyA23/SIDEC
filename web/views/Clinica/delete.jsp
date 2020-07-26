@@ -22,6 +22,7 @@
     <br>
     <div class="container">
         <button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
+
         <div class="row">
             <div class="col-md">
                 <p class="bg-gris text-white text-center" style="border-radius: 30px;"><b>Búsqueda de Registro</b></p>

@@ -22,7 +22,6 @@ public class UsuarioServlet extends HttpServlet {
         String accionOpc = request.getParameter("accion");
         String accion;
         String opc = null;
-
         if(accionOpc.contains(":")){
             String[] parts = accionOpc.split(":");
             accion = parts[0];
@@ -39,27 +38,23 @@ public class UsuarioServlet extends HttpServlet {
         String rol;
         switch (accion){
             case "add":
-                UsuarioBean usuBean = new UsuarioBean();
-                UsuarioDao usuDao = new UsuarioDao();
-
-                cct = request.getParameter("cct");;
-                password = request.getParameter("password");
-                correo = request.getParameter("correo");
-                nombre = request.getParameter("nombre");
-                apellido1 = request.getParameter("apellido1");
-                apellido2= request.getParameter("apellido2");
-
-                rol = request.getParameter("rol");
-                System.out.println(cct+","+ password + "," + correo +","+ nombre + "," + apellido1 + "," + apellido2+","+ rol);
-                usuBean.setCct(cct);
-                usuBean.setPassword(password);
-                usuBean.setCorreo(correo);
-                usuBean.setNombre(nombre);
-                usuBean.setApellido1(apellido1);
-                usuBean.setApellido2(apellido2);
-                usuBean.setRol(rol);
-
                 try {
+                    UsuarioBean usuBean = new UsuarioBean();
+                    UsuarioDao usuDao = new UsuarioDao();
+                    cct = request.getParameter("cct");;
+                    password = request.getParameter("password");
+                    correo = request.getParameter("correo");
+                    nombre = request.getParameter("nombre");
+                    apellido1 = request.getParameter("apellido1");
+                    apellido2= request.getParameter("apellido2");
+                    rol = request.getParameter("rol");
+                    usuBean.setCct(cct);
+                    usuBean.setPassword(password);
+                    usuBean.setCorreo(correo);
+                    usuBean.setNombre(nombre);
+                    usuBean.setApellido1(apellido1);
+                    usuBean.setApellido2(apellido2);
+                    usuBean.setRol(rol);
                     int respuesta = usuDao.insertarDatos(usuBean);
                     request.setAttribute("respuestaSMS", respuesta);
                 } catch (Exception e) {
@@ -68,12 +63,10 @@ public class UsuarioServlet extends HttpServlet {
                 request.getRequestDispatcher("/views/Usuarios/add.jsp").forward(request, response);
                 break;
 
-
-
             case "search":
-                UsuarioDao usuarioDao =new UsuarioDao();
-                cct = request.getParameter("cct");
                 try {
+                    UsuarioDao usuarioDao =new UsuarioDao();
+                    cct = request.getParameter("cct");
                     List<UsuarioBean> usuariosList = usuarioDao.consultarDatos(cct);
                     request.setAttribute("usuariosList", usuariosList);
                     if(usuariosList == null){
@@ -96,9 +89,8 @@ public class UsuarioServlet extends HttpServlet {
                 break;
 
             case "delete":
-                UsuarioDao usDao = new UsuarioDao();
                 try {
-                    int respuesta = usDao.elimiarDatos(cct);
+                    UsuarioDao usDao = new UsuarioDao();
                     request.getRequestDispatcher("/views/Usuarios/delete.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -106,15 +98,15 @@ public class UsuarioServlet extends HttpServlet {
                 break;
 
             case "update":
-                UsuarioDao uDao = new UsuarioDao();
-                password = request.getParameter("password");
-                correo = request.getParameter("correo");
-                nombre = request.getParameter("nombre");
-                apellido1 = request.getParameter("apellido1");
-                apellido2= request.getParameter("apellido2");
-                rol = request.getParameter("rol");
                 try {
-                    int respuesta = uDao.actualizarDatos(cct,password,correo,nombre,apellido1,apellido2,rol);
+                    UsuarioDao uDao = new UsuarioDao();
+                    password = request.getParameter("password");
+                    correo = request.getParameter("correo");
+                    nombre = request.getParameter("nombre");
+                    apellido1 = request.getParameter("apellido1");
+                    apellido2= request.getParameter("apellido2");
+                    rol = request.getParameter("rol");
+                    uDao.actualizarDatos(cct,password,correo,nombre,apellido1,apellido2,rol);
                     request.getRequestDispatcher("/views/Usuarios/update.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();

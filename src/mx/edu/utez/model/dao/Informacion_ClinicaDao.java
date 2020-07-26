@@ -1,8 +1,6 @@
 package mx.edu.utez.model.dao;
-
 import mx.edu.utez.model.bean.Informacion_ClinicaBean;
 import mx.edu.utez.utility.conexion;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -45,20 +43,16 @@ public class Informacion_ClinicaDao extends conexion {
 		return 0;
 	}
 
-	public int modificarDatos(Informacion_ClinicaBean clinicaBean) {
+	public void modificarDatos(Informacion_ClinicaBean clinicaBean) {
 		try {
 			double peso = Double.parseDouble(clinicaBean.getPeso());
 			double estatura = Double.parseDouble(clinicaBean.getEstatura());
 			double imc = peso / (estatura * estatura);
-			int resul;
 			PreparedStatement statement = crearConexion().prepareStatement("UPDATE informacion_clinica SET Peso = '"+peso+"', Estatura = '"+estatura+"', Imc = '"+imc+"', TipoSangre = '"+clinicaBean.getTipoSangre()+"', NumeroSeguro = '"+ clinicaBean.getNumeroSeguro()+"', UnidadMedica = '"+clinicaBean.getUnidadMedica()+"' , Alergias = '"+clinicaBean.getAlergias()+"', EnferCronicas = '"+clinicaBean.getEnferCronicas()+"', EnferHereditarias = '"+clinicaBean.getEnferHereditarias()+"', Discapacidades = '"+clinicaBean.getDiscapacidades()+"', DiagPsico = '"+clinicaBean.getDiagPsico()+"' WHERE MatEstudiante = '"+clinicaBean.getMatricula()+"' ");
-			resul=statement.executeUpdate();
-			if(resul==1)
-				return resul;
+			statement.executeUpdate();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		return 0;
 	}
 
 	public List<Informacion_ClinicaBean> consultarDatos(String matricula) {
@@ -130,6 +124,5 @@ public class Informacion_ClinicaDao extends conexion {
 		}
 		return null;
 	}
-
 
 }

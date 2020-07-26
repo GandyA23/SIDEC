@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <form action="" method="post">
+            <form action="${pageContext.request.contextPath}/AcademicoServlet" method="post">
                 <div class="row form-group">
                     <div class="col">
                         <input type="text" name="matricula" class="form-control  text-center" maxlength="15" placeholder="Matrícula" required>
