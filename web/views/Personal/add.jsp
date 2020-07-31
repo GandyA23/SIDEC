@@ -176,7 +176,7 @@
 				</div>
 				<div class="col-md">
 					<input type="text" class="form-control form-control-sm text-center"
-					       placeholder="Segundo apellido" name="tutorApellido2" required maxlength="15">
+					       placeholder="Segundo apellido" name="tutorApellido2"  maxlength="15">
 				</div>
 				<div class="col-md">
 					<label>Género</label>
@@ -219,5 +219,6 @@
 	</div>
 </div>
 <!-- no quitar este contenedor -->
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

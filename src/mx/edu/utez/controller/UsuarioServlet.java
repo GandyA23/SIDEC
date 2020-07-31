@@ -14,10 +14,13 @@ import java.util.List;
 
 @WebServlet("/UsuarioServlet")
 public class UsuarioServlet extends HttpServlet {
-    private String cct;
+    public String cct;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+
+        UsuarioBean usuBean = new UsuarioBean();
+        UsuarioDao usuDao = new UsuarioDao();
 
         String accionOpc = request.getParameter("accion");
         String accion;
@@ -30,31 +33,16 @@ public class UsuarioServlet extends HttpServlet {
              accion= accionOpc;
         }
 
-        String password;
-        String correo;
-        String nombre;
-        String apellido1;
-        String apellido2;
-        String rol;
         switch (accion){
             case "add":
                 try {
-                    UsuarioBean usuBean = new UsuarioBean();
-                    UsuarioDao usuDao = new UsuarioDao();
-                    cct = request.getParameter("cct");;
-                    password = request.getParameter("password");
-                    correo = request.getParameter("correo");
-                    nombre = request.getParameter("nombre");
-                    apellido1 = request.getParameter("apellido1");
-                    apellido2= request.getParameter("apellido2");
-                    rol = request.getParameter("rol");
-                    usuBean.setCct(cct);
-                    usuBean.setPassword(password);
-                    usuBean.setCorreo(correo);
-                    usuBean.setNombre(nombre);
-                    usuBean.setApellido1(apellido1);
-                    usuBean.setApellido2(apellido2);
-                    usuBean.setRol(rol);
+                    usuBean.setCct(request.getParameter("cct"));
+                    usuBean.setPassword(request.getParameter("password"));
+                    usuBean.setCorreo(request.getParameter("correo"));
+                    usuBean.setNombre(request.getParameter("nombre"));
+                    usuBean.setApellido1(request.getParameter("apellido1"));
+                    usuBean.setApellido2(request.getParameter("apellido2"));
+                    usuBean.setRol(request.getParameter("rol"));
                     int respuesta = usuDao.insertarDatos(usuBean);
                     request.setAttribute("respuestaSMS", respuesta);
                 } catch (Exception e) {
@@ -65,9 +53,8 @@ public class UsuarioServlet extends HttpServlet {
 
             case "search":
                 try {
-                    UsuarioDao usuarioDao =new UsuarioDao();
                     cct = request.getParameter("cct");
-                    List<UsuarioBean> usuariosList = usuarioDao.consultarDatos(cct);
+                    List<UsuarioBean> usuariosList = usuDao.consultarDatos(cct);
                     request.setAttribute("usuariosList", usuariosList);
                     if(usuariosList == null){
                         request.setAttribute("respuestaSMS", 0);
@@ -90,7 +77,7 @@ public class UsuarioServlet extends HttpServlet {
 
             case "delete":
                 try {
-                    UsuarioDao usDao = new UsuarioDao();
+                    usuDao.elimiarDatos(cct);
                     request.getRequestDispatcher("/views/Usuarios/delete.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -99,14 +86,14 @@ public class UsuarioServlet extends HttpServlet {
 
             case "update":
                 try {
-                    UsuarioDao uDao = new UsuarioDao();
-                    password = request.getParameter("password");
-                    correo = request.getParameter("correo");
-                    nombre = request.getParameter("nombre");
-                    apellido1 = request.getParameter("apellido1");
-                    apellido2= request.getParameter("apellido2");
-                    rol = request.getParameter("rol");
-                    uDao.actualizarDatos(cct,password,correo,nombre,apellido1,apellido2,rol);
+                    usuBean.setCct(cct);
+                    usuBean.setPassword(request.getParameter("password"));
+                    usuBean.setCorreo(request.getParameter("correo"));
+                    usuBean.setNombre(request.getParameter("nombre"));
+                    usuBean.setApellido1(request.getParameter("apellido1"));
+                    usuBean.setApellido2(request.getParameter("apellido2"));
+                    usuBean.setRol(request.getParameter("rol"));
+                    usuDao.actualizarDatos(usuBean);
                     request.getRequestDispatcher("/views/Usuarios/update.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();

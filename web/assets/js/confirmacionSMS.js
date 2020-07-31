@@ -3,18 +3,22 @@
 	switch (mostrarSMS) {
 		case "1":
 			Swal.fire(
-				'¡Exito!',
-				'Todo salió de maravilla :D',
+				'¡Yuju!, Éxito!',
+				'Todo salió de maravilla',
 				'success'
 			)
 			break;
 		case "0":
 			Swal.fire({
 				icon: 'error',
-				title: '¡Ocurrio un Error!',
-				text: 'Algo pasó, revise los datos D:',
+				title: '¡Ocurrio un error!',
+				text: 'Algo pasó, revise los datos',
+				footer: '<b>Posiblemente el estudiante no exista o este dado de baja</b>'
 			})
 			break;
 	}
 }())
+
+
+
 

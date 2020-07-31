@@ -15,9 +15,9 @@ public class ControlDao extends conexion {
 		List<ControlBean> controlBean = new ArrayList<>();
 		try {
 			PreparedStatement pst = crearConexion().prepareStatement("SELECT Matricula, Nombre, Apellido1, Apellido2 FROM estudiante WHERE Status = 1");
+
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-
 				String matricula = rs.getString("Matricula");
 				String nombre = rs.getString("Nombre");
 				String apellido1 = rs.getString("Apellido1");
@@ -51,7 +51,8 @@ public class ControlDao extends conexion {
 	public void statusEstudiante(String matricula) {
 		try {
 			System.out.println(matricula);
-			PreparedStatement pst = crearConexion().prepareStatement("UPDATE estudiante SET Status = 1 WHERE Matricula = '"+matricula+"'");
+			PreparedStatement pst = crearConexion().prepareStatement("UPDATE estudiante SET Status = 1 WHERE Matricula = ?");
+			pst.setString(1, matricula);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

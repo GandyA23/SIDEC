@@ -1,15 +1,15 @@
-CREATE DATABASE  IF NOT EXISTS `sidec` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci */;
+CREATE DATABASE  IF NOT EXISTS `sidec` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `sidec`;
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.21, for Linux (x86_64)
 --
 -- Host: localhost    Database: sidec
 -- ------------------------------------------------------
--- Server version	5.6.17
+-- Server version	8.0.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -18,40 +18,15 @@ USE `sidec`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `conducta`
---
-
-DROP TABLE IF EXISTS `conducta`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `conducta` (
-  `MatEstudiante` varchar(15) NOT NULL,
-  `Fecha` datetime NOT NULL,
-  `Observaciones` text NOT NULL,
-  PRIMARY KEY (`MatEstudiante`,`Fecha`),
-  CONSTRAINT `FK_EST_CON` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `conducta`
---
-
-LOCK TABLES `conducta` WRITE;
-/*!40000 ALTER TABLE `conducta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `conducta` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `domicilio`
 --
 
 DROP TABLE IF EXISTS `domicilio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `domicilio` (
   `MatEstudiante` varchar(15) NOT NULL,
-  `IdTutor` int(11) NOT NULL,
+  `IdTutor` int NOT NULL,
   `Calle` varchar(30) NOT NULL,
   `NoExterior` varchar(5) NOT NULL,
   `NoInterior` varchar(5) DEFAULT 'S/N',
@@ -80,7 +55,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `estudiante`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `estudiante` (
   `Matricula` varchar(15) NOT NULL,
   `Curp` varchar(18) NOT NULL,
@@ -93,7 +68,8 @@ CREATE TABLE `estudiante` (
   `Genero` varchar(10) NOT NULL DEFAULT 'Masculino',
   `CicloEscolar` varchar(10) NOT NULL,
   `NivelActual` varchar(15) NOT NULL DEFAULT 'Primaria',
-  `Status` tinyint(4) NOT NULL DEFAULT '1',
+  `Foto` blob,
+  `Status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`Matricula`),
   UNIQUE KEY `UNIQUE_Curp` (`Curp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -109,12 +85,40 @@ LOCK TABLES `estudiante` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `informacion_academica`
+--
+
+DROP TABLE IF EXISTS `informacion_academica`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `informacion_academica` (
+  `Matricula` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `Diploma` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `Reconocimiento` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `Mencion` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `Certificacion` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `Observacion` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  PRIMARY KEY (`Matricula`),
+  CONSTRAINT `fk_informacion_academica_1` FOREIGN KEY (`Matricula`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `informacion_academica`
+--
+
+LOCK TABLES `informacion_academica` WRITE;
+/*!40000 ALTER TABLE `informacion_academica` DISABLE KEYS */;
+/*!40000 ALTER TABLE `informacion_academica` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `informacion_clinica`
 --
 
 DROP TABLE IF EXISTS `informacion_clinica`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `informacion_clinica` (
   `MatEstudiante` varchar(15) NOT NULL,
   `Peso` decimal(5,2) NOT NULL,
@@ -143,42 +147,14 @@ LOCK TABLES `informacion_clinica` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `logro`
---
-
-DROP TABLE IF EXISTS `logro`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `logro` (
-  `Folio` int(11) NOT NULL AUTO_INCREMENT,
-  `MatEstudiante` varchar(15) NOT NULL,
-  `Tipo` varchar(20) NOT NULL,
-  `Descripcion` text NOT NULL,
-  `Fecha` date NOT NULL,
-  PRIMARY KEY (`Folio`),
-  KEY `fk_LOG_EST_idx` (`MatEstudiante`),
-  CONSTRAINT `fk_LOG_EST` FOREIGN KEY (`MatEstudiante`) REFERENCES `estudiante` (`Matricula`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `logro`
---
-
-LOCK TABLES `logro` WRITE;
-/*!40000 ALTER TABLE `logro` DISABLE KEYS */;
-/*!40000 ALTER TABLE `logro` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `reporte`
 --
 
 DROP TABLE IF EXISTS `reporte`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reporte` (
-  `Folio` int(11) NOT NULL AUTO_INCREMENT,
+  `Folio` int NOT NULL AUTO_INCREMENT,
   `Fecha` datetime NOT NULL,
   `Motivo` varchar(30) NOT NULL,
   `Descripcion` text NOT NULL,
@@ -208,9 +184,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tutor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tutor` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Id` int NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(30) NOT NULL,
   `Apellido1` varchar(15) NOT NULL,
   `Apellido2` varchar(15) DEFAULT NULL,
@@ -237,7 +213,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
   `CCT` varchar(15) NOT NULL,
   `Password` varchar(255) NOT NULL,
@@ -260,40 +236,8 @@ LOCK TABLES `usuario` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'sidec'
---
-
---
 -- Dumping routines for database 'sidec'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `Add_Conducta` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Conducta`(
-	IN mat VARCHAR(15),
-    IN fecha DATETIME,
-    IN obs TEXT
-)
-BEGIN
-	-- Iniciamos una nueva transacción 
-    START TRANSACTION;
-		
-	INSERT INTO Conducta VALUES (mat, fecha, obs);
-        
-    COMMIT;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `Add_Domicilio` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -364,21 +308,53 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Add_Informacion_Academica` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Informacion_Academica`(
+	IN mat VARCHAR(15),
+    IN dip TEXT,
+    IN rec TEXT,
+    IN men TEXT,
+    IN cer TEXT,
+    IN obs TEXT
+)
+BEGIN
+	-- Iniciamos una nueva transacción 
+    START TRANSACTION;
+	
+	INSERT INTO Informacion_Academica VALUES (mat, dip, rec, men, cer, obs);
+        
+    COMMIT;
+
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `Add_Informacion_Clinica` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Informacion_Clinica`(
 	IN mat VARCHAR(15),
     IN peso DECIMAL(5,2),
     IN est DECIMAL(5,2),
-    IN imc DECIMAL(5,2),
     IN tipoSan VARCHAR(5),
     IN numSeg VARCHAR(20),
 	IN uniMed VARCHAR(10),
@@ -391,12 +367,15 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Informacion_Clinica`(
 BEGIN
 	-- Iniciamos una nueva transacción 
     START TRANSACTION;
-		
+	
+    -- IMC = Peso (kg) / altura (m^2)
+    SET @imc := peso/est*est ;
+        
 	INSERT INTO Informacion_Clinica VALUES (
 		mat,
 		peso,
 		est,
-		imc,
+		@imc,
 		tipoSan,
 		numSeg,
 		uniMed,
@@ -406,36 +385,6 @@ BEGIN
 		discap,
 		diagPsico
     );
-        
-    COMMIT;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `Add_Logro` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Add_Logro`(
-	IN folio INT,
-    IN mat VARCHAR(15),
-    IN tipo VARCHAR(20),
-    IN descrip TEXT,
-    IN fecha DATE
-)
-BEGIN
-	-- Iniciamos una nueva transacción 
-    START TRANSACTION;
-		
-	INSERT INTO Logro VALUES (folio, mat, tipo, descrip, fecha);
         
     COMMIT;
 END ;;
@@ -584,4 +533,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-13 16:45:13
+-- Dump completed on 2020-07-29 20:11:35

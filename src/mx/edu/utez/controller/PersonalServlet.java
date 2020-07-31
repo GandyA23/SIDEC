@@ -6,8 +6,8 @@ import mx.edu.utez.model.bean.EstudianteBean;
 import mx.edu.utez.model.bean.TutorBean;
 import mx.edu.utez.model.dao.Informacion_PersonalDao;
 import mx.edu.utez.model.dao.UsuarioDao;
-
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +16,10 @@ import java.sql.Date;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+@MultipartConfig
 @WebServlet("/PersonalServlet")
 public class PersonalServlet extends HttpServlet {
-	String matricula;
+	public String matricula;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
@@ -56,7 +56,7 @@ public class PersonalServlet extends HttpServlet {
 					alumno.setCicloEscolar(request.getParameter("añoInicio") + "-" + request.getParameter("añoFin"));
 					alumno.setNivelActual(request.getParameter("seleccion"));
 					alumno.setStatus(1);
-					domicilio.setMatriculaEstudiante(request.getParameter("matricula"));
+					domicilio.setMatriculaEstudiante(new EstudianteBean(request.getParameter("matricula")));
 					domicilio.setCalle(request.getParameter("calle"));
 					domicilio.setNoInterior(request.getParameter("interior"));
 					domicilio.setNoExterior(request.getParameter("exterior"));
@@ -70,6 +70,7 @@ public class PersonalServlet extends HttpServlet {
 					tutor.setCorreo(request.getParameter("tutorCorreo"));
 					tutor.setTelefonoPersonal(request.getParameter("tutorTelefono"));
 					tutor.setTelefonoTrabajo(request.getParameter("tutorTelTrabajo"));
+
 					int respuesta = personalDao.insertarDatos(alumno, tutor, domicilio);
 					request.setAttribute("respuestaSMS", respuesta);
 					request.getRequestDispatcher("/views/Personal/add.jsp").forward(request, response);
@@ -91,14 +92,15 @@ public class PersonalServlet extends HttpServlet {
 				try{
 					matricula = request.getParameter("matricula");
 					List<EstudianteBean> alumnoLista  = personalDao.datosEstudiante(matricula);
-					List<DomicilioBean> domicilioLista = personalDao.datosDomicilio(matricula);
-					List<TutorBean> tutorLista = personalDao.datosTutor();
-					if(alumnoLista == null && domicilioLista == null && tutorLista == null){
+					if(alumnoLista != null){
+						List<DomicilioBean> domicilioLista = personalDao.datosDomicilio(matricula);
+						List<TutorBean> tutorLista = personalDao.datosTutor();
+						request.setAttribute("alumnoLista",alumnoLista);
+						request.setAttribute("tutorLista",tutorLista);
+						request.setAttribute("domicilioLista",domicilioLista);
+					}else{
 						request.setAttribute("respuestaSMS", 0);
 					}
-					request.setAttribute("alumnoLista",alumnoLista);
-					request.setAttribute("tutorLista",tutorLista);
-					request.setAttribute("domicilioLista",domicilioLista);
 					switch (opc){
 						case "1":
 							request.getRequestDispatcher("/views/Personal/delete.jsp").forward(request, response);

@@ -30,7 +30,6 @@ public class ListaEstudiantesServlet extends HttpServlet {
 
 	private void listEstudiantes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String matricula = request.getParameter("matricula");
-		System.out.println(matricula);
 		if(matricula != null)
 			controlDao.statusEstudiante(matricula);
 

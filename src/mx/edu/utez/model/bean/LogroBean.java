@@ -4,8 +4,7 @@ import java.util.Date;
 
 public class LogroBean {
 
-    private EstudianteBean estudiante = new EstudianteBean();
-
+    private EstudianteBean estudiante;
     private int folio;
     private String tipo;
     private String descripcion;

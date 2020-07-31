@@ -1,28 +1,38 @@
 package mx.edu.utez.model.dao;
-import mx.edu.utez.model.bean.Informacion_ClinicaBean;
+import mx.edu.utez.model.bean.EstudianteBean;
+import mx.edu.utez.model.bean.ClinicaBean;
 import mx.edu.utez.utility.conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Informacion_ClinicaDao extends conexion {
 
-	public int insertarDatos(Informacion_ClinicaBean clinicaBean) {
+
+	public int insertarDatos(ClinicaBean clinicaBean) {
 		try {
-			double peso = Double.parseDouble(clinicaBean.getPeso());
-			double estatura = Double.parseDouble(clinicaBean.getEstatura());
-			double imc = peso / (estatura * estatura);
-			int resul;
-			PreparedStatement statment = crearConexion().prepareStatement(
-					"INSERT INTO informacion_clinica VALUES('" + clinicaBean.getMatricula() + "', '" + peso + "', '" + estatura + "','" + imc + "','" +
-							clinicaBean.getTipoSangre() + "', " + "'" + clinicaBean.getNumeroSeguro() + "','" + clinicaBean.getUnidadMedica() + "','" +
-							clinicaBean.getAlergias() + "','" + clinicaBean.getEnferCronicas() + "', '" + clinicaBean.getEnferHereditarias() + "'," +
-							" '" + clinicaBean.getDiscapacidades() + "','" + clinicaBean.getDiagPsico() + "')");
-			resul = statment.executeUpdate();
-			if (resul == 1)
-				return resul;
+			PreparedStatement stm = crearConexion().prepareStatement("SELECT * FROM estudiante WHERE Matricula = '"+clinicaBean.getMatricula().getMatricula()+"' AND Status = 1");
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				double peso = Double.parseDouble(clinicaBean.getPeso());
+				double estatura = Double.parseDouble(clinicaBean.getEstatura());
+				double imc = peso / (estatura * estatura);
+				PreparedStatement statment = crearConexion().prepareStatement("INSERT INTO informacion_clinica VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+				statment.setString(1, clinicaBean.getMatricula().getMatricula());
+				statment.setDouble(2, peso);
+				statment.setDouble(3, estatura);
+				statment.setDouble(4, imc);
+				statment.setString(5, clinicaBean.getTipoSangre());
+				statment.setString(6, clinicaBean.getNumeroSeguro());
+				statment.setString(7, clinicaBean.getUnidadMedica());
+				statment.setString(8, clinicaBean.getAlergias());
+				statment.setString(9, clinicaBean.getEnferCronicas());
+				statment.setString(10, clinicaBean.getEnferHereditarias());
+				statment.setString(11, clinicaBean.getDiscapacidades());
+				statment.setString(12, clinicaBean.getDiagPsico());
+				if (statment.executeUpdate() > 0) return 1;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,36 +41,45 @@ public class Informacion_ClinicaDao extends conexion {
 
 	public int elimiarDatos(String matricula) {
 		try {
-			int resul;
-			PreparedStatement statment = null;
-			statment = crearConexion().prepareStatement("DELETE FROM informacion_clinica WHERE MatEstudiante = '" + matricula + "'");
-			resul = statment.executeUpdate();
-			if (resul == 1)
-				return resul;
+			PreparedStatement statment = crearConexion().prepareStatement("DELETE FROM informacion_clinica WHERE MatEstudiante = ?");
+			statment.setString(1, matricula);
+			if (statment.executeUpdate()>0) return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return 0;
 	}
 
-	public void modificarDatos(Informacion_ClinicaBean clinicaBean) {
+	public void modificarDatos(ClinicaBean clinicaBean) {
 		try {
 			double peso = Double.parseDouble(clinicaBean.getPeso());
 			double estatura = Double.parseDouble(clinicaBean.getEstatura());
 			double imc = peso / (estatura * estatura);
-			PreparedStatement statement = crearConexion().prepareStatement("UPDATE informacion_clinica SET Peso = '"+peso+"', Estatura = '"+estatura+"', Imc = '"+imc+"', TipoSangre = '"+clinicaBean.getTipoSangre()+"', NumeroSeguro = '"+ clinicaBean.getNumeroSeguro()+"', UnidadMedica = '"+clinicaBean.getUnidadMedica()+"' , Alergias = '"+clinicaBean.getAlergias()+"', EnferCronicas = '"+clinicaBean.getEnferCronicas()+"', EnferHereditarias = '"+clinicaBean.getEnferHereditarias()+"', Discapacidades = '"+clinicaBean.getDiscapacidades()+"', DiagPsico = '"+clinicaBean.getDiagPsico()+"' WHERE MatEstudiante = '"+clinicaBean.getMatricula()+"' ");
+			PreparedStatement statement = crearConexion().prepareStatement("UPDATE informacion_clinica SET Peso = ?, Estatura = ?, Imc = ?, TipoSangre = ?, NumeroSeguro = ?, UnidadMedica = ?, Alergias = ?, EnferCronicas = ?, EnferHereditarias = ?, Discapacidades = ?, DiagPsico = ? WHERE MatEstudiante = ? ");
+			statement.setDouble(1,peso);
+			statement.setDouble(2,estatura);
+			statement.setDouble(3,imc);
+			statement.setString(4,clinicaBean.getTipoSangre());
+			statement.setString(5,clinicaBean.getNumeroSeguro());
+			statement.setString(6,clinicaBean.getUnidadMedica());
+			statement.setString(7,clinicaBean.getAlergias());
+			statement.setString(8,clinicaBean.getEnferCronicas());
+			statement.setString(9,clinicaBean.getEnferHereditarias());
+			statement.setString(10,clinicaBean.getDiscapacidades());
+			statement.setString(11,clinicaBean.getDiagPsico());
+			statement.setString(12,clinicaBean.getMatricula().getMatricula());
 			statement.executeUpdate();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 	}
 
-	public List<Informacion_ClinicaBean> consultarDatos(String matricula) {
+	public List<ClinicaBean> consultarDatos(String matricula) {
 		try {
-			List<Informacion_ClinicaBean> listDatosClinica = new ArrayList<>();
+			List<ClinicaBean> listDatosClinica = new ArrayList<>();
 			PreparedStatement statement = null;
 			ResultSet resultSet = null;
-			statement = crearConexion().prepareStatement("SELECT * FROM informacion_clinica WHERE MatEstudiante = '" + matricula + "'");
+			statement = crearConexion().prepareStatement("SELECT Peso, Estatura, Imc, TipoSangre, NumeroSeguro, UnidadMedica, Alergias, EnferCronicas, EnferHereditarias, Discapacidades, DiagPsico FROM informacion_clinica WHERE MatEstudiante = '" + matricula + "'");
 			resultSet = statement.executeQuery();
 			if (resultSet.next()) {
 				String peso = resultSet.getString("Peso").toString();
@@ -69,7 +88,6 @@ public class Informacion_ClinicaDao extends conexion {
 				String tipoSangre = resultSet.getString("TipoSangre");
 				String numeroSeguro = resultSet.getString("NumeroSeguro");
 				String unidadMedica = resultSet.getString("UnidadMedica");
-
 				String alergiasResul = resultSet.getString("Alergias");
 				String tipoAlegia, alergia;
 				if (alergiasResul.contains(":")) {
@@ -115,8 +133,8 @@ public class Informacion_ClinicaDao extends conexion {
 				}
 
 				String diagPsico = resultSet.getString("DiagPsico");
-				listDatosClinica.add(new Informacion_ClinicaBean(matricula, peso, estatura, imc, tipoSangre, numeroSeguro, unidadMedica, tipoAlegia,
-						alergia,tipoCronica, cronica, tipoHeredi, hereditaria, tipoDiscapa, discapacidad, diagPsico));
+
+				listDatosClinica.add(new ClinicaBean(new EstudianteBean(matricula), peso, estatura, imc, tipoSangre, numeroSeguro, unidadMedica, tipoAlegia, alergia,tipoCronica, cronica, tipoHeredi, hereditaria, tipoDiscapa, discapacidad, diagPsico));
 				return listDatosClinica;
 			}
 		} catch (Exception e) {

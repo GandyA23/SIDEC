@@ -39,7 +39,7 @@
             </form>
         <br>
         <div class="bg-gris text-white text-center"style="border-radius: 7px" ><b>Cuenta de usuario</b></div> <br>
-
+	    <form method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
             <c:forEach var="usuarios" items="${usuariosList}">
 
                 <div class="row form-group d-inline-flex">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </c:forEach>
-        <form method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
+
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4">
                     <button onclick="pregunta()" type="button" class="btn bg-danger btn-block text-white"><b>Actualizar</b> </button>
@@ -109,26 +109,16 @@
         </form>
     </div>
 </div><!-- no quitar este contenedor -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
+
 <script>
     function pregunta() {
-        Swal.fire({
-            title: '¿Realizar Acción?',
-            text: "Los cambios son irreversibles!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#6c757d',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Si, Realizar!'
+        Swal.fire({title: '¿Realizar Acción?', text: "Los cambios son irreversibles!", icon: 'warning', showCancelButton: true, confirmButtonColor: '#6c757d', cancelButtonColor: '#3085d6', confirmButtonText: 'Si, Realizar!'
         }).then((result) => {
             if (result.value) {
-                Swal.fire(
-                        'Realizado!',
-                        'Se efectuo la acción',
-                        'success'
-                )
-                setTimeout(function () {
-                    document.getElementById("enviarForm").click();
-                },1000)
+                Swal.fire('Realizado!', 'Se efectuo la acción', 'success')
+                setTimeout(function () {document.getElementById("enviarForm").click();},1000)
             }
         })
     }

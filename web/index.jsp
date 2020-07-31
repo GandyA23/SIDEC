@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Iniciar Sesión</title>
+        <title>SIDEC | Iniciar Sesión</title>
         <meta charset="utf-8">
         <meta name="author" content="SIDEC | UTEZ 2020">
         <meta name="description" content="Iniciar Sesión">
@@ -81,14 +81,13 @@
                             </div>
                         </div>
                         <div class="p-3">
-                            <button type="submit" value="Login" class="btn btn-danger btn-sm btn-block" style="border-radius:10px; color: white">Ingresar</button>
+                            <button type="submit" value="Login" class="btn btn-danger btn-block" style="border-radius:10px; color: white"><b>Ingresar</b></button>
                         </div>
                     </form>
-                    <button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
+                    <button id="mostrarSMS" value="<c:out value="${respuestaSMS}"></c:out>" hidden></button>
                 </div>
             </div>
         </div>
-
         <footer  class="container">
             <h6 class="text-center" style="color: black; font-size: 16px;text-align: center;">Los datos personales recabados serán protegidos, incorporados y tratados en el sistema de datos personales
                 correspondiente, de conformidad con el supuesto por la ley federal de transparencia y acceso a la
@@ -99,13 +98,7 @@
     <script>
         (function () {
             var doc = document.getElementById("mostrarSMS").value;
-            if(doc == 'NO'){
-                Swal.fire({
-                    icon: 'error',
-                    title: '¡Error de Inicio de Sesión!',
-                    text: 'Verifique bien los datos',
-                })
-            }
+            if(doc == 'NO'){Swal.fire({icon: 'error', title: '¡Error de Inicio de Sesión!', text: 'Verifique bien los datos', footer: '<b>Ponte en contacto con el Administrador</b>'})}
         }())
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -90,7 +90,7 @@
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_cronica" id="inlineRadio2"
-							       value="no_cronica">
+							       value="no_cronica" checked>
 							<label class="form-check-label" for="inlineRadio2">No</label>
 						</div>
 
@@ -123,7 +123,7 @@
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_hereditaria" id="inlineRadio4"
-							       value="no_hereditaria">
+							       value="no_hereditaria" checked>
 							<label class="form-check-label" for="inlineRadio4">No</label>
 						</div>
 
@@ -156,7 +156,7 @@
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio6"
-							       value="no_alergias">
+							       value="no_alergias" checked>
 							<label class="form-check-label" for="inlineRadio6">No</label>
 						</div>
 
@@ -188,7 +188,7 @@
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_discapacidad" id="inlineRadio8"
-							       value="no_discapacidad">
+							       value="no_discapacidad" checked>
 							<label class="form-check-label" for="inlineRadio8">No</label>
 						</div>
 
@@ -219,5 +219,6 @@
 	</div>
 </div>
 <!-- no quitar este contenedor -->
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

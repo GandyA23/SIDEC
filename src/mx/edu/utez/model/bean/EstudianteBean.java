@@ -1,5 +1,6 @@
 package mx.edu.utez.model.bean;
 
+import java.io.InputStream;
 import java.sql.Date;
 
 public class EstudianteBean {
@@ -14,7 +15,12 @@ public class EstudianteBean {
     private String genero;
     private String cicloEscolar;
     private String nivelActual;
+    private InputStream foto;
     private int status;
+
+    public EstudianteBean(String matricula) {
+        this.matricula = matricula;
+    }
 
     public EstudianteBean() {
     }
@@ -31,6 +37,14 @@ public class EstudianteBean {
         this.genero = genero;
         this.cicloEscolar = cicloEscolar;
         this.nivelActual = nivelActual;
+    }
+
+    public InputStream getFoto() {
+        return foto;
+    }
+
+    public void setFoto(InputStream foto) {
+        this.foto = foto;
     }
 
     public String getMatricula() {

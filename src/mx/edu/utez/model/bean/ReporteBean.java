@@ -4,14 +4,15 @@ import java.util.Date;
 
 public class ReporteBean {
 
-    private EstudianteBean estudiante = new EstudianteBean();
-    private TutorBean tutor = new TutorBean();
+    private EstudianteBean estudiante;
+    private TutorBean tutor;
 
     private int folio;
     private Date fecha;
     private String motivo;
     private String descripcion;
     private String canalizacion;
+
 
     public EstudianteBean getEstudiante() {
         return estudiante;

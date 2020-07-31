@@ -95,7 +95,7 @@
 		<a class="btn btn-danger bg-rojobajo text-left" data-toggle="collapse" href="#collapseExample3" role="button"
 		aria-expanded="false" aria-controls="collapseExample">
 		<img src="${pageContext.request.contextPath}/assets/img/academica.png" style="width: 15%; height: 15%">
-		Información Academica
+		Información Académica
 		</a>
 		<div class="collapse text-center mr-0" id="collapseExample3">
 		<div class="card bg-rojobajo">

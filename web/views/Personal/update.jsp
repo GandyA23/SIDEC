@@ -42,12 +42,16 @@
 		</div>
 
 		<form method="post" action="<%=request.getContextPath()%>/PersonalServlet">
-			<div class="row">
-				<div class="col-md">
-					<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos estudiante</b></p>
-				</div>
-			</div>
 			<c:forEach var="alumno" items="${alumnoLista}">
+
+				<div class="row">
+					<div class="col-md">
+						<p class="bg-gris text-white text-center" style=" border-radius: 30px;"><b>Datos estudiante</b>
+						</p>
+					</div>
+				</div>
+
+
 				<div class="row form-group col-md d-inline-flex">
 					<div class="col-md">
 						<button type="button" class="btn btn-block btn-outline-danger" data-toggle="modal"
@@ -182,12 +186,12 @@
 					</div>
 					<div class="col-md-2">
 						<input type="text" class="form-control form-control-sm text-center"
-						       placeholder="No.Int" name="interior"  maxlength="5"
+						       placeholder="No.Int" name="interior" maxlength="5"
 						       value="<c:out value="${domicilio.noInterior}"></c:out>">
 					</div>
 					<div class="col-md-2">
 						<input type="text" class="form-control form-control-sm text-center"
-						       placeholder="No.Ext" name="exterior"  maxlength="5"
+						       placeholder="No.Ext" name="exterior" maxlength="5"
 						       value="<c:out value="${domicilio.noExterior}"></c:out>">
 					</div>
 					<div class="col-md-2">
@@ -229,7 +233,7 @@
 					<div class="col-md">
 						<input type="text" class="form-control form-control-sm text-center"
 						       placeholder="Segundo apellido"
-						       name="tutorApellido2" required maxlength="15"
+						       name="tutorApellido2" maxlength="15"
 						       value="<c:out value="${tutor.apellido2}"></c:out>">
 					</div>
 					<div class="col-md">
@@ -263,17 +267,23 @@
 				<div class="row form-group col-md d-inline-flex">
 					<div class="col-md">
 						<input type="email" class="form-control form-control-sm text-center"
-						       placeholder="Correo electrónico" name="tutorCorreo" maxlength="30" value="<c:out value="${tutor.correo}"></c:out>">
+						       placeholder="Correo electrónico" name="tutorCorreo" maxlength="30"
+						       value="<c:out value="${tutor.correo}"></c:out>">
 					</div>
 					<div class="col-md">
-						<input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono personal"
-						       name="tutorTelefono" required maxlength="10" value="<c:out value="${tutor.telefonoPersonal}"></c:out>">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Teléfono personal"
+						       name="tutorTelefono" required maxlength="10"
+						       value="<c:out value="${tutor.telefonoPersonal}"></c:out>">
 					</div>
 					<div class="col-md">
-						<input type="text" class="form-control form-control-sm text-center" placeholder="Teléfono del trabajo"
-						       name="tutorTelTrabajo" maxlength="10" value="<c:out value="${tutor.telefonoTrabajo}"></c:out>">
+						<input type="text" class="form-control form-control-sm text-center"
+						       placeholder="Teléfono del trabajo"
+						       name="tutorTelTrabajo" maxlength="10"
+						       value="<c:out value="${tutor.telefonoTrabajo}"></c:out>">
 					</div>
 				</div>
+
 			</c:forEach>
 			<br>
 			<div class="row d-flex justify-content-center">
@@ -288,26 +298,14 @@
 
 	</div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 <script>
 	function pregunta() {
-		Swal.fire({
-			title: '¿Realizar Acción?',
-			text: "Los cambios son irreversibles!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#6c757d',
-			cancelButtonColor: '#3085d6',
-			confirmButtonText: 'Si, Realizar!'
+		Swal.fire({title: '¿Realizar Acción?', text: "Los cambios son irreversibles!", icon: 'warning', showCancelButton: true, confirmButtonColor: '#6c757d', cancelButtonColor: '#3085d6', confirmButtonText: 'Si, Realizar!'
 		}).then((result) => {
-			if (result.value) {
-				Swal.fire(
-					'Realizado!',
-					'Se efectuo la acción',
-					'success'
-				)
-				setTimeout(function () {
-					document.getElementById("enviarForm").click();
-				}, 1000)
+			if (result.value) {Swal.fire('Realizado!', 'Se efectuo la acción', 'success')
+				setTimeout(function () {document.getElementById("enviarForm").click();}, 1000)
 			}
 		})
 	}

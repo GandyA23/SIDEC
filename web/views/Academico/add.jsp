@@ -28,44 +28,43 @@
 		</div>
 		<form action="${pageContext.request.contextPath}/AcademicoServlet" method="post">
 			<div class="row form-group col-md-4 d-inline-flex">
-				<input type="text" name="matricula" class="form-control  text-center" maxlength="15"
-				       placeholder="Matrícula" required>
+				<input type="text" name="matricula" class="form-control  text-center" maxlength="15" placeholder="Matrícula" required>
 			</div>
 
 			<div class="row form-group col-md d-inline-flex">
 				<div class="col-md">
-					<input class="form-check-input" type="checkbox" value="" id="diplomas">
+					<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas">
 					<label class="form-check-label" for="diplomas"> Diplomas </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="diploma"></textarea>
+					<textarea class="form-control rounded" name="diploma" placeholder="Descripción:"></textarea>
 				</div>
 				<br>
 
 				<div class="col-md">
-					<input class="form-check-input" type="checkbox" value="" id="reconocimientos">
+					<input class="form-check-input" type="checkbox" name="checkReconocimiento" value="Si" id="reconocimientos">
 					<label class="form-check-label" for="reconocimientos"> Reconocimientos </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="reconocimiento"></textarea>
+					<textarea class="form-control rounded" name="reconocimiento" placeholder="Descripción:"></textarea>
 				</div>
 				<br>
 			</div>
 			<div class="row form-group col-md d-inline-flex">
 				<div class="col-md">
-					<input class="form-check-input" type="checkbox" value="" id="menciones">
+					<input class="form-check-input" type="checkbox" name="checkMenciones" value="Si" id="menciones">
 					<label class="form-check-label" for="menciones"> Menciones Honoríficas </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="mencion"></textarea>
+					<textarea class="form-control rounded" name="mencion" placeholder="Descripción:"></textarea>
 				</div>
 				<br>
 				<div class="col-md">
-					<input class="form-check-input" type="checkbox" value="" id="certificaciones">
+					<input class="form-check-input" type="checkbox" name="checkCertificaciones" value="Si" id="certificaciones">
 					<label class="form-check-label" for="certificaciones"> Certificaciones </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="certificacion"></textarea>
+					<textarea class="form-control rounded" name="certificacion" placeholder="Descripción:"></textarea>
 				</div>
 				<br>
 			</div>
@@ -76,8 +75,7 @@
 			</div>
 			<div class="row form-group col-md d-inline-flex">
 				<div class="col-md">
-					<textarea class="form-control rounded mt-3" name="observaciones"
-					          placeholder="Observaciones"></textarea>
+					<textarea class="form-control rounded mt-3" name="observaciones" placeholder="Observaciones de conducta"></textarea>
 				</div>
 			</div>
 			<div class="row d-flex justify-content-center">
@@ -89,5 +87,6 @@
 		</form>
 	</div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

@@ -14,9 +14,14 @@ public class UsuarioDao extends conexion {
 		try {
 			int resul;
 			PreparedStatement statment = null;
-			statment = crearConexion().prepareStatement(
-					"INSERT INTO Usuario VALUES('" + uBean.getCct() + "', '" + uBean.getPassword() + "', '" + uBean.getCorreo() + "','" + uBean.getNombre() + "','" + uBean.getApellido1() + "', " +
-							"'" + uBean.getApellido2() + "','" + uBean.getRol() + "')");
+			statment = crearConexion().prepareStatement("INSERT INTO Usuario VALUES(?,?,?,?,?,?,?)");
+			statment.setString(1,uBean.getCct());
+			statment.setString(2,uBean.getPassword());
+			statment.setString(3,uBean.getCorreo());
+			statment.setString(4,uBean.getNombre());
+			statment.setString(5,uBean.getApellido1());
+			statment.setString(6,uBean.getApellido2());
+			statment.setString(7,uBean.getRol());
 			resul = statment.executeUpdate();
 			if (resul == 1)
 				return resul;
@@ -30,7 +35,8 @@ public class UsuarioDao extends conexion {
 		try {
 			int resul;
 			PreparedStatement statment = null;
-			statment = crearConexion().prepareStatement("DELETE FROM usuario WHERE CCT = '" + cct + "'");
+			statment = crearConexion().prepareStatement("DELETE FROM usuario WHERE CCT = ?");
+			statment.setString(1,cct);
 			resul = statment.executeUpdate();
 			if (resul == 1)
 				return resul;
@@ -63,13 +69,18 @@ public class UsuarioDao extends conexion {
 		return null;
 	}
 
-	public void actualizarDatos(String cct, String password, String correo, String nombre, String apellido1, String apellido2, String rol) {
+	public void actualizarDatos(UsuarioBean uBean) {
 		try {
-			int resul;
 			PreparedStatement statment = null;
-			statment = crearConexion().prepareStatement(
-					"UPDATE usuario SET Password = '" + password + "', Correo='" + correo + "', Nombre= '" + nombre + "', Apellido1='" + apellido1 + "', Apellido2 = '" + apellido2 + "', Rol = '" + rol + "' WHERE CCT = '" + cct + "'");
-			resul = statment.executeUpdate();
+			statment = crearConexion().prepareStatement("UPDATE usuario SET Password = ?, Correo = ?, Nombre = ?, Apellido1 = ?, Apellido2 = ?, Rol = ? WHERE CCT = ?");
+			statment.setString(1,uBean.getPassword());
+			statment.setString(2,uBean.getCorreo());
+			statment.setString(3,uBean.getNombre());
+			statment.setString(4,uBean.getApellido1());
+			statment.setString(5,uBean.getApellido2());
+			statment.setString(6,uBean.getRol());
+			statment.setString(7,uBean.getCct());
+			statment.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

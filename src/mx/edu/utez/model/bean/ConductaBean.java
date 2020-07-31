@@ -4,8 +4,7 @@ import java.util.Date;
 
 public class ConductaBean {
 
-    private EstudianteBean estudiante = new EstudianteBean();
-
+    private EstudianteBean estudiante ;
     private Date fecha;
     private String observaciones;
 

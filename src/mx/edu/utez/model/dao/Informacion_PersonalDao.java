@@ -20,30 +20,49 @@ public class Informacion_PersonalDao extends conexion {
 			String idTutor = null;
 			int check1, check2, check3;
 			PreparedStatement sentencia = null;
-			sentencia = crearConexion().prepareStatement("INSERT INTO estudiante values('" + alumno.getMatricula() + "','" + alumno.getCurp() + "','" + alumno.getNombre() + "','" + alumno.getApellido1() + "','" + alumno.getApellido2() + "','" + alumno.getFechaNacimiento() + "','" + alumno.getTelefono() + "','" + alumno.getCorreo() + "','" + alumno.getGenero() + "','" + alumno.getCicloEscolar() + "','" + alumno.getNivelActual() + "','" + alumno.getStatus() + "');");
+			sentencia = crearConexion().prepareStatement("INSERT INTO estudiante values(?,?,?,?,?,?,?,?,?,?,?,?)");
+			sentencia.setString(1,alumno.getMatricula());
+			sentencia.setString(2,alumno.getCurp());
+			sentencia.setString(3,alumno.getNombre());
+			sentencia.setString(4,alumno.getApellido1());
+			sentencia.setString(5,alumno.getApellido2());
+			sentencia.setString(6,alumno.getFechaNacimiento());
+			sentencia.setString(7,alumno.getTelefono());
+			sentencia.setString(8,alumno.getCorreo());
+			sentencia.setString(9,alumno.getGenero());
+			sentencia.setString(10,alumno.getCicloEscolar());
+			sentencia.setString(11,alumno.getNivelActual());
+			sentencia.setInt(12,alumno.getStatus());
 			check1 = sentencia.executeUpdate();
-			if (check1 == 1) {
-				System.out.println("Se ejecuto el Alumno");
-			}
+
 			sentencia = null;
-			sentencia = crearConexion().prepareStatement("INSERT INTO tutor values(null,'" + tutor.getNombre() + "','" + tutor.getApellido1() + "','" + tutor.getApellido2() + "','" + tutor.getTelefonoPersonal() + "','" + tutor.getTelefonoTrabajo() + "','" + tutor.getCorreo() + "','" + tutor.getGenero() + "')");
+			sentencia = crearConexion().prepareStatement("INSERT INTO tutor values(null,?,?,?,?,?,?,?)");
+			sentencia.setString(1,tutor.getNombre());
+			sentencia.setString(2,tutor.getApellido1());
+			sentencia.setString(3,tutor.getApellido2());
+			sentencia.setString(4,tutor.getTelefonoPersonal());
+			sentencia.setString(5,tutor.getTelefonoTrabajo());
+			sentencia.setString(6,tutor.getCorreo());
+			sentencia.setString(7,tutor.getGenero());
 			check2 = sentencia.executeUpdate();
-			if (check2 == 1) {
-				System.out.println("Se ejecuto el tutor");
-			}
+
 			sentencia = null;
 			ResultSet consulta;
 			sentencia = crearConexion().prepareStatement("SELECT Id from tutor WHERE Nombre = '" + tutor.getNombre() + "' AND Apellido1 ='" + tutor.getApellido1() + "' AND Apellido2 ='" + tutor.getApellido2() + "'");
 			consulta = sentencia.executeQuery();
-			if (consulta.next()) {
-				idTutor = consulta.getString("Id");
-			}
+
 			sentencia = null;
-			sentencia = crearConexion().prepareStatement("INSERT INTO domicilio values('" + domicilio.getMatriculaEstudiante() + "', '" + idTutor + "'  ,'" + domicilio.getCalle() + "','" + domicilio.getNoExterior() + "','" + domicilio.getNoInterior() + "','" + domicilio.getColonia() + "','" + domicilio.getMunicipio() + "','" + domicilio.getCodigoPostal() + "')");
+			sentencia = crearConexion().prepareStatement("INSERT INTO domicilio values(?,?,?,?,?,?,?,?)");
+			sentencia.setString(1,domicilio.getMatriculaEstudiante().getMatricula());
+			sentencia.setString(2,idTutor);
+			sentencia.setString(3,domicilio.getCalle());
+			sentencia.setString(4,domicilio.getNoExterior());
+			sentencia.setString(5,domicilio.getNoInterior());
+			sentencia.setString(6,domicilio.getColonia());
+			sentencia.setString(7,domicilio.getMunicipio());
+			sentencia.setString(8,domicilio.getCodigoPostal());
 			check3 = sentencia.executeUpdate();
-			if (check3 == 1) {
-				System.out.println("Se ejecuto docimilio");
-			}
+
 			return (check1 == check2 && check2 == check3) ? 1 : 0;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,7 +74,7 @@ public class Informacion_PersonalDao extends conexion {
 		try {
 			int estado;
 			PreparedStatement sentencia = null;
-			sentencia = crearConexion().prepareStatement("UPDATE estudiante SET Status = 0 WHERE Matricula = '" + matricula + "'");
+			sentencia = crearConexion().prepareStatement("UPDATE estudiante SET Status = 0 WHERE Matricula = '" + matricula + "' AND Status = 1");
 			estado = sentencia.executeUpdate();
 			if (estado == 1) {
 				return estado;
@@ -82,7 +101,6 @@ public class Informacion_PersonalDao extends conexion {
 		}
 		return null;
 	}
-
 	public List<TutorBean> datosTutor() {
 		try {
 			List<TutorBean> tutor = new ArrayList<>();
@@ -99,7 +117,6 @@ public class Informacion_PersonalDao extends conexion {
 		}
 		return null;
 	}
-
 	public List<DomicilioBean> datosDomicilio(String matricula) {
 		try {
 			List<DomicilioBean> domicilio = new ArrayList<>();
@@ -109,8 +126,7 @@ public class Informacion_PersonalDao extends conexion {
 			resultSet = sentencia.executeQuery();
 			if (resultSet.next()) {
 				idTutor = resultSet.getString("IdTutor");
-				System.out.println("Id del Tutor: "+idTutor);
-				domicilio.add(new DomicilioBean(resultSet.getString("MatEstudiante"), resultSet.getString("Calle"), resultSet.getString("NoExterior"), resultSet.getString("NoInterior"), resultSet.getString("Colonia"), resultSet.getString("Municipio"), resultSet.getString("CodigoPostal")));
+				domicilio.add(new DomicilioBean(new EstudianteBean(resultSet.getString("MatEstudiante")), resultSet.getString("Calle"), resultSet.getString("NoExterior"), resultSet.getString("NoInterior"), resultSet.getString("Colonia"), resultSet.getString("Municipio"), resultSet.getString("CodigoPostal")));
 				return domicilio;
 			}
 		} catch (Exception e) {
@@ -134,21 +150,12 @@ public class Informacion_PersonalDao extends conexion {
 			sentencia.setString(9, alumno.getCicloEscolar());
 			sentencia.setString(10, alumno.getNivelActual());
 			sentencia.setString(11, alumno.getMatricula());
-			if(sentencia.executeUpdate()>0)
-				System.out.println("ALUMNO");
 
 			sentencia = null;
 			sentencia = crearConexion().prepareStatement("UPDATE tutor SET Nombre = '"+tutor.getNombre()+"', Apellido1 = '"+tutor.getApellido1()+"', Apellido2 = '"+tutor.getApellido2()+"', TelefonoPersonal = '"+tutor.getTelefonoPersonal()+"', TelefonoTrabajo = '"+tutor.getTelefonoTrabajo()+"', Correo = '"+tutor.getCorreo()+"', Genero = '"+tutor.getGenero()+"' WHERE Id = '"+idTutor+"'");
-			System.out.println(idTutor);
-			if(sentencia.executeUpdate()>0)
-				System.out.println("TUTOR");
 
 			sentencia = null;
 			sentencia = crearConexion().prepareStatement("UPDATE domicilio SET Calle = '"+domicilio.getCalle()+"', NoExterior = '"+domicilio.getNoExterior()+"', NoInterior = '"+domicilio.getNoInterior()+"', Colonia = '"+domicilio.getColonia()+"', Municipio = '"+domicilio.getMunicipio()+"', CodigoPostal = '"+domicilio.getCodigoPostal()+"' WHERE MatEstudiante = '"+alumno.getMatricula()+"' AND IdTutor = '"+idTutor+"'");
-			System.out.println(idTutor);
-			System.out.println(alumno.getMatricula());
-			if(sentencia.executeUpdate()>0)
-				System.out.println("DOMICILIO");
 
 		} catch (Exception e) {
 			e.printStackTrace();

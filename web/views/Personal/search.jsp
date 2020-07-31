@@ -177,5 +177,6 @@
 
 	</div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

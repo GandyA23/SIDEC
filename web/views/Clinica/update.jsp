@@ -32,8 +32,7 @@
 			<form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
 				<div class="row form-group">
 					<div class="col">
-						<input type="text" name="matricula" class="form-control text-center" alt="Matricula" maxlength="15"
-						       placeholder="Matricula" required>
+						<input type="text" name="matriculaEst" class="form-control text-center" maxlength="15" placeholder="Matricula" required>
 					</div>
 					<div class="col-md-4">
 						<button type="submit" class="btn bg-danger btn-block text-white" name="accion" value="search:2">
@@ -53,7 +52,7 @@
 				<div class="row form-group col-md d-inline-flex">
 					<div class="col-md">
 						<input type="text" name="matricula" class="form-control  text-center"
-						       value="<c:out value="${clinica.matricula}"/>" placeholder="Matrícula" readonly>
+						       value="<c:out value="${clinica.matricula.matricula}"/>" placeholder="Matrícula" readonly>
 					</div>
 					<div class="col-md">
 						<input type="text" name="numeroSeguro" class="form-control  text-center"
@@ -314,29 +313,18 @@
 	</div>
 </div>
 <!-- no quitar este contenedor -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 <script>
 	function pregunta() {
-		Swal.fire({
-			title: '¿Realizar Acción?',
-			text: "Los cambios son irreversibles!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#6c757d',
-			cancelButtonColor: '#3085d6',
-			confirmButtonText: 'Si, Realizar!'
+		Swal.fire({title: '¿Realizar Acción?', text: "Los cambios son irreversibles!", icon: 'warning', showCancelButton: true, confirmButtonColor: '#6c757d', cancelButtonColor: '#3085d6', confirmButtonText: 'Si, Realizar!'
 		}).then((result) => {
-			if (result.value) {
-				Swal.fire(
-					'Realizado!',
-					'Se efectuo la acción',
-					'success'
-				)
-				setTimeout(function () {
-					document.getElementById("enviarForm").click();
-				}, 1000)
+			if (result.value) {Swal.fire('Realizado!', 'Se efectuo la acción', 'success')
+				setTimeout(function () {document.getElementById("enviarForm").click();}, 1000)
 			}
 		})
 	}
 </script>
+
 
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

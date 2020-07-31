@@ -87,26 +87,15 @@
 
 </div>
 <!-- no quitar este contenedor -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 <script>
 	function pregunta() {
-		Swal.fire({
-			title: '¿Realizar Acción?',
-			text: "Los cambios son irreversibles!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#6c757d',
-			cancelButtonColor: '#3085d6',
-			confirmButtonText: 'Si, Realizar!'
+		Swal.fire({title: '¿Realizar Acción?', text: "Los cambios son irreversibles!", icon: 'warning', showCancelButton: true, confirmButtonColor: '#6c757d', cancelButtonColor: '#3085d6', confirmButtonText: 'Si, Realizar!'
 		}).then((result) => {
 			if (result.value) {
-				Swal.fire(
-					'Realizado!',
-					'Se efectuo la acción',
-					'success'
-				)
-				setTimeout(function () {
-					document.getElementById("enviarForm").click();
-				}, 1000)
+				Swal.fire('Realizado!', 'Se efectuo la acción', 'success')
+				setTimeout(function () {document.getElementById("enviarForm").click();}, 1000)
 			}
 		})
 	}

@@ -16,16 +16,16 @@ public class CerrarSesionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-
 		LoginDao cerrar = new LoginDao();
 		try {
 			cerrar.cerrarConexion();
+			HttpSession sesionActiva = request.getSession();
+			sesionActiva.removeAttribute("UsuarioActivo");
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}
-		HttpSession sesionActiva = request.getSession();
-		sesionActiva.removeAttribute("UsuarioActivo");
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
