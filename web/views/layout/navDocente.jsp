@@ -1,14 +1,14 @@
 	<%@ page import="mx.edu.utez.model.bean.LoginBean" %>
 			<%
-           HttpSession sesionActiva = request.getSession();
-           LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");
-           %>
+HttpSession sesionActiva = request.getSession();
+LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");
+%>
 		<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-rojo">
-		<a href="${pageContext.request.contextPath}/views/main.jsp" title="Interfaz SIDEC">
+		<a href="${pageContext.request.contextPath}/views/mainDocente.jsp" title="Interfaz SIDEC">
 		<img style="border-radius: 50%; width: 55px; height: 50px;" src="${pageContext.request.contextPath}
 		/assets/img/LogoESC.jpg" alt="Logo SIDEC">
 		</a>
@@ -23,7 +23,7 @@
 		<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 		<li class="nav-item active">
 		<a id="rolActivo" class="nav-link bg-gris text-white mr-1 border border-white"
-		href="${pageContext.request.contextPath}/views/main.jsp"><%out.print(usuarioWeb.getRol());%></a>
+		href="${pageContext.request.contextPath}/views/mainDocente.jsp"><%out.print(usuarioWeb.getRol());%></a>
 		<%-- <span class="sr-only">(current)</span> --%>
 		</li>
 		<li class="nav-item active">
@@ -54,12 +54,6 @@
 		</a>
 		<div class="collapse text-center mr-0" id="collapseExample1">
 		<div class="card bg-rojobajo">
-		<a href="${pageContext.request.contextPath}/views/Personal/add.jsp" class="bg-rojobajo
-		text-white">Añadir Registro</a>
-		<a  href="${pageContext.request.contextPath}/views/Personal/delete.jsp" class="bg-rojobajo
-		text-white">Eliminar Registro</a>
-		<a href="${pageContext.request.contextPath}/views/Personal/update.jsp" class="bg-rojobajo
-		text-white">Actualizar Datos</a>
 		<a href="${pageContext.request.contextPath}/views/Personal/search.jsp" class="bg-rojobajo text-white">Buscar
 		Registro</a>
 		</div>
@@ -74,14 +68,7 @@
 		</a>
 		<div class="collapse text-center mr-0" id="collapseExample2">
 		<div class="card bg-rojobajo">
-		<a href="${pageContext.request.contextPath}/views/Clinica/add.jsp" class="bg-rojobajo
-		text-white">Añadir Registro</a>
-		<a href="${pageContext.request.contextPath}/views/Clinica/delete.jsp" class="bg-rojobajo
-		text-white">Eliminar Registro</a>
-		<a href="${pageContext.request.contextPath}/views/Clinica/update.jsp" class="bg-rojobajo
-		text-white">Actualizar Datos</a>
-		<a href="${pageContext.request.contextPath}/views/Clinica/search.jsp" class="bg-rojobajo text-white">Buscar
-		Registro</a>
+		<a href="${pageContext.request.contextPath}/views/Clinica/search.jsp" class="bg-rojobajo text-white">Buscar Registro</a>
 		</div>
 		</div>
 		<!-- ---------------------------------------------------------------------------------- -->
@@ -96,12 +83,6 @@
 		</a>
 		<div class="collapse text-center mr-0" id="collapseExample3">
 		<div class="card bg-rojobajo">
-		<a href="${pageContext.request.contextPath}/views/Academico/add.jsp" class="bg-rojobajo
-		text-white">Añadir Registro</a>
-		<a href="${pageContext.request.contextPath}/views/Academico/delete.jsp" class="bg-rojobajo
-		text-white">Eliminar Registro</a>
-		<a href="${pageContext.request.contextPath}/views/Academico/update.jsp" class="bg-rojobajo
-		text-white">Actualizar Datos</a>
 		<a href="${pageContext.request.contextPath}/views/Academico/search.jsp" class="bg-rojobajo text-white">Buscar
 		Registro</a>
 		<a href="${pageContext.request.contextPath}/views/Academico/reportes.jsp" class="bg-rojobajo
@@ -112,18 +93,11 @@
 		<!-- ---------------------------------------------------------------------------------- -->
 
 		<!--Encabezado Usuarios-->
-		<div class=" sidebar-heading text-center">
-		<img src="${pageContext.request.contextPath}/assets/img/jefe.png" style="width: 30px; height:
-		30px; position:relative;"><b>Roles</b>
-		</div>
+
 		<!-- ---------------------------------------------------------------------------------- -->
 
 		<!--Grupo de cuentas con sub menú-->
 		<div class="list-group list-group-flush" >
-		<a class="btn btn-danger bg-rojobajo text-left" data-toggle="collapse"
-		href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample">
-		<img src="${pageContext.request.contextPath}/assets/img/candado.png" style="width: 15%; height: 15%">Cuentas
-		</a>
 
 		<div class="collapse text-center mr-0" id="collapseExample4">
 		<div class="card bg-rojobajo">
@@ -131,8 +105,6 @@
 		Registro</a>
 		<a href="${pageContext.request.contextPath}/views/Usuarios/delete.jsp" class="bg-rojobajo text-white">Eliminar
 		Registro</a>
-		<a href="${pageContext.request.contextPath}/views/Usuarios/update.jsp" class=" bg-rojobajo
-		text-white">Actualizar Datos</a>
 		<a href="${pageContext.request.contextPath}/views/Usuarios/search.jsp" class="bg-rojobajo text-white">Buscar
 		Registro</a>
 		</div>

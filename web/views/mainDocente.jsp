@@ -1,7 +1,7 @@
 <%@ page import="mx.edu.utez.model.bean.LoginBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="layout/header.jsp"></jsp:include>
-<jsp:include page="layout/nav.jsp"></jsp:include>
+<jsp:include page="layout/navDocente.jsp"></jsp:include>
 <%
 	HttpSession sesionActiva = request.getSession();
 	LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");

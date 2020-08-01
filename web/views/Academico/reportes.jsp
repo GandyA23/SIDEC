@@ -1,15 +1,16 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Gandy Avila
-  Date: 13/07/2020
-  Time: 02:34 p. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="mx.edu.utez.model.bean.LoginBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/views/layout/header.jsp"></jsp:include>
-<jsp:include page="/views/layout/nav.jsp"></jsp:include>
-
+<%
+    HttpSession sesionActiva = request.getSession();
+    LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");
+    switch (usuarioWeb.getRol()){
+     case "Administrador": %> <jsp:include page="/views/layout/nav.jsp"></jsp:include> <% break;
+    case "Director": %> <jsp:include page="/views/layout/navDirector.jsp"></jsp:include><% break;
+    case "Docente": %><jsp:include page="/views/layout/navDocente.jsp"></jsp:include><% break;
+}
+%>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Información Académica</li>

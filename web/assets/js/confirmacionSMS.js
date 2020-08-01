@@ -13,7 +13,7 @@
 				icon: 'error',
 				title: '¡Ocurrio un error!',
 				text: 'Algo pasó, revise los datos',
-				footer: '<b>Posiblemente el estudiante no exista o este dado de baja</b>'
+				footer: '<b class="text-center">Posiblemente el estudiante no exista, este de baja o ya tiene el registro</b>'
 			})
 			break;
 	}

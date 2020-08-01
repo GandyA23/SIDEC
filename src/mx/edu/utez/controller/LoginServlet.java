@@ -29,9 +29,7 @@ public class LoginServlet extends HttpServlet {
                 System.out.println("Error de sesion");
                 request.setAttribute("respuestaSMS", "NO");
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
-            }
-
-            else if (usuarioWeb.getRol().equals("Administrador")){
+            }else if (usuarioWeb.getRol().equals("Administrador")){
                 System.out.println("Es Administrador");
                 HttpSession sesionActiva = request.getSession();
                 sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
@@ -41,13 +39,13 @@ public class LoginServlet extends HttpServlet {
                 System.out.println("Es Director");
                 HttpSession sesionActiva = request.getSession();
                 sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
-                request.getRequestDispatcher("/views/main.jsp").forward(request, response);
+                request.getRequestDispatcher("/views/mainDirector.jsp").forward(request, response);
 
             }else if(usuarioWeb.getRol().equals("Docente")){
                 System.out.println("Es Docente");
                 HttpSession sesionActiva = request.getSession();
                 sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
-                request.getRequestDispatcher("/views/main.jsp").forward(request, response);
+                request.getRequestDispatcher("/views/mainDocente.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
