@@ -32,7 +32,7 @@
 			<form class="form-inline" method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
 					<div class="form-group mx-auto">
 						<div class="col">
-							<input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" maxlength="15" required>
+							<input type="text" value="" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" maxlength="15" required>
 						</div>
 						<div class="col-md-4">
 							<button type="submit" class="btn btn-danger btn-block" name="accion" value="search:1"><b>Búscar</b></button>

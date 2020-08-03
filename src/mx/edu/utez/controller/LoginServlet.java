@@ -15,6 +15,10 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
 
+        //Roles con sus rutas que admite el Sistema Web
+        String[] roles = { "Administrador", "Director", "Docente" };
+        String[] rutas = { "main", "mainDirector", "mainDocente" };
+
         String cct = request.getParameter("cct");
         String password = request.getParameter("password");
 
@@ -24,30 +28,21 @@ public class LoginServlet extends HttpServlet {
         try {
             LoginBean usuarioWeb = logdao.validarRol(logben);
 
+            //Verifico a que rol pertenece el usuario
+            for(int i=0; i<roles.length; i++)
+                if( usuarioWeb.getRol().equals( roles[i] ) ){
+                    System.out.println("Inicio sesión un usuario con rol de: " + usuarioWeb.getRol() );
+                    HttpSession sesionActiva = request.getSession();
+                    sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
+                    request.getRequestDispatcher("/views/" + rutas[i] + ".jsp").forward(request, response);
+                }
 
-            if(usuarioWeb == null){
-                System.out.println("Error de sesion");
-                request.setAttribute("respuestaSMS", "NO");
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-            }else if (usuarioWeb.getRol().equals("Administrador")){
-                System.out.println("Es Administrador");
-                HttpSession sesionActiva = request.getSession();
-                sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
-                request.getRequestDispatcher("/views/main.jsp").forward(request, response);
-
-            }else if(usuarioWeb.getRol().equals("Director")){
-                System.out.println("Es Director");
-                HttpSession sesionActiva = request.getSession();
-                sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
-                request.getRequestDispatcher("/views/mainDirector.jsp").forward(request, response);
-
-            }else if(usuarioWeb.getRol().equals("Docente")){
-                System.out.println("Es Docente");
-                HttpSession sesionActiva = request.getSession();
-                sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
-                request.getRequestDispatcher("/views/mainDocente.jsp").forward(request, response);
-            }
         } catch (Exception e) {
+
+            System.out.println("Error de sesion");
+            request.setAttribute("respuestaSMS", "NO");
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+
             e.printStackTrace();
         }
     }
