@@ -11,7 +11,7 @@
 		case "0":
 			Swal.fire({
 				icon: 'error',
-				title: '¡Ocurrio un error!',
+				title: '¡Registo no encontrado!',
 				text: 'Algo pasó, revise los datos',
 				footer: '<b class="text-center">Posiblemente el estudiante no exista, este de baja o ya tiene el registro</b>'
 			})

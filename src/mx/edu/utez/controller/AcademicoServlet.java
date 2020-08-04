@@ -63,7 +63,6 @@ public class AcademicoServlet extends HttpServlet {
 						academicoBean.setObservacion(obser);
 					else academicoBean.setObservacion(null);
 
-					System.out.println(matricula +" "+ academicoBean.getDiploma()+" "+academicoBean.getReconocimiento()+" "+academicoBean.getMencion()+" "+ academicoBean.getMencion()+" "+academicoBean.getObservacion() );
 					int respuesta = academicaDao.insertarDatos(academicoBean);
 					request.setAttribute("respuestaSMS", respuesta);
 					request.getRequestDispatcher("/views/Academico/add.jsp").forward(request, response);
@@ -105,7 +104,6 @@ public class AcademicoServlet extends HttpServlet {
 				try{
 					academicoBean.setMatricula(new EstudianteBean(matricula));
 					String opcDiploma = request.getParameter("checkDiploma");
-					System.out.println(opcDiploma);
 					if(opcDiploma!=null)
 						academicoBean.setDiploma(request.getParameter("diploma"));
 					String opcRecono = request.getParameter("checkReconocimiento");

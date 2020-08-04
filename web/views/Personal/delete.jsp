@@ -11,6 +11,7 @@
 	case "Docente": %><jsp:include page="/views/layout/navDocente.jsp"></jsp:include><% break;
 }
 %>
+
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item">Información Personal</li>
@@ -43,24 +44,7 @@
 			</div>
 		</div>
 
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Foto estudiante</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<img class="img-thumbnail" src="" alt="">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					</div>
-				</div>
-			</div>
-		</div>
+
 
 		<div class="row">
 			<div class="col-md">
@@ -72,6 +56,25 @@
 				<table class="table font-italic text-dark table-hover">
 					<tbody>
 					<c:forEach var="alumno" items="${alumnoLista}">
+						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Foto estudiante</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<img src="<%=request.getContextPath()%>/PersonalServlet?matFoto=<c:out value="${alumno.matricula}"></c:out>" class="img-fluid rounded mx-auto d-block" alt="Foto imagen estudiante"></td>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
 						<tr>
 							<td scope="row">Matrícula</td><td><c:out value="${alumno.matricula}"></c:out></td>
 						</tr>
@@ -194,8 +197,7 @@
 		Swal.fire({title: '¿Realizar Acción?', text: "Los cambios son irreversibles!", icon: 'warning', showCancelButton: true, confirmButtonColor: '#6c757d', cancelButtonColor: '#3085d6', confirmButtonText: 'Si, Realizar!'
 		}).then((result) => {
 			if (result.value) {
-				Swal.fire('Realizado!', 'Se efectuo la acción', 'success')
-				setTimeout(function () {document.getElementById("enviarForm").click();},1000)
+				document.getElementById("enviarForm").click();
 			}
 		})
 	}

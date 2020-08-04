@@ -50,7 +50,7 @@ public class Informacion_ClinicaDao extends conexion {
 		return 0;
 	}
 
-	public void modificarDatos(ClinicaBean clinicaBean) {
+	public int modificarDatos(ClinicaBean clinicaBean) {
 		try {
 			double peso = Double.parseDouble(clinicaBean.getPeso());
 			double estatura = Double.parseDouble(clinicaBean.getEstatura());
@@ -68,10 +68,12 @@ public class Informacion_ClinicaDao extends conexion {
 			statement.setString(10,clinicaBean.getDiscapacidades());
 			statement.setString(11,clinicaBean.getDiagPsico());
 			statement.setString(12,clinicaBean.getMatricula().getMatricula());
-			statement.executeUpdate();
+			if(statement.executeUpdate()>0)
+				return 1;
 		}catch (Exception e){
 			e.printStackTrace();
 		}
+		return 0;
 	}
 
 	public List<ClinicaBean> consultarDatos(String matricula) {

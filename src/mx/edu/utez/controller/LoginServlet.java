@@ -27,7 +27,6 @@ public class LoginServlet extends HttpServlet {
 
         try {
             LoginBean usuarioWeb = logdao.validarRol(logben);
-
             //Verifico a que rol pertenece el usuario
             for(int i=0; i<roles.length; i++)
                 if( usuarioWeb.getRol().equals( roles[i] ) ){
@@ -36,9 +35,7 @@ public class LoginServlet extends HttpServlet {
                     sesionActiva.setAttribute("UsuarioActivo", usuarioWeb);
                     request.getRequestDispatcher("/views/" + rutas[i] + ".jsp").forward(request, response);
                 }
-
         } catch (Exception e) {
-
             System.out.println("Error de sesion");
             request.setAttribute("respuestaSMS", "NO");
             request.getRequestDispatcher("/index.jsp").forward(request, response);

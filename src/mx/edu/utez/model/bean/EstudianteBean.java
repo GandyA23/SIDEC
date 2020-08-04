@@ -25,6 +25,7 @@ public class EstudianteBean {
     public EstudianteBean() {
     }
 
+
     public EstudianteBean(String matricula, String curp, String nombre, String apellido1, String apellido2, String fechaNacimiento, String telefono, String correo, String genero, String cicloEscolar, String nivelActual) {
         this.matricula = matricula;
         this.curp = curp;

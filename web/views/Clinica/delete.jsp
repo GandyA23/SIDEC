@@ -159,12 +159,8 @@
 			cancelButtonColor: '#3085d6',
 			confirmButtonText: 'Si, Realizar!'
 		}).then((result) => {
-			if (result.value) {
-				Swal.fire('Realizado!', 'Se efectuo la acción', 'success')
-				setTimeout(function () {
-					document.getElementById("enviarForm").click();
-				}, 1000)
-			}
+			if (result.value)
+				document.getElementById("enviarForm").click();
 		})
 	}
 </script>

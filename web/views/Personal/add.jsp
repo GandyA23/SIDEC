@@ -22,7 +22,7 @@
 	<div class="container">
 		<button id="mostrarSMS" style="display: none" value="<c:out value="${respuestaSMS}"></c:out>"></button>
 
-		<form method="post" action="<%=request.getContextPath()%>/PersonalServlet">
+		<form method="post" action="<%=request.getContextPath()%>/PersonalServlet" enctype="multipart/form-data">
 			<br>
 			<div class="row">
 				<div class="col-md">
@@ -53,10 +53,8 @@
 						</div>
 						<div class="modal-body">
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="customFileLang" lang="es">
-								<label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+								<input accept="image/*" type="file" name="foto" id="foto" class="form-control">
 							</div>
-							<img class="img-thumbnail" src="" alt="">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -112,11 +110,11 @@
 				<label>Ciclo escolar:</label>
 					<div class="col-md">
 						<input type="text" class="form-control form-control-sm text-center"
-						       placeholder="Año inicio" name="añoInicio">
+						       placeholder="Año inicio" name="añoInicio" maxlength="4">
 					</div>
 					<div class="col-md">
 						<input type="text" class="form-control form-control-sm text-center"
-						       placeholder="Año fin" name="añoFin">
+						       placeholder="Año fin" name="añoFin" maxlength="4">
 					</div>
 
 					<label>Nivel educativo actual:</label>
@@ -213,9 +211,6 @@
 				</div>
 			</div>
 		</form>
-
-
-
 	</div>
 </div>
 <!-- no quitar este contenedor -->

@@ -60,14 +60,19 @@
 			        <input name="correo" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" type="email" maxlength="30" placeholder="Correo electrónico" >
 		        </div>
 		        <div  class="col-md">
-			        <input name="password" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center " type="text" maxlength="20" placeholder="Contraseña" required>
+			        <input id="pass" name="password" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" type="text" maxlength="20" placeholder="Contraseña" required>
 		        </div>
+
+		        <div  class="col-md">
+			        <input id="repeatpass" name="password" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" type="text" maxlength="20" placeholder="Repetir contraseña" required>
+		        </div>
+
 	        </div>
 	        <div class="row d-flex justify-content-center">
 		        <div class="col-md-4">
-			        <button type="submit" class="btn bg-danger btn-block text-white " name="accion" value="add"><b>Registrar</b></button>
+			        <button onclick="verificarPASS()" type="button" class="btn bg-danger btn-block text-white"><b>Registrar</b></button>
+			        <button id="enviarBTN" type="submit" name="accion" value="add" hidden></button>
 		        </div>
-
             </div>
         </form>
     </div>
@@ -79,5 +84,21 @@
 	if(rol == 'Director'){
 		document.getElementById("ocultarDirector").style.display="none";
 	}
+	function verificarPASS() {
+		var pass = document.getElementById("pass").value;
+		var repeat = document.getElementById("repeatpass").value;
+		if(pass.length>0 && repeat.length>0 && pass === repeat){
+			document.getElementById("enviarBTN").click();
+		}else{
+			Swal.fire({
+				icon: 'error',
+				title: 'Contraseñas insonsistentes',
+				text: 'Verifique las contraseñas!',
+			})
+		}
+	}
+
+
+
 </script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

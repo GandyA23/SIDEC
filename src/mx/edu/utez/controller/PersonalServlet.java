@@ -12,10 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import java.io.InputStream;
 import java.sql.Date;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 @MultipartConfig
 @WebServlet("/PersonalServlet")
 public class PersonalServlet extends HttpServlet {
@@ -55,7 +58,12 @@ public class PersonalServlet extends HttpServlet {
 					alumno.setCorreo(request.getParameter("correo"));
 					alumno.setCicloEscolar(request.getParameter("añoInicio") + "-" + request.getParameter("añoFin"));
 					alumno.setNivelActual(request.getParameter("seleccion"));
+					Part part = request.getPart("foto");
+					InputStream foto = part.getInputStream();
+					alumno.setFoto(foto);
+
 					alumno.setStatus(1);
+
 					domicilio.setMatriculaEstudiante(new EstudianteBean(request.getParameter("matricula")));
 					domicilio.setCalle(request.getParameter("calle"));
 					domicilio.setNoInterior(request.getParameter("interior"));
@@ -81,7 +89,8 @@ public class PersonalServlet extends HttpServlet {
 
 			case "eliminar":
 				try{
-					personalDao.eliminarDatos(matricula);
+					int respuesta = personalDao.eliminarDatos(matricula);
+					request.setAttribute("respuestaSMS", respuesta);
 					request.getRequestDispatcher("/views/Personal/delete.jsp").forward(request,response);
 				}catch(Exception e){
 					e.printStackTrace();
@@ -129,6 +138,11 @@ public class PersonalServlet extends HttpServlet {
 					alumno.setCorreo(request.getParameter("correo"));
 					alumno.setCicloEscolar(request.getParameter("cicloEscolar"));
 					alumno.setNivelActual(request.getParameter("seleccion"));
+					Part part = request.getPart("foto");
+					InputStream foto = part.getInputStream();
+					if(!foto.toString().contains("ByteArrayInputStream")){
+						personalDao.actualizarFoto(foto, matricula);
+					}
 					domicilio.setCalle(request.getParameter("calle"));
 					domicilio.setNoInterior(request.getParameter("interior"));
 					domicilio.setNoExterior(request.getParameter("exterior"));
@@ -142,7 +156,8 @@ public class PersonalServlet extends HttpServlet {
 					tutor.setCorreo(request.getParameter("tutorCorreo"));
 					tutor.setTelefonoPersonal(request.getParameter("tutorTelefono"));
 					tutor.setTelefonoTrabajo(request.getParameter("tutorTelTrabajo"));
-					personalDao.modificarDatos(alumno,domicilio,tutor);
+					int respuesta = personalDao.modificarDatos(alumno,domicilio,tutor);
+					request.setAttribute("respuestaSMS", respuesta);
 					request.getRequestDispatcher("/views/Personal/update.jsp").forward(request, response);
 				}catch(Exception e){
 					e.printStackTrace();
@@ -152,6 +167,7 @@ public class PersonalServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String matFoto =request.getParameter("matFoto");
+		new Informacion_PersonalDao().consultarFoto(matFoto,response);
 	}
 }
