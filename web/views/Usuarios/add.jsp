@@ -29,17 +29,17 @@
 	    </div>
         <form method="post" action="<%=request.getContextPath()%>/UsuarioServlet">
 	        <div  class="row form-group col-md-4 d-inline-flex">
-		        <input name="cct" value="" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" maxlength="15" type="text" placeholder="CCT" required>
+		        <input name="cct" class="form-control text-center" maxlength="15" type="text" placeholder="CCT" required>
 	        </div><br>
             <div class="row form-group d-inline-flex">
                 <div class="col-md">
-                    <input name="nombre" value="" onkeyup="this.value=quita(this.value, this.name)" type="text" class="form-control text-center" maxlength="30" placeholder="Nombre(s)" required>
+                    <input name="nombre" type="text" class="form-control text-center" maxlength="30" placeholder="Nombre(s)" required>
                 </div>
                 <div class="col-md">
-                    <input name="apellido1" value="" onkeyup="this.value=quita(this.value, this.name)" type="text" class="form-control text-center" maxlength="15" placeholder="Primer Apellido" required>
+                    <input name="apellido1"type="text" class="form-control text-center" maxlength="15" placeholder="Primer Apellido" required>
                 </div>
                 <div class="col-md">
-                    <input name="apellido2" value="" onkeyup="this.value=quita(this.value, this.name)" type="text" class="form-control text-center" maxlength="15" placeholder="Segundo Apellido">
+                    <input name="apellido2" type="text" class="form-control text-center" maxlength="15" placeholder="Segundo Apellido">
                 </div>
             </div><br>
             <div class="d-inline-flex p-3 bd-highlight">
@@ -57,14 +57,14 @@
             </div><br>
 	        <div class="d-inline-flex row form-group">
 		        <div  class="col-md">
-			        <input name="correo" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" type="email" maxlength="30" placeholder="Correo electrónico" >
+			        <input name="correo" class="form-control text-center" type="email" maxlength="30" placeholder="Correo electrónico" >
 		        </div>
 		        <div  class="col-md">
-			        <input id="pass" name="password" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" type="text" maxlength="20" placeholder="Contraseña" required>
+			        <input id="pass" name="password" class="form-control text-center" type="text" maxlength="20" placeholder="Contraseña" required>
 		        </div>
 
 		        <div  class="col-md">
-			        <input id="repeatpass" name="password" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" type="text" maxlength="20" placeholder="Repetir contraseña" required>
+			        <input id="repeatpass" name="password" class="form-control text-center" type="text" maxlength="20" placeholder="Repetir contraseña" required>
 		        </div>
 
 	        </div>

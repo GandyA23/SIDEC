@@ -20,7 +20,7 @@
 	    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/assets/img/favicon.ico">
     </head>
 
-    <body>
+    <body onload="ponVerificadores()">
 
         <div class="d-flex align-items-center justify-content-center m-4 mx-auto">
             <div class=" row d-flex bg-redDark align-items-center justify-content-center mx-auto" style="height: 50%; width: 75%; border-radius: 30px;">

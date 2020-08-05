@@ -30,7 +30,7 @@
             <form class="form-inline" action="<%=request.getContextPath()%>/UsuarioServlet" method="post">
                 <div class="form-group mx-auto">
                     <div class="col">
-                        <input type="text" value="" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" maxlength="15" required>
+                        <input type="text" class="form-control text-center" id="inputPassword2" name="cct" placeholder="CCT" maxlength="15" required>
                     </div>
                     <div class="col-md-4">
                         <button type="submit" class="btn btn-danger btn-block" name="accion" value="search:2"><b>Búscar</b></button>
@@ -47,13 +47,13 @@
                     <input type="text" class="form-control text-center" value="<c:out value="${usuarios.cct}"/>" placeholder="Matrícula" readonly>
                 </div>
                 <div class="col-md">
-                    <input type="text" value="" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center" value="<c:out value="${usuarios.nombre}"/>" maxlength="30" name="nombre" placeholder="Nombre (s)" required>
+                    <input type="text" class="form-control text-center" value="<c:out value="${usuarios.nombre}"/>" maxlength="30" name="nombre" placeholder="Nombre (s)" required>
                 </div>
                 <div class="col-md">
-                    <input type="text" value="" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center " value="<c:out value="${usuarios.apellido1}"/>" maxlength="15" name="apellido1" placeholder="Primer Apellido" required>
+                    <input type="text" class="form-control text-center " value="<c:out value="${usuarios.apellido1}"/>" maxlength="15" name="apellido1" placeholder="Primer Apellido" required>
                 </div>
                 <div class="col-md">
-                    <input type="text" value="" onkeyup="this.value=quita(this.value, this.name)" class="form-control text-center " value="<c:out value="${usuarios.apellido2}"/>" maxlength="15" name="apellido2" placeholder="Segundo Apellido">
+                    <input type="text" class="form-control text-center " value="<c:out value="${usuarios.apellido2}"/>" maxlength="15" name="apellido2" placeholder="Segundo Apellido">
                 </div>
             </div>
 
@@ -91,11 +91,11 @@
             <br>
                 <div class="d-inline-flex row form-group">
                     <div  class="col-md">
-                        <input class="form-control text-center " value="" onkeyup="this.value=quita(this.value, this.name)" type="text" value="<c:out value="${usuarios.correo}"/>" name="correo" placeholder="Correo electrónico" required>
+                        <input class="form-control text-center " type="text" value="<c:out value="${usuarios.correo}"/>" name="correo" placeholder="Correo electrónico" required>
                     </div>
 
                     <div  class="col-md">
-                        <input class="form-control text-center " value="" onkeyup="this.value=quita(this.value, this.name)" type="text" value="<c:out value="${usuarios.password}"/>" name="password" placeholder="Contraseña" required>
+                        <input class="form-control text-center " type="text" value="<c:out value="${usuarios.password}"/>" name="password" placeholder="Contraseña" required>
                     </div>
                 </div>
             </c:forEach>
