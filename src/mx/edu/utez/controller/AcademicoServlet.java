@@ -1,7 +1,6 @@
 package mx.edu.utez.controller;
 
-import mx.edu.utez.model.bean.AcademicoBean;
-import mx.edu.utez.model.bean.EstudianteBean;
+import mx.edu.utez.model.bean.*;
 import mx.edu.utez.model.dao.Informacion_AcademicaDao;
 
 import javax.servlet.ServletException;
@@ -9,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -124,11 +124,40 @@ public class AcademicoServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 				break;
+			case "report":
+				try{
+					ReporteBean reporteBean = new ReporteBean();
+					reporteBean.setFolio(Integer.parseInt(request.getParameter("folio")));
+					reporteBean.setFecha(request.getParameter("fecha"));
+					reporteBean.setMotivo(request.getParameter("motivo"));
+					reporteBean.setDescripcion(request.getParameter("descripcion"));
+					reporteBean.setCanalizacion(request.getParameter("canalizacion"));
+					reporteBean.setCct(new UsuarioBean(request.getParameter("realizadoCCT")));
+					reporteBean.setMatricula(new EstudianteBean(request.getParameter("matricula")));
+					int respuesta = academicaDao.insertarReporte(reporteBean);
+					request.setAttribute("respuestaSMS", respuesta);
+					this.doGet(request,response);
+					//request.getRequestDispatcher("/views/Academico/reportes.jsp").forward(request,response);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
+				break;
 		}
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		Informacion_AcademicaDao academicaDao = new Informacion_AcademicaDao();
+		HttpSession sesionActiva = request.getSession();
+		LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");
+		try {
+			request.setAttribute("folioActual",academicaDao.traerFolio());
+			request.setAttribute("rolCCT",usuarioWeb.getCct());
+			List<ControlBean> listEstudianteReportes = academicaDao.listaEstudiantesReportados();
+			request.setAttribute("listEstudianteReportes",listEstudianteReportes);
+			request.getRequestDispatcher("/views/Academico/reportes.jsp").forward(request,response);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 }

@@ -80,7 +80,7 @@
 						<th scope="col">Nombre</th>
 						<th scope="col">Primer apellido</th>
 						<th scope="col">Segundo apellido</th>
-						<th scope="col">Activar</th>
+						<th id="docente1" scope="col">Activar</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -90,7 +90,7 @@
 							<td><c:out value="${est.nombre}"></c:out></td>
 							<td><c:out value="${est.apellido1}"></c:out></td>
 							<td><c:out value="${est.apellido2}"></c:out></td>
-							<td>
+							<td id="docente2">
 								<button onclick="preguntaEstudiante(`<c:out value="${est.matricula}"></c:out>`)"
 								        class="btn btn-sm bg-danger btn-block text-white">
 									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-square-fill"
@@ -109,21 +109,22 @@
 			</div>
 		</div>
 	</div>
+
 </div>
 <!-- no quitar este contenedor -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
 <script>
+	var rol = document.getElementById("rolActivo").outerText;
+	if(rol == "Docente" || rol == 'Docente'){
+		document.getElementById("docente1").hidden;
+		document.getElementById("docente2").hidden;
+	}
+
 	function preguntaEstudiante(a) {
 		document.getElementById("enviarForm").href = "${pageContext.request.contextPath}/ListaEstudiantesServlet?matricula=" + a + "";
 		Swal.fire({
-			title: '¿Realizar Acción?',
-			text: "Se activará de nuevo al alumno en el sistema",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#6c757d',
-			cancelButtonColor: '#3085d6',
-			confirmButtonText: 'Si, Realizar!'
+			title: '¿Realizar Acción?', text: "Se activará de nuevo al alumno en el sistema", icon: 'warning', showCancelButton: true, confirmButtonColor: '#6c757d', cancelButtonColor: '#3085d6', confirmButtonText: 'Si, Realizar!'
 		}).then((result) => {
 			if (result.value) {
 				Swal.fire('Realizado!', 'Se efectuo la acción', 'success')

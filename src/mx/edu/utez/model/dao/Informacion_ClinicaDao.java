@@ -17,6 +17,24 @@ public class Informacion_ClinicaDao extends conexion {
 			if(rs.next()) {
 				double peso = Double.parseDouble(clinicaBean.getPeso());
 				double estatura = Double.parseDouble(clinicaBean.getEstatura());
+				PreparedStatement statment = crearConexion().prepareCall("{call Add_Informacion_Clinica(?,?,?,?,?,?,?,?,?,?,?)}");
+				statment.setString(1, clinicaBean.getMatricula().getMatricula());
+				statment.setDouble(2, peso);
+				statment.setDouble(3, estatura);
+				statment.setString(4, clinicaBean.getTipoSangre());
+				statment.setString(5, clinicaBean.getNumeroSeguro());
+				statment.setString(6, clinicaBean.getUnidadMedica());
+				statment.setString(7, clinicaBean.getAlergias());
+				statment.setString(8, clinicaBean.getEnferCronicas());
+				statment.setString(9, clinicaBean.getEnferHereditarias());
+				statment.setString(10, clinicaBean.getDiscapacidades());
+				statment.setString(11, clinicaBean.getDiagPsico());
+				if(statment.execute())
+					return 1;
+				statment.close();
+				/*
+				double peso = Double.parseDouble(clinicaBean.getPeso());
+				double estatura = Double.parseDouble(clinicaBean.getEstatura());
 				double imc = peso / (estatura * estatura);
 				PreparedStatement statment = crearConexion().prepareStatement("INSERT INTO informacion_clinica VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 				statment.setString(1, clinicaBean.getMatricula().getMatricula());
@@ -31,7 +49,7 @@ public class Informacion_ClinicaDao extends conexion {
 				statment.setString(10, clinicaBean.getEnferHereditarias());
 				statment.setString(11, clinicaBean.getDiscapacidades());
 				statment.setString(12, clinicaBean.getDiagPsico());
-				if (statment.executeUpdate() > 0) return 1;
+				if (statment.executeUpdate() > 0) return 1;*/
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

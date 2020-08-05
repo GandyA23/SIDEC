@@ -85,8 +85,7 @@ LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");
 		<div class="card bg-rojobajo">
 		<a href="${pageContext.request.contextPath}/views/Academico/search.jsp" class="bg-rojobajo text-white">Buscar
 		Registro</a>
-		<a href="${pageContext.request.contextPath}/views/Academico/reportes.jsp" class="bg-rojobajo
-		text-white">Reportes</a>
+		<a href="${pageContext.request.contextPath}/AcademicoServlet" class="bg-rojobajo text-white">Reportes</a>
 		</div>
 		</div>
 		</div>

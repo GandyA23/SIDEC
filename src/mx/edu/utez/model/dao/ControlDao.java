@@ -15,7 +15,6 @@ public class ControlDao extends conexion {
 		List<ControlBean> controlBean = new ArrayList<>();
 		try {
 			PreparedStatement pst = crearConexion().prepareStatement("SELECT Matricula, Nombre, Apellido1, Apellido2 FROM estudiante WHERE Status = 1");
-
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				String matricula = rs.getString("Matricula");

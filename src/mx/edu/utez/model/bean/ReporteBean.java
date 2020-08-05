@@ -1,33 +1,16 @@
 package mx.edu.utez.model.bean;
 
-import java.util.Date;
-
 public class ReporteBean {
 
-    private EstudianteBean estudiante;
-    private TutorBean tutor;
-
     private int folio;
-    private Date fecha;
+    private String fecha;
     private String motivo;
     private String descripcion;
     private String canalizacion;
+    private UsuarioBean cct;
+    private EstudianteBean matricula;
 
-
-    public EstudianteBean getEstudiante() {
-        return estudiante;
-    }
-
-    public void setEstudiante(EstudianteBean estudiante) {
-        this.estudiante = estudiante;
-    }
-
-    public TutorBean getTutor() {
-        return tutor;
-    }
-
-    public void setTutor(TutorBean tutor) {
-        this.tutor = tutor;
+    public ReporteBean() {
     }
 
     public int getFolio() {
@@ -38,11 +21,11 @@ public class ReporteBean {
         this.folio = folio;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -68,5 +51,21 @@ public class ReporteBean {
 
     public void setCanalizacion(String canalizacion) {
         this.canalizacion = canalizacion;
+    }
+
+    public UsuarioBean getCct() {
+        return cct;
+    }
+
+    public void setCct(UsuarioBean cct) {
+        this.cct = cct;
+    }
+
+    public EstudianteBean getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(EstudianteBean matricula) {
+        this.matricula = matricula;
     }
 }

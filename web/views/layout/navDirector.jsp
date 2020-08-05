@@ -97,7 +97,7 @@ LoginBean usuarioWeb = (LoginBean)sesionActiva.getAttribute("UsuarioActivo");
 	text-white">Eliminar Registro</a>
 	<a href="${pageContext.request.contextPath}/views/Academico/search.jsp" class="bg-rojobajo text-white">Buscar
 	Registro</a>
-	<a href="${pageContext.request.contextPath}/views/Academico/reportes.jsp" class="bg-rojobajo
+	<a href="${pageContext.request.contextPath}/AcademicoServlet" class="bg-rojobajo
 	text-white">Reportes</a>
 	</div>
 	</div>

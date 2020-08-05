@@ -9,6 +9,10 @@ public class UsuarioBean {
     private String apellido2;
     private String rol;
 
+    public UsuarioBean(String cct) {
+        this.cct = cct;
+    }
+
     public UsuarioBean() {
     }
 
