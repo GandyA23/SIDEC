@@ -2,6 +2,8 @@ package mx.edu.utez.model.dao;
 import mx.edu.utez.model.bean.EstudianteBean;
 import mx.edu.utez.model.bean.ClinicaBean;
 import mx.edu.utez.utility.conexion;
+
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ public class Informacion_ClinicaDao extends conexion {
 			if(rs.next()) {
 				double peso = Double.parseDouble(clinicaBean.getPeso());
 				double estatura = Double.parseDouble(clinicaBean.getEstatura());
-				PreparedStatement statment = crearConexion().prepareCall("{call Add_Informacion_Clinica(?,?,?,?,?,?,?,?,?,?,?)}");
+				CallableStatement statment = crearConexion().prepareCall("{call Add_Informacion_Clinica(?,?,?,?,?,?,?,?,?,?,?)}");
 				statment.setString(1, clinicaBean.getMatricula().getMatricula());
 				statment.setDouble(2, peso);
 				statment.setDouble(3, estatura);
@@ -29,10 +31,10 @@ public class Informacion_ClinicaDao extends conexion {
 				statment.setString(9, clinicaBean.getEnferHereditarias());
 				statment.setString(10, clinicaBean.getDiscapacidades());
 				statment.setString(11, clinicaBean.getDiagPsico());
-				if(statment.execute())
-					return 1;
-				statment.close();
-				/*
+				statment.execute();
+				return 1;
+
+/*
 				double peso = Double.parseDouble(clinicaBean.getPeso());
 				double estatura = Double.parseDouble(clinicaBean.getEstatura());
 				double imc = peso / (estatura * estatura);

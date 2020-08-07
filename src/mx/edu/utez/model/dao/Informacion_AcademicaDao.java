@@ -5,6 +5,7 @@ import mx.edu.utez.controller.AcademicoServlet;
 import mx.edu.utez.model.bean.*;
 import mx.edu.utez.utility.conexion;
 
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,14 +19,15 @@ public class Informacion_AcademicaDao extends conexion {
 			PreparedStatement statement = crearConexion().prepareStatement("SELECT * FROM estudiante WHERE Matricula = '"+academicoBean.getMatricula().getMatricula()+"' AND Status = 1");
 			ResultSet rs = statement.executeQuery();
 			if(rs.next()){
-				PreparedStatement stm = crearConexion().prepareStatement("INSERT INTO informacion_academica VALUES(?,?,?,?,?,?)");
+				CallableStatement stm = crearConexion().prepareCall("{call Add_Informacion_Academica(?,?,?,?,?,?)}");//("INSERT INTO informacion_academica VALUES(?,?,?,?,?,?)");
 				stm.setString(1, academicoBean.getMatricula().getMatricula());
 				stm.setString(2, academicoBean.getDiploma());
 				stm.setString(3, academicoBean.getReconocimiento());
 				stm.setString(4, academicoBean.getMencion());
 				stm.setString(5, academicoBean.getCertificacion());
 				stm.setString(6, academicoBean.getObservacion());
-				if (stm.executeUpdate() > 0) return 1;
+				stm.execute();
+				return 1;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -121,18 +123,22 @@ public class Informacion_AcademicaDao extends conexion {
 		return controlBean;
 	}
 
-
 	public int insertarReporte(ReporteBean reporteBean) {
 		try{
-			PreparedStatement stm = crearConexion().prepareStatement("INSERT INTO reporte VALUES(?,?,?,?,?,?,?)");
-			stm.setInt(1, reporteBean.getFolio());
-			stm.setString(2, reporteBean.getFecha());
-			stm.setString(3, reporteBean.getMotivo());
-			stm.setString(4, reporteBean.getDescripcion());
-			stm.setString(5, reporteBean.getCanalizacion());
-			stm.setString(6, reporteBean.getCct().getCct());
-			stm.setString(7, reporteBean.getMatricula().getMatricula());
-			if(stm.executeUpdate()>0) return 1;
+			PreparedStatement stme = crearConexion().prepareStatement("SELECT * FROM estudiante WHERE Matricula = '"+reporteBean.getMatricula().getMatricula()+"' AND Status = 1");
+			ResultSet rs = stme.executeQuery();
+			if(rs.next()){
+				CallableStatement stm = crearConexion().prepareCall("{call Add_Reporte(?,?,?,?,?,?,?)}");//("INSERT INTO reporte VALUES(?,?,?,?,?,?,?)");
+				stm.setInt(1, reporteBean.getFolio());
+				stm.setString(2, reporteBean.getFecha());
+				stm.setString(3, reporteBean.getMotivo());
+				stm.setString(4, reporteBean.getDescripcion());
+				stm.setString(5, reporteBean.getCanalizacion());
+				stm.setString(6, reporteBean.getCct().getCct());
+				stm.setString(7, reporteBean.getMatricula().getMatricula());
+				stm.execute();
+				return 1;
+			}
 		}catch (SQLException e){
 			e.printStackTrace();
 		}

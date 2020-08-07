@@ -8,10 +8,7 @@ import mx.edu.utez.utility.conexion;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +18,8 @@ public class Informacion_PersonalDao extends conexion {
 	public int insertarDatos(EstudianteBean alumno, TutorBean tutor, DomicilioBean domicilio) {
 		try {
 			String idTutor = null;
-			int check1, check2, check3;
-			PreparedStatement sentencia = null;
-			sentencia = crearConexion().prepareStatement("INSERT INTO estudiante values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			boolean check1, check2, check3;
+			CallableStatement sentencia = crearConexion().prepareCall("{call Add_Estudiante(?,?,?,?,?,?,?,?,?,?,?,?)}");//("INSERT INTO estudiante values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			sentencia.setString(1,alumno.getMatricula());
 			sentencia.setString(2,alumno.getCurp());
 			sentencia.setString(3,alumno.getNombre());
@@ -36,11 +32,10 @@ public class Informacion_PersonalDao extends conexion {
 			sentencia.setString(10,alumno.getCicloEscolar());
 			sentencia.setString(11,alumno.getNivelActual());
 			sentencia.setBlob(12, alumno.getFoto());
-			sentencia.setInt(13,alumno.getStatus());
-			check1 = sentencia.executeUpdate();
+			check1 = sentencia.execute();
 
 			sentencia = null;
-			sentencia = crearConexion().prepareStatement("INSERT INTO tutor values(null,?,?,?,?,?,?,?)");
+			sentencia = crearConexion().prepareCall("{call Add_Tutor(null,?,?,?,?,?,?,?)}");  //("INSERT INTO tutor values(null,?,?,?,?,?,?,?)");
 			sentencia.setString(1,tutor.getNombre());
 			sentencia.setString(2,tutor.getApellido1());
 			sentencia.setString(3,tutor.getApellido2());
@@ -48,17 +43,15 @@ public class Informacion_PersonalDao extends conexion {
 			sentencia.setString(5,tutor.getTelefonoTrabajo());
 			sentencia.setString(6,tutor.getCorreo());
 			sentencia.setString(7,tutor.getGenero());
-			check2 = sentencia.executeUpdate();
+			check2 = sentencia.execute();
 
-			sentencia = null;
-			ResultSet consulta;
-			sentencia = crearConexion().prepareStatement("SELECT Id from tutor WHERE Nombre = '" + tutor.getNombre() + "' AND Apellido1 ='" + tutor.getApellido1() + "' AND Apellido2 ='" + tutor.getApellido2() + "'");
-			consulta = sentencia.executeQuery();
+			PreparedStatement stn = crearConexion().prepareStatement("SELECT Id from tutor WHERE Nombre = '" + tutor.getNombre() + "' AND Apellido1 ='" + tutor.getApellido1() + "' AND Apellido2 ='" + tutor.getApellido2() + "'");
+			ResultSet consulta = stn.executeQuery();
 			if(consulta.next())
 			idTutor = consulta.getString("Id");
 
 			sentencia = null;
-			sentencia = crearConexion().prepareStatement("INSERT INTO domicilio values(?,?,?,?,?,?,?,?)");
+			sentencia = crearConexion().prepareCall("{call Add_Domicilio(?,?,?,?,?,?,?,?)}");//("INSERT INTO domicilio values(?,?,?,?,?,?,?,?)");
 			sentencia.setString(1,domicilio.getMatriculaEstudiante().getMatricula());
 			sentencia.setString(2,idTutor);
 			sentencia.setString(3,domicilio.getCalle());
@@ -67,7 +60,7 @@ public class Informacion_PersonalDao extends conexion {
 			sentencia.setString(6,domicilio.getColonia());
 			sentencia.setString(7,domicilio.getMunicipio());
 			sentencia.setString(8,domicilio.getCodigoPostal());
-			check3 = sentencia.executeUpdate();
+			check3 = sentencia.execute();
 
 			return (check1 == check2 && check2 == check3) ? 1 : 0;
 		} catch (Exception e) {
@@ -75,20 +68,19 @@ public class Informacion_PersonalDao extends conexion {
 		}
 		return 0;
 	}
+
 	public int eliminarDatos(String matricula) {
 		try {
-			int estado;
-			PreparedStatement sentencia = null;
-			sentencia = crearConexion().prepareStatement("UPDATE estudiante SET Status = 0 WHERE Matricula = '" + matricula + "' AND Status = 1");
-			estado = sentencia.executeUpdate();
-			if (estado == 1) {
-				return estado;
-			}
+			CallableStatement sentencia = crearConexion().prepareCall("{call Delete_Estudiante(?)}"); //("UPDATE estudiante SET Status = 0 WHERE Matricula = '" + matricula + "' AND Status = 1");
+			sentencia.setString(1, matricula);
+			sentencia.execute();
+			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return 0;
 	}
+
 	public List<EstudianteBean> datosEstudiante(String matricula) {
 		try {
 			List<EstudianteBean> alumno = new ArrayList<>();
@@ -105,6 +97,7 @@ public class Informacion_PersonalDao extends conexion {
 		}
 		return null;
 	}
+
 	public List<TutorBean> datosTutor() {
 		try {
 			List<TutorBean> tutor = new ArrayList<>();
@@ -121,6 +114,7 @@ public class Informacion_PersonalDao extends conexion {
 		}
 		return null;
 	}
+
 	public List<DomicilioBean> datosDomicilio(String matricula) {
 		try {
 			List<DomicilioBean> domicilio = new ArrayList<>();
@@ -138,6 +132,7 @@ public class Informacion_PersonalDao extends conexion {
 		}
 		return null;
 	}
+
 	public int modificarDatos(EstudianteBean alumno, DomicilioBean domicilio, TutorBean tutor) {
 		try {
 			int check1, check2, check3;
@@ -186,6 +181,7 @@ public class Informacion_PersonalDao extends conexion {
 		}
 		return 0;
 	}
+
 	public void consultarFoto(String matFoto, HttpServletResponse response) {
 		String query = "SELECT Foto FROM estudiante WHERE Matricula = ?";
 		InputStream is = null;
