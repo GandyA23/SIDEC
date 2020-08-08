@@ -36,38 +36,38 @@
 
 			<div class="row form-group col-md d-inline-flex">
 				<div class="col-md">
-					<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas">
+					<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas" onclick="habilita(this.id, 'diploma')">
 					<label class="form-check-label" for="diplomas"> Diplomas </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="diploma" placeholder="Descripción:"></textarea>
+					<textarea class="form-control rounded" name="diploma" id="diploma" placeholder="Descripción:" readonly></textarea>
 				</div>
 				<br>
 
 				<div class="col-md">
-					<input class="form-check-input" type="checkbox" name="checkReconocimiento" value="Si" id="reconocimientos">
+					<input class="form-check-input" type="checkbox" name="checkReconocimiento" value="Si" id="reconocimientos" onclick="habilita(this.id, 'reconocimiento')">
 					<label class="form-check-label" for="reconocimientos"> Reconocimientos </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="reconocimiento" placeholder="Descripción:"></textarea>
+					<textarea class="form-control rounded" name="reconocimiento" id="reconocimiento" placeholder="Descripción:" readonly></textarea>
 				</div>
 				<br>
 			</div>
 			<div class="row form-group col-md d-inline-flex">
 				<div class="col-md">
-					<input class="form-check-input" type="checkbox" name="checkMenciones" value="Si" id="menciones">
+					<input class="form-check-input" type="checkbox" name="checkMenciones" value="Si" id="menciones" onclick="habilita(this.id, 'mencion')">
 					<label class="form-check-label" for="menciones"> Menciones Honoríficas </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="mencion" placeholder="Descripción:"></textarea>
+					<textarea class="form-control rounded" name="mencion" id="mencion" placeholder="Descripción:" readonly></textarea>
 				</div>
 				<br>
 				<div class="col-md">
-					<input class="form-check-input" type="checkbox" name="checkCertificaciones" value="Si" id="certificaciones">
+					<input class="form-check-input" type="checkbox" name="checkCertificaciones" value="Si" id="certificaciones" onclick="habilita(this.id, 'certificacion')">
 					<label class="form-check-label" for="certificaciones"> Certificaciones </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="certificacion" placeholder="Descripción:"></textarea>
+					<textarea class="form-control rounded" name="certificacion" id="certificacion" placeholder="Descripción:" readonly> </textarea>
 				</div>
 				<br>
 			</div>

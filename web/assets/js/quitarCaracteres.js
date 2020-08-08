@@ -1,16 +1,17 @@
 //Caracteres validos
 const NOMBRE = 'áéíóúÁÉÍÓÚabcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ. ' ;
-const CURP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' ;
+const CURP = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' ;
 const NUMERO = '0123456789' ;
 const CORREO = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.' ;
 const MATRICULA = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' ;
-const TEXTO = 'áéíóúÁÉÍÓÚabcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ.,;()\'\"- ' ;
+const TEXTO = '0123456789áéíóúÁÉÍÓÚabcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ.,;()\'\"- ' ;
 const DECIMAL = '0123456789.' ;
 const MEDICA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-';
+const NOCALLE = '01234567890S/N';
 
 //Se siguio la siguiente norma para la contraseña
 //https://help.pearsoncmg.com/sms4/help/es/Content/acceptable_chars_help.html#:~:text=Reglas%20para%20nombres%20de%20inicio%20de%20sesi%C3%B3n%20y%20contrase%C3%B1as&text=Su%20contrase%C3%B1a%20debe%20tener%20al,que%20se%20encuentran%20en%20diccionarios.
-const password = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.-_*' ;
+const PASSWORD = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.-_*' ;
 
 function ponVerificadores(){
     /*
@@ -56,6 +57,7 @@ function quita(string, tipo){
             break;
 
         case 'curp':
+            string = string.toUpperCase() ;
             ver = CURP ;
             break;
 
@@ -65,8 +67,6 @@ function quita(string, tipo){
         case 'numeroSeguro':
         case 'añoInicio':
         case 'añoFin':
-        case 'interior':
-        case 'exterior':
         case 'codigoPostal':
         case 'tutorTelefono':
         case 'tutorTelTrabajo':
@@ -102,7 +102,7 @@ function quita(string, tipo){
             break;
 
         case 'password':
-            ver = password ;
+            ver = PASSWORD ;
             break ;
 
         case 'unidadMedica':
@@ -114,6 +114,11 @@ function quita(string, tipo){
             ver = DECIMAL ;
             break;
 
+        case 'interior':
+        case 'exterior':
+            ver = NOCALLE ;
+            break;
+
         default:
             return string ;
     }
@@ -123,4 +128,18 @@ function quita(string, tipo){
             out += string.charAt(i);
 
     return out ;
+}
+function habilita(id, id_element){
+    /*
+    * id: El id del input tipo checkbox
+    * id_element: El id del textarea que estara cambiando el readonly
+    * */
+
+    var hab = document.getElementById(id).checked;
+    var area = document.getElementById(id_element);
+
+    if(!hab)
+        area.setAttribute('readonly', 'readonly');
+    else
+        area.removeAttribute('readonly');
 }
