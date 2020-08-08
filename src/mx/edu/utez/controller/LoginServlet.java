@@ -14,17 +14,13 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-
         //Roles con sus rutas que admite el Sistema Web
         String[] roles = { "Administrador", "Director", "Docente" };
         String[] rutas = { "main", "mainDirector", "mainDocente" };
-
         String cct = request.getParameter("cct");
         String password = request.getParameter("password");
-
         LoginBean logben = new LoginBean(cct,password);
         LoginDao logdao = new LoginDao();
-
         try {
             LoginBean usuarioWeb = logdao.validarRol(logben);
             //Verifico a que rol pertenece el usuario
@@ -39,7 +35,6 @@ public class LoginServlet extends HttpServlet {
             System.out.println("Error de sesion");
             request.setAttribute("respuestaSMS", "NO");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-
             e.printStackTrace();
         }
     }

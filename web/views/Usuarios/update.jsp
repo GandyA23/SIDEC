@@ -102,7 +102,7 @@
 
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4">
-                    <button onclick="pregunta()" type="button" class="btn bg-danger btn-block text-white"><b>Actualizar</b> </button>
+                    <button onclick="preguntaModificar()" type="button" class="btn bg-danger btn-block text-white"><b>Actualizar</b> </button>
                     <button id="enviarForm" type="submit" name="accion" hidden value="update"></button>
                 </div>
             </div>
@@ -111,14 +111,5 @@
 </div><!-- no quitar este contenedor -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
-
-<script>
-    function pregunta() {
-        Swal.fire({title: '¿Realizar Acción?', text: "Los cambios son irreversibles!", icon: 'warning', showCancelButton: true, confirmButtonColor: '#6c757d', cancelButtonColor: '#3085d6', confirmButtonText: 'Si, Realizar!'
-        }).then((result) => {
-            if (result.value)
-                document.getElementById("enviarForm").click();
-        })
-    }
-</script>
+<script src="${pageContext.request.contextPath}/assets/js/moduloUsuarios.js"> </script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

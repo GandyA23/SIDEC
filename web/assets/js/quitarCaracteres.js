@@ -27,8 +27,8 @@ function ponVerificadores(){
     //El valor que tendra cada atributo
     const val = "this.value = quita(this.value, this.name)" ;
 
-    console.log(inputs);
-    console.log(textareas);
+    //console.log(inputs);
+    //console.log(textareas);
 
     //Asigno los atributos a cada input
     for(var i=0; i<inputs.length; i++)

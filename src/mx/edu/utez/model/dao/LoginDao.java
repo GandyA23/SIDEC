@@ -19,7 +19,11 @@ public class LoginDao extends conexion {
                 logben.setCct(resulSet.getString("CCT"));
                 logben.setPassword(resulSet.getString("Password"));
                 logben.setRol(resulSet.getString("Rol"));
-                return logben;
+                if(CCT.equals(logben.getCct()) && PASS.equals(logben.getPassword())){
+                    return logben;
+                }else{
+                    return null;
+                }
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -90,7 +90,7 @@
 							<td><c:out value="${est.nombre}"></c:out></td>
 							<td><c:out value="${est.apellido1}"></c:out></td>
 							<td><c:out value="${est.apellido2}"></c:out></td>
-							<td id="docente2">
+							<td class="docente2">
 								<button onclick="preguntaEstudiante(`<c:out value="${est.matricula}"></c:out>`)"
 								        class="btn btn-sm bg-danger btn-block text-white">
 									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-square-fill"
@@ -114,17 +114,19 @@
 <!-- no quitar este contenedor -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/moduloControlEst.js"></script>
 <script>
-	var rol = document.getElementById("rolActivo").outerText;
-	if(rol == "Docente" || rol == 'Docente'){
-		document.getElementById("docente1").hidden;
-		document.getElementById("docente2").hidden;
-	}
-
+	//****************ACTIVAR ESTUDIANTE
 	function preguntaEstudiante(a) {
 		document.getElementById("enviarForm").href = "${pageContext.request.contextPath}/ListaEstudiantesServlet?matricula=" + a + "";
 		Swal.fire({
-			title: '¿Realizar Acción?', text: "Se activará de nuevo al alumno en el sistema", icon: 'warning', showCancelButton: true, confirmButtonColor: '#6c757d', cancelButtonColor: '#3085d6', confirmButtonText: 'Si, Realizar!'
+			title: '¿Reactivar estudiante?',
+			text: "Se activará de nuevo al alumno en el sistema",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#6c757d',
+			cancelButtonColor: '#3085d6',
+			confirmButtonText: 'Si, Realizar!'
 		}).then((result) => {
 			if (result.value) {
 				Swal.fire('Realizado!', 'Se efectuo la acción', 'success')
@@ -134,17 +136,5 @@
 			}
 		})
 	}
-
-	function copiarMat(a) {
-		var $temp = $("<input>");
-		$("body").append($temp);
-		$temp.val($(a).html()).select();
-		document.execCommand("copy");
-		$temp.remove();
-		Swal.fire({
-			position: 'top-end', icon: 'info', title: 'Se ha copiado la matrícula', showConfirmButton: false, timer: 500
-		})
-	}
 </script>
-
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>

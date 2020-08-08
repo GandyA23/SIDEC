@@ -37,6 +37,8 @@
 		<script type="text/javascript" charset="utf8"
 		src="https://cdn.datatables.net/responsive/2.2.5/js/responsive.bootstrap4.min.js"></script>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.js" type="text/javascript"></script>
 		<script>
 		$("#menu-toggle").click(function (e) {
 		e.preventDefault();

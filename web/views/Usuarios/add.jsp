@@ -79,26 +79,5 @@
 </div><!-- no quitar este contenedor -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="${pageContext.request.contextPath}/assets/js/confirmacionSMS.js"></script>
-<script>
-	var rol = document.getElementById("rolActivo").outerText;
-	if(rol == 'Director'){
-		document.getElementById("ocultarDirector").style.display="none";
-	}
-	function verificarPASS() {
-		var pass = document.getElementById("pass").value;
-		var repeat = document.getElementById("repeatpass").value;
-		if(pass.length>0 && repeat.length>0 && pass === repeat){
-			document.getElementById("enviarBTN").click();
-		}else{
-			Swal.fire({
-				icon: 'error',
-				title: 'Contraseñas insonsistentes',
-				text: 'Verifique las contraseñas!',
-			})
-		}
-	}
-
-
-
-</script>
+<script src="${pageContext.request.contextPath}/assets/js/moduloUsuarios.js"> </script>
 <jsp:include page="/views/layout/footer.jsp"></jsp:include>
