@@ -55,20 +55,20 @@
 				<div class="row form-group col-md d-inline-flex">
 					<c:if test="${academico.diploma != null}">
 						<div class="col-md">
-							<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas" checked>
+							<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas" checked onclick="habilita(this.id, 'diploma')">
 							<label class="form-check-label" for="diplomas"> Diplomas </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="diploma" placeholder="Descripción:"><c:out value="${academico.diploma}"></c:out></textarea>
+							<textarea class="form-control rounded" name="diploma" id="diploma" placeholder="Descripción:"><c:out value="${academico.diploma}"></c:out></textarea>
 						</div>
 					</c:if>
 					<c:if test="${academico.diploma == null}">
 						<div class="col-md">
-							<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas">
+							<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas" onclick="habilita(this.id, 'diploma')" readonly>
 							<label class="form-check-label" for="diplomas"> Diplomas </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="diploma" placeholder="Descripción:"></textarea>
+							<textarea class="form-control rounded" name="diploma" id="diploma" placeholder="Descripción:"></textarea>
 						</div>
 					</c:if>
 					<br>
@@ -76,21 +76,21 @@
 					<c:if test="${academico.reconocimiento != null}">
 						<div class="col-md">
 							<input class="form-check-input" type="checkbox" name="checkReconocimiento" value="Si"
-							       id="reconocimientos" checked>
+							       id="reconocimientos" checked onclick="habilita(this.id, 'reconocimiento')">
 							<label class="form-check-label" for="reconocimientos"> Reconocimientos </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="reconocimiento" placeholder="Descripción:"><c:out value="${academico.reconocimiento}"></c:out></textarea>
+							<textarea class="form-control rounded" name="reconocimiento" id="reconocimiento" placeholder="Descripción:"><c:out value="${academico.reconocimiento}"></c:out></textarea>
 						</div>
 					</c:if>
 					<c:if test="${academico.reconocimiento == null}">
 						<div class="col-md">
 							<input class="form-check-input" type="checkbox" name="checkReconocimiento" value="Si"
-							       id="reconocimientos">
+							       id="reconocimientos" onclick="habilita(this.id, 'reconocimiento')" readonly>
 							<label class="form-check-label" for="reconocimientos"> Reconocimientos </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="reconocimiento" placeholder="Descripción:"></textarea>
+							<textarea class="form-control rounded" name="reconocimiento" id="reconocimiento" placeholder="Descripción:"></textarea>
 						</div>
 					</c:if>
 					<br>
@@ -99,20 +99,20 @@
 
 					<c:if test="${academico.mencion != null}">
 						<div class="col-md">
-							<input class="form-check-input" type="checkbox" name="checkMenciones" value="Si" id="menciones" checked>
+							<input class="form-check-input" type="checkbox" name="checkMenciones" value="Si" id="menciones" checked onclick="habilita(this.id, 'mencion')">
 							<label class="form-check-label" for="menciones"> Menciones Honoríficas </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="mencion" placeholder="Descripción:"><c:out value="${academico.mencion}"></c:out></textarea>
+							<textarea class="form-control rounded" name="mencion" id="mencion" placeholder="Descripción:"><c:out value="${academico.mencion}"></c:out></textarea>
 						</div>
 					</c:if>
 					<c:if test="${academico.mencion == null}">
 						<div class="col-md">
-							<input class="form-check-input" type="checkbox" name="checkMenciones" value="Si" id="menciones">
+							<input class="form-check-input" type="checkbox" name="checkMenciones" value="Si" id="menciones" onclick="habilita(this.id, 'mencion')" readonly>
 							<label class="form-check-label" for="menciones"> Menciones Honoríficas </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="mencion" placeholder="Descripción:"></textarea>
+							<textarea class="form-control rounded" name="mencion" id="mencion" placeholder="Descripción:"></textarea>
 						</div>
 					</c:if>
 					<br>
@@ -120,21 +120,21 @@
 					<c:if test="${academico.certificacion != null}">
 						<div class="col-md">
 							<input class="form-check-input" type="checkbox" name="checkCertificaciones" value="Si"
-							       id="certificaciones" checked>
+							       id="certificaciones" checked onclick="habilita(this.id, 'certificacion')">
 							<label class="form-check-label" for="certificaciones"> Certificaciones </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="certificacion" placeholder="Descripción:"><c:out value="${academico.certificacion}"></c:out></textarea>
+							<textarea class="form-control rounded" name="certificacion" id="certificacion" placeholder="Descripción:"><c:out value="${academico.certificacion}"></c:out></textarea>
 						</div>
 					</c:if>
 					<c:if test="${academico.certificacion == null}">
 						<div class="col-md">
 							<input class="form-check-input" type="checkbox" name="checkCertificaciones" value="Si"
-							       id="certificaciones">
+							       id="certificaciones" onclick="habilita(this.id, 'certificacion')" readonly>
 							<label class="form-check-label" for="certificaciones"> Certificaciones </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="certificacion" placeholder="Descripción:"></textarea>
+							<textarea class="form-control rounded" name="certificacion" id="certificacion" placeholder="Descripción:"></textarea>
 						</div>
 					</c:if>
 					<br>
