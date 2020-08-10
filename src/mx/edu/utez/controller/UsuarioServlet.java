@@ -77,7 +77,8 @@ public class UsuarioServlet extends HttpServlet {
 
             case "delete":
                 try {
-                    usuDao.elimiarDatos(cct);
+                    int respuesta = usuDao.elimiarDatos(cct);
+                    request.setAttribute("respuestaSMS", respuesta);
                     request.getRequestDispatcher("/views/Usuarios/delete.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -93,7 +94,8 @@ public class UsuarioServlet extends HttpServlet {
                     usuBean.setApellido1(request.getParameter("apellido1"));
                     usuBean.setApellido2(request.getParameter("apellido2"));
                     usuBean.setRol(request.getParameter("rol"));
-                    usuDao.actualizarDatos(usuBean);
+                    int respuesta = usuDao.actualizarDatos(usuBean);
+                    request.setAttribute("respuestaSMS", respuesta);
                     request.getRequestDispatcher("/views/Usuarios/update.jsp").forward(request,response);
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -101,14 +101,14 @@ public class PersonalServlet extends HttpServlet {
 				try{
 					matricula = request.getParameter("matricula");
 					List<EstudianteBean> alumnoLista  = personalDao.datosEstudiante(matricula);
-					if(alumnoLista != null){
+					if(alumnoLista == null){
+						request.setAttribute("respuestaSMS", 0);
+					}else{
 						List<DomicilioBean> domicilioLista = personalDao.datosDomicilio(matricula);
 						List<TutorBean> tutorLista = personalDao.datosTutor();
 						request.setAttribute("alumnoLista",alumnoLista);
 						request.setAttribute("tutorLista",tutorLista);
 						request.setAttribute("domicilioLista",domicilioLista);
-					}else{
-						request.setAttribute("respuestaSMS", 0);
 					}
 					switch (opc){
 						case "1":

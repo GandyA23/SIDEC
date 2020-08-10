@@ -10,15 +10,21 @@ public class LoginDao extends conexion {
     public LoginBean validarRol(LoginBean logben) {
         String CCT = logben.getCct();
         String PASS = logben.getPassword();
-        PreparedStatement statment = null;
+        CallableStatement statment = null;
         ResultSet resulSet = null;
         try{
-            statment = crearConexion().prepareStatement("SELECT CCT, Password, Rol FROM usuario WHERE CCT = '"+CCT+"' AND Password = '"+PASS+"'");
-            resulSet = statment.executeQuery();
+            statment = crearConexion().prepareCall("{call Verificar_Usuario(?,?)}");
+            statment.setString(1,CCT);
+            statment.setString(2,PASS);
+            statment.execute();
+            resulSet = statment.getResultSet();
             if (resulSet.next()){
                 logben.setCct(resulSet.getString("CCT"));
                 logben.setPassword(resulSet.getString("Password"));
                 logben.setRol(resulSet.getString("Rol"));
+                System.out.println(logben.getRol());
+                statment.close();
+                resulSet.close();
                 if(CCT.equals(logben.getCct()) && PASS.equals(logben.getPassword())){
                     return logben;
                 }else{

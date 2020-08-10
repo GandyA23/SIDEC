@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Informacion_PersonalDao extends conexion {
-	public static String idTutor;
+	public  String idTutor;
 
 	public int insertarDatos(EstudianteBean alumno, TutorBean tutor, DomicilioBean domicilio) {
 		try {
 			String idTutor = null;
 			boolean check1, check2, check3;
-			CallableStatement sentencia = crearConexion().prepareCall("{call Add_Estudiante(?,?,?,?,?,?,?,?,?,?,?,?)}");//("INSERT INTO estudiante values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			CallableStatement sentencia = crearConexion().prepareCall("{call Add_Estudiante(?,?,?,?,?,?,?,?,?,?,?,?)}");
 			sentencia.setString(1,alumno.getMatricula());
 			sentencia.setString(2,alumno.getCurp());
 			sentencia.setString(3,alumno.getNombre());
@@ -35,7 +35,7 @@ public class Informacion_PersonalDao extends conexion {
 			check1 = sentencia.execute();
 
 			sentencia = null;
-			sentencia = crearConexion().prepareCall("{call Add_Tutor(null,?,?,?,?,?,?,?)}");  //("INSERT INTO tutor values(null,?,?,?,?,?,?,?)");
+			sentencia = crearConexion().prepareCall("{call Add_Tutor(null,?,?,?,?,?,?,?)}");
 			sentencia.setString(1,tutor.getNombre());
 			sentencia.setString(2,tutor.getApellido1());
 			sentencia.setString(3,tutor.getApellido2());
@@ -45,13 +45,16 @@ public class Informacion_PersonalDao extends conexion {
 			sentencia.setString(7,tutor.getGenero());
 			check2 = sentencia.execute();
 
-			PreparedStatement stn = crearConexion().prepareStatement("SELECT Id from tutor WHERE Nombre = '" + tutor.getNombre() + "' AND Apellido1 ='" + tutor.getApellido1() + "' AND Apellido2 ='" + tutor.getApellido2() + "'");
-			ResultSet consulta = stn.executeQuery();
-			if(consulta.next())
-			idTutor = consulta.getString("Id");
+			CallableStatement stn = crearConexion().prepareCall("{call Verificar_Tutor(?,?,?)}");
+			stn.setString(1,tutor.getNombre());
+			stn.setString(2,tutor.getApellido1());
+			stn.setString(3,tutor.getApellido2());
+			stn.execute();
+			ResultSet consulta = stn.getResultSet();
+			if(consulta.next()) idTutor = consulta.getString("Id");
 
 			sentencia = null;
-			sentencia = crearConexion().prepareCall("{call Add_Domicilio(?,?,?,?,?,?,?,?)}");//("INSERT INTO domicilio values(?,?,?,?,?,?,?,?)");
+			sentencia = crearConexion().prepareCall("{call Add_Domicilio(?,?,?,?,?,?,?,?)}");
 			sentencia.setString(1,domicilio.getMatriculaEstudiante().getMatricula());
 			sentencia.setString(2,idTutor);
 			sentencia.setString(3,domicilio.getCalle());
@@ -71,9 +74,10 @@ public class Informacion_PersonalDao extends conexion {
 
 	public int eliminarDatos(String matricula) {
 		try {
-			CallableStatement sentencia = crearConexion().prepareCall("{call Delete_Estudiante(?)}"); //("UPDATE estudiante SET Status = 0 WHERE Matricula = '" + matricula + "' AND Status = 1");
+			CallableStatement sentencia = crearConexion().prepareCall("{call Delete_Estudiante(?)}");
 			sentencia.setString(1, matricula);
 			sentencia.execute();
+			sentencia.close();
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,14 +88,19 @@ public class Informacion_PersonalDao extends conexion {
 	public List<EstudianteBean> datosEstudiante(String matricula) {
 		try {
 			List<EstudianteBean> alumno = new ArrayList<>();
-			ResultSet resultSet = null;
-			PreparedStatement sentencia = null;
-			sentencia = crearConexion().prepareStatement("SELECT * FROM estudiante WHERE Matricula = '" + matricula + "' AND Status = 1");
-			resultSet = sentencia.executeQuery();
+			CallableStatement sentencia = crearConexion().prepareCall("{CALL Verificar_Estudiante(?)}");
+			sentencia.setString(1,matricula);
+			sentencia.execute();
+			ResultSet resultSet = sentencia.getResultSet();
 			if (resultSet.next()) {
 				alumno.add(new EstudianteBean(resultSet.getString("Matricula"), resultSet.getString("Curp"), resultSet.getString("Nombre"), resultSet.getString("Apellido1"), resultSet.getString("Apellido2"), resultSet.getString("FechaNacimiento"), resultSet.getString("Telefono"), resultSet.getString("Correo"), resultSet.getString("Genero"), resultSet.getString("CicloEscolar"), resultSet.getString("NivelActual")));
-				return alumno;
+				sentencia.close();
+				resultSet.close();
+			}else{
+				return null;
 			}
+
+			return alumno;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -101,14 +110,16 @@ public class Informacion_PersonalDao extends conexion {
 	public List<TutorBean> datosTutor() {
 		try {
 			List<TutorBean> tutor = new ArrayList<>();
-			PreparedStatement sentencia = null;
-			ResultSet resultSet = null;
-			sentencia = crearConexion().prepareStatement("SELECT * FROM tutor WHERE Id ='" + idTutor + "'");
-			resultSet = sentencia.executeQuery();
+			CallableStatement sentencia = crearConexion().prepareCall("{call Select_Tutor(?)}");
+			sentencia.setInt(1,Integer.parseInt(idTutor));
+			sentencia.execute();
+			ResultSet resultSet = sentencia.getResultSet();
 			if (resultSet.next()) {
 				tutor.add(new TutorBean(resultSet.getString("Nombre"), resultSet.getString("Apellido1"), resultSet.getString("Apellido2"), resultSet.getString("TelefonoPersonal"), resultSet.getString("TelefonoTrabajo"), resultSet.getString("Correo"), resultSet.getString("Genero")));
-				return tutor;
 			}
+			sentencia.close();
+			resultSet.close();
+			return tutor;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,15 +129,17 @@ public class Informacion_PersonalDao extends conexion {
 	public List<DomicilioBean> datosDomicilio(String matricula) {
 		try {
 			List<DomicilioBean> domicilio = new ArrayList<>();
-			ResultSet resultSet = null;
-			PreparedStatement sentencia = null;
-			sentencia = crearConexion().prepareStatement("SELECT * FROM domicilio WHERE MatEstudiante = '" + matricula + "'");
-			resultSet = sentencia.executeQuery();
+			CallableStatement sentencia = crearConexion().prepareCall("{call Select_Domicilio(?)}");
+			sentencia.setString(1,matricula);
+			sentencia.execute();
+			ResultSet resultSet = sentencia.getResultSet();
 			if (resultSet.next()) {
 				idTutor = resultSet.getString("IdTutor");
 				domicilio.add(new DomicilioBean(new EstudianteBean(resultSet.getString("MatEstudiante")), resultSet.getString("Calle"), resultSet.getString("NoExterior"), resultSet.getString("NoInterior"), resultSet.getString("Colonia"), resultSet.getString("Municipio"), resultSet.getString("CodigoPostal")));
-				return domicilio;
 			}
+			sentencia.close();
+			resultSet.close();
+			return domicilio;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -135,9 +148,9 @@ public class Informacion_PersonalDao extends conexion {
 
 	public int modificarDatos(EstudianteBean alumno, DomicilioBean domicilio, TutorBean tutor) {
 		try {
-			int check1, check2, check3;
-			PreparedStatement sentencia = null;
-			sentencia = crearConexion().prepareStatement("UPDATE estudiante SET Curp = ?, Nombre = ?, Apellido1 = ?, Apellido2 = ?, FechaNacimiento = ?, Telefono = ?, Correo = ?, Genero=?,CicloEscolar=?,NivelActual=? WHERE Matricula = ? AND Status = 1");
+			boolean check1, check2, check3;
+			CallableStatement sentencia = null;
+			sentencia = crearConexion().prepareCall("{call Update_Estudiante(?,?,?,?,?,?,?,?,?,?,?)}");
 			sentencia.setString(1, alumno.getCurp());
 			sentencia.setString(2, alumno.getNombre());
 			sentencia.setString(3, alumno.getApellido1());
@@ -149,10 +162,10 @@ public class Informacion_PersonalDao extends conexion {
 			sentencia.setString(9, alumno.getCicloEscolar());
 			sentencia.setString(10, alumno.getNivelActual());
 			sentencia.setString(11, alumno.getMatricula());
-			check1 = sentencia.executeUpdate();
+			check1 = sentencia.execute();
 
 			sentencia = null;
-			sentencia = crearConexion().prepareStatement("UPDATE tutor SET Nombre = ?, Apellido1 = ?, Apellido2 = ?, TelefonoPersonal = ?, TelefonoTrabajo = ?, Correo = ?, Genero = ? WHERE Id = ?");
+			sentencia = crearConexion().prepareCall("{call Update_Tutor(?,?,?,?,?,?,?,?)}");
 			sentencia.setString(1,tutor.getNombre());
 			sentencia.setString(2,tutor.getApellido1());
 			sentencia.setString(3,tutor.getApellido2());
@@ -161,10 +174,10 @@ public class Informacion_PersonalDao extends conexion {
 			sentencia.setString(6,tutor.getCorreo());
 			sentencia.setString(7,tutor.getGenero());
 			sentencia.setString(8, idTutor);
-			check2 = sentencia.executeUpdate();
+			check2 = sentencia.execute();
 
 			sentencia = null;
-			sentencia = crearConexion().prepareStatement("UPDATE domicilio SET Calle = ?, NoExterior = ?, NoInterior = ?, Colonia = ?, Municipio = ?, CodigoPostal = ? WHERE MatEstudiante = ? AND IdTutor = ?");
+			sentencia = crearConexion().prepareCall("{call Update_Domicilio(?,?,?,?,?,?,?,?)}");
 			sentencia.setString(1,domicilio.getCalle());
 			sentencia.setString(2,domicilio.getNoExterior());
 			sentencia.setString(3,domicilio.getNoInterior());
@@ -173,8 +186,8 @@ public class Informacion_PersonalDao extends conexion {
 			sentencia.setString(6,domicilio.getCodigoPostal());
 			sentencia.setString(7,alumno.getMatricula());
 			sentencia.setString(8,idTutor);
-			check3 = sentencia.executeUpdate();
-
+			check3 = sentencia.execute();
+			sentencia.close();
 			return (check1 == check2 && check2 == check3) ? 1 : 0;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -183,7 +196,6 @@ public class Informacion_PersonalDao extends conexion {
 	}
 
 	public void consultarFoto(String matFoto, HttpServletResponse response) {
-		String query = "SELECT Foto FROM estudiante WHERE Matricula = ?";
 		InputStream is = null;
 		OutputStream os = null;
 		BufferedOutputStream bos = null;
@@ -191,9 +203,10 @@ public class Informacion_PersonalDao extends conexion {
 		response.setContentType("image/*");
 		try {
 			os = response.getOutputStream();
-			PreparedStatement pst = crearConexion().prepareStatement(query);
+			CallableStatement pst = crearConexion().prepareCall("{call Select_Estudiante_Foto(?)}");
 			pst.setString(1, matFoto);
-			ResultSet rs = pst.executeQuery();
+			pst.execute();
+			ResultSet rs = pst.getResultSet();
 			if(rs.next())
 				is = rs.getBinaryStream("Foto");
 			bis = new BufferedInputStream(is);
@@ -212,10 +225,11 @@ public class Informacion_PersonalDao extends conexion {
 
 	public void actualizarFoto(InputStream foto, String matricula) {
 		try{
-			PreparedStatement sentencia = crearConexion().prepareStatement("UPDATE estudiante SET Foto = ?  WHERE Matricula = ?");
+			CallableStatement sentencia = crearConexion().prepareCall("{call Update_Estudiante_Foto(?,?)}");
 			sentencia.setBlob(1,foto);
 			sentencia.setString(2,matricula);
-			sentencia.executeUpdate();
+			sentencia.execute();
+			sentencia.close();
 		}catch (SQLException e){
 			e.printStackTrace();
 		}

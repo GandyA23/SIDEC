@@ -134,7 +134,6 @@ public class ClinicaServlet extends HttpServlet {
 						clinicaBean.setDiagPsico("Ninguno");
 					} else clinicaBean.setDiagPsico(diagnostico);
 
-
 					String opc_cronica = request.getParameter("opc_cronica");
 					if (opc_cronica.equals("si_cronica")) {
 						String cronica1 = request.getParameter("enferCronicas1");

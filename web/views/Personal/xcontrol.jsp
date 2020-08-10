@@ -91,7 +91,7 @@
 							<td><c:out value="${est.apellido1}"></c:out></td>
 							<td><c:out value="${est.apellido2}"></c:out></td>
 							<td class="docente2">
-								<button onclick="preguntaEstudiante(`<c:out value="${est.matricula}"></c:out>`)"
+								<button onclick="preguntaEstudiante(`<c:out value="${est.matricula}"/>`)"
 								        class="btn btn-sm bg-danger btn-block text-white">
 									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-square-fill"
 									     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
