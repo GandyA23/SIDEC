@@ -85,18 +85,18 @@
 					<div class="col-md">
 						<label>Crónicas:</label>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="opc_cronica" id="inlineRadio1"
+							<input class="form-check-input" type="radio" onclick="habilitaRadio('selectCronica', 'areaCronica', true)" name="opc_cronica" id="inlineRadio1"
 							       value="si_cronica" required>
 							<label class="form-check-label" for="inlineRadio1">Si</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="opc_cronica" id="inlineRadio2"
+							<input class="form-check-input" type="radio" onclick="habilitaRadio('selectCronica', 'areaCronica', false)" name="opc_cronica" id="inlineRadio2"
 							       value="no_cronica" checked>
 							<label class="form-check-label" for="inlineRadio2">No</label>
 						</div>
 
 						<div class="col-md">
-							<select name="enferCronicas1" class="form-control">
+							<select name="enferCronicas1" id="selectCronica" readonly class="form-control">
 								<option selected>Seleccione</option>
 								<option>Cardiovasculares</option>
 								<option>Diabetes</option>
@@ -111,25 +111,25 @@
 							</select>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control" name="enferCronicas2" rows="2" placeholder="Descripción:"></textarea>
+							<textarea class="form-control" id="areaCronica" name="enferCronicas2" rows="2" placeholder="Descripción:" readonly></textarea>
 						</div>
 					</div>
 
 					<div class="col-md">
 						<label>Hereditarias:</label>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="opc_hereditaria" id="inlineRadio3"
+							<input class="form-check-input" type="radio" name="opc_hereditaria" onclick="habilitaRadio('selectHereditaria', 'areaHereditaria', true)" id="inlineRadio3"
 							       value="si_hereditaria" required>
 							<label class="form-check-label" for="inlineRadio3">Si</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="opc_hereditaria" id="inlineRadio4"
+							<input class="form-check-input" type="radio" onclick="habilitaRadio('selectHereditaria', 'areaHereditaria', false)" name="opc_hereditaria" id="inlineRadio4"
 							       value="no_hereditaria" checked>
 							<label class="form-check-label" for="inlineRadio4">No</label>
 						</div>
 
 						<div class="col-md">
-							<select name="enferHereditarias1" class="form-control">
+							<select name="enferHereditarias1" id="selectHereditaria" class="form-control" readonly>
 								<option selected>Seleccione</option>
 								<option>Anemia</option>
 								<option>Daltonismo</option>
@@ -142,7 +142,7 @@
 						</div>
 						<div class="col-md">
                   <textarea class="form-control" name="enferHereditarias2"
-                            rows="2" placeholder="Descripción:"></textarea>
+                            rows="2" id="areaHereditaria" placeholder="Descripción:" readonly ></textarea>
 						</div>
 					</div>
 				</div>
@@ -151,18 +151,18 @@
 					<div class="col-md">
 						<label>Alergías:</label>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio5"
+							<input class="form-check-input" type="radio" name="opc_alergias" onclick="habilitaRadio('selectAlergias', 'areaAlergias', true)" id="inlineRadio5"
 							       value="si_alergias" required>
 							<label class="form-check-label" for="inlineRadio5">Si</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio6"
-							       value="no_alergias" checked>
+							       value="no_alergias" onclick="habilitaRadio('selectAlergias', 'areaAlergias', false)" checked>
 							<label class="form-check-label" for="inlineRadio6">No</label>
 						</div>
 
 						<div class="col-md">
-							<select name="alergias1" class="form-control">
+							<select name="alergias1" id="selectAlergias" class="form-control" readonly>
 								<option selected>Seleccione</option>
 								<option>Ácaros</option>
 								<option>Polen</option>
@@ -176,25 +176,25 @@
 							</select>
 						</div>
 						<div class="col-md">
-                  <textarea class="form-control" name="alergias2" rows="2"
-                            placeholder="Descripción:"></textarea>
+                  <textarea class="form-control" id="areaAlergias" name="alergias2" rows="2"
+                            placeholder="Descripción:" readonly></textarea>
 						</div>
 					</div>
 					<div class="col-md">
 						<label>Discapacidad:</label>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="opc_discapacidad" id="inlineRadio7"
+							<input class="form-check-input" type="radio" name="opc_discapacidad" onclick="habilitaRadio('inputState', 'exampleFormControlTextarea1', true)" id="inlineRadio7"
 							       value="si_discapacidad" required>
 							<label class="form-check-label" for="inlineRadio7">Si</label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="opc_discapacidad" id="inlineRadio8"
-							       value="no_discapacidad" checked>
+							       value="no_discapacidad" onclick="habilitaRadio('inputState', 'exampleFormControlTextarea1', false)" checked>
 							<label class="form-check-label" for="inlineRadio8">No</label>
 						</div>
 
 						<div class="col-md">
-							<select name="discapacidades1" id="inputState" class="form-control">
+							<select name="discapacidades1" id="inputState" class="form-control" readonly>
 								<option selected>Seleccione</option>
 								<option>Física</option>
 								<option>Psíquica</option>
@@ -205,7 +205,7 @@
 						</div>
 						<div class="col-md">
 							<textarea class="form-control" name="discapacidades2" id="exampleFormControlTextarea1"
-							          rows="2" placeholder="Descripción:"></textarea>
+							          rows="2" placeholder="Descripción:" readonly></textarea>
 						</div>
 					</div>
 				</div>

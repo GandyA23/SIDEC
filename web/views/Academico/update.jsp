@@ -64,11 +64,11 @@
 					</c:if>
 					<c:if test="${academico.diploma == null}">
 						<div class="col-md">
-							<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas" onclick="habilita(this.id, 'diploma')" readonly>
+							<input class="form-check-input" type="checkbox" name="checkDiploma" value="Si" id="diplomas" onclick="habilita(this.id, 'diploma')">
 							<label class="form-check-label" for="diplomas"> Diplomas </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="diploma" id="diploma" placeholder="Descripción:"></textarea>
+							<textarea class="form-control rounded" name="diploma" id="diploma" placeholder="Descripción:" readonly></textarea>
 						</div>
 					</c:if>
 					<br>
@@ -90,7 +90,7 @@
 							<label class="form-check-label" for="reconocimientos"> Reconocimientos </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="reconocimiento" id="reconocimiento" placeholder="Descripción:"></textarea>
+							<textarea class="form-control rounded" name="reconocimiento" id="reconocimiento" placeholder="Descripción:" readonly></textarea>
 						</div>
 					</c:if>
 					<br>
@@ -112,7 +112,7 @@
 							<label class="form-check-label" for="menciones"> Menciones Honoríficas </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="mencion" id="mencion" placeholder="Descripción:"></textarea>
+							<textarea class="form-control rounded" name="mencion" id="mencion" placeholder="Descripción:" readonly></textarea>
 						</div>
 					</c:if>
 					<br>
@@ -134,7 +134,7 @@
 							<label class="form-check-label" for="certificaciones"> Certificaciones </label>
 						</div>
 						<div class="col-md">
-							<textarea class="form-control rounded" name="certificacion" id="certificacion" placeholder="Descripción:"></textarea>
+							<textarea class="form-control rounded" name="certificacion" id="certificacion" readonly placeholder="Descripción:"></textarea>
 						</div>
 					</c:if>
 					<br>

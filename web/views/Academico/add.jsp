@@ -67,7 +67,7 @@
 					<label class="form-check-label" for="certificaciones"> Certificaciones </label>
 				</div>
 				<div class="col-md">
-					<textarea class="form-control rounded" name="certificacion" id="certificacion" placeholder="Descripción:" readonly> </textarea>
+					<textarea class="form-control rounded" name="certificacion" id="certificacion" placeholder="Descripción:" readonly></textarea>
 				</div>
 				<br>
 			</div>

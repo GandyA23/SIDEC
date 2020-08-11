@@ -143,3 +143,17 @@ function habilita(id, id_element){
     else
         area.removeAttribute('readonly');
 }
+
+function habilitaRadio(idInput, idText, bandera){
+    var select = document.getElementById(idInput);
+    var area = document.getElementById(idText);
+
+    if(bandera){
+        area.removeAttribute('readonly');
+        select.removeAttribute('readonly');
+    }else{
+        area.setAttribute('readonly', 'readonly');
+        select.setAttribute('readonly', 'readonly');
+    }
+
+}

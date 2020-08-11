@@ -114,94 +114,134 @@
 							<label>Crónicas:</label>
 							<c:if test="${clinica.enferCronicas != 'Ninguna'}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_cronica" value="si_cronica"
+									<input class="form-check-input" type="radio"  onclick="habilitaRadio('selectCronica', 'areaCronica', true)" name="opc_cronica" value="si_cronica"
 									       id="inlineRadio1" checked required>
 									<label class="form-check-label" for="inlineRadio1">Si</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_cronica" value="no_cronica"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectCronica', 'areaCronica', false)" name="opc_cronica" value="no_cronica"
 									       id="inlineRadio2">
 									<label class="form-check-label" for="inlineRadio2">No</label>
+								</div>
+
+								<div class="col-md">
+									<select class="form-control" id="selectCronica" name="enferCronicas1">
+										<option selected><c:out value="${clinica.tipoEnferCronicas}"/></option>
+										<option>Cardiovasculares</option>
+										<option>Dabetes</option>
+										<option>Párkinson</option>
+										<option>Alzheimer</option>
+										<option>Hipertensión</option>
+										<option>Osteoporosis</option>
+										<option>Colesterol</option>
+										<option>Depresión</option>
+										<option>Cáncer</option>
+										<option>Otro</option>
+									</select>
+								</div>
+								<div class="col-md">
+									<textarea id="areaCronica" class="form-control" name="enferCronicas2" rows="2" placeholder="Descripción:"><c:out value="${clinica.enferCronicas}"/></textarea>
 								</div>
 							</c:if>
 							<c:if test="${clinica.enferCronicas == 'Ninguna'}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_cronica" value="si_cronica"
+									<input class="form-check-input" type="radio" name="opc_cronica" onclick="habilitaRadio('selectCronica', 'areaCronica', true)" value="si_cronica"
 									       id="inlineRadio1" required>
 									<label class="form-check-label" for="inlineRadio1">Si</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_cronica" value="no_cronica"
+									<input class="form-check-input" type="radio" name="opc_cronica" value="no_cronica" onclick="habilitaRadio('selectCronica', 'areaCronica', false)"
 									       id="inlineRadio2" checked>
 									<label class="form-check-label" for="inlineRadio2">No</label>
 								</div>
+
+								<div class="col-md">
+									<select class="form-control" id="selectCronica" name="enferCronicas1" readonly>
+										<option selected>Seleccione</option>
+										<option>Cardiovasculares</option>
+										<option>Dabetes</option>
+										<option>Párkinson</option>
+										<option>Alzheimer</option>
+										<option>Hipertensión</option>
+										<option>Osteoporosis</option>
+										<option>Colesterol</option>
+										<option>Depresión</option>
+										<option>Cáncer</option>
+										<option>Otro</option>
+									</select>
+								</div>
+								<div class="col-md">
+									<textarea id="areaCronica" class="form-control" name="enferCronicas2" rows="2" placeholder="Descripción:" readonly></textarea>
+								</div>
 							</c:if>
-							<div class="col-md">
-								<select class="form-control" name="enferCronicas1">
-									<option selected><c:out value="${clinica.tipoEnferCronicas}"/></option>
-									<option>Cardiovasculares</option>
-									<option>Dabetes</option>
-									<option>Párkinson</option>
-									<option>Alzheimer</option>
-									<option>Hipertensión</option>
-									<option>Osteoporosis</option>
-									<option>Colesterol</option>
-									<option>Depresión</option>
-									<option>Cáncer</option>
-									<option>Otro</option>
-								</select>
-							</div>
-							<div class="col-md">
-								<textarea class="form-control" name="enferCronicas2" rows="2" placeholder="Descripción:"><c:out value="${clinica.enferCronicas}"/></textarea>
-							</div>
+
 						</div>
 
 						<div class="col-md">
 							<label>Hereditarias:</label>
 							<c:if test="${clinica.enferHereditarias != 'Ninguna'}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_hereditaria"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectHer', 'areaHer', true)" name="opc_hereditaria"
 									       id="inlineRadio3"
 									       value="si_hereditaria" checked required>
 									<label class="form-check-label" for="inlineRadio3">Si</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_hereditaria"
+									<input class="form-check-input" onclick="habilitaRadio('selectHer', 'areaHer', false)" type="radio" name="opc_hereditaria"
 									       id="inlineRadio4"
 									       value="no_hereditaria">
 									<label class="form-check-label" for="inlineRadio4">No</label>
 								</div>
+
+								<div class="col-md">
+									<select name="enferHereditarias1" id="selectHer" class="form-control">
+										<option selected><c:out value="${clinica.tipoEnferHereditarias}"/></option>
+										<option>Ánemia</option>
+										<option>Daltonismo</option>
+										<option>Díabetes</option>
+										<option>Mipía</option>
+										<option>Síndrome de Marfan</option>
+										<option>Cáncer</option>
+										<option>Otro</option>
+									</select>
+								</div>
+								<div class="col-md">
+							<textarea class="form-control" id="areaHer" name="enferHereditarias2" rows="2" placeholder="Descripción:"><c:out
+									value="${clinica.enferHereditarias}"/></textarea>
+								</div>
+
 							</c:if>
 							<c:if test="${clinica.enferHereditarias == 'Ninguna'}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_hereditaria"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectHer', 'areaHer', true)" name="opc_hereditaria"
 									       id="inlineRadio3"
 									       value="si_hereditaria" required>
 									<label class="form-check-label" for="inlineRadio3">Si</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_hereditaria"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectHer', 'areaHer', false)" name="opc_hereditaria"
 									       id="inlineRadio4"
 									       value="no_hereditaria" checked>
 									<label class="form-check-label" for="inlineRadio4">No</label>
 								</div>
+
+								<div class="col-md">
+									<select name="enferHereditarias1" id="selectHer" class="form-control" readonly>
+										<option selected>Seleccione</option>
+										<option>Ánemia</option>
+										<option>Daltonismo</option>
+										<option>Díabetes</option>
+										<option>Mipía</option>
+										<option>Síndrome de Marfan</option>
+										<option>Cáncer</option>
+										<option>Otro</option>
+									</select>
+								</div>
+								<div class="col-md">
+							<textarea class="form-control" id="areaHer" name="enferHereditarias2" rows="2" placeholder="Descripción:" readonly></textarea>
+								</div>
 							</c:if>
-							<div class="col-md">
-								<select name="enferHereditarias1" class="form-control">
-									<option selected><c:out value="${clinica.tipoEnferHereditarias}"/></option>
-									<option>Ánemia</option>
-									<option>Daltonismo</option>
-									<option>Díabetes</option>
-									<option>Mipía</option>
-									<option>Síndrome de Marfan</option>
-									<option>Cáncer</option>
-									<option>Otro</option>
-								</select>
-							</div>
-							<div class="col-md">
-							<textarea class="form-control" name="enferHereditarias2" rows="2" placeholder="Descripción:"><c:out
-							value="${clinica.enferHereditarias}"/></textarea>
-							</div>
+
 						</div>
 					</div>
 					<br>
@@ -210,46 +250,67 @@
 							<label>Alergías:</label>
 							<c:if test="${clinica.alergias != 'Ninguna'}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio5"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectAle', 'areaAle', true)" name="opc_alergias" id="inlineRadio5"
 									       value="si_alergias" checked required>
 									<label class="form-check-label" for="inlineRadio5">Si</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio6"
+									<input class="form-check-input" type="radio" name="opc_alergias" onclick="habilitaRadio('selectAle', 'areaAle', false)" id="inlineRadio6"
 									       value="no_alergias">
 									<label class="form-check-label" for="inlineRadio6">No</label>
+								</div>
+
+								<div class="col-md">
+									<select name="alergias1" id="selectAle" class="form-control">
+										<option selected><c:out value="${clinica.tipoalergias}"/></option>
+										<option>Ácaros</option>
+										<option>Polen</option>
+										<option>Pelo de Animales</option>
+										<option>Picaduras Insectos</option>
+										<option>Moho</option>
+										<option>Látex</option>
+										<option>Alimentos</option>
+										<option>Fragancias</option>
+										<option>Otro</option>
+									</select>
+								</div>
+								<div class="col-md">
+								<textarea class="form-control" id="areaAle" name="alergias2" rows="2" placeholder="Descripción:"><c:out
+										value="${clinica.alergias}"/></textarea>
 								</div>
 							</c:if>
 							<c:if test="${clinica.alergias == 'Ninguna'}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio5"
+									<input class="form-check-input" type="radio" name="opc_alergias"  onclick="habilitaRadio('selectAle', 'areaAle', true)" id="inlineRadio5"
 									       value="si_alergias" required>
 									<label class="form-check-label" for="inlineRadio5">Si</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_alergias" id="inlineRadio6"
+									<input class="form-check-input" type="radio" name="opc_alergias"  onclick="habilitaRadio('selectAle', 'areaAle', false)" id="inlineRadio6"
 									       value="no_alergias" checked>
 									<label class="form-check-label" for="inlineRadio6">No</label>
 								</div>
+
+								<div class="col-md">
+									<select name="alergias1" id="selectAle" class="form-control" readonly>
+										<option selected>Seleccione</option>
+										<option>Ácaros</option>
+										<option>Polen</option>
+										<option>Pelo de Animales</option>
+										<option>Picaduras Insectos</option>
+										<option>Moho</option>
+										<option>Látex</option>
+										<option>Alimentos</option>
+										<option>Fragancias</option>
+										<option>Otro</option>
+									</select>
+								</div>
+								<div class="col-md">
+								<textarea class="form-control" id="areaAle" name="alergias2" rows="2" placeholder="Descripción:" readonly><c:out
+										value=""/></textarea>
+								</div>
 							</c:if>
-							<div class="col-md">
-								<select name="alergias1" class="form-control">
-									<option selected><c:out value="${clinica.tipoalergias}"/></option>
-									<option>Ácaros</option>
-									<option>Polen</option>
-									<option>Pelo de Animales</option>
-									<option>Picaduras Insectos</option>
-									<option>Moho</option>
-									<option>Látex</option>
-									<option>Alimentos</option>
-									<option>Fragancias</option>
-									<option>Otro</option>
-								</select>
-							</div>
-							<div class="col-md">
-								<textarea class="form-control" name="alergias2" rows="2" placeholder="Descripción:"><c:out
-							value="${clinica.alergias}"/></textarea>
-							</div>
+
 						</div>
 
 						<div class="col-md">
@@ -258,46 +319,62 @@
 
 							<c:if test="${clinica.discapacidades != 'Ninguna'}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_discapacidad"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectDis', 'areaDis', true)" name="opc_discapacidad"
 									       id="inlineRadio7"
 									       value="si_discapacidad" checked required>
 									<label class="form-check-label" for="inlineRadio7">Si</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_discapacidad"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectDis', 'areaDis', false)" name="opc_discapacidad"
 									       id="inlineRadio8"
 									       value="no_discapacidad">
 									<label class="form-check-label" for="inlineRadio8">No</label>
 								</div>
+
+								<div class="col-md">
+									<select name="discapacidades1" id="selectDis" class="form-control">
+										<option selected><c:out value="${clinica.tipoDiscapacidades}"/></option>
+										<option>Física</option>
+										<option>Psíquica</option>
+										<option>Sensorial</option>
+										<option>Intelectual o Mental</option>
+										<option>Otro</option>
+									</select>
+								</div>
+								<div class="col-md">
+					<textarea class="form-control" id="areaDis" name="discapacidades2" rows="2" placeholder="Descripción:"><c:out
+							value="${clinica.discapacidades}"/></textarea>
+								</div>
 							</c:if>
 							<c:if test="${clinica.discapacidades == 'Ninguna'}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_discapacidad"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectDis', 'areaDis', true)" name="opc_discapacidad"
 									       id="inlineRadio7"
 									       value="si_discapacidad" required>
 									<label class="form-check-label" for="inlineRadio7">Si</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="opc_discapacidad"
+									<input class="form-check-input" type="radio" onclick="habilitaRadio('selectDis', 'areaDis', false)" name="opc_discapacidad"
 									       id="inlineRadio8"
 									       value="no_discapacidad" checked>
 									<label class="form-check-label" for="inlineRadio8">No</label>
 								</div>
+
+								<div class="col-md">
+									<select name="discapacidades1" id="selectDis" class="form-control" readonly>
+										<option selected>Seleccione</option>
+										<option>Física</option>
+										<option>Psíquica</option>
+										<option>Sensorial</option>
+										<option>Intelectual o Mental</option>
+										<option>Otro</option>
+									</select>
+								</div>
+								<div class="col-md">
+					<textarea class="form-control" id="areaDis" name="discapacidades2" rows="2" readonly placeholder="Descripción:"></textarea>
+								</div>
 							</c:if>
-							<div class="col-md">
-								<select name="discapacidades1" class="form-control">
-									<option selected><c:out value="${clinica.tipoDiscapacidades}"/></option>
-									<option>Física</option>
-									<option>Psíquica</option>
-									<option>Sensorial</option>
-									<option>Intelectual o Mental</option>
-									<option>Otro</option>
-								</select>
-							</div>
-							<div class="col-md">
-					<textarea class="form-control" name="discapacidades2" rows="2" placeholder="Descripción:"><c:out
-							value="${clinica.discapacidades}"/></textarea>
-							</div>
+
 						</div>
 					</div>
 				</div>
