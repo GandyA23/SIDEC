@@ -52,7 +52,7 @@
 			<c:forEach var="clinica" items="${listClinica}">
 				<div class="row form-group col-md d-inline-flex">
 					<div class="col-md">
-						<input type="text" name="matricula" class="form-control  text-center"
+						<input id="valorLleno" type="text" name="matricula" class="form-control  text-center"
 						       value="<c:out value="${clinica.matricula.matricula}"/>" placeholder="Matrícula" readonly>
 					</div>
 					<div class="col-md">
@@ -381,7 +381,7 @@
 			</c:forEach>
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-4">
-					<button onclick="preguntaActualizar()" type="button" class="btn bg-danger btn-block text-white">
+					<button id="btnControl" onclick="preguntaActualizar()" type="button" class="btn bg-danger btn-block text-white" disabled>
 						<b>Actualizar</b></button>
 						<button id="enviarForm" type="submit" name="accion" value="update" hidden><b>Actualizar</b>
 						</button>

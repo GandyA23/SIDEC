@@ -8,7 +8,11 @@ public class conexion {
     public static Connection crearConexion() throws SQLException {
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
-        //String url = "jdbc:mysql://localhost:3306/sidec";
+
+        /*String url = "jdbc:mysql://192.168.0.1/sidec?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String user = "hector";
+        String pass = "B3b0te123!";
+        */
         String url = "jdbc:mysql://localhost/sidec?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String user = "root";
         String pass = "admin";
@@ -20,6 +24,7 @@ public class conexion {
         }
         con = DriverManager.getConnection(url,user,pass);
         return  con;
+
     }
 
 

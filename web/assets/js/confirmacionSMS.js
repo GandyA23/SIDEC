@@ -3,8 +3,8 @@
 	switch (mostrarSMS) {
 		case "1":
 			Swal.fire(
-				'¡Yuju!, Éxito!',
-				'Todo salió de maravilla',
+				'¡Accion exitosa!',
+				'Se efectuo correctamente en el sistema',
 				'success'
 			)
 			break;
@@ -13,10 +13,16 @@
 				icon: 'error',
 				title: '¡Registo no encontrado!',
 				text: 'Algo pasó, revise los datos',
-				footer: '<b class="text-center">Posiblemente el estudiante no exista, este de baja o ya tiene el registro</b>'
+				footer: '<b class="text-center">Posiblemente no exista, este de baja o ya tiene el registro</b>'
 			})
 			break;
 	}
+
+	var valueIsEmpty = document.getElementById("valorLleno");
+	if(valueIsEmpty != null){
+		document.getElementById("btnControl").disabled = false;
+	}
+
 }())
 
 

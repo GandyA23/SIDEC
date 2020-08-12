@@ -60,11 +60,11 @@
 			        <input name="correo" class="form-control text-center" type="email" maxlength="30" placeholder="Correo electrónico" >
 		        </div>
 		        <div  class="col-md">
-			        <input id="pass" name="password" class="form-control text-center" type="text" maxlength="20" placeholder="Contraseña" required>
+			        <input id="pass" name="password" class="form-control text-center" type="password" maxlength="20" placeholder="Contraseña" required>
 		        </div>
 
 		        <div  class="col-md">
-			        <input id="repeatpass" name="password" class="form-control text-center" type="text" maxlength="20" placeholder="Repetir contraseña" required>
+			        <input id="repeatpass" name="password" class="form-control text-center" type="password" maxlength="20" placeholder="Repetir contraseña" required>
 		        </div>
 
 	        </div>

@@ -47,7 +47,7 @@
 				<c:forEach var="usuarios" items="${usuariosList}">
 					<tr>
 						<td scope="row" class="font-italic text-left text-secondary">CCT</td>
-						<td name="cctBuscado"><c:out value="${usuarios.cct}"></c:out></td>
+						<td id="valorLleno" name="cctBuscado"><c:out value="${usuarios.cct}"></c:out></td>
 					</tr>
 					<tr>
 						<td scope="row" class="font-italic text-left text-secondary">Nombre</td>
@@ -78,7 +78,7 @@
 		<form action="<%=request.getContextPath()%>/UsuarioServlet" method="post">
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-4">
-					<button onclick="preguntaBorrar()" type="button" class="btn bg-danger btn-block text-white"><b>Eliminar</b></button>
+					<button id="btnControl" onclick="preguntaBorrar()" type="button" class="btn bg-danger btn-block text-white" disabled><b>Eliminar</b></button>
 					<button id="enviarForm" type="submit" name="accion" hidden value="delete"></button>
 				</div>
 			</div>

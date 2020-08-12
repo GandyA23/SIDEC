@@ -52,7 +52,7 @@
 				<c:forEach var="clinica" items="${listClinica}">
 					<tr>
 						<td>Matrícula</td>
-						<td><c:out value="${clinica.matricula.matricula}"></c:out></td>
+						<td id="valorLleno"><c:out value="${clinica.matricula.matricula}"></c:out></td>
 					</tr>
 					<tr>
 						<td>Número de seguro médico</td>
@@ -136,7 +136,7 @@
 		<form action="${pageContext.request.contextPath}/ClinicaServlet" method="post">
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-4">
-					<button onclick="preguntaBorrar()" type="button" class="btn bg-danger btn-block text-white">
+					<button id="btnControl" onclick="preguntaBorrar()" type="button" class="btn bg-danger btn-block text-white" disabled>
 						<b>Eliminar</b></button>
 					<button id="enviarForm" type="submit" name="accion" value="delete" hidden></button>
 				</div>

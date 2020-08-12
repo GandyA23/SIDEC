@@ -86,7 +86,7 @@
 						</button>
 					</div>
 					<div class="col-md">
-						<input type="text" class="form-control form-control-sm text-center" placeholder="Matrícula"
+						<input id="valorLleno" type="text" class="form-control form-control-sm text-center" placeholder="Matrícula"
 						       name="matricula" required maxlength="15" value="<c:out value="${alumno.matricula}"></c:out>" readonly>
 					</div>
 					<div class="col-md">
@@ -291,7 +291,7 @@
 			<br>
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-4">
-					<button onclick="preguntaModificar()" type="button" class="btn bg-danger btn-block text-white">
+					<button id="btnControl" onclick="preguntaModificar()" type="button" class="btn bg-danger btn-block text-white" disabled>
 						<b>Actualizar</b></button>
 					<button id="enviarForm" type="submit" name="listener" value="actualizar" hidden></button>
 				</div>

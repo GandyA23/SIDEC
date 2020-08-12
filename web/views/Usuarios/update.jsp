@@ -44,7 +44,7 @@
 
                 <div class="row form-group d-inline-flex">
                 <div class="col-md">
-                    <input type="text" class="form-control text-center" value="<c:out value="${usuarios.cct}"/>" placeholder="Matrícula" readonly>
+                    <input id="valorLleno" type="text" class="form-control text-center" value="<c:out value="${usuarios.cct}"/>" placeholder="Matrícula" readonly>
                 </div>
                 <div class="col-md">
                     <input type="text" class="form-control text-center" value="<c:out value="${usuarios.nombre}"/>" maxlength="30" name="nombre" placeholder="Nombre (s)" required>
@@ -102,7 +102,7 @@
 
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4">
-                    <button onclick="preguntaModificar()" type="button" class="btn bg-danger btn-block text-white"><b>Actualizar</b> </button>
+                    <button id="btnControl" onclick="preguntaModificar()" type="button" class="btn bg-danger btn-block text-white" disabled><b>Actualizar</b> </button>
                     <button id="enviarForm" type="submit" name="accion" hidden value="update"></button>
                 </div>
             </div>

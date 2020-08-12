@@ -76,7 +76,7 @@
 						</div>
 
 						<tr>
-							<td scope="row">Matrícula</td><td><c:out value="${alumno.matricula}"></c:out></td>
+							<td scope="row">Matrícula</td><td id="valorLleno"><c:out value="${alumno.matricula}"></c:out></td>
 						</tr>
 						<tr>
 							<td scope="row">CURP</td><td><c:out value="${alumno.curp}"></c:out></td>
@@ -182,7 +182,7 @@
 		<form method="post" action="<%=request.getContextPath()%>/PersonalServlet">
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-4">
-					<button onclick="preguntaBorrar()" type="button" class="btn bg-danger btn-block text-white"><b>Eliminar</b></button>
+					<button id="btnControl" onclick="preguntaBorrar()" type="button" class="btn bg-danger btn-block text-white" disabled><b>Eliminar</b></button>
 					<button id="enviarForm" type="submit" name="listener" value="eliminar" hidden></button>
 				</div>
 			</div>

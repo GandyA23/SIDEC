@@ -50,7 +50,7 @@
 		<form action="${pageContext.request.contextPath}/AcademicoServlet" method="post">
 			<c:forEach var="academico" items="${listAcademico}">
 				<div class="row form-group col-md-4 d-inline-flex">
-					<input type="text" name="matricula" class="form-control text-center" maxlength="15" value="<c:out value="${academico.matricula.matricula}"></c:out>" placeholder="Matrícula" readonly>
+					<input id="valorLleno" type="text" name="matricula" class="form-control text-center" maxlength="15" value="<c:out value="${academico.matricula.matricula}"></c:out>" placeholder="Matrícula" readonly>
 				</div>
 				<div class="row form-group col-md d-inline-flex">
 					<c:if test="${academico.diploma != null}">
@@ -154,7 +154,7 @@
 			</c:forEach>
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-4">
-					<button onclick="preguntaActualizar()" type="button" class="btn bg-danger btn-block text-white">
+					<button id="btnControl" onclick="preguntaActualizar()" type="button" class="btn bg-danger btn-block text-white" disabled>
 						<b>Actualizar</b></button>
 					<button id="enviarForm" type="submit" name="accion" value="update" hidden></button>
 				</div>
