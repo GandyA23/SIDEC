@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Gandy Avila
-  Date: 29/06/2020
-  Time: 09:47 a. m.
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -21,7 +15,6 @@
     </head>
 
     <body onload="ponVerificadores()">
-
         <div class="d-flex align-items-center justify-content-center m-4 mx-auto">
             <div class=" row d-flex bg-redDark align-items-center justify-content-center mx-auto" style="height: 50%; width: 75%; border-radius: 30px;">
                 <div class="col-sm-7 m-3 d-flex justify-content-center p-4 mx-auto" style="height: 45%; width: 90%; border-radius: 30px;">
@@ -41,7 +34,6 @@
                 </div>
 
                 <div class="col-sm-4 m-3 bg-white mx-auto" style="height: 45%; width: 90%; border-radius: 30px;">
-
                     <form method="post" action="<%=request.getContextPath()%>/LoginServlet">
                         <div class=" d-flex justify-content-center">
                             <h3 style="font-weight: bold; text-align: center;"><u>Iniciar Sesión</u></h3>
@@ -49,7 +41,7 @@
                         <div class="d-flex justify-content-center">
                             <img src="${pageContext.request.contextPath}/assets/img/user3.png" style="height: 65%; width: 65%" class="img-fluid" alt="Icono Usuario">
                         </div>
-                        <br>
+
                         <div class="p-2">
                             <input type="text" name="cct" class="form-control text-center" placeholder="CCT" style="border-radius:10px;" required>
                         </div>
@@ -57,33 +49,41 @@
                             <input type="password" name="password" class="form-control text-center" placeholder="Contraseña" style="border-radius:10px" required>
                         </div>
 
-                        <div class="d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#staticBackdrop">
-                                <b>Olvidé mi contraseña </b>
-                            </button>
-                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Atención</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Si olvidaste tu contraseña debes comunicarte con el administrador del sistema para que la restablezca.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       <!--HERE-->
+
                         <div class="p-3">
                             <button type="submit" value="Login" class="btn btn-danger btn-block" style="border-radius:10px; color: white"><b>Ingresar</b></button>
                         </div>
+
+
+
+	                    <div class="d-flex justify-content-center p-3">
+		                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
+			                    <b>Olvidé mi contraseña </b>
+		                    </button>
+	                    </div>
+
                     </form>
+
+	                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		                <div class="modal-dialog">
+			                <div class="modal-content">
+				                <div class="modal-header">
+					                <h5 class="modal-title" id="staticBackdropLabel">Atención</h5>
+					                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						                <span aria-hidden="true">&times;</span>
+					                </button>
+				                </div>
+				                <div class="modal-body">
+					                Si olvidaste tu contraseña debes comunicarte con el administrador del sistema para que la restablezca.
+				                </div>
+				                <div class="modal-footer">
+					                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+				                </div>
+			                </div>
+		                </div>
+	                </div>
+
                     <button id="mostrarSMS" value="<c:out value="${respuestaSMS}"></c:out>" hidden></button>
                 </div>
             </div>

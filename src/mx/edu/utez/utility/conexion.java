@@ -9,13 +9,18 @@ public class conexion {
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
 
-        /*String url = "jdbc:mysql://192.168.0.1/sidec?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        /*
+        Conexión a servidor CentOS
+        String url = "jdbc:mysql://192.168.0.1/sidec?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String user = "hector";
         String pass = "B3b0te123!";
         */
+
+        //Conexión a localhost
         String url = "jdbc:mysql://localhost/sidec?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String user = "root";
         String pass = "admin";
+
         System.setProperty(driver,"");
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -28,5 +33,7 @@ public class conexion {
     }
 
 
-
 }
+
+
+
