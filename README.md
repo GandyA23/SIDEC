@@ -1,4 +1,4 @@
-# SIDEC | Sistema de Expedientes Digitales
+# SIDEC | Sistema de Expedientes Controlados
 > El problema dentro de los expedientes de educación básica es la dispersión 
 > de la información de sus alumnos, esto complica llevar un seguimiento de esos datos. 
 > Además de dificultar la consulta de la información, afectando los procesos 
